@@ -40,6 +40,31 @@ function onLinkChanged()
 	end
 end
 
+function updateControl(sControl, bReadOnly, bID)
+	if not self[sControl] then
+		return false;
+	end
+
+	if not bID then
+		return self[sControl].update(bReadOnly, true);
+	end
+
+	local sLabel = self[sControl].getName() .. "_label";
+	if bReadOnly and self[sControl].isEmpty() then
+		self[sLabel].setVisible(false);
+		if sControl == "control_skill" then
+			self["control_skill_dice"].setVisible(false);
+		end
+	else
+		self[sLabel].setVisible(true);
+		if sControl == "control_skill" then
+			self["control_skill_dice"].setVisible(true);
+		end
+	end
+
+	return self[sControl].update(bReadOnly);
+end
+
 
 function linkPCFields(nodeVehicle)
 --	local nodeRecord = getDatabaseNode();

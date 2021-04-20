@@ -308,9 +308,6 @@
 				<delaykeyupdate />
 			</number_columnh>
 
-			<ft_columnh name="description" />
-
-
 			<header_column name="abilities_header">
 				<static textres="species_header_abilities"/>
 				<center />
@@ -328,6 +325,9 @@
 				<class>ref_special_abilities</class>
 			</list_column>
 
+
+			<ft_columnh name="description" />
+			
 			<label_column name="setting_label">
 				<static textres="talent_label_setting" />
 			</label_column>
