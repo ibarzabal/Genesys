@@ -55,6 +55,8 @@ function update()
 	local bSection3 = false;
 	if updateControl("cost", bReadOnly, bID) then bSection3 = true; end
 	if updateControl("weight", bReadOnly, bID) then bSection3 = true; end
+	if updateControl("rarity", bReadOnly, bID) then bSection3 = true; end
+	if updateControl("special", bReadOnly, bID) then bSection3 = true; end
 
 	local bSection4 = false;
 	if updateControl("skill", bReadOnly, bID and bWeapon) then bSection4 = true; end
@@ -66,6 +68,7 @@ function update()
 	if updateControl("defense", bReadOnly, bID and bArmor) then bSection4 = true; end
 	if updateControl("soak", bReadOnly, bID and bArmor) then bSection4 = true; end
 
+	updateControl("description", bReadOnly, bID);
 	updateControl("setting", bReadOnly, bID);
 
 

@@ -62,6 +62,8 @@
 	<string name="career_header_traits">TRAITS</string>
 	<string name="species_archetype_header_traits">TRAITS</string>
 	<string name="library_recordtype_label_talent">Talents</string>
+	<string name="char_label_itemweight">Enc</string>
+	<string name="char_tooltip_itemweight">Encumbrance</string>
 
 	<!-- Character - Abilities -->
 	<string name="char_abilities_label_talents">TALENTS</string>
@@ -86,8 +88,12 @@
 	<string name="item_label_soak">Soak</string>
 	<string name="item_label_defense">Defense</string>
 	<string name="item_label_skill">Skill</string>
-
-
+	<string name="item_label_unidentifiednotes">Non-ID Notes</string>
+	<string name="item_label_description">Description</string>
+	<string name="item_label_rarity">Rarity</string>
+	<string name="item_label_weight">Encumbrance</string>
+	<string name="item_label_cost">Price</string>
+	<string name="item_label_special">Special</string>
 	<!-- Desktop decal options -->
 	<string name="option_val_DDCL_genesys_core">Genesys Core</string>
 	<string name="option_val_DDCL_genesys_android">Genesys Android</string>
@@ -119,6 +125,11 @@
 	<string name="char_label_talents">Talents</string>
 
 
+	<!-- NPCs -->
+	<string name="npc_category_minion">Minion</string>
+	<string name="npc_category_rival">Rival</string>
+	<string name="npc_category_nemesis">Nemesis</string>
+	<string name="npc_category_blank">**Select**</string>
 
 
 

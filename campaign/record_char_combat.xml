@@ -679,9 +679,10 @@
 								createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
 								createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
 								createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
+								createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
 							end
 						</script>
-<!-- Remove conditions 								createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());-->
+
 					</basewindowlist>
 					<scrollbar>
 						<anchored>
@@ -774,13 +775,19 @@
 						<script>
 							function onFilter(w)
 								local itemnode = w.getDatabaseNode();
-
 								local carried = itemnode.getChild("carried");
 								local isweapon = itemnode.getChild("type");
+								local isIDnode = itemnode.getChild("isidentified");
+
 								if isweapon == nil then
 									return false;
 								end
-								if carried.getValue() == 2 and isweapon.getValue():lower() == "weapon" then
+								if isIDnode == nil then
+									isID = 1;
+								else
+									isID = isIDnode.getValue();
+								end
+								if carried.getValue() == 2 and isweapon.getValue():lower() == "weapon" and isID == 1 then
 									return true;
 								else
 									return false;

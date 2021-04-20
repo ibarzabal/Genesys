@@ -832,7 +832,7 @@
 			<frame name="fieldlight" offset="7,5,7,5" />
 <!--			<displaysign /> -->
 			<rollable/>
-				<script file="campaign/scripts/skilldicepool.lua" />
+				<script file="common/scripts/skilldicepool.lua" />
 		</numberfield>
 	</template>
 

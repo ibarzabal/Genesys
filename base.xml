@@ -8,7 +8,7 @@
 <root version="3.0" release="4" logo="logo.png">
 
 
-	<announcement text="Genesys RPG community ruleset V0.8 (FG 3.3.9+) by John Ibarzabal (a.k.a. Mestre dos Magos).\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Genesys, Terrinoth, Android Shadow of the Beanstalk are (tm) owned by Fantasy Flight Games.  Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
+	<announcement text="Genesys RPG community ruleset V0.9 (FG 3.3.9+) by John Ibarzabal (a.k.a. Mestre dos Magos).\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Genesys, Terrinoth, Android Shadow of the Beanstalk are (tm) owned by Fantasy Flight Games.  Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
 
 
 
@@ -72,6 +72,8 @@
 		<script name="PlayerDBManager" file="scripts/manager_playerdbgenesys.lua" />
 		<script name="MinionManager" file="scripts/manager_miniongenesys.lua" />
 		<script name="NPCManagerGenesys" file="scripts/manager_npcgenesys.lua" />
+		<script name="MinionManager" file="scripts/manager_minion.lua" />
+
 
 <!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
 			<!--Overriding the original manager_actions.lua from CoreRPG
@@ -114,6 +116,10 @@
 		<!-- Check Char manager from 3.5, it has a lot of nice stuff  -->
 <!-- 	 -->
 		<includefile source="campaign/record_npc.xml" />
+		<includefile source="campaign/record_npc_main.xml" />
+		<includefile source="campaign/record_npc_inventory.xml" />
+
+
 <!-- 		<includefile source="campaign/record_encounter.xml" /> -->
 		<includefile source="campaign/record_item.xml" />
 <!-- 		<includefile source="campaign/record_quest.xml" /> -->

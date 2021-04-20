@@ -315,7 +315,6 @@
 			<genericcontrol>
 				<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
 				<icon>char_encumbrance</icon>
-				<tooltip textres="char_tooltip_careerskill" />
 			</genericcontrol>
 			<label>
 				<anchored to="skillframe" position="insidetopleft" offset="50,10" />
@@ -372,7 +371,30 @@
 	<sheetdata>
 		<button_checkbox name="career_skill">
 			<bounds>22,8,12,12</bounds>
-			<tooltip textres="char_tooltip_careerskill" />
+			<tooltip>
+				<text>Career Skill</text>
+			</tooltip>
+			<script>
+			function onInit()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						setVisible(true);
+						setTooltipText("Minion skill?");
+					else
+						setVisible(false);
+					end
+				end
+
+			end
+
+			function onValueChanged()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						MinionManager.updateSkill(window.getDatabaseNode());
+					end
+				end
+			end
+		</script>
 		</button_checkbox>
 		<genericcontrol name="rightanchor">
 			<anchored width="0" height="0">

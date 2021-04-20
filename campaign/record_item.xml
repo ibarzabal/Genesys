@@ -52,17 +52,7 @@
 				<delaykeyupdate />
 			</string_columnh>
 
-			<line_column name="divider2" />
 
-			<label_column name="cost_label">
-				<static textres="item_label_cost" />
-			</label_column>
-			<string_columnh name="cost" />
-
-			<label_column name="weight_label">
-				<static textres="item_label_weight" />
-			</label_column>
-			<number_columnh name="weight" />
 
 			<line_column name="divider3" />
 
@@ -76,10 +66,10 @@
 			</label_column>
 			<string_columnh name="damage" />
 
-<!--			<label_column name="damagetype_label"> -->
-<!--				<static textres="item_label_dmgtype" /> -->
-<!--			</label_column> -->
-<!--			<string_columnh name="damagetype" /> -->
+			<!--			<label_column name="damagetype_label"> -->
+			<!--				<static textres="item_label_dmgtype" /> -->
+			<!--			</label_column> -->
+			<!--			<string_columnh name="damagetype" /> -->
 
 			<label_column name="critical_label">
 				<static textres="item_label_critical" />
@@ -90,13 +80,13 @@
 			<label_column name="range_label">
 				<static textres="item_label_range" />
 			</label_column>
-<!-- 			<string_columnh name="range" /> -->
+			<!-- 			<string_columnh name="range" /> -->
 			<rangecontrolh name="range">
 				<sourcename>range</sourcename>
 				<anchored>
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
 					<left offset="95" />
-<!-- 					<right offset="-5" /> -->
+			<!-- 					<right offset="-5" /> -->
 				</anchored>
 			</rangecontrolh>
 
@@ -115,8 +105,35 @@
 				<delaykeyupdate />
 			</number_columnh>
 
+			<line_column name="divider2" />
+
+			<label_column name="weight_label">
+				<static textres="item_label_weight" />
+			</label_column>
+			<number_columnh name="weight" />
+
+			<label_column name="cost_label">
+				<static textres="item_label_cost" />
+			</label_column>
+			<string_columnh name="cost" />
+
+
+			<label_column name="rarity_label">
+				<static textres="item_label_rarity" />
+			</label_column>
+			<number_columnh name="rarity" />
+
+			<label_column name="special_label">
+				<static textres="item_label_special" />
+			</label_column>
+			<string_columnh name="special" />
+
+
 			<line_column name="divider4" />
 
+<!--			<header_column name="header_description"> -->
+<!--				<static textres="item_label_description"/> -->
+<!--			</header_column> -->
 			<ft_columnh name="description" />
 
 			<label_column name="setting_label">
