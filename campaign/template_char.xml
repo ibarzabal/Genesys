@@ -885,6 +885,7 @@
 			<datasource>.skilllist</datasource>
 			<class>char_skill</class>
 			<sortby>
+				<control>category</control>
 				<control>name</control>
 			</sortby>
 			<script file="campaign/scripts/char_skilllist.lua" />

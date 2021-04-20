@@ -6,285 +6,196 @@
 -->
 
 <root>
-	<windowclass name="charsheet_skilllist">
+	<windowclass name="charsheet_skills">
 		<script file="campaign/scripts/char_main.lua" />
 		<sheetdata>
 
-
-			<!-- CHARACTERISTICS -->
-						<frame_char name="main_characteristics">
-							<bounds>14,15,351,87</bounds>
-						</frame_char>
-
-
-
-						<sheetframetitle name="main_characteristics_title">
-							<anchored>
-								<to>main_characteristics</to>
-							</anchored>
-							<static>Characteristics</static>
-						</sheetframetitle>
-
-						<!-- BRAWN -->
-						<sheetcharacteristicvalue name="main_characteristics_brawn_current" source="brawn.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>17,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_brawn_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_brawn_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_brawn_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Brawn</static>
-						</sheettitle>
-
-						<!-- AGILITY-->
-						<sheetcharacteristicvalue name="main_characteristics_agility_current" source="agility.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>73,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_agility_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_agility_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_agility_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Agility</static>
-						</sheettitle>
-
-						<!-- INTELLECT-->
-						<sheetcharacteristicvalue name="main_characteristics_intellect_current" source="intellect.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>129,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_intellect_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_intellect_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_intellect_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Intellect</static>
-						</sheettitle>
-
-						<!-- CUNNING-->
-						<sheetcharacteristicvalue name="main_characteristics_cunning_current" source="cunning.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>185,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_cunning_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_cunning_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_cunning_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Cunning</static>
-						</sheettitle>
-
-						<!-- WILLPOWER-->
-						<sheetcharacteristicvalue name="main_characteristics_willpower_current" source="willpower.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>241,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_willpower_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_willpower_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_willpower_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Willpower</static>
-						</sheettitle>
-
-						<!-- PRESENCE-->
-						<sheetcharacteristicvalue name="main_characteristics_presence_current" source="presence.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>297,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_presence_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_presence_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_presence_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Presence</static>
-						</sheettitle>
+			<frame_statblock1 name="main_statblock1">
+				<bounds>0,10,480,71</bounds>
+			</frame_statblock1>
+			<!-- BRAWN -->
+			<sheetcharacteristicvalue name="main_statblock1_brawn_current" source="brawn.current">
+				<anchored to="main_statblock1" offset="26,7"/>
+			</sheetcharacteristicvalue>
+			<title_statblock>
+				<anchored height="20">
+					<top parent="main_statblock1_brawn_current" anchor="bottom" offset="6"/>
+					<left parent="main_statblock1_brawn_current" anchor="left" offset="-20"/>
+					<right parent="main_statblock1_brawn_current" anchor="right" offset="20"/>
+				</anchored>
+				<center />
+				<static>Brawn</static>
+			</title_statblock>
+			<!-- AGILITY-->
+			<sheetcharacteristicvalue name="main_statblock1_agility_current" source="agility.current">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>105,7</offset>
+				</anchored>
+			</sheetcharacteristicvalue>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_agility_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_agility_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_agility_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Agility</static>
+			</title_statblock>
+			<!-- INTELLECT-->
+			<sheetcharacteristicvalue name="main_statblock1_intellect_current" source="intellect.current">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>185,7</offset>
+				</anchored>
+			</sheetcharacteristicvalue>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_intellect_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_intellect_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_intellect_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Intellect</static>
+			</title_statblock>
+			<!-- CUNNING-->
+			<sheetcharacteristicvalue name="main_statblock1_cunning_current" source="cunning.current">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>262,7</offset>
+				</anchored>
+			</sheetcharacteristicvalue>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_cunning_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_cunning_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_cunning_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Cunning</static>
+			</title_statblock>
+			<!-- WILLPOWER-->
+			<sheetcharacteristicvalue name="main_statblock1_willpower_current" source="willpower.current">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>341,7</offset>
+				</anchored>
+			</sheetcharacteristicvalue>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_willpower_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_willpower_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_willpower_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Willpower</static>
+			</title_statblock>
+			<!-- PRESENCE-->
+			<sheetcharacteristicvalue name="main_statblock1_presence_current" source="presence.current">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>421,7</offset>
+				</anchored>
+			</sheetcharacteristicvalue>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_presence_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_presence_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_presence_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Presence</static>
+			</title_statblock>
 
 
-
-			<!-- INITIATIVE -->
-						<sheetframe name="combat_init">
-						<!--<bounds>355,2,128,86</bounds>-->
-						<bounds>363,15,120,87</bounds>
-						</sheetframe>
-						<sheetframetitle name="combat_init_title">
-							<anchored>
-								<to>combat_init</to>
-							</anchored>
-							<static>Initiative</static>
-						</sheetframetitle>
-
-						<!-- Cool -->
-						<sheetlabel name="combat_init_cool">
-							<anchored>
-								<to>combat_init</to>
-								<offset>34,27</offset>
-								<size>
-									<width>50</width>
-								</size>
-							</anchored>
-							<static>Cool</static>
-						</sheetlabel>
-
-						<initdicepool name="combat_init_cool_btn">
-							<anchored>
-								<to>combat_init</to>
-								<offset>85,27</offset>
-								<position>insidetopleft</position>
-								<size>
-									<width>18</width>
-									<height>14</height>
-								</size>
-							</anchored>
-							<!--<bounds>118,26,10,10</bounds>-->
-						</initdicepool>
-
-						<!-- Vigilance -->
-						<sheetlabel name = "combat_init_vigilance">
-							<anchored>
-								<to>combat_init</to>
-								<offset>20,54</offset>
-								<size>
-									<width>64</width>
-								</size>
-							</anchored>
-							<static>Vigilance</static>
-						</sheetlabel>
-
-						<initdicepool name="combat_init_vigilance_btn">
-							<anchored>
-								<to>combat_init</to>
-								<offset>85,54</offset>
-								<position>insidetopleft</position>
-								<size>
-									<width>18</width>
-									<height>14</height>
-								</size>
-							</anchored>
-							<!--<bounds>118,26,10,10</bounds>-->
-						</initdicepool>
+			<label_charframetopg name="invtitle">
+				<anchored to="main_statblock1" position="belowleft" offset="0,10" height="20">
+					<right offset="-1" />
+				</anchored>
+				<icons>char_inventory</icons>
+				<static textres="char_label_skills" />
+			</label_charframetopg>
 
 
 			<!-- GENERAL skilllist FRAME ......................................................................... -->
 			<frame_char name="skillframe">
-				<bounds>15,100,-39,-1</bounds>
+				<bounds>0,120,-1,-1</bounds>
+				<invisible />
 			</frame_char>
 
 			<button_iedit name="skilllist_iedit">
@@ -304,18 +215,7 @@
 				<target>skilllist</target>
 				<tooltip textres="char_tooltip_skilladd" />
 			</button_iadd>
-
-
-
-
-<!--
-			<genericcontrol>
-				<anchored to="skillframe" position="insidetopleft" offset="17,15" width="10" height="10" />
-				<icon>char_quicklist</icon>
-				<tooltip textres="char_tooltip_skilllisthowmini" />
-			</genericcontrol>
--->
-			<genericcontrol>
+				<genericcontrol>
 				<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
 				<icon>char_encumbrance</icon>
 			</genericcontrol>
@@ -338,23 +238,14 @@
 				<disabled />
 				<invisible />
 			</genericcontrol>
-
-			<list_charskill name="skilllist">
+				<list_charskill name="skilllist">
 				<anchored to="skillframe">
 					<top offset="30" />
 					<left offset="10" />
 					<right offset="-25" />
 					<bottom offset="-15" />
 				</anchored>
-<!--				<script>
-					function onInit()
-						local sCategory = "general";
-						InitList(sCategory);
-					end
-				</script>
-
-			-->
-			</list_charskill>
+				</list_charskill>
 			<scrollbar>
 				<anchored to="skilllist" />
 				<target>skilllist</target>
@@ -362,117 +253,363 @@
 <!-- GENERAL skilllist FRAME END......................................................................... -->
 
 
+
+
+
+
 		</sheetdata>
 	</windowclass>
 
 
+	<windowclass name="charsheet_skilllist_NOT_USED">
+		<script file="campaign/scripts/char_main.lua" />
+		<sheetdata>
+		<!-- CHARACTERISTICS -->
+		<frame_char name="main_statblock1">
+			<bounds>14,45,351,87</bounds>
+		</frame_char>
+		<sheetframetitle name="main_statblock1_title">
+			<anchored>
+				<to>main_statblock1</to>
+			</anchored>
+			<static>Characteristics</static>
+		</sheetframetitle>
+		<!-- BRAWN -->
+		<sheetcharacteristicvalue name="main_statblock1_brawn_current" source="brawn.current">
+			<anchored>
+				<to>main_statblock1</to>
+				<offset>17,7</offset>
+			</anchored>
+		</sheetcharacteristicvalue>
+		<title_statblock>
+			<anchored>
+				<top>
+					<parent>main_statblock1_brawn_current</parent>
+					<anchor>bottom</anchor>
+					<offset>6</offset>
+				</top>
+				<left>
+					<parent>main_statblock1_brawn_current</parent>
+					<anchor>left</anchor>
+					<offset>-20</offset>
+				</left>
+				<right>
+					<parent>main_statblock1_brawn_current</parent>
+					<anchor>right</anchor>
+					<offset>20</offset>
+				</right>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+			<center />
+			<static>Brawn</static>
+		</title_statblock>
 
-	<!-- GENERAL skilllist LIST! .......................................................................... -->
-	<windowclass name="char_skill">
-	<margins control="0,0,0,2" />
-	<script file="campaign/scripts/char_skill.lua" />
-	<sheetdata>
-		<button_checkbox name="career_skill">
-			<bounds>22,8,12,12</bounds>
-			<tooltip>
-				<text>Career Skill</text>
-			</tooltip>
+		<!-- AGILITY-->
+		<sheetcharacteristicvalue name="main_statblock1_agility_current" source="agility.current">
+			<anchored>
+				<to>main_statblock1</to>
+				<offset>73,7</offset>
+			</anchored>
+		</sheetcharacteristicvalue>
+		<title_statblock>
+			<anchored>
+				<top>
+					<parent>main_statblock1_agility_current</parent>
+					<anchor>bottom</anchor>
+					<offset>6</offset>
+				</top>
+				<left>
+					<parent>main_statblock1_agility_current</parent>
+					<anchor>left</anchor>
+					<offset>-20</offset>
+				</left>
+				<right>
+					<parent>main_statblock1_agility_current</parent>
+					<anchor>right</anchor>
+					<offset>20</offset>
+				</right>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+			<center />
+			<static>Agility</static>
+		</title_statblock>
+
+		<!-- INTELLECT-->
+		<sheetcharacteristicvalue name="main_statblock1_intellect_current" source="intellect.current">
+			<anchored>
+				<to>main_statblock1</to>
+				<offset>129,7</offset>
+			</anchored>
+		</sheetcharacteristicvalue>
+		<title_statblock>
+			<anchored>
+				<top>
+					<parent>main_statblock1_intellect_current</parent>
+					<anchor>bottom</anchor>
+					<offset>6</offset>
+				</top>
+				<left>
+					<parent>main_statblock1_intellect_current</parent>
+					<anchor>left</anchor>
+					<offset>-20</offset>
+				</left>
+				<right>
+					<parent>main_statblock1_intellect_current</parent>
+					<anchor>right</anchor>
+					<offset>20</offset>
+				</right>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+			<center />
+			<static>Intellect</static>
+		</title_statblock>
+
+		<!-- CUNNING-->
+		<sheetcharacteristicvalue name="main_statblock1_cunning_current" source="cunning.current">
+			<anchored>
+				<to>main_statblock1</to>
+				<offset>185,7</offset>
+			</anchored>
+		</sheetcharacteristicvalue>
+		<title_statblock>
+			<anchored>
+				<top>
+					<parent>main_statblock1_cunning_current</parent>
+					<anchor>bottom</anchor>
+					<offset>6</offset>
+				</top>
+				<left>
+					<parent>main_statblock1_cunning_current</parent>
+					<anchor>left</anchor>
+					<offset>-20</offset>
+				</left>
+				<right>
+					<parent>main_statblock1_cunning_current</parent>
+					<anchor>right</anchor>
+					<offset>20</offset>
+				</right>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+			<center />
+			<static>Cunning</static>
+		</title_statblock>
+
+		<!-- WILLPOWER-->
+		<sheetcharacteristicvalue name="main_statblock1_willpower_current" source="willpower.current">
+			<anchored>
+				<to>main_statblock1</to>
+				<offset>241,7</offset>
+			</anchored>
+		</sheetcharacteristicvalue>
+		<title_statblock>
+			<anchored>
+				<top>
+					<parent>main_statblock1_willpower_current</parent>
+					<anchor>bottom</anchor>
+					<offset>6</offset>
+				</top>
+				<left>
+					<parent>main_statblock1_willpower_current</parent>
+					<anchor>left</anchor>
+					<offset>-20</offset>
+				</left>
+				<right>
+					<parent>main_statblock1_willpower_current</parent>
+					<anchor>right</anchor>
+					<offset>20</offset>
+				</right>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+			<center />
+			<static>Willpower</static>
+		</title_statblock>
+
+		<!-- PRESENCE-->
+		<sheetcharacteristicvalue name="main_statblock1_presence_current" source="presence.current">
+			<anchored>
+				<to>main_statblock1</to>
+				<offset>297,7</offset>
+			</anchored>
+		</sheetcharacteristicvalue>
+		<title_statblock>
+			<anchored>
+				<top>
+					<parent>main_statblock1_presence_current</parent>
+					<anchor>bottom</anchor>
+					<offset>6</offset>
+				</top>
+				<left>
+					<parent>main_statblock1_presence_current</parent>
+					<anchor>left</anchor>
+					<offset>-20</offset>
+				</left>
+				<right>
+					<parent>main_statblock1_presence_current</parent>
+					<anchor>right</anchor>
+					<offset>20</offset>
+				</right>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+			<center />
+			<static>Presence</static>
+		</title_statblock>
+
+
+
+<!-- INITIATIVE -->
+		<sheetframe name="combat_init">
+		<!--<bounds>355,2,128,86</bounds>-->
+		<bounds>363,15,120,87</bounds>
+		</sheetframe>
+		<sheetframetitle name="combat_init_title">
+			<anchored>
+				<to>combat_init</to>
+			</anchored>
+			<static>Initiative</static>
+		</sheetframetitle>
+
+		<!-- Cool -->
+		<sheetlabel name="combat_init_cool">
+			<anchored>
+				<to>combat_init</to>
+				<offset>34,27</offset>
+				<size>
+					<width>50</width>
+				</size>
+			</anchored>
+			<static>Cool</static>
+		</sheetlabel>
+
+		<initdicepool name="combat_init_cool_btn">
+			<anchored>
+				<to>combat_init</to>
+				<offset>85,27</offset>
+				<position>insidetopleft</position>
+				<size>
+					<width>18</width>
+					<height>14</height>
+				</size>
+			</anchored>
+			<!--<bounds>118,26,10,10</bounds>-->
+		</initdicepool>
+
+		<!-- Vigilance -->
+		<sheetlabel name = "combat_init_vigilance">
+			<anchored>
+				<to>combat_init</to>
+				<offset>20,54</offset>
+				<size>
+					<width>64</width>
+				</size>
+			</anchored>
+			<static>Vigilance</static>
+		</sheetlabel>
+
+		<initdicepool name="combat_init_vigilance_btn">
+			<anchored>
+				<to>combat_init</to>
+				<offset>85,54</offset>
+				<position>insidetopleft</position>
+				<size>
+					<width>18</width>
+					<height>14</height>
+				</size>
+			</anchored>
+			<!--<bounds>118,26,10,10</bounds>-->
+		</initdicepool>
+
+
+		<!-- GENERAL skilllist FRAME ......................................................................... -->
+		<frame_char name="skillframe">
+			<bounds>15,100,-39,-1</bounds>
+		</frame_char>
+
+		<button_iedit name="skilllist_iedit">
+			<anchored to="skillframe" position="insidetopright" offset="0,0" />
+			<target>skilllist</target>
 			<script>
-			function onInit()
-				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
-					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
-						setVisible(true);
-						setTooltipText("Minion skill?");
-					else
-						setVisible(false);
-					end
+				function onValueChanged()
+					local bEdit = (getValue() == 1);
+					window.skilllist_iadd.setVisible(bEdit);
+					window.skilllist.update();
 				end
+			</script>
+		</button_iedit>
 
-			end
+		<button_iadd name="skilllist_iadd">
+			<anchored to="skilllist_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
+			<target>skilllist</target>
+			<tooltip textres="char_tooltip_skilladd" />
+		</button_iadd>
 
-			function onValueChanged()
-				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
-					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
-						MinionManager.updateSkill(window.getDatabaseNode());
-					end
-				end
-			end
-		</script>
-		</button_checkbox>
+
+
+
+<!--
+		<genericcontrol>
+			<anchored to="skillframe" position="insidetopleft" offset="17,15" width="10" height="10" />
+			<icon>char_quicklist</icon>
+			<tooltip textres="char_tooltip_skilllisthowmini" />
+		</genericcontrol>
+-->
+		<genericcontrol>
+			<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
+			<icon>char_encumbrance</icon>
+		</genericcontrol>
+		<label>
+			<anchored to="skillframe" position="insidetopleft" offset="50,10" />
+			<static textres="skill_name_title" />
+		</label>
 		<genericcontrol name="rightanchor">
-			<anchored width="0" height="0">
-				<top />
-				<right />
+			<anchored to="skillframe" width="0" height="0">
+				<top offset="10" />
+				<right offset="-25" />
 			</anchored>
 			<invisible />
 		</genericcontrol>
-		<button_idelete name="idelete">
-			<anchored width="20" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
-			</anchored>
-		</button_idelete>
-		<genericcontrol name="idelete_spacer">
-			<anchored width="20" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+		<genericcontrol name="idelete_header">
+			<anchored to="rightanchor" width="20" height="20">
+				<top />
+				<right anchor="left" relation="relative" offset="-2" />
 			</anchored>
 			<disabled />
 			<invisible />
 		</genericcontrol>
-		<!-- FIELDS START HERE -->
-		<skilldicepool>
-			<anchored width="20" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-			</anchored>
 
-		</skilldicepool>
-
-		<number_charskilltotal name="advances">
-			<anchored width="30" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+		<list_charskill name="skilllist">
+			<anchored to="skillframe">
+				<top offset="30" />
+				<left offset="10" />
+				<right offset="-25" />
+				<bottom offset="-15" />
 			</anchored>
-		</number_charskilltotal>
-
-		<stringu name="characteristic">
-			<anchored width="20" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
-			</anchored>
-			<script>
-				function onEnter()
-					window.windowlist.addEntry(true);
-					return true;
+<!--				<script>
+				function onInit()
+					local sCategory = "general";
+					InitList(sCategory);
 				end
 			</script>
-		</stringu>
-		<stringu name="category">
-			<anchored width="70" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-			</anchored>
-		</stringu>
-		<stringu name="name">
-			<anchored height="20">
-				<top offset="2" />
-				<left offset="40" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-			</anchored>
-			<tabtarget next="sublabel" />
-		</stringu>
-		<buttoncontrol name="shortcut">
-			<anchored width="20" height="20">
-				<top offset="2" />
-				<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
-			</anchored>
-			<icon normal="button_link" pressed="button_link_down" />
-			<script file="campaign/scripts/char_skilllink.lua" />
-		</buttoncontrol>
-		</sheetdata>
-	</windowclass>
 
+		-->
+		</list_charskill>
+		<scrollbar>
+			<anchored to="skilllist" />
+			<target>skilllist</target>
+		</scrollbar>
+<!-- GENERAL skilllist FRAME END......................................................................... -->
 
-
+			</sheetdata>
+		</windowclass>
 </root>
