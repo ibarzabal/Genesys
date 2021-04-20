@@ -34,7 +34,7 @@
 
 <!-- NOTES -->
 <sheetframe name="notes_notes">
-	<bounds>15,0,-29,-70</bounds>
+	<bounds>0,0,-1,-63</bounds>
 </sheetframe>
 <sheetframetitle name="notes_notes_title">
 	<anchored>
@@ -86,7 +86,7 @@
 			<!-- EXPERIENCE -->
 						<sheetframe name="main_experience">
 <!--							<bounds>363,397,121,94</bounds> -->
-							<bounds>15,-60,-29,-5</bounds>
+							<bounds>0,-60,-1,-5</bounds>
 
 						</sheetframe>
 						<sheetframetitle name="main_experience_title">

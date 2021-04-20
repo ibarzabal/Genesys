@@ -91,6 +91,11 @@
 				<center />
 			</label_ct>
 
+			<label_ct name="label_npc_category">
+				<anchored to="headeranchor" position="insidetopright" offset="112,0" width="80" />
+				<static textres="ct_label_npc_category" />
+				<center />
+			</label_ct>
 
 
 			<frame_ctbox_host_header_toggles />

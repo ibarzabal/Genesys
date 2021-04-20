@@ -16,9 +16,11 @@
 			end
 		</script>
 		<sheetdata>
+<!--
 			<frame_char name="skillframe">
 				<bounds>1,1,-1,-1</bounds>
 			</frame_char>
+-->
 			<button_iedit name="actions_iedit">
 				<anchored position="insidebottomright" offset="10,10" />
 				<tooltip textres="char_tooltip_actionedit" />

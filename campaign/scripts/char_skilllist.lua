@@ -48,15 +48,32 @@ function update()
 			end
 		end
 
-		if bAllowDelete then
+		if bEditMode then
 			w.idelete_spacer.setVisible(false);
 			w.idelete.setVisibility(bEditMode);
+
+			w.name.setEnabled(true);
+			w.name.setLine(true);
+			w.characteristic.setEnabled(true);
+			w.characteristic.setLine(true);
+			w.category.setEnabled(true);
+			w.category.setLine(true);
 		else
 			w.idelete_spacer.setVisible(bEditMode);
 			w.idelete.setVisibility(false);
+
+			w.name.setEnabled(false);
+			w.name.setLine(false);
+			w.characteristic.setEnabled(false);
+			w.category.setEnabled(false);
+			w.category.setLine(false);
+			w.characteristic.setLine(false);
+			w.category.setEnabled(false);
+			w.category.setLine(false);
 		end
 	end
 end
+
 
 function onStatUpdate()
 	for _,w in pairs(getWindows()) do
@@ -130,9 +147,9 @@ function constructDefaultskilllist(sListType)
 					end
 
 	-- Set properties for all skilllist
-	for _,w in pairs(getWindows()) do
-		w.updateWindow();
-	end
+--	for _,w in pairs(getWindows()) do
+--		w.updateWindow();
+--	end
 end
 
 function addNewInstance(sLabel)

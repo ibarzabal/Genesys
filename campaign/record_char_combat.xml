@@ -15,51 +15,51 @@
 				if parentcontrol.window.getClass() == "npc" then
 					if string.lower(parentcontrol.window.main_npc_category.getValue()) == "minion" then
 
-						combat_minion_info.setVisible(true);
+
+						main_statblock2b.setVisible(true);
+
 						combat_minion_info_title.setVisible(true);
-						combat_wounds_per_minion_label.setVisible(true);
 						combat_wounds_per_minion.setVisible(true);
-						combat_minions_in_group_label.setVisible(true);
 						combat_minions_in_group.setVisible(true);
+						combat_wounds_per_minion_label.setVisible(true);
+						combat_minions_in_group_label.setVisible(true);
 
-						combat_strain.setVisible(false);
+
 						combat_strain_title.setVisible(false);
-						combat_strain_threshold_label.setVisible(false);
 						combat_strain_threshold.setVisible(false);
-						combat_strain_current_label.setVisible(false);
 						combat_strain_current.setVisible(false);
-
+						combat_strain_title_threshold.setVisible(false);
+						combat_strain_title_current.setVisible(false);
 					elseif string.lower(parentcontrol.window.main_npc_category.getValue()) == "nemesis" then
 
-						combat_minion_info.setVisible(false);
+						main_statblock2b.setVisible(true);
+
 						combat_minion_info_title.setVisible(false);
-						combat_wounds_per_minion_label.setVisible(false);
 						combat_wounds_per_minion.setVisible(false);
-						combat_minions_in_group_label.setVisible(false);
 						combat_minions_in_group.setVisible(false);
+						combat_wounds_per_minion_label.setVisible(false);
+						combat_minions_in_group_label.setVisible(false);
 
-						combat_strain.setVisible(true);
 						combat_strain_title.setVisible(true);
-						combat_strain_threshold_label.setVisible(true);
 						combat_strain_threshold.setVisible(true);
-						combat_strain_current_label.setVisible(true);
 						combat_strain_current.setVisible(true);
-
+						combat_strain_title_threshold.setVisible(true);
+						combat_strain_title_current.setVisible(true);
 					else
 
-						combat_minion_info.setVisible(false);
-						combat_minion_info_title.setVisible(false);
-						combat_wounds_per_minion_label.setVisible(false);
-						combat_wounds_per_minion.setVisible(false);
-						combat_minions_in_group_label.setVisible(false);
-						combat_minions_in_group.setVisible(false);
+						main_statblock2b.setVisible(false);
 
-						combat_strain.setVisible(false);
+						combat_minion_info_title.setVisible(false);
+						combat_wounds_per_minion.setVisible(false);
+						combat_minions_in_group.setVisible(false);
+						combat_wounds_per_minion_label.setVisible(false);
+						combat_minions_in_group_label.setVisible(false);
+
 						combat_strain_title.setVisible(false);
-						combat_strain_threshold_label.setVisible(false);
 						combat_strain_threshold.setVisible(false);
-						combat_strain_current_label.setVisible(false);
 						combat_strain_current.setVisible(false);
+						combat_strain_title_threshold.setVisible(false);
+						combat_strain_title_current.setVisible(false);
 
 					end
 				end
@@ -67,586 +67,321 @@
 		</script>
 		<sheetdata>
 
-			<!-- CHARACTERISTICS -->
-						<frame_char name="main_characteristics">
-							<bounds>14,15,351,87</bounds>
-						</frame_char>
-						<sheetframetitle name="main_characteristics_title">
-							<anchored>
-								<to>main_characteristics</to>
-							</anchored>
-							<static>Characteristics</static>
-						</sheetframetitle>
 
-						<!-- BRAWN -->
-						<sheetcharacteristicvalue name="main_characteristics_brawn_current" source="brawn.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>17,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_brawn_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_brawn_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_brawn_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Brawn</static>
-						</sheettitle>
-
-						<!-- AGILITY-->
-						<sheetcharacteristicvalue name="main_characteristics_agility_current" source="agility.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>73,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_agility_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_agility_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_agility_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Agility</static>
-						</sheettitle>
-
-						<!-- INTELLECT-->
-						<sheetcharacteristicvalue name="main_characteristics_intellect_current" source="intellect.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>129,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_intellect_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_intellect_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_intellect_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Intellect</static>
-						</sheettitle>
-
-						<!-- CUNNING-->
-						<sheetcharacteristicvalue name="main_characteristics_cunning_current" source="cunning.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>185,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_cunning_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_cunning_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_cunning_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Cunning</static>
-						</sheettitle>
-
-						<!-- WILLPOWER-->
-						<sheetcharacteristicvalue name="main_characteristics_willpower_current" source="willpower.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>241,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_willpower_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_willpower_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_willpower_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Willpower</static>
-						</sheettitle>
-
-						<!-- PRESENCE-->
-						<sheetcharacteristicvalue name="main_characteristics_presence_current" source="presence.current">
-							<anchored>
-								<to>main_characteristics</to>
-								<offset>297,24</offset>
-							</anchored>
-						</sheetcharacteristicvalue>
-						<sheettitle>
-							<anchored>
-								<top>
-									<parent>main_characteristics_presence_current</parent>
-									<anchor>bottom</anchor>
-									<offset>3</offset>
-								</top>
-								<left>
-									<parent>main_characteristics_presence_current</parent>
-									<anchor>left</anchor>
-									<offset>-20</offset>
-								</left>
-								<right>
-									<parent>main_characteristics_presence_current</parent>
-									<anchor>right</anchor>
-									<offset>20</offset>
-								</right>
-								<size>
-									<height>20</height>
-								</size>
-							</anchored>
-							<center />
-							<static>Presence</static>
-						</sheettitle>
+							<frame_statblock1 name="main_statblock1">
+								<bounds>0,10,480,71</bounds>
+							</frame_statblock1>
+							<!-- BRAWN -->
+							<sheetcharacteristicvalue name="main_statblock1_brawn_current" source="brawn.current">
+								<anchored to="main_statblock1" offset="26,7"/>
+							</sheetcharacteristicvalue>
+							<title_statblock>
+								<anchored height="20">
+									<top parent="main_statblock1_brawn_current" anchor="bottom" offset="6"/>
+									<left parent="main_statblock1_brawn_current" anchor="left" offset="-20"/>
+									<right parent="main_statblock1_brawn_current" anchor="right" offset="20"/>
+								</anchored>
+								<center />
+								<static>Brawn</static>
+							</title_statblock>
+							<!-- AGILITY-->
+							<sheetcharacteristicvalue name="main_statblock1_agility_current" source="agility.current">
+								<anchored>
+									<to>main_statblock1</to>
+									<offset>105,7</offset>
+								</anchored>
+							</sheetcharacteristicvalue>
+							<title_statblock>
+								<anchored>
+									<top>
+										<parent>main_statblock1_agility_current</parent>
+										<anchor>bottom</anchor>
+										<offset>6</offset>
+									</top>
+									<left>
+										<parent>main_statblock1_agility_current</parent>
+										<anchor>left</anchor>
+										<offset>-20</offset>
+									</left>
+									<right>
+										<parent>main_statblock1_agility_current</parent>
+										<anchor>right</anchor>
+										<offset>20</offset>
+									</right>
+									<size>
+										<height>20</height>
+									</size>
+								</anchored>
+								<center />
+								<static>Agility</static>
+							</title_statblock>
+							<!-- INTELLECT-->
+							<sheetcharacteristicvalue name="main_statblock1_intellect_current" source="intellect.current">
+								<anchored>
+									<to>main_statblock1</to>
+									<offset>185,7</offset>
+								</anchored>
+							</sheetcharacteristicvalue>
+							<title_statblock>
+								<anchored>
+									<top>
+										<parent>main_statblock1_intellect_current</parent>
+										<anchor>bottom</anchor>
+										<offset>6</offset>
+									</top>
+									<left>
+										<parent>main_statblock1_intellect_current</parent>
+										<anchor>left</anchor>
+										<offset>-20</offset>
+									</left>
+									<right>
+										<parent>main_statblock1_intellect_current</parent>
+										<anchor>right</anchor>
+										<offset>20</offset>
+									</right>
+									<size>
+										<height>20</height>
+									</size>
+								</anchored>
+								<center />
+								<static>Intellect</static>
+							</title_statblock>
+							<!-- CUNNING-->
+							<sheetcharacteristicvalue name="main_statblock1_cunning_current" source="cunning.current">
+								<anchored>
+									<to>main_statblock1</to>
+									<offset>262,7</offset>
+								</anchored>
+							</sheetcharacteristicvalue>
+							<title_statblock>
+								<anchored>
+									<top>
+										<parent>main_statblock1_cunning_current</parent>
+										<anchor>bottom</anchor>
+										<offset>6</offset>
+									</top>
+									<left>
+										<parent>main_statblock1_cunning_current</parent>
+										<anchor>left</anchor>
+										<offset>-20</offset>
+									</left>
+									<right>
+										<parent>main_statblock1_cunning_current</parent>
+										<anchor>right</anchor>
+										<offset>20</offset>
+									</right>
+									<size>
+										<height>20</height>
+									</size>
+								</anchored>
+								<center />
+								<static>Cunning</static>
+							</title_statblock>
+							<!-- WILLPOWER-->
+							<sheetcharacteristicvalue name="main_statblock1_willpower_current" source="willpower.current">
+								<anchored>
+									<to>main_statblock1</to>
+									<offset>341,7</offset>
+								</anchored>
+							</sheetcharacteristicvalue>
+							<title_statblock>
+								<anchored>
+									<top>
+										<parent>main_statblock1_willpower_current</parent>
+										<anchor>bottom</anchor>
+										<offset>6</offset>
+									</top>
+									<left>
+										<parent>main_statblock1_willpower_current</parent>
+										<anchor>left</anchor>
+										<offset>-20</offset>
+									</left>
+									<right>
+										<parent>main_statblock1_willpower_current</parent>
+										<anchor>right</anchor>
+										<offset>20</offset>
+									</right>
+									<size>
+										<height>20</height>
+									</size>
+								</anchored>
+								<center />
+								<static>Willpower</static>
+							</title_statblock>
+							<!-- PRESENCE-->
+							<sheetcharacteristicvalue name="main_statblock1_presence_current" source="presence.current">
+								<anchored>
+									<to>main_statblock1</to>
+									<offset>421,7</offset>
+								</anchored>
+							</sheetcharacteristicvalue>
+							<title_statblock>
+								<anchored>
+									<top>
+										<parent>main_statblock1_presence_current</parent>
+										<anchor>bottom</anchor>
+										<offset>6</offset>
+									</top>
+									<left>
+										<parent>main_statblock1_presence_current</parent>
+										<anchor>left</anchor>
+										<offset>-20</offset>
+									</left>
+									<right>
+										<parent>main_statblock1_presence_current</parent>
+										<anchor>right</anchor>
+										<offset>20</offset>
+									</right>
+									<size>
+										<height>20</height>
+									</size>
+								</anchored>
+								<center />
+								<static>Presence</static>
+							</title_statblock>
 
 
+							<frame_statblock2a name="main_statblock2a">
+								<bounds>20,90,440,64</bounds>
+							</frame_statblock2a>
+							<frame_statblock2b name="main_statblock2b">
+								<bounds>20,90,440,64</bounds>
+							</frame_statblock2b>
 
-			<!-- INITIATIVE -->
-						<sheetframe name="combat_init">
-						<!--<bounds>355,2,128,86</bounds>-->
-						<bounds>363,15,120,87</bounds>
-						</sheetframe>
-						<sheetframetitle name="combat_init_title">
-							<anchored>
-								<to>combat_init</to>
-							</anchored>
-							<static>Initiative</static>
-						</sheetframetitle>
+							<!-- SOAK -->
+							<title_statblock>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="20,3" height="20" />
+								<static>Soak Value</static>
+							</title_statblock>
+							<sheetnumberfieldtr name="combat_armour_soak" source="armour.soak">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="40,25"/>
+							</sheetnumberfieldtr>
 
-						<!-- Cool -->
-						<sheetlabel name="combat_init_cool">
-							<anchored>
-								<to>combat_init</to>
-								<offset>34,27</offset>
-								<size>
-									<width>50</width>
-								</size>
-							</anchored>
-							<static>Cool</static>
-						</sheetlabel>
+							<!-- WOUNDS -->
+							<title_statblock>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="140,3" height="20" />
+								<static>Wounds</static>
+							</title_statblock>
+							<sheetnumberfieldtr name="combat_wounds_threshold" source="wounds.threshold">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="135,25" height="20" />
+							</sheetnumberfieldtr>
+							<woundnumberfield name="combat_wounds_current" source="wounds.current">
+								<chit>wound</chit>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="165,25" height="20" />
+							</woundnumberfield>
+							<title_statblock_sm>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="118,47"/>
+								<static>Threshold</static>
+							</title_statblock_sm>
+							<title_statblock_sm>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="168,47"/>
+								<static>Current</static>
+							</title_statblock_sm>
 
-						<initdicepool name="combat_init_cool_btn">
-							<anchored>
-								<to>combat_init</to>
-								<offset>85,27</offset>
-								<position>insidetopleft</position>
-								<size>
-									<width>18</width>
-									<height>14</height>
-								</size>
-							</anchored>
-							<!--<bounds>118,26,10,10</bounds>-->
-						</initdicepool>
+							<!-- STRAIN -->
+							<title_statblock name="combat_strain_title">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="260,3" height="20" />
+								<static>Strain</static>
+							</title_statblock>
+							<sheetnumberfieldtr name="combat_strain_threshold" source="strain.threshold">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="247,25" height="20" />
+							</sheetnumberfieldtr>
+							<strainnumberfield name="combat_strain_current" source="strain.current">
+								<chit>strain</chit>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="278,25" height="20" />
+							</strainnumberfield>
+							<title_statblock_sm name="combat_strain_title_threshold">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="230,47"/>
+								<static>Threshold</static>
+							</title_statblock_sm>
+							<title_statblock_sm name="combat_strain_title_current">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="280,47"/>
+								<static>Current</static>
+							</title_statblock_sm>
 
-						<!-- Vigilance -->
-						<sheetlabel name = "combat_init_vigilance">
-							<anchored>
-								<to>combat_init</to>
-								<offset>20,54</offset>
-								<size>
-									<width>64</width>
-								</size>
-							</anchored>
-							<static>Vigilance</static>
-						</sheetlabel>
+							<!-- DEFENSE -->
+							<title_statblock>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="365,3" height="20" />
+								<static>Defense</static>
+							</title_statblock>
+							<title_statblock_sm>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="348,47"/>
+								<static>Ranged</static>
+							</title_statblock_sm>
+							<title_statblock_sm>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="392,47"/>
+								<static>Melee</static>
+							</title_statblock_sm>
+							<sheetnumberfieldtr name="combat_armour_rangeddefence" source="armour.rangeddefence">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="360,25" height="20" />
+							</sheetnumberfieldtr>
+							<sheetnumberfieldtr name="combat_armour_meleedefence" source="armour.meleedefence">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="390,25" height="20" />
+							</sheetnumberfieldtr>
 
-						<initdicepool name="combat_init_vigilance_btn">
-							<anchored>
-								<to>combat_init</to>
-								<offset>85,54</offset>
-								<position>insidetopleft</position>
-								<size>
-									<width>18</width>
-									<height>14</height>
-								</size>
-							</anchored>
-							<!--<bounds>118,26,10,10</bounds>-->
-						</initdicepool>
+							<!-- MINION INFO -->
+							<title_statblock name="combat_minion_info_title">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="245,3" height="20" />
+								<static>Minion Info</static>
+								<invisible />
+							</title_statblock>
+							<sheetnumberfieldtr name="combat_wounds_per_minion" source="minion.wounds_per_minion">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="247,25" height="20" />
+								<tooltip>
+									<text>Number of wounds per Minion in the group</text>
+								</tooltip>
+								<script>
+									function onValueChanged()
+										super.onValueChanged();
 
-		<!-- SOAK -->
-					<sheetframe name="combat_soak">
-						<bounds>14,97,116,70</bounds>
-					</sheetframe>
-					<sheetframetitle name="combat_soak_title">
-						<anchored>
-							<to>combat_soak</to>
-						</anchored>
-						<static>Soak</static>
-					</sheetframetitle>
+										local woundPerMinion = window.combat_wounds_per_minion.getValue();
 
-					<sheetnumberfield name="combat_armour_soak" source="armour.soak">
-						<anchored>
-							<to>combat_soak</to>
-							<offset>47,30</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<!--<disabled />-->
-					</sheetnumberfield>
+										local totalWoundThreshold = woundPerMinion * getValue();
 
-		<!-- WOUNDS -->
-					<sheetframe name="combat_wounds">
-						<bounds>128,97,120,70</bounds>
-					</sheetframe>
-					<sheetframetitle name="combat_wounds_title">
-						<anchored>
-							<to>combat_wounds</to>
-						</anchored>
-						<static>Wounds</static>
-					</sheetframetitle>
+										window.combat_wounds_threshold.setValue(totalWoundThreshold);
 
-					<!-- THRESHOLD -->
-					<sheetlabel>
-						<anchored>
-							<to>combat_wounds</to>
-							<offset>13,22</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>Threshold</static>
-					</sheetlabel>
+										window.combat_wounds_current.update();
+									end
+								</script>
+								<invisible />
+							</sheetnumberfieldtr>
+							<sheetnumberfieldtr name="combat_minions_in_group" source="minion.number_in_group">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="278,25" height="20" />
+								<tooltip>
+									<text>Number of Minions in the group</text>
+								</tooltip>
+								<invisible />
+								<script>
+									function onValueChanged()
+										super.onValueChanged();
 
-					<sheetnumberfield name="combat_wounds_threshold" source="wounds.threshold">
-						<anchored>
-							<to>combat_wounds</to>
-							<offset>80,22</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<tabtarget>
-							<next>combat_wounds_current</next>
-							<prev>combat_characteristics_stance_reckless</prev>
-						</tabtarget>
-					</sheetnumberfield>
+										local woundPerMinion = window.combat_wounds_per_minion.getValue();
 
-					<!-- CURRENT -->
-					<sheetlabel>
-						<anchored>
-							<to>combat_wounds</to>
-							<offset>13,42</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>Current</static>
-					</sheetlabel>
-					<woundnumberfield name="combat_wounds_current" source="wounds.current">
-						<chit>wound</chit>
-						<anchored>
-							<to>combat_wounds</to>
-							<offset>80,42</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<tabtarget>
-							<next>combat_physiology_fatigue</next>
-							<prev>combat_wounds_threshold</prev>
-						</tabtarget>
-					</woundnumberfield>
+										local totalWoundThreshold = woundPerMinion * getValue();
 
-		<!-- STRAIN -->
-					<sheetframe name="combat_strain">
-						<bounds>245,97,120,70</bounds>
-					</sheetframe>
-					<sheetframetitle name="combat_strain_title">
-						<anchored>
-							<to>combat_strain</to>
-						</anchored>
-						<static>Strain</static>
-					</sheetframetitle>
+										window.combat_wounds_threshold.setValue(totalWoundThreshold);
 
-					<!-- THRESHOLD -->
-					<sheetlabel name="combat_strain_threshold_label">
-						<anchored>
-							<to>combat_strain</to>
-							<offset>13,22</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>Threshold</static>
-					</sheetlabel>
-					<sheetnumberfield name="combat_strain_threshold" source="strain.threshold">
-						<anchored>
-							<to>combat_strain</to>
-							<offset>80,22</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<tabtarget>
-							<next>combat_strain_current</next>
-							<prev>combat_characteristics_stance_reckless</prev>
-						</tabtarget>
-					</sheetnumberfield>
-
-					<!-- CURRENT -->
-					<sheetlabel name="combat_strain_current_label">
-						<anchored>
-							<to>combat_strain</to>
-							<offset>13,42</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>Current</static>
-					</sheetlabel>
-					<strainnumberfield name="combat_strain_current" source="strain.current">
-						<chit>wound</chit>
-						<anchored>
-							<to>combat_strain</to>
-							<offset>80,42</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<tabtarget>
-							<next>combat_physiology_fatigue</next>
-							<prev>combat_wounds_threshold</prev>
-						</tabtarget>
-					</strainnumberfield>
-
-		<!-- MINION INFO -->
-					<sheetframe name="combat_minion_info">
-						<bounds>245,97,120,70</bounds>
-						<invisible />
-					</sheetframe>
-					<sheetframetitle name="combat_minion_info_title">
-						<anchored>
-							<to>combat_minion_info</to>
-						</anchored>
-						<static>Minion Info</static>
-						<invisible />
-					</sheetframetitle>
-
-					<!-- WOUNDS PER MINION -->
-					<sheetlabel name="combat_wounds_per_minion_label">
-						<anchored>
-							<to>combat_minion_info</to>
-							<offset>13,22</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>W./Minion</static>
-						<tooltip>
-							<text>Number of wounds per Minion in the group</text>
-						</tooltip>
-						<invisible />
-					</sheetlabel>
-					<sheetnumberfield name="combat_wounds_per_minion" source="minion.wounds_per_minion">
-						<anchored>
-							<to>combat_minion_info</to>
-							<offset>80,22</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<script>
-							function onValueChanged()
-								super.onValueChanged();
-
-								local woundPerMinion = window.combat_wounds_per_minion.getValue();
-
-								local totalWoundThreshold = woundPerMinion * getValue();
-
-								window.combat_wounds_threshold.setValue(totalWoundThreshold);
-
-								window.combat_wounds_current.update();
-							end
-						</script>
-						<tabtarget>
-							<next>combat_strain_current</next>
-							<prev>combat_characteristics_stance_reckless</prev>
-						</tabtarget>
-						<tooltip>
-							<text>Number of wounds per Minion in the group</text>
-						</tooltip>
-						<invisible />
-					</sheetnumberfield>
-
-					<!-- MINIONS IN GROUP -->
-					<sheetlabel name="combat_minions_in_group_label">
-						<anchored>
-							<to>combat_minion_info</to>
-							<offset>13,42</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>#/Group</static>
-						<tooltip>
-							<text>Number of Minions in the group</text>
-						</tooltip>
-						<invisible />
-					</sheetlabel>
-					<sheetnumberfield name="combat_minions_in_group" source="minion.number_in_group">
-						<anchored>
-							<to>combat_minion_info</to>
-							<offset>80,42</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-						<script>
-							function onValueChanged()
-								super.onValueChanged();
-
-								local woundPerMinion = window.combat_wounds_per_minion.getValue();
-
-								local totalWoundThreshold = woundPerMinion * getValue();
-
-								window.combat_wounds_threshold.setValue(totalWoundThreshold);
-
-								window.combat_wounds_current.update();
-							end
-						</script>
-						<tabtarget>
-							<next>combat_physiology_fatigue</next>
-							<prev>combat_wounds_threshold</prev>
-						</tabtarget>
-						<tooltip>
-							<text>Number of Minions in the group</text>
-						</tooltip>
-						<invisible />
-					</sheetnumberfield>
-
-		<!-- DEFENSE -->
-					<sheetframe name="combat_armour">
-						<bounds>363,97,121,70</bounds>
-					</sheetframe>
-					<sheetframetitle name="combat_armour_title">
-						<anchored>
-							<to>combat_armour</to>
-						</anchored>
-						<static>Defense</static>
-					</sheetframetitle>
-
-					<sheetlabel>
-						<anchored>
-							<to>combat_armour</to>
-							<offset>18,20</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>Melee</static>
-					</sheetlabel>
-					<sheetlabel>
-						<anchored>
-							<to>combat_armour</to>
-							<offset>59,20</offset>
-							<size>
-								<width>64</width>
-							</size>
-						</anchored>
-						<static>Ranged</static>
-					</sheetlabel>
-					<sheetnumberfield name="combat_armour_meleedefence" source="armour.meleedefence">
-						<anchored>
-							<to>combat_armour</to>
-							<offset>24,40</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-					</sheetnumberfield>
-					<sheetnumberfield name="combat_armour_rangeddefence" source="armour.rangeddefence">
-						<anchored>
-							<to>combat_armour</to>
-							<offset>68,40</offset>
-							<size>
-								<width>25</width>
-							</size>
-						</anchored>
-					</sheetnumberfield>
-
-					<!-- Armour Updater -->
-					<genericcontrol>
-						<bounds>0,0,1,1</bounds>
-					</genericcontrol>
+										window.combat_wounds_current.update();
+									end
+								</script>
+							</sheetnumberfieldtr>
+							<title_statblock_sm name="combat_wounds_per_minion_label">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="230,47"/>
+								<static>W./Minion</static>
+								<invisible />
+							</title_statblock_sm>
+							<title_statblock_sm name="combat_minions_in_group_label">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="280,47"/>
+								<static>#/Group</static>
+								<invisible />
+							</title_statblock_sm>
 
 
 
 		<!-- WEAPONS (the listbox)-->
 					<sheetframe name="combat_weapons">
 						<!--<bounds>208,148,276,320</bounds>-->
-						<bounds>15,165,-40,-10</bounds>
+						<bounds>1,165,-1,-50</bounds>
 					</sheetframe>
 
 					<sheettitle name="combat_weapons_weapon">
@@ -770,6 +505,71 @@
 						</anchored>
 						<target>combat_weapons_weapons</target>
 					</scrollbar>
+
+
+
+					<!-- INITIATIVE -->
+					<sheetframe name="combat_init">
+					<!--<bounds>355,2,128,86</bounds>-->
+					<bounds>1,-49,-1,-1</bounds>
+					</sheetframe>
+					<sheetframetitle name="combat_init_title">
+						<anchored>
+							<to>combat_init</to>
+						</anchored>
+						<static>Initiative</static>
+					</sheetframetitle>
+					<!-- Cool -->
+					<sheetlabel name="combat_init_cool">
+						<anchored>
+							<to>combat_init</to>
+							<offset>104,20</offset>
+							<size>
+								<width>50</width>
+							</size>
+						</anchored>
+						<static>Cool</static>
+					</sheetlabel>
+					<initdicepool name="combat_init_cool_btn">
+						<anchored>
+							<to>combat_init</to>
+							<offset>155,20</offset>
+							<position>insidetopleft</position>
+							<size>
+								<width>18</width>
+								<height>14</height>
+							</size>
+						</anchored>
+						<!--<bounds>118,26,10,10</bounds>-->
+					</initdicepool>
+					<!-- Vigilance -->
+					<sheetlabel name = "combat_init_vigilance">
+						<anchored>
+							<to>combat_init</to>
+							<offset>275,20</offset>
+							<size>
+								<width>64</width>
+							</size>
+						</anchored>
+						<static>Vigilance</static>
+					</sheetlabel>
+					<initdicepool name="combat_init_vigilance_btn">
+						<anchored>
+							<to>combat_init</to>
+							<offset>385,20</offset>
+							<position>insidetopleft</position>
+							<size>
+								<width>18</width>
+								<height>14</height>
+							</size>
+						</anchored>
+						<!--<bounds>118,26,10,10</bounds>-->
+					</initdicepool>
+
+
+
+
+
 
 		</sheetdata>
 	</windowclass>

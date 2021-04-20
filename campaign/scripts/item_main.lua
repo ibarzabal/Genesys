@@ -15,6 +15,12 @@ function InvisDataAdded()
 	update();
 end
 
+--function onDrop(x, y, draginfo)
+--	return ItemManager.handleAnyDrop(getDatabaseNode(), draginfo);
+--end
+
+
+
 function updateControl(sControl, bReadOnly, bID)
 	if not self[sControl] then
 		return false;
@@ -55,6 +61,7 @@ function update()
 	local bSection3 = false;
 	if updateControl("cost", bReadOnly, bID) then bSection3 = true; end
 	if updateControl("encumbrance", bReadOnly, bID) then bSection3 = true; end
+	if updateControl("hard_points", bReadOnly, bID) then bSection3 = true; end
 	if updateControl("rarity", bReadOnly, bID) then bSection3 = true; end
 	if updateControl("special", bReadOnly, bID) then bSection3 = true; end
 
@@ -70,6 +77,7 @@ function update()
 
 	updateControl("description", bReadOnly, bID);
 	updateControl("setting", bReadOnly, bID);
+	updateControl("attachments", bReadOnly, bID);
 
 
 	local bSection6 = bID;
@@ -80,5 +88,19 @@ function update()
 	divider2.setVisible((bSection1 or bSection2) and bSection3);
 	divider3.setVisible((bSection1 or bSection2 or bSection3) and bSection4);
 	divider4.setVisible((bSection1 or bSection2 or bSection3 or bSection4));
+	-- Make hard points only visible for weapons and armor
+	if (bWeapon or bArmor) then
+		hard_points_label.setVisible(true);
+		hard_points.setVisible(true);
+		attachments_header.setVisible(true);
+		attachments_iedit.setVisible(true);
+		attachments.setVisible(true);
+	else
+		hard_points_label.setVisible(false);
+		hard_points.setVisible(false);
+		attachments_header.setVisible(false);
+		attachments_iedit.setVisible(false);
+		attachments.setVisible(false);
+	end
 --	divider5.setVisible((bSection1 or bSection2 or bSection3 or bSection4) and bSection6);
 end

@@ -15,6 +15,9 @@
 						<frame_char name="main_characteristics">
 							<bounds>14,15,351,87</bounds>
 						</frame_char>
+
+
+
 						<sheetframetitle name="main_characteristics_title">
 							<anchored>
 								<to>main_characteristics</to>

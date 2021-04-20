@@ -115,7 +115,7 @@ function addCareer(nodeChar, sClass, sRecord)
 
 	local sspecies_archetype = DB.getValue(nodeSource, "name", "");
 
-	local sFormat = Interface.getString("char_message_species_archetypeadd");
+	local sFormat = Interface.getString("char_message_careeradd");
 	local sMsg = string.format(sFormat, sspecies_archetype, DB.getValue(nodeChar, "name", ""));
 	ChatManager.SystemMessage(sMsg);
 
@@ -331,7 +331,6 @@ function onDrop(characternode, x, y, draginfo)
 	if draginfo.isType("shortcut") then
 		local class, recordname = draginfo.getShortcutData();
 		Debug.console("charactermanager.lua:onDrop: shortcut class = " .. class);
-
 		-- Ability
 		if class == "ability" then
 			local recordnode = DB.findNode(recordname);
@@ -413,7 +412,7 @@ function onDrop(characternode, x, y, draginfo)
 
 
 		-- Skill
-		if class == "skill" then
+		if class == "skill"  or class =="referenceskill" then
 			local recordnode = DB.findNode(recordname);
 			if recordnode then
 				return addSkill(characternode, recordnode);
@@ -460,13 +459,13 @@ function onDrop(characternode, x, y, draginfo)
 		end
 	end
 
-	-- Dice
-	if draginfo.isType("dice") then
-		local dice = draginfo.getDieList();
-		if dice then
-			return addPlayerDice(characternode, dice);
-		end
-	end
+--	-- Dice
+--	if draginfo.isType("dice") then
+--		local dice = draginfo.getDieList();
+--		if dice then
+--			return addPlayerDice(characternode, dice);
+--		end
+--	end
 
 end
 
@@ -504,22 +503,22 @@ end
 --	end
 --end
 
---function shareWindow(characternode, class, recordname)
---	if User.isHost() or User.isLocal() then
---		local win = Interface.openWindow(class, recordname);
---		if win then
---
---			-- share the window
---			local identityOwner = User.getIdentityOwner(getIdentityName(characternode));
---			if identityOwner then
---				win.share(identityOwner);
---			end
---
---			-- and return
---			return true;
---		end
---	end
---end
+function shareWindow(characternode, class, recordname)
+	if User.isHost() or User.isLocal() then
+		local win = Interface.openWindow(class, recordname);
+		if win then
+
+			-- share the window
+			local identityOwner = User.getIdentityOwner(getIdentityName(characternode));
+			if identityOwner then
+				win.share(identityOwner);
+			end
+
+			-- and return
+			return true;
+		end
+	end
+end
 
 function endOfTurn(characternode)
 	local actionperformed = nil;
@@ -1204,7 +1203,7 @@ function addSkill(characternode, skillnode)
 	if User.isHost() or User.isLocal() or User.isOwnedIdentity(getIdentityName(characternode)) then
 
 		-- get the skills node
-		local skillsnode = characternode.createChild("skills");
+		local skillsnode = characternode.createChild("skilllist");
 
 		-- check for duplicates
 		if DBManagerGenesys.checkForDuplicateName(skillsnode, skillnode) then

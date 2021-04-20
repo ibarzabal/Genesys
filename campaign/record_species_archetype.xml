@@ -9,7 +9,7 @@
 	<windowclass name="referencespecies_archetype">
 		<frame>recordsheet</frame>
 		<placement>
-			<size width="400" height="400" />
+			<size width="450" height="400" />
 		</placement>
 		<sharable />
 		<sizelimits>
@@ -21,51 +21,21 @@
 		<nodelete />
 		<playercontrol />
 		<sharable />
-		<script>
-			function onLockChanged()
-				if header.subwindow then
-					header.subwindow.update();
-				end
-				if stats.subwindow then
-					stats.subwindow.update();
-				end
-
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				text.setReadOnly(bReadOnly);
-			end
-		</script>
+		<script file="campaign/scripts/species_archetype.lua" />
 		<sheetdata>
 			<sub_record_header name="header">
 				<class>ref_species_archetype_header</class>
 			</sub_record_header>
 
-			<frame_record_content_tabbed name="contentframe" />
+			<frame_record_content name="contentframe" />
 
-			<ft_record name="text">
-				<anchored to="contentframe" position="over" />
-				<footer>footer_wide</footer>
-			</ft_record>
-			<subwindow_record name="stats">
-				<class>ref_species_archetype_stats</class>
+			<subwindow_record name="main">
+				<class>species_main</class>
+				<activate />
 			</subwindow_record>
-
 			<scrollbar_record>
-				<target>text</target>
+				<target>main</target>
 			</scrollbar_record>
-			<scrollbar_record>
-				<target>stats</target>
-			</scrollbar_record>
-
-			<tabs_recordsheet name="tabs">
-				<tab>
-					<icon>tab_main</icon>
-					<subwindow>text</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_other</icon>
-					<subwindow>stats</subwindow>
-				</tab>
-			</tabs_recordsheet>
 
 			<resize_recordsheet />
 			<close_recordsheet />
@@ -101,52 +71,249 @@
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ref_species_archetype_stats">
-		<margins control="0,0,0,7" />
-		<script>
-			function onInit()
-				update();
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				traits.update(bReadOnly);
-			end
-		</script>
-		<sheetdata>
-			<anchor_column name="columnanchor" />
-
-			<header_column name="traits_header">
-				<static textres="species_archetype_header_traits"/>
-				<center />
-			</header_column>
-			<button_iedit name="traits_iedit">
-				<anchored to="traits_header" position="righthigh" offset="-20,0" />
-				<target>traits</target>
-			</button_iedit>
-			<button_iadd name="traits_iadd">
-				<anchored to="traits_iedit" position="lefthigh" offset="5,0" />
-				<target>traits</target>
-			</button_iadd>
-			<list_column name="traits">
-				<datasource>.racialtraits</datasource>
-				<class>ref_racial_trait</class>
-			</list_column>
-		</sheetdata>
-	</windowclass>
-	<windowclass name="ref_racial_trait">
+	<windowclass name="species_main">
 		<margins control="0,0,0,2" />
+ 		<script file="campaign/scripts/species_main.lua" />
 		<sheetdata>
-			<anchor_listitem_column_right name="rightanchor" />
-			<link_listitem_column name="shortcut">
-				<class>referenceracialtrait</class>
-			</link_listitem_column>
-			<button_listitem_column_delete name="idelete" />
 
-			<string_listitem_column_name name="name">
-				<empty textres="library_recordtype_empty_racialtrait" />
-			</string_listitem_column_name>
+			<!-- Charactetistc Block -->
+			<frame_statblock1 name="main_statblock1">
+				<bounds>0,10,480,71</bounds>
+			</frame_statblock1>
+			<!-- BRAWN -->
+			<sheetstartingcharacteristic name="main_statblock1_brawn_current" source="brawn">
+				<anchored to="main_statblock1" offset="26,7"/>
+			</sheetstartingcharacteristic>
+			<title_statblock>
+				<anchored height="20">
+					<top parent="main_statblock1_brawn_current" anchor="bottom" offset="6"/>
+					<left parent="main_statblock1_brawn_current" anchor="left" offset="-20"/>
+					<right parent="main_statblock1_brawn_current" anchor="right" offset="20"/>
+				</anchored>
+				<center />
+				<static>Brawn</static>
+			</title_statblock>
+			<!-- AGILITY-->
+			<sheetstartingcharacteristic name="main_statblock1_agility_current" source="agility">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>105,7</offset>
+				</anchored>
+			</sheetstartingcharacteristic>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_agility_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_agility_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_agility_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Agility</static>
+			</title_statblock>
+			<!-- INTELLECT-->
+			<sheetstartingcharacteristic name="main_statblock1_intellect_current" source="intellect">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>185,7</offset>
+				</anchored>
+			</sheetstartingcharacteristic>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_intellect_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_intellect_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_intellect_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Intellect</static>
+			</title_statblock>
+			<!-- CUNNING-->
+			<sheetstartingcharacteristic name="main_statblock1_cunning_current" source="cunning">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>262,7</offset>
+				</anchored>
+			</sheetstartingcharacteristic>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_cunning_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_cunning_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_cunning_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Cunning</static>
+			</title_statblock>
+			<!-- WILLPOWER-->
+			<sheetstartingcharacteristic name="main_statblock1_willpower_current" source="willpower">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>341,7</offset>
+				</anchored>
+			</sheetstartingcharacteristic>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_willpower_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_willpower_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_willpower_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Willpower</static>
+			</title_statblock>
+			<!-- PRESENCE-->
+			<sheetstartingcharacteristic name="main_statblock1_presence_current" source="presence">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>421,7</offset>
+				</anchored>
+			</sheetstartingcharacteristic>
+			<title_statblock>
+				<anchored>
+					<top>
+						<parent>main_statblock1_presence_current</parent>
+						<anchor>bottom</anchor>
+						<offset>6</offset>
+					</top>
+					<left>
+						<parent>main_statblock1_presence_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_statblock1_presence_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Presence</static>
+			</title_statblock>
+			<!-- Charactetistc Block END-->
+
+
+
+
+<!--			<anchor_column name="columnanchor" /> -->
+			<genericcontrol name="columnanchor">
+				<anchored position="insidetop" offset="0,90" height="0"/>
+				<disabled />
+				<invisible />
+			</genericcontrol>
+
+
+
+			<label_column name="wound_threshold_label">
+				<static textres="wound_threshold" />
+			</label_column>
+
+			<number_columnh name="wound_threshold">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="120" />
+				</anchored>
+				<delaykeyupdate />
+			</number_columnh>
+			<label name="wound_threshold_label2">
+				<static textres="wound_threshold2" />
+				<anchored to="wound_threshold" position="right" offset="10"/>
+			</label>
+
+
+			<label_column name="strain_threshold_label">
+				<static textres="strain_threshold" />
+			</label_column>
+			<number_columnh name="strain_threshold">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="120" />
+				</anchored>
+				<delaykeyupdate />
+			</number_columnh>
+			<label name="strain_threshold_label2">
+				<static textres="strain_threshold2" />
+				<anchored to="strain_threshold" position="right" offset="10"/>
+			</label>
+
+			<label_column name="starting_xp_label">
+				<static textres="starting_xp" />
+			</label_column>
+			<number_columnh name="starting_xp">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="120" />
+				</anchored>
+				<delaykeyupdate />
+			</number_columnh>
+
+
+			<ft_columnh name="description" />
+			<label_column name="setting_label">
+				<static textres="talent_label_setting" />
+			</label_column>
+			<string_columnh name="setting" />
 		</sheetdata>
 	</windowclass>
+
 
 	<windowclass name="referenceracialtrait">
 		<frame>recordsheet</frame>
@@ -188,6 +355,8 @@
 			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
+
+
 	<windowclass name="ref_racialtrait_header">
 		<margins control="0,0,0,2" />
 		<script>
@@ -216,4 +385,5 @@
 			</label_recordtype>
 		</sheetdata>
 	</windowclass>
+
 </root>

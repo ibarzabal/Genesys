@@ -9,7 +9,7 @@
 	<windowclass name="charsheet_inventory">
 		<sheetdata>
 			<frame_char name="inventoryframe">
-				<bounds>15,15,-29,-205</bounds>
+				<bounds>0,0,-1,-205</bounds>
 			</frame_char>
 
 			<label name="count_label">
@@ -96,7 +96,7 @@
 			</button_iadd>
 
 			<frame_char name="encumbranceframe">
-				<bounds>15,-205,240,200</bounds>
+				<bounds>0,-205,240,-1</bounds>
 			</frame_char>
 			<simplenumber name="encumbranceload" source="encumbrance.load">
 				<anchored to="encumbranceframe" position="insidetopleft" offset="160,30" width="55" height="20" />
@@ -109,7 +109,7 @@
 			</label>
 
 			<frame_char name="coinframe">
-				<bounds>255,-205,-29,200</bounds>
+				<bounds>243,-205,-1,-1</bounds>
 			</frame_char>
 			<label_frametop name="coin_label">
 				<anchored to="coinframe" />

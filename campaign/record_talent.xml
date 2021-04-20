@@ -32,9 +32,9 @@
 
 
 		<sheetdata>
-			<sub_ref_header name="header">
+			<sub_record_header name="header">
 				<class>ref_talent_header</class>
-			</sub_ref_header>
+			</sub_record_header>
 
 			<frame_ref_content />
 			<sub_ref_content name="content">
@@ -83,15 +83,9 @@
 				local sRanked = ranked.getValue();
 				local bRanked = (sRanked == "Yes");
 				if bReadOnly then
-					name_biglabel.setValue("[" .. name.getValue() .. "]");
-					name_biglabel.setVisible(true);
-
 					name.update(bReadOnly, true);
-					namelabel.setVisible(false);
 				else
-					name_biglabel.setVisible(false);
 					name.update(bReadOnly);
-					namelabel.setVisible(false);
 				end
 				if ranked.getValue() == "Yes" then
 					ranks.setVisible(true);
@@ -110,19 +104,21 @@
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 
-			<hs name="name" />
-
 			<label_column name="name_biglabel">
 				<anchored>
 					<top relation="relative" offset="7" />
 				</anchored>
 				<font>reference-b-large</font>
+				<invisible />
 			</label_column>
 
 			<label_column name="namelabel">
 				<static textres="talent_label_name" />
+				<invisible />
 			</label_column>
-			<string_columnh name="name" />
+			<string_columnh name="name">
+				<invisible />
+			</string_columnh>
 
 			<label_column name="tier_label">
 				<static textres="talent_label_tier" />

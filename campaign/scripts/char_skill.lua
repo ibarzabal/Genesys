@@ -16,6 +16,7 @@ end
 function updateWindow()
 	local sLabel = name.getValue();
 	local t = DataCommon.skilldata[sLabel];
+
 	if t then
 		setCustom(false);
 	else

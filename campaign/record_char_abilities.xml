@@ -8,10 +8,11 @@
 <root>
 	<windowclass name="charsheet_abilities">
 		<sheetdata>
+<!--
 			<frame_char name="skillframe">
 				<bounds>1,1,-1,-1</bounds>
 			</frame_char>
-
+-->
 			<button_iedit name="actions_iedit">
 				<anchored position="insidebottomright" offset="10,10" />
 				<tooltip textres="char_abilities_tooltip_edit" />
@@ -55,12 +56,12 @@
 		<margins control="0,0,0,2" />
 		<script file="campaign/scripts/char_abilities.lua" />
 		<sheetdata>
-			<label_charframetop name="featstitle">
+			<label_charframetopg name="featstitle">
 				<bounds>15,10,-10,20</bounds>
 				<static textres="char_abilities_label_racial_traits" />
 				<icons>char_abilities_green</icons>
 				<target>feats</target>
-			</label_charframetop>
+			</label_charframetopg>
 			<list_abilities name="feats">
 				<anchored to="featstitle">
 					<top anchor="bottom" relation="relative" offset="5" />
@@ -76,7 +77,7 @@
 				<target>feats</target>
 			</button_iadd>
 
-			<label_charframetop name="featurestitle">
+			<label_charframetopg name="featurestitle">
 				<anchored to="featstitle" height="20">
 					<top anchor="bottom" relation="relative" offset="7" />
 					<left />
@@ -85,7 +86,7 @@
 				<static textres="char_abilities_label_talents" />
 				<icons>char_abilities_red</icons>
 				<target>features</target>
-			</label_charframetop>
+			</label_charframetopg>
 			<list_abilities name="features">
 				<anchored to="featurestitle">
 					<top anchor="bottom" relation="relative" offset="5" />
@@ -101,7 +102,7 @@
 				<target>features</target>
 			</button_iadd>
 
-			<label_charframetop name="traitstitle">
+			<label_charframetopg name="traitstitle">
 				<anchored to="featurestitle" height="20">
 					<top anchor="bottom" relation="relative" offset="7" />
 					<left />
@@ -110,7 +111,7 @@
 				<static textres="char_abilities_label_criticals" />
 				<icons>char_abilities</icons>
 				<target>traits</target>
-			</label_charframetop>
+			</label_charframetopg>
 			<list_abilities name="traits">
 				<anchored to="traitstitle">
 					<top anchor="bottom" relation="relative" offset="5" />

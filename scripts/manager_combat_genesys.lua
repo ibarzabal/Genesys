@@ -36,7 +36,7 @@ function onDropEvent(rSource, rTarget, draginfo)
 	if TargetNode.isPublic() or TargetNode.isOwner() then
 		CharManager.onDrop(ActorManager.getCreatureNode(rTarget), 0, 0, draginfo);
 	end
-
+	--return true; -- Keep this here, to avoid an issue where FG would call this twice
 
 
 --	if sDragType == "benny" then

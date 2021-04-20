@@ -7,6 +7,93 @@
 
 <!-- FG Classic should use fgf and FU Unity will load ttf -->
 <root>
+
+<!-- 5e Fonts... remove unused ones later -->
+<!-- Windows -->
+<font name="subwindowtitle">
+	<fgffile name="graphics/fonts/title-regular-10.fgf" />
+	<ttf file="graphics/fonts/Charlemagne Std Bold.ttf" name="Charlemagne Std Bold" size="18" />
+	<color value="DED1B1" />
+	<shadow offset="2,2" color="000000" />
+</font>
+<font name="subwindowsmalltitle">
+	<fgffile name="graphics/fonts/bold-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="16" />
+	<color value="FFF1CC" />
+	<shadow offset="1,1" color="000000" />
+</font>
+<font name="subwindowsmalltitle_disabled">
+	<fgffile name="graphics/fonts/bold-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="16" />
+	<color value="494340" />
+	<shadow offset="1,1" color="000000" />
+</font>
+
+<!-- Misc -->
+<font name="list-empty-ct">
+	<fgffile name="graphics/fonts/italic-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Italic.ttf" name="Noto Sans Italic" size="16" />
+	<color value="#FFFFFF" />
+</font>
+<font name="list-empty-ps">
+	<fgffile name="graphics/fonts/italic-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Italic.ttf" name="Noto Sans Italic" size="16" />
+	<color value="#000000" />
+</font>
+<font name="reference-title">
+	<fgffile name="graphics/fonts/bold-14.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="18" />
+	<color value="000000" />
+</font>
+<font name="reference-subtitle">
+	<fgffile name="graphics/fonts/bold-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="16" />
+	<color value="000000" />
+</font>
+
+<!-- Override CoreRPG ruleset graphics -->
+<!-- Modifier Stack -->
+<font name="modcollector">
+	<fgffile name="graphics/fonts/diemod.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="24" />
+	<color value="DED1B1" />
+</font>
+<font name="modcollectorlabel">
+	<fgffile name="graphics/fonts/modcollectorlabel.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Regular.ttf" name="Noto Sans" size="14" />
+	<color value="DED1B1" />
+</font>
+
+<!-- Windows -->
+<font name="windowtitle">
+	<fgffile name="graphics/fonts/title-regular-12.fgf" />
+	<ttf file="graphics/fonts/Charlemagne Std Bold.ttf" name="Charlemagne Std Bold" size="18" />
+	<color value="DED1B1" />
+	<shadow offset="2,2" color="000000" />
+</font>
+
+<!-- Formatted text fields -->
+<font name="reference-h">
+	<fgffile name="graphics/fonts/bold-14.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="24" />
+	<color value="660000" />
+</font>
+
+<!-- Reference -->
+<font name="reference-header">
+	<fgffile name="graphics/fonts/bold-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="16" />
+	<color value="FFFFFF" />
+</font>
+<font name="reference-groupdesc">
+	<fgffile name="graphics/fonts/bold-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="16" />
+	<color value="#000000" />
+</font>
+
+
+
+
 <font name="dieresult">
 
 		<fgffile name="graphics/fonts/dieresult.fgf" />
@@ -123,6 +210,13 @@
 			<color value="FFF1CC" />
 			<shadow offset="1,1" color="000000" />
 		</font>
+
+		<font name="subwindowsmallertitle">
+			<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans" size="12" />
+			<color value="FFF1CC" />
+<!--			<shadow offset="1,1" color="000000" /> -->
+		</font>
+
 		<font name="subwindowsmalltitle_disabled">
 			<fgffile name="graphics/fonts/bold-10.fgf" />
 			<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="12" />

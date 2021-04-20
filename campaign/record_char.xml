@@ -19,32 +19,47 @@
 		<softclose />
 		<nodelete />
 		<playercontrol />
+		<minimize>minimized_char</minimize>
 		<tooltip field="name" />
 		<script file="campaign/scripts/char.lua" />
 		<sheetdata>
-			<button_charactivate name="speak">
-				<bounds>-41,30,23,22</bounds>
+
+			<anchor_title_charsheet name="contentanchor" />
+
+			<button_charactivate>
+				<anchored to="contentanchor" position="belowright" offset="0,5" width="23" height="22" />
 			</button_charactivate>
 
 			<token_char name="token">
-				<bounds>-80,23,40,40</bounds>
+				<anchored to="contentanchor" position="belowright" offset="25,6" width="45" height="45" />
 			</token_char>
-
 			<genericcontrol>
-				<bounds>-137,21,45,45</bounds>
+				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
 				<icon>charlist_base</icon>
 				<disabled />
 			</genericcontrol>
 			<portrait_charlocal name="localportrait">
-				<bounds>-137,21,45,45</bounds>
+				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
 				<invisible />
 			</portrait_charlocal>
 			<portrait_char name="portrait">
-				<bounds>-137,21,45,45</bounds>
+				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
 			</portrait_char>
 
+			<label_charframetopg name="nametitle">
+				<anchored to="contentanchor" height="20">
+					<top anchor="bottom" offset="7" />
+					<left offset="65" />
+					<right offset="-135" />
+				</anchored>
+				<static textres="char_label_name" />
+			</label_charframetopg>
+			<stringu name="name">
+				<anchored to="nametitle" position="insidetop" offset="0,25" height="20" />
+			</stringu>
 
 
+<!--
 <frame_char name="main_character">
 	<bounds>14,10,370,74</bounds>
 </frame_char>
@@ -54,147 +69,50 @@
 	</anchored>
 	<static>Character</static>
 </sheetframetitle>
-
-
-<!-- name -->
-<sheetstringfield name="name" source="name">
-	<anchored>
-		<to>main_character</to>
-		<position>insidetopleft</position>
-		<offset>17,14</offset>
-		<size>
-			<width>218</width>
-		</size>
-	</anchored>
-	<label>Name</label>
-	<empty>&#171; Unnamed &#187;</empty>
-	<tabtarget>
-		<next>main_character_race</next>
-	</tabtarget>
-</sheetstringfield>
-
-<!-- RACE SPECIES-->
-<sheetstringfield name="main_character_race" source="species_archetype">
-	<anchored>
-		<to>main_character</to>
-		<position>insidetopleft</position>
-		<offset>241,14</offset>
-		<size>
-			<width>100</width>
-		</size>
-	</anchored>
-	<labelres>char_label_species_archetype</labelres>
-	<tabtarget>
-		<next>main_character_career</next>
-		<prev>name</prev>
-	</tabtarget>
-</sheetstringfield>
-<linkfield name="species_archetypelink">
-	<anchored to="main_character_race" position="right" offset="0" width="20" />
-	<description field="species_archetype" />
-	<closetoggle />
-	<invisible />
-	<script>
-		function onInit()
-			onValueChanged();
-		end
-		function onValueChanged()
-			if isEmpty() then
-				setVisible(false);
-			else
-				setVisible(true);
-			end
-		end
-	</script>
-</linkfield>
-
-
-<sheetstringfield name="main_character_career" source="career">
-	<anchored>
-		<to>main_character</to>
-		<position>insidetopleft</position>
-		<offset>17,38</offset>
-		<size>
-			<width>150</width>
-		</size>
-	</anchored>
-	<label>Career</label>
-	<tabtarget>
-		<prev>main_character_race</prev>
-	</tabtarget>
-</sheetstringfield>
-<linkfield name="careerlink">
-	<anchored to="main_character_career" position="right" offset="0" width="20" />
-	<description field="career" />
-	<closetoggle />
-	<invisible />
-	<script>
-		function onInit()
-			onValueChanged();
-		end
-		function onValueChanged()
-			if isEmpty() then
-				setVisible(false);
-			else
-				setVisible(true);
-			end
-		end
-	</script>
-</linkfield>
-
-
-			<subwindow name="main">
-				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_main</class>
-			</subwindow>
-
-<!--
-			<subwindow name="skills">
-				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_skilllist</class>
-			</subwindow>
 -->
-			<subwindow name="abilities">
-				<bounds>15,80,-20,-20</bounds>
-				<class>charsheet_abilities</class>
-			</subwindow>
-
-			<subwindow name="combat">
-				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_combat</class>
-			</subwindow>
-
-			<subwindow name="actions">
-				<bounds>15,80,-20,-20</bounds>
-<!--				<bounds>0,45,-1,-20</bounds> -->
-				<class>charsheet_actions</class>
-			</subwindow>
 
 
-			<subwindow name="inventory">
-				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_inventory</class>
-			</subwindow>
+	<sub_charsheet name="main">
+		<class>charsheet_main</class>
+	</sub_charsheet>
 
+	<!--
+	<subwindow name="skills">
+		<bounds>0,65,-1,-20</bounds>
+		<class>charsheet_skilllist</class>
+	</subwindow>
+	-->
+	<sub_charsheet name="abilities">
+		<class>charsheet_abilities</class>
+	</sub_charsheet>
 
+	<sub_charsheet name="combat">
+		<class>charsheet_combat</class>
+	</sub_charsheet>
 
-			<subwindow name="notes">
-				<bounds>0,85,-1,-20</bounds>
-				<class>charsheet_notes</class>
-			</subwindow>
+	<sub_charsheet name="actions">
+		<class>charsheet_actions</class>
+	</sub_charsheet>
+
+	<sub_charsheet name="inventory">
+		<class>charsheet_inventory</class>
+	</sub_charsheet>
+
+	<sub_charsheet name="notes">
+		<class>charsheet_notes</class>
+	</sub_charsheet>
+
 
 			<tabs_charsheet name="tabs">
 				<tab>
 					<icon>tab_main</icon>
 					<subwindow>main</subwindow>
 				</tab>
-
 <!--
 				<tab>
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
 				</tab>
-
 -->
 				<tab>
 					<icon>tab_abilities</icon>

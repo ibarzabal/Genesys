@@ -6,19 +6,47 @@
 -->
 
 <root>
-	<windowclass name="item" merge="join">
+	<windowclass name="item">
+		<frame>recordsheet</frame>
 		<placement>
-			<size width="350" height="500" />
-	</placement>
-
+			<size width="350" height="450" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<nodelete />
+		<playercontrol />
+		<sharable />
+		<tooltip field="name" />
+		<minimize>minimized_item</minimize>
+		<script file="campaign/scripts/item.lua" />
 		<sheetdata>
+			<sub_record_header name="header">
+				<class>item_header</class>
+			</sub_record_header>
+
+			<frame_record_content name="contentframe" />
+
 			<subwindow_record name="main">
-				<script file="campaign/scripts/item_drop.lua" />
+				<class>item_main</class>
+				<activate />
 			</subwindow_record>
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+
+			<resize_recordsheet />
+			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="item_main">-
+	<windowclass name="item_header" merge="join">
+		<margins control="0,0,0,2" />
+	</windowclass>
+
+
+	<windowclass name="item_main">
 		<margins control="0,0,0,2" />
 		<script file="campaign/scripts/item_main.lua" />
 		<sheetdata>
@@ -70,11 +98,6 @@
 			</label_column>
 			<string_columnh name="damage" />
 
-			<!--			<label_column name="damagetype_label"> -->
-			<!--				<static textres="item_label_dmgtype" /> -->
-			<!--			</label_column> -->
-			<!--			<string_columnh name="damagetype" /> -->
-
 			<label_column name="critical_label">
 				<static textres="item_label_critical" />
 			</label_column>
@@ -90,7 +113,6 @@
 				<anchored>
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
 					<left offset="95" />
-			<!-- 					<right offset="-5" /> -->
 				</anchored>
 			</rangecontrolh>
 
@@ -132,16 +154,33 @@
 			</label_column>
 			<string_columnh name="special" />
 
+			<!-- Attachments -->
+			<label_column name="hard_points_label">
+				<static textres="item_label_hard_points" />
+			</label_column>
+			<number_columnh name="hard_points">
+				<delaykeyupdate />
+			</number_columnh>
+
+			<header_column name="attachments_header">
+				<static textres="item_header_attachments"/>
+				<center />
+			</header_column>
+			<button_iedit name="attachments_iedit">
+				<anchored to="attachments_header" position="righthigh" offset="-20,0" />
+				<target>attachments</target>
+			</button_iedit>
+			<button_iadd name="attachments_iadd">
+				<anchored to="attachments_iedit" position="lefthigh" offset="5,0" />
+				<target>attachments</target>
+			</button_iadd>
+			<list_column name="attachments">
+				<datasource>.attachments</datasource>
+				<class>ref_item_attachment</class>
+			</list_column>
+			<!-- Attachments END-->
 
 			<line_column name="divider4" />
-
-<!--			<header_column name="header_description"> -->
-<!--				<static textres="item_label_description"/> -->
-<!--			</header_column> -->
-
-
-<!--			<ft_columnh name="description" /> -->
-
 			<ft_columnh name="description" />
 
 			<label_column name="setting_label">
@@ -149,7 +188,23 @@
 			</label_column>
 			<string_columnh name="setting" />
 
-
 		</sheetdata>
 	</windowclass>
+
+	<windowclass name="ref_item_attachment">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+			<link_listitem_column name="shortcut">
+				<class>reference_item_attachment</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name" />
+<!--				<empty textres="library_recordtype_empty_subracialtrait" />
+			</string_listitem_column_name>
+-->
+			</sheetdata>
+	</windowclass>
+
 </root>

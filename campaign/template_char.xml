@@ -27,6 +27,17 @@
 		</scrollbar>
 	</template>
 
+	<template name="label_charframetopg">
+		<metalplate>
+			<frame name="genesysplate1" offset="10,2,10,2"/>
+			<font>subwindowsmalltitle</font>
+			<center />
+			<nodrag />
+			<readonly />
+<!--			<script file="campaign/scripts/char_labelframetop.lua" /> -->
+		</metalplate>
+	</template>
+
 	<template name="label_charframetop">
 		<metalplate>
 			<frame name="metalplate" offset="10,2,10,2"/>
@@ -824,6 +835,7 @@
 		</number_charsave>
 	</template>
 
+
 	<template name="list_charskill">
 		<windowlist>
 			<child></child>
@@ -837,33 +849,150 @@
 		</windowlist>
 	</template>
 
-	<template name="list_combat_charskill">
-		<windowlist>
-			<child></child>
-			<child><backcolor>1A40301E</backcolor></child>
-			<datasource>.skilllist</datasource>
-			<class>combat_char_skill</class>
-			<sortby>
-				<control>name</control>
-			</sortby>
-			<filter><text>combat</text></filter>
- 			<filteron><field>.skills.category</field></filteron>
-			<script file="campaign/scripts/char_skilllist.lua" />
-		</windowlist>
+	<template name="button_career_checkbox">
+		<buttonfield>
+			<state icon="button_career_off" />
+			<state icon="button_career_on" />
+		</buttonfield>
 	</template>
 
-	<template name="list_social_charskill">
-		<windowlist>
-			<child></child>
-			<child><backcolor>1A40301E</backcolor></child>
-			<datasource>.skilllist</datasource>
-			<class>social_char_skill</class>
-			<sortby><control>name</control></sortby>
-			<filter><text>social</text></filter>
- 			<filteron><field>.skills.category</field></filteron>
-			<script file="campaign/scripts/char_skilllist.lua" />
-		</windowlist>
+	<template name="buttongroup_skill_counter">
+		<genericcontrol>
+			<stateicons>
+				<on>button_skill_on</on>
+				<off>button_skill_off</off>
+			</stateicons>
+			<script file="common/scripts/buttongroup_counter.lua" />
+		</genericcontrol>
 	</template>
+
+				<!-- GENERAL skilllist LIST! .......................................................................... -->
+				<windowclass name="char_skill">
+				<margins control="0,0,0,2" />
+				<script file="campaign/scripts/char_skill.lua" />
+				<sheetdata>
+					<button_career_checkbox name="career_skill">
+						<bounds>22,8,12,12</bounds>
+						<script>
+						function onInit()
+							if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+								if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+									setVisible(true);
+									setTooltipText("Minion skill?");
+								else
+									setVisible(false);
+								end
+							else
+								setTooltipText("Career Skill");
+							end
+
+						end
+
+						function onValueChanged()
+							if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+								if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+									MinionManager.updateSkill(window.getDatabaseNode());
+								end
+							end
+						end
+					</script>
+					</button_career_checkbox>
+					<genericcontrol name="rightanchor">
+						<anchored width="0" height="0">
+							<top />
+							<right />
+						</anchored>
+						<invisible />
+					</genericcontrol>
+					<button_idelete name="idelete">
+						<anchored width="20" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+						</anchored>
+					</button_idelete>
+					<genericcontrol name="idelete_spacer">
+						<anchored width="20" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+						</anchored>
+						<disabled />
+						<invisible />
+					</genericcontrol>
+					<!-- FIELDS START HERE -->
+					<skilldicepool>
+						<anchored width="20" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+						</anchored>
+
+					</skilldicepool>
+	<!--
+					<number_charskilltotal name="advances">
+						<anchored width="30" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+						</anchored>
+					</number_charskilltotal>
+	JOHN -->
+
+					<buttongroup_skill_counter name="advances">
+						<anchored width="30" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+						</anchored>
+					  <sourcefields><current>advances</current></sourcefields>
+					  <values><maximum>5</maximum></values>
+					</buttongroup_skill_counter>
+
+					<stringu name="characteristic">
+						<anchored width="20" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+						</anchored>
+						<script>
+							function onEnter()
+								window.windowlist.addEntry(true);
+								return true;
+							end
+						</script>
+					</stringu>
+					<stringu name="category">
+						<anchored width="70" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+						</anchored>
+					</stringu>
+<!--
+					<genericcontrol name="die_icons">
+						<anchored height="20">
+							<top offset="2" />
+							<left offset="40" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+						</anchored>
+						<script file="classes/desktop/diebox.lua" />
+					</genericcontrol>
+-->
+
+					<stringu name="name">
+						<anchored height="20">
+							<top offset="2" />
+							<left offset="40" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+						</anchored>
+						<tabtarget next="sublabel" />
+					</stringu>
+
+					<buttoncontrol name="shortcut">
+						<anchored width="20" height="20">
+							<top offset="2" />
+							<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
+						</anchored>
+						<icon normal="button_link" pressed="button_link_down" />
+						<script file="campaign/scripts/char_skilllink.lua" />
+					</buttoncontrol>
+					</sheetdata>
+				</windowclass>
+
 
 
 

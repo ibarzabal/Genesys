@@ -12,6 +12,7 @@
 
 	<!-- Character Main -->
 	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
+  <string name="char_message_careeradd">Career '%s' added to '%s'.</string>
 	<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
 
 	<string name="char_label_powers">Powers</string>
@@ -28,8 +29,10 @@
 	<string name="ct_label_melee_defense">MDef</string>
 	<string name="ct_label_ranged_defense">RDef</string>
 	<string name="ct_label_soak">Soak</string>
+	<string name="ct_label_npc_category">Category</string>
 
-
+	<!-- NPC Sheet -->
+	<string name="char_label_name_npc">NPC Name</string>
 
 
 	<!-- Common -->
@@ -74,11 +77,13 @@
 	<string name="library_recordtype_empty_species_archetype">&#171; New Species/Archetype &#187;</string>
 	<string name="record_label_career">Career</string>
 	<string name="record_label_careerfeature">Career Feature</string>
-	<string name="record_label_species_archetype">Species/Archtype</string>
+	<string name="record_label_species_archetype">Species/Archetype</string>
 	<string name="record_label_racialtrait">Species/Archetype Trait</string>
 	<string name="career_header_traits">TRAITS</string>
 	<string name="species_archetype_header_traits">TRAITS</string>
 	<string name="library_recordtype_label_talent">Talents</string>
+  <string name="library_recordtype_label_item_attachment">Item Attachments</string>
+
 
 	<string name="char_label_item_encumbrance">Enc</string>
 	<string name="char_tooltip_item_encumbrance">Encumbrance</string>
@@ -200,6 +205,7 @@
 	<string name="item_label_encumbrance">Encumbrance</string>
 	<string name="item_label_cost">Price</string>
 	<string name="item_label_special">Special</string>
+	<string name="item_label_hard_points">Hard Points</string>
 	<string name="item_grouped_label_encumbrance">Enc</string>
 	<string name="item_grouped_tooltip_encumbrance">Encumbrance</string>
 	<string name="item_grouped_label_def">Def</string>
@@ -214,19 +220,35 @@
 	<string name="item_grouped_label_special">Special</string>
 	<string name="item_grouped_label_setting">Setting</string>
 
-
+	<!-- Item Attachments -->
+	<string name="item_header_attachments">ATTACHMENTS</string>
 
 	<!-- Items window -->
 	<string name="item_button_weapons">Weapons</string>
 	<string name="item_button_armor">Armor</string>
 	<string name="item_button_gear">Gear</string>
 	<string name="item_grouped_tooltip_maxstatbonus">Maximum Dexterity Bonus</string>
+	<!-- Item Attachment window  -->
+	<string name="item_attachments_button_weapons">Weapons</string>
+	<string name="item_attachments_button_armor">Armor</string>
+	<string name="item_attachment_label_unidentified">Non-ID Attachment</string>
+
+	<string name="item_attachment_equipment_label_type">Equipment Type</string>
+	<string name="item_attachment_use_with_label">Use With</string>
+	<string name="item_attachment_modifiers_label">Modifiers</string>
+	<string name="item_attachment_hardpoints_required_label">Hard Points Required</string>
 
  <!-- Skills Window -->
  <string name="skill_label_name">Name</string>
  <string name="category_label">Category</string>
  <string name="characteristic_label">Charactetistic</string>
 
+ <!-- Species/Archetype Window -->
+ <string name="wound_threshold">Wound Threshold</string>
+ <string name="wound_threshold2">+ Brawn</string>
+ <string name="strain_threshold">Strain Threshold</string>
+ <string name="strain_threshold2">+ Willpower</string>
+ <string name="starting_xp">Starting XP</string>
 
 
 	<!-- Desktop decal options -->

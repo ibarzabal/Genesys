@@ -35,12 +35,23 @@
 	<icon name="button_skills_down" file="graphics/sidebar/button_skills_down.png" />
 
 	<!-- Buttons -->
+	<icon name="button_career_on" file="graphics/buttons/career_on.png" />
+	<icon name="button_career_off" file="graphics/buttons/career_off.png" />
+	<icon name="button_skill_on" file="graphics/buttons/skill_on.png" />
+	<icon name="button_skill_off" file="graphics/buttons/skill_off.png" />
+
+
+
+
 	<icon name="button_minisheet" file="graphics/buttons/button_minisheet.png" />
 	<icon name="button_minisheet_down" file="graphics/buttons/button_minisheet_down.png" />
 	<icon name="button_fullsheet" file="graphics/buttons/button_fullsheet.png" />
 	<icon name="button_fullsheet_down" file="graphics/buttons/button_fullsheet_down.png" />
 	<icon name="button_star" file="graphics/buttons/button_star.png" />
 	<icon name="button_star_down" file="graphics/buttons/button_star_down.png" />
+
+
+
 
 		<!-- Dice Box Controls -->
 		<icon name="button_upgrade_ability" file="graphics/icons/button_upgrade_ability.png" />

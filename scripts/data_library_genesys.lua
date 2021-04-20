@@ -145,7 +145,8 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_skills", "button_skills_down" },
 		sRecordDisplayClass = "referenceskill",
 		aCustomFilters = {
-			["Name"] = { sField = "name" },
+			["Category"] = { sField = "category" },
+			["Charactetistic"] = { sField = "characteristic" },
 		},
 	},
 	["npc"] = {
@@ -185,7 +186,19 @@ aRecordOverrides = {
 			["Setting"] = { sField = "setting" }
 		},
 	},
+	["item_attachment"] = {
+		fIsIdentifiable = isItemIdentifiable,
+		aDataMap = { "item_attachment", "reference.item_attachment_armor", "reference.item_attachment_weapon"},
+		aDisplayIcon = { "button_item_attachments", "button_item_attachments_down" },
+		sRecordDisplayClass = "reference_item_attachment",
+		aCustomFilters = {
+			["Setting"] = { sField = "setting", sType = "string"},
+			["Equipment Type"] = { sField = "equipment_type", sType = "string"},
+		},
+	},
 };
+
+
 
 aDefaultSidebarState = {
 		["create"] = "charsheet,career,talent,item,species_archetype" --,specialability,spell",

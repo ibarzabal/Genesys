@@ -30,9 +30,9 @@
 			end
 		</script>
 		<sheetdata>
-			<sub_ref_header name="header">
+			<sub_record_header name="header">
 				<class>ref_skill_header</class>
-			</sub_ref_header>
+			</sub_record_header>
 
 			<frame_ref_content />
 			<sub_ref_content name="content">

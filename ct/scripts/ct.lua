@@ -168,6 +168,7 @@ function onDrop(x, y, draginfo)
 			return true;
 		end
 	end
+
 	if draginfo.isType("shortcut") then
 		return CampaignDataManager.handleDrop("combattracker", draginfo);
 	end

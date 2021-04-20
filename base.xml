@@ -8,7 +8,7 @@
 <root version="3.0" release="4" logo="logo.png">
 
 
-	<announcement text="Genesys RPG community ruleset V0.9 (FG 3.3.9+) by John Ibarzabal (a.k.a. Mestre dos Magos).\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Genesys, Terrinoth, Android Shadow of the Beanstalk are (tm) owned by Fantasy Flight Games.  Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
+	<announcement text="Genesys RPG community ruleset V0.91 (FG 3.3.9+) by John Ibarzabal (a.k.a. Mestre dos Magos), and Sevrick.\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Genesys, Terrinoth, Android Shadow of the Beanstalk are (tm) owned by Fantasy Flight Games.  Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
 
 
 
@@ -37,6 +37,7 @@
 	<includefile source="graphics/graphics_icons.xml" />
 	<includefile source="graphics/graphics_chits.xml" />
 	<includefile source="graphics/graphics_fonts.xml" />
+	<includefile source="graphics/graphics_buttons.xml" />
 	<includefile source="definitions/dice.xml" />
 
 	<!-- Strings -->
@@ -44,7 +45,9 @@
 
 	<!-- Common Templates-->
 <!--	<includefile source="common/template_common_core_override.xml" /> -->
+	<includefile source="common/template_windows.xml" />
 	<includefile source="common/template_common_genesys.xml" />
+	<includefile source="common/template_records.xml" />
 
 
 	<!-- Desktop -->
@@ -105,7 +108,7 @@
 
 		<includefile source="campaign/record_char.xml" />
  		<includefile source="campaign/record_char_main.xml" />
- 		<includefile source="campaign/record_char_skills.xml" />
+<!-- 		<includefile source="campaign/record_char_skills.xml" /> -->
 		<includefile source="campaign/record_char_abilities.xml" />
  		<includefile source="campaign/record_char_combat.xml" />
 		<includefile source="campaign/record_char_combat_sub.xml" />
@@ -141,6 +144,8 @@
 
 <!-- 		<includefile source="campaign/record_encounter.xml" /> -->
 		<includefile source="campaign/record_item.xml" />
+		<includefile source="campaign/record_item_attachment.xml" />
+		<includefile source="campaign/record_itemtemplate.xml" />
 <!-- 		<includefile source="campaign/record_quest.xml" /> -->
 <!-- 		<includefile source="campaign/record_spell.xml" /> -->
 <!-- 		 -->

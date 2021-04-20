@@ -23,7 +23,7 @@
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 
-			<label_charframetop name="slotstitle">
+			<label_charframetopg name="slotstitle">
 				<anchored height="20">
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
 					<left offset="15" />
@@ -31,7 +31,7 @@
 				</anchored>
 				<icons>char_powers</icons>
 				<static textres="power_label_spellslots" />
-			</label_charframetop>
+			</label_charframetopg>
 
 			<label name="spellslots_label">
 				<anchored width="80">
@@ -95,7 +95,7 @@
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 
-			<label_charframetop name="slotstitle">
+			<label_charframetopg name="slotstitle">
 				<anchored height="20">
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
 					<left offset="15" />
@@ -103,7 +103,7 @@
 				</anchored>
 				<icons>char_powers</icons>
 				<static textres="power_label_spellslots" />
-			</label_charframetop>
+			</label_charframetopg>
 
 			<label name="spellslots_label">
 				<anchored>
@@ -457,7 +457,7 @@
 			<hsc name="group" />
 			<hnc name="level" />
 
-			<label_charframetop name="name">
+			<label_charframetopg name="name">
 				<bounds>15,10,-10,20</bounds>
 				<script>
 					function onClickDown()
@@ -469,7 +469,7 @@
 						return true;
 					end
 				</script>
-			</label_charframetop>
+			</label_charframetopg>
 
 			<button_idelete name="idelete">
 				<anchored position="insidetopright" offset="50,10" />

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="reference_item_attachment">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<nodelete />
+		<playercontrol />
+		<sharable />
+		<tooltip field="name" />
+		<minimize>minimized_item</minimize>
+		<script file="campaign/scripts/item_attachment.lua" />
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>item_attachment_header</class>
+			</sub_record_header>
+
+			<frame_record_content name="contentframe" />
+
+			<subwindow_record name="main">
+				<class>item_attachment_main</class>
+
+				<activate />
+			</subwindow_record>
+
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="item_attachment_main">
+		<margins control="0,0,0,2" />
+		<script file="campaign/scripts/item_attachment_main.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+			<label_column name="nonid_name_label">
+				<static textres="item_attachment_label_unidentified" />
+			</label_column>
+			<string_columnh name="nonid_name" />
+
+			<label_column name="nonidentified_label">
+				<static textres="item_label_unidentifiednotes" />
+			</label_column>
+			<string_columnh name="nonidentified" />
+
+			<line_column name="divider" />
+
+			<label_column name="equipment_type_label">
+				<static textres="item_attachment_equipment_label_type" />
+			</label_column>
+			<string_columnh name="equipment_type" />
+
+      <label_column name="use_with_label">
+				<static textres="item_attachment_use_with_label" />
+			</label_column>
+			<string_columnh name="use_with" />
+
+      <label_column name="modifiers_label">
+				<static textres="item_attachment_modifiers_label" />
+			</label_column>
+			<string_columnh name="modifiers" />
+
+      <label_column name="hardpoints_required_label">
+				<static textres="item_attachment_hardpoints_required_label" />
+			</label_column>
+			<number_columnh name="hardpoints_required" />
+
+      <label_column name="cost_label">
+				<static textres="item_label_cost" />
+			</label_column>
+			<string_columnh name="cost" />
+
+			<label_column name="rarity_label">
+				<static textres="item_label_rarity" />
+			</label_column>
+			<number_columnh name="rarity" />
+
+      <ft_columnh name="description" />
+
+			<label_column name="setting_label">
+				<static textres="talent_label_setting" />
+			</label_column>
+			<string_columnh name="setting" />
+
+		</sheetdata>
+	</windowclass>
+
+
+  <windowclass name="item_attachment_header">
+  	<margins control="0,0,0,2" />
+    <script>
+      function onInit()
+        update();
+      end
+      function update()
+        local nodeRecord = getDatabaseNode();
+
+        local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
+        name.setReadOnly(bReadOnly);
+        nonid_name.setReadOnly(bReadOnly);
+
+        local bID = LibraryData.getIDState("item_attachment", nodeRecord);
+        name.setVisible(bID);
+        nonid_name.setVisible(not bID);
+      end
+    </script>
+    <sheetdata>
+      <link_record_header_id name="link">
+        <class>item_attachment</class>
+      </link_record_header_id>
+
+      <anchor_record_header_right name="rightanchor" />
+      <button_record_isidentified name="isidentified" />
+      <icon_record_locked />
+      <button_record_locked />
+
+      <string_record_name_id name="name">
+        <empty textres="library_recordtype_empty_item" />
+      </string_record_name_id>
+      <string_record_name_id name="nonid_name">
+        <empty textres="library_recordtype_empty_nonid_item" />
+      </string_record_name_id>
+    </sheetdata>
+  </windowclass>
+
+
+
+</root>
