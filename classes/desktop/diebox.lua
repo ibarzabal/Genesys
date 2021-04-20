@@ -443,7 +443,6 @@ function onDieboxButtonPress()
 		end
 		-- throw the dice
 		ChatManagerGenesys.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
-
 		resetAll();
 end
 

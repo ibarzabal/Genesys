@@ -26,8 +26,10 @@
 	<!-- Layers -->
 	<importruleset source="CoreRPG" />
 
+
+<!-- /////////////////////////////////////////////////////////////////////////  -->
 	<!-- Tabletop settings -->
-	<includefile source="gameelements.xml" />
+<includefile source="gameelements.xml" />
 
 	<!-- Graphics -->
 	<includefile source="graphics/graphics_dice_genesys.xml" />
@@ -66,14 +68,13 @@
 <!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
 			<!--Overriding the original manager_actions.lua from CoreRPG
 		  	this is a workaround for the moment.... -->
-		<script name="ActionsManager" file="scripts/manager_actions.lua" />
+ 		<script name="ActionsManager" file="scripts/manager_actions.lua" />
 
 
 		<!-- initialization -->
 		<script name="Base" file="base.lua" />
 
-
-
+<!-- /////////////////////////////////////////////////////////////////////////  -->
 		<!-- Campaign Records -->
 		<includefile source="campaign/template_campaign.xml" />
 		<includefile source="campaign/template_char.xml" />

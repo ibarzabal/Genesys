@@ -96,6 +96,14 @@
 	<string name="talent_grouped_label_tier">Tiers</string>
 	<string name="talent_label_name">Name</string>
 	<string name="talent_label_tier">Tier</string>
+
+	<string name="talent_value_tier1">1</string>
+	<string name="talent_value_tier2">2</string>
+	<string name="talent_value_tier3">3</string>
+	<string name="talent_value_tier4">4</string>
+	<string name="talent_value_tier5">5</string>
+
+
 	<string name="talent_label_summary">Summary</string>
 	<string name="talent_label_description">Description</string>
 	<string name="talent_label_ranked">Ranked</string>

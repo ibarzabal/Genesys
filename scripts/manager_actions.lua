@@ -4,6 +4,14 @@
 --  and values inside.
 -- If FG updates this in CoreRPG, i need to also update here.
 
+
+
+
+
+
+
+
+
 --
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
@@ -652,7 +660,11 @@ function createActionMessage(rSource, rRoll)
 	local resultdice = {};
 	for cnt=1, #rRoll.aDice do
 		local newDie = {};
-		newDie.type = rRoll.aDice[cnt].type .. "x" .. rRoll.aDice[cnt].result;
+		if rRoll.aDice[cnt].type == "d100" then
+			newDie.type = rRoll.aDice[cnt].type;
+		else
+			newDie.type = rRoll.aDice[cnt].type .. "x" .. rRoll.aDice[cnt].result;
+		end
 		newDie.result = rRoll.aDice[cnt].result;
 		table.insert(resultdice, newDie);
 	end

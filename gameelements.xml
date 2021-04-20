@@ -12,13 +12,45 @@
 		<suffix>'</suffix>
 	</distance>
 
+	<!-- Repositioning dice on desktop -->
+
+	<!-- d4 -->
+	<die name="d4">
+		<icon>d4icon</icon>
+		<position>-260,-160</position>
+	</die>
+
+	<!-- d6 -->
+	<die name="d6">
+		<icon>d6icon</icon>
+		<position>-285,-112</position>
+	</die>
+
+	<!-- d8 -->
+	<die name="d8">
+		<icon>d8icon</icon>
+		<position>-235,-112</position>
+	</die>
+
+	<!-- d12 -->
+	<die name="d12">
+		<icon>d12icon</icon>
+		<position>-285,-60</position>
+	</die>
+
+	<!-- d20 -->
+	<die name="d20">
+		<icon>d20icon</icon>
+		<position>-235,-60</position>
+	</die>
+
 	<die name="dF" merge="delete" />
 	<die name="rF" merge="delete" />
 	<die name="gF" merge="delete" />
 	<die name="bF" merge="delete" />
 	<die name="pF" merge="delete" />
 
-
+<!--
 	<die name="d4" merge="delete"/>
 	<die name="d6" merge="delete"/>
 	<die name="d8" merge="delete"/>
@@ -50,5 +82,7 @@
 		<model>d100</model>
 		<icon>d10icon</icon>
 	</customdie>
+
+-->
 
 </root>

@@ -392,6 +392,7 @@ function onDieboxButtonPress()
 		-- throw the dice
 		ChatManagerGenesys.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
 
+		
 		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
 			resetAll();
 		end
