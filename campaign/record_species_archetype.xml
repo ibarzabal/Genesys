@@ -9,11 +9,11 @@
 	<windowclass name="referencespecies_archetype">
 		<frame>recordsheet</frame>
 		<placement>
-			<size width="450" height="400" />
+			<size width="525" height="400" />
 		</placement>
 		<sharable />
 		<sizelimits>
-			<minimum width="350" height="350" />
+			<minimum width="525" height="350" />
 			<dynamic />
 		</sizelimits>
 		<minimize>minimized_reference</minimize>

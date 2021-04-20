@@ -116,10 +116,26 @@
 	<icon name="button_quests" file="graphics/sidebar/button_quests.png" />
 	<icon name="button_quests_down" file="graphics/sidebar/button_quests_down.png" />
 
-	<icon name="button_talents" file="graphics/sidebar/button_sidebar_empty.png" />
-	<icon name="button_talents_down" file="graphics/sidebar/button_sidebar_empty_down.png" />
-	<icon name="button_item_attachments" file="graphics/sidebar/button_sidebar_empty.png" />
-	<icon name="button_item_attachments_down" file="graphics/sidebar/button_sidebar_empty_down.png" />
+	<icon name="button_talents" file="graphics/sidebar/button_talents.png" />
+	<icon name="button_talents_down" file="graphics/sidebar/button_talents_down.png" />
+	<icon name="button_item_attachments" file="graphics/sidebar/button_item_attachments.png" />
+	<icon name="button_item_attachments_down" file="graphics/sidebar/button_item_attachments_down.png" />
+  <icon name="button_skills" file="graphics/sidebar/button_skills.png" />
+	<icon name="button_skills_down" file="graphics/sidebar/button_skills_down.png" />
+	<icon name="button_species_archetypes" file="graphics/sidebar/button_species_archetypes.png" />
+	<icon name="button_species_archetypes_down" file="graphics/sidebar/button_species_archetypes_down.png" />
+	<icon name="button_careers" file="graphics/sidebar/button_careers.png" />
+	<icon name="button_careers_down" file="graphics/sidebar/button_careers_down.png" />
+
+
+	<icon name="button_careers" file="graphics/sidebar/button_careers.png" />
+	<icon name="button_careers_down" file="graphics/sidebar/button_careers_down.png" />
+
+
+	<!-- need to create entry in data_library_genesys for these: -->
+	<icon name="button_special_abilities" file="graphics/sidebar/button_special_abilities.png" />
+	<icon name="button_special_abilities_down" file="graphics/sidebar/button_special_abilities_down.png" />
+
 
 
 	<!-- Combat Tracker -->

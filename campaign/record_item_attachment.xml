@@ -79,17 +79,32 @@
       <label_column name="hardpoints_required_label">
 				<static textres="item_attachment_hardpoints_required_label" />
 			</label_column>
-			<number_columnh name="hardpoints_required" />
+			<number_columnh name="hardpoints_required">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="135" />
+				</anchored>
+			</number_columnh>
 
       <label_column name="cost_label">
 				<static textres="item_label_cost" />
 			</label_column>
-			<string_columnh name="cost" />
+			<string_columnh name="cost">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="135" />
+				</anchored>
+			</string_columnh>
 
 			<label_column name="rarity_label">
 				<static textres="item_label_rarity" />
 			</label_column>
-			<number_columnh name="rarity" />
+			<number_columnh name="rarity">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="135" />
+				</anchored>
+			</number_columnh>				
 
       <ft_columnh name="description" />
 

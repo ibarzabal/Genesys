@@ -29,10 +29,6 @@
 	<icon name="dForce" file="graphics/icons/dForce.png" />
 	<icon name="textentry_die" file="graphics/icons/textentry_die.png" />
 
-	<icon name="button_species_archetypes" file="graphics/sidebar/button_races.png" />
-	<icon name="button_species_archetypes_down" file="graphics/sidebar/button_races_down.png" />
-	<icon name="button_skills" file="graphics/sidebar/button_skills.png" />
-	<icon name="button_skills_down" file="graphics/sidebar/button_skills_down.png" />
 
 	<!-- Buttons -->
 	<icon name="button_career_on" file="graphics/buttons/career_on.png" />

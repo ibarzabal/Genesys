@@ -133,7 +133,7 @@ aRecordOverrides = {
 	["career"] = {
 		bExport = true,
 		aDataMap = { "career", "reference.careers" },
-		aDisplayIcon = { "button_classes", "button_careers_down" },
+		aDisplayIcon = { "button_careers", "button_careers_down" },
 		sRecordDisplayClass = "referencecareer",
 		aCustomFilters = {
 			["Type"] = { sField = "classtype", fGetValue = getClassTypeValue },
@@ -170,6 +170,7 @@ aRecordOverrides = {
 			["Subtype"] = { sField = "subtype" },
 		},
 	},
+
 
 	-- New record types
 	["talent"] = {
