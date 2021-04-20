@@ -85,13 +85,6 @@
 			end
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				if bReadOnly then
-					name.update(bReadOnly, true);
-					namelabel.setVisible(false);
-				else
-					name.update(bReadOnly);
-					namelabel.setVisible(false);
-				end
 				category.update(bReadOnly);
 				characteristic.update(bReadOnly);
 				description.update(bReadOnly);
@@ -107,20 +100,6 @@
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			<hs name="name" />
-
-			<label_column name="name_biglabel">
-				<anchored>
-					<top relation="relative" offset="7" />
-				</anchored>
-				<font>reference-b-large</font>
-			</label_column>
-
-			<label_column name="namelabel">
-				<static textres="skill_label_name" />
-			</label_column>
-			<string_columnh name="name" />
-
 			<label_column name="category_label">
 				<static textres="category_label" />
 			</label_column>

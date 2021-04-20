@@ -8,7 +8,7 @@
 <root version="3.0" release="4" logo="logo.png">
 
 
-	<announcement text="Genesys RPG (version 2021-04-07)\n A community ruleset for FG Classic and FG Unity\rDeveloped by John Ibarzabal (a.k.a. Mestre dos Magos), and Sevrick.\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
+	<announcement text="Genesys RPG (version 2021-04-07b)\n A community ruleset for FG Classic and FG Unity\rDeveloped by John Ibarzabal (a.k.a. Mestre dos Magos), and Sevrick.\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
 
 <!--
 <announcement text="Genesys RPG community ruleset V0.95 (FG 3.3.9+) by John Ibarzabal (a.k.a. Mestre dos Magos), and Sevrick.\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Genesys, Terrinoth, Android Shadow of the Beanstalk are (tm) owned by Fantasy Flight Games.  Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
@@ -151,6 +151,7 @@
 		<includefile source="campaign/record_npc.xml" />
 		<includefile source="campaign/record_npc_main.xml" />
 		<includefile source="campaign/record_npc_inventory.xml" />
+		<includefile source="campaign/record_npc_skills.xml" />
 		<includefile source="campaign/record_npc_notes.xml" />
 
 

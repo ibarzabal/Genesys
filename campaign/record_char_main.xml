@@ -18,10 +18,6 @@
 						end
 						function onValueChanged()
 							local bEditMode = (getValue() == 1);
-							window.contents.subwindow.feats_iadd.setVisible(bEditMode);
-							window.contents.subwindow.feats.update();
-							window.contents.subwindow.features_iadd.setVisible(bEditMode);
-							window.contents.subwindow.features.update();
 							window.contents.subwindow.traits_iadd.setVisible(bEditMode);
 							window.contents.subwindow.traits.update();
 							window.contents.subwindow.motivations_iadd.setVisible(bEditMode);
@@ -335,11 +331,6 @@
 
 				<label_charframetopg name="traitstitle">
 					<bounds>15,10,-10,20</bounds>
-					<anchored to="motivationtitle" height="20">
-						<top anchor="bottom" relation="relative" offset="7" />
-						<left />
-						<right />
-					</anchored>
 					<static textres="char_abilities_label_criticals" />
 				</label_charframetopg>
 				<list_abilities name="traits">
@@ -358,71 +349,13 @@
 				</button_iadd>
 
 
-				<label_charframetopg name="featstitle">
+				<label_charframetopg name="motivationtitle">
 					<anchored to="traitstitle" height="20">
 						<top anchor="bottom" relation="relative" offset="7" />
 						<left />
 						<right />
 					</anchored>
-
-					<static textres="char_abilities_label_racial_traits" />
-					<icons>open_database</icons>
-					<target>special_ability</target>
-				</label_charframetopg>
-				<list_abilities name="feats">
-					<anchored to="featstitle">
-						<top anchor="bottom" relation="relative" offset="5" />
-						<left />
-						<right />
-					</anchored>
-					<datasource>.abilities</datasource>
-					<class>ability_item_ability</class>
-					<listheader>featstitle</listheader>
-				</list_abilities>
-				<button_iadd name="feats_iadd">
-					<anchored to="featstitle" position="insidetopright" offset="5,0" />
-					<target>feats</target>
-				</button_iadd>
-
-				<label_charframetopg name="featurestitle">
-					<anchored to="featstitle" height="20">
-						<top anchor="bottom" relation="relative" offset="7" />
-						<left />
-						<right />
-					</anchored>
-					<static textres="char_abilities_label_talents" />
-					<icons>open_database</icons>
-					<target>talent</target>
-				</label_charframetopg>
-				<list_abilities name="features">
-					<anchored to="featurestitle">
-						<top anchor="bottom" relation="relative" offset="5" />
-						<left />
-						<right />
-					</anchored>
-					<datasource>.talents</datasource>
-					<class>talent_item</class>
-					<sortby>
-						<control>tier</control>
-						<control>name</control>
-					</sortby>
-					<listheader>featurestitle</listheader>
-				</list_abilities>
-				<button_iadd name="features_iadd">
-					<anchored to="featurestitle" position="insidetopright" offset="5,0" />
-					<target>features</target>
-				</button_iadd>
-
-
-				<label_charframetopg name="motivationtitle">
-					<anchored to="featurestitle" height="20">
-						<top anchor="bottom" relation="relative" offset="7" />
-						<left />
-						<right />
-					</anchored>
 					<static textres="char_label_motivation" />
-<!--					<icons>char_abilities</icons> -->
-					<target>motivations</target>
 				</label_charframetopg>
 				<list_abilities name="motivations">
 					<anchored to="motivationtitle">
@@ -432,7 +365,7 @@
 					</anchored>
 					<datasource>.motivations</datasource>
 					<class>motivation_item</class>
-					<listheader>moticationtitle</listheader>
+					<listheader>motivationtitle</listheader>
 				</list_abilities>
 				<button_iadd name="motivations_iadd">
 					<anchored to="motivationtitle" position="insidetopright" offset="5,0" />

@@ -82,11 +82,11 @@
 		<class>charsheet_skills</class>
 	</sub_charsheet>
 
-<!--
+
 	<sub_charsheet name="abilities">
 		<class>charsheet_abilities</class>
 	</sub_charsheet>
-
+<!--
 	<sub_charsheet name="combat">
 		<class>charsheet_combat</class>
 	</sub_charsheet>
@@ -126,12 +126,12 @@
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
 				</tab>
-<!--
+
 				<tab>
 					<icon>tab_abilities</icon>
 					<subwindow>abilities</subwindow>
 				</tab>
-
+<!--
 				<tab>
 					<icon>tab_combat</icon>
 					<subwindow>combat</subwindow>

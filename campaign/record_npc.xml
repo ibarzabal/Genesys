@@ -112,29 +112,23 @@
 							window.main.subwindow.onInit();
 						end
 
---[[						if window.combat.subwindow then
-							window.combat.subwindow.onInit();
-
-						end
-]]
 						if string.lower(getValue()) == "minion" then
 							window.main_minion_numbers.setVisible(true);
 						else
 							window.main_minion_numbers.setVisible(false);
 						end
 
-						if window.main.subwindow then
+						if window.skills.subwindow then
 							local visible = false;
 
 							if string.lower(getValue()) == "minion" then
 								visible = true;
 							end
 
-							local aRows = window.main.subwindow.skilllist.getWindows();
+							local aRows = window.skills.subwindow.skilllist.getWindows();
 							for k,v in pairs(aRows) do
 								v.career_skill.setVisible(visible);
 							end
-
 						end
 					end
 				</script>
@@ -249,16 +243,20 @@
 			</subwindow>
 
 <!--
-			<subwindow name="skills">
-				<bounds>0,65,-1,-10</bounds>
-				<class>charsheet_skilllist</class>
-			</subwindow>
 
 			<subwindow name="combat">
 				<bounds>20,85,-30,-20</bounds>
 				<class>charsheet_combat</class>
 			</subwindow>
 -->
+
+			<subwindow name="skills">
+				<bounds>15,80,-20,-20</bounds>
+				<class>npc_skills</class>
+				<fastinit />
+			</subwindow>
+
+
 			<subwindow name="actions">
 				<bounds>15,80,-20,-20</bounds>
 <!--				<bounds>0,45,-1,-20</bounds> -->
@@ -286,15 +284,18 @@
 					<icon>tab_main</icon>
 					<subwindow>main</subwindow>
 				</tab>
+
 				<tab>
-					<icon>tab_abilities</icon>
-					<subwindow>abilities</subwindow>
-				</tab>
-<!--				<tab>
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
 				</tab>
 
+				<tab>
+					<icon>tab_abilities</icon>
+					<subwindow>abilities</subwindow>
+				</tab>
+
+<!--
 				<tab>
 					<icon>tab_combat</icon>
 					<subwindow>combat</subwindow>

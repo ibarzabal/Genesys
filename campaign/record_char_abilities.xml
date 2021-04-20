@@ -28,8 +28,6 @@
 
 						window.contents.subwindow.features_iadd.setVisible(bEditMode);
 						window.contents.subwindow.features.update();
-						window.contents.subwindow.traits_iadd.setVisible(bEditMode);
-						window.contents.subwindow.traits.update();
 					end
 				</script>
 <!-- 						window.contents.subwindow.proficiencies_iadd.setVisible(bEditMode);
@@ -109,30 +107,6 @@
 				<target>features</target>
 			</button_iadd>
 
-			<label_charframetopg name="traitstitle">
-				<anchored to="featurestitle" height="20">
-					<top anchor="bottom" relation="relative" offset="7" />
-					<left />
-					<right />
-				</anchored>
-				<static textres="char_abilities_label_criticals" />
-				<!--<icons>char_abilities</icons> -->
-				<target>traits</target>
-			</label_charframetopg>
-			<list_abilities name="traits">
-				<anchored to="traitstitle">
-					<top anchor="bottom" relation="relative" offset="5" />
-					<left />
-					<right />
-				</anchored>
-				<datasource>.criticals</datasource>
-				<class>critical_item</class>
-				<listheader>traitstitle</listheader>
-			</list_abilities>
-			<button_iadd name="traits_iadd">
-				<anchored to="traitstitle" position="insidetopright" offset="5,0" />
-				<target>traits</target>
-			</button_iadd>
 
 		</sheetdata>
 	</windowclass>
