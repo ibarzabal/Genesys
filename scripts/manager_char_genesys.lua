@@ -637,7 +637,7 @@ function addCritical(characternode)
 			-- Get the current number of criticals sustained.
 
 			local critsSustained = criticalsnode.getChildCount();
-			local modifier = critsSustained * 10;
+			local modifier = (critsSustained * 10) + ModifierStack.getSum();
 
 
 			-- Roll d100 and add criticals sustained x 10.
@@ -655,12 +655,10 @@ function addCritical(characternode)
 				characternodename = characternode.getNodeName();
 			end
 
+  		ModifierStack.reset(); --  Reset Modifierstack on desktop
 			-- throw the dice - need to handle the result in the chatmanager handler.
-
 			-- Genesys: changed. We sent node info in the description
-
 			Comm.throwDice("critical", dice, modifier, characternodename);
-
 		-- and return
 		return true;
 

@@ -15,6 +15,11 @@ function onClose()
 	update();
 end
 
+function onLoseFocus()
+	update();
+end
+
+
 function update()
 	if not updating then
 		if sourcenode and sourcenode.isOwner() and not sourcenode.isStatic() then
@@ -24,27 +29,32 @@ function update()
 
 			-- get the source node value
 			local oldvalue = sourcenode.getValue();
-			local newvalue = oldvalue;
+			local newvalue = StringManagerGenesys.ReplaceCodeWithSymbols(oldvalue);
 
-			-- perform symbol replacements
-			newvalue = string.gsub(newvalue, "%(S%)", "&#255;"); -- #255 - (S) - Success
-			newvalue = string.gsub(newvalue, "%(!%)", "&#254;"); -- #254 - (!) - Triumph
-			newvalue = string.gsub(newvalue, "%(F%)", "&#253;"); -- #253 - (F) - Failure
-			newvalue = string.gsub(newvalue, "%(T%)", "&#252;"); -- #252 - (T) - Threat
-			newvalue = string.gsub(newvalue, "%(A+%)", "&#251;"); -- #251 - (A) - Advantage
-			newvalue = string.gsub(newvalue, "%(D%)", "&#250;"); -- #250 - (D) - Despair
-			newvalue = string.gsub(newvalue, "%(%-%)", "&#249;"); -- #249 - (-) - Darkside Force
-			newvalue = string.gsub(newvalue, "%(%+%)", "&#248;"); -- #248 - (+) - Lightside Force
+-- Replaced with StringManagerGenesys.ReplaceCodeWithSymbols....
+--			local newvalue = oldvalue;
+--			-- perform symbol replacements
+--			newvalue = string.gsub(newvalue, "%(S%)", "&#255;");  -- #255 - ( S ) - (S) - Success
+--			newvalue = string.gsub(newvalue, "%(!%)", "&#254;");  -- #254 - ( ! ) - (!) - Triumph
+--			newvalue = string.gsub(newvalue, "%(F%)", "&#253;");  -- #253 - ( F ) - (F) - Failure
+--			newvalue = string.gsub(newvalue, "%(T%)", "&#252;");  -- #252 - ( T ) - (T) - Threat
+--			newvalue = string.gsub(newvalue, "%(A+%)", "&#251;"); -- #251 - ( A ) - (A) - Advantage
+--			newvalue = string.gsub(newvalue, "%(D%)", "&#250;");  -- #250 - ( D ) - (D) - Despair
+--			newvalue = string.gsub(newvalue, "%(%-%)", "&#249;"); -- #249 - ( - ) - (-) - Darkside Force
+--			newvalue = string.gsub(newvalue, "%(%+%)", "&#248;"); -- #248 - ( + ) - (+) - Lightside Force
+--			-- perform dice replacements
+--			newvalue = string.gsub(newvalue, "%[F%]", "&#247;");  -- #247 - [ F ] - [F] - force die
+--			newvalue = string.gsub(newvalue, "%[A%]", "&#246;");  -- #246 - [ A ] - [A] - ability die
+--			newvalue = string.gsub(newvalue, "%[D%]", "&#245;");  -- #245 - [ D ] - [D] - difficulty die
+--			newvalue = string.gsub(newvalue, "%[P%]", "&#244;");  -- #244 - [ P ] - [P] - proficiency die
+--			newvalue = string.gsub(newvalue, "%[C%]", "&#243;");  -- #243 - [ C ] - [C] - challenge
+--			newvalue = string.gsub(newvalue, "%[B%]", "&#242;");  -- #242 - [ B ] - [B] - boost
+--			newvalue = string.gsub(newvalue, "%[S%]", "&#241;");  -- #241 - [ S ] - [S] - setback
 
 
-			-- perform dice replacements
-			newvalue = string.gsub(newvalue, "%[F%]", "&#247;"); -- #247 - [F] - force die
-			newvalue = string.gsub(newvalue, "%[A%]", "&#246;"); -- #246 - [A] - ability die
-			newvalue = string.gsub(newvalue, "%[D%]", "&#245;"); -- #245 - [D] - difficulty die
-			newvalue = string.gsub(newvalue, "%[P%]", "&#244;"); -- #244 - [P] - proficiency die
-			newvalue = string.gsub(newvalue, "%[C%]", "&#243;"); -- #243 - [C] - challenge
-			newvalue = string.gsub(newvalue, "%[B%]", "&#242;"); -- #242 - [B] - boost
-			newvalue = string.gsub(newvalue, "%[S%]", "&#241;"); -- #241 - [S] - setback
+
+
+
 			--newvalue = string.gsub(newvalue, "%[E%]", "&#240;"); -- #240 - [E] - expertise
 
 			-- perform symbol replacements

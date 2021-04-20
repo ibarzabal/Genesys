@@ -22,66 +22,27 @@ function onClose()
 	update();
 end
 
+function onLoseFocus()
+	update();
+end
+
 function update()
+	-- GENESYS
+	-- Replaces special codes with Genesys Symbols
 	if not updating then
 		if sourcenode and sourcenode.isOwner() and not sourcenode.isStatic() then
-
 			-- set the updating flag
 			updating = true;
-
 			-- get the source node value
 			local oldvalue = sourcenode.getValue();
-			local newvalue = oldvalue;
-
-			-- perform symbol replacements
-			newvalue = string.gsub(newvalue, "%(S%)", string.char(255)); -- #255 - (S) - Success
-			newvalue = string.gsub(newvalue, "%(!%)", string.char(254)); -- #254 - (!) - Triumph
-			newvalue = string.gsub(newvalue, "%(F%)", string.char(253)); -- #253 - (F) - Failure
-			newvalue = string.gsub(newvalue, "%(T%)", string.char(252)); -- #252 - (T) - Threat
-			newvalue = string.gsub(newvalue, "%(A+%)", string.char(251)); -- #251 - (A) - Advantage
-			newvalue = string.gsub(newvalue, "%(D%)", string.char(250)); -- #250 - (D) - Despair
-			newvalue = string.gsub(newvalue, "%(%-%)", string.char(249)); -- #249 - (-) - Darkside Force
-			newvalue = string.gsub(newvalue, "%(%+%)", string.char(248)); -- #248 - (+) - Lightside Force
-
-
-			-- perform dice replacements
-			newvalue = string.gsub(newvalue, "%[F%]", string.char(247)); -- #247 - [F] - force die
-			newvalue = string.gsub(newvalue, "%[A%]", string.char(246)); -- #246 - [A] - ability die
-			newvalue = string.gsub(newvalue, "%[D%]", string.char(245)); -- #245 - [D] - difficulty die
-			newvalue = string.gsub(newvalue, "%[P%]", string.char(244)); -- #244 - [P] - proficiency die
-			newvalue = string.gsub(newvalue, "%[C%]", string.char(243)); -- #243 - [C] - challenge
-			newvalue = string.gsub(newvalue, "%[B%]", string.char(242)); -- #242 - [B] - boost
-			newvalue = string.gsub(newvalue, "%[S%]", string.char(241)); -- #241 - [S] - setback
-			--newvalue = string.gsub(newvalue, "%[E%]", "&#240;"); -- #240 - [E] - expertise
-
-			-- perform symbol replacements
-			--newvalue = string.gsub(newvalue, "%(S%)", "&#255;"); -- #255 - (S) - success
-			--newvalue = string.gsub(newvalue, "%(R%)", "&#254;"); -- #254 - (R) - righteous success
-			--newvalue = string.gsub(newvalue, "%(X%)", "&#253;"); -- #253 - (X) - challenge
-			--newvalue = string.gsub(newvalue, "%(%-%)", "&#252;"); -- #252 - (-) - bane
-			--newvalue = string.gsub(newvalue, "%(%+%)", "&#251;"); -- #251 - (+) - boon
-			--newvalue = string.gsub(newvalue, "%(%*%)", "&#250;"); -- #250 - (*) - chaos star
-			--newvalue = string.gsub(newvalue, "%(D%)", "&#249;"); -- #249 - (D) - delay
-			--newvalue = string.gsub(newvalue, "%(E%)", "&#248;"); -- #248 - (E) - exertion
-			--newvalue = string.gsub(newvalue, "%(C%)", "&#247;"); -- #247 - (C) - sigmars comet
-
-			-- perform dice replacements
-			--newvalue = string.gsub(newvalue, "%[C%]", "&#246;"); -- #246 - [C] - characteristic
-			--newvalue = string.gsub(newvalue, "%[X%]", "&#245;"); -- #245 - [X] - challenge
-			--newvalue = string.gsub(newvalue, "%[R%]", "&#244;"); -- #244 - [R] - reckless
-			--newvalue = string.gsub(newvalue, "%[G%]", "&#243;"); -- #243 - [G] - conservative
-			--newvalue = string.gsub(newvalue, "%[F%]", "&#242;"); -- #242 - [F] - fortune
-			--newvalue = string.gsub(newvalue, "%[M%]", "&#241;"); -- #241 - [M] - misfortune
-			--newvalue = string.gsub(newvalue, "%[E%]", "&#240;"); -- #240 - [E] - expertise
-
-			-- set the source node value
+			local newvalue = StringManagerGenesys.ReplaceCodeWithSymbolsCHR(oldvalue);
 			if newvalue ~= oldvalue then
 				sourcenode.setValue(newvalue);
 			end
-
 			-- clear the update flag
 			updating = false;
-
 		end
 	end
+
+
 end

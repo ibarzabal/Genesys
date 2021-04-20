@@ -493,14 +493,14 @@
 					<disabled />
 					<invisible />
 				</genericcontrol>
-					<list_charskill name="skilllist">
+					<list_npcskill name="skilllist">
 					<anchored to="skillframe">
 						<top offset="30" />
 						<left offset="10" />
 						<right offset="-25" />
 						<bottom offset="-15" />
 					</anchored>
-					</list_charskill>
+				</list_npcskill>
 				<scrollbar>
 					<anchored to="skilllist" />
 					<target>skilllist</target>

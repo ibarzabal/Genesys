@@ -30,8 +30,11 @@
 	<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
 	<string name="char_label_inventory">Equipment</string>
 	<string name="char_label_vehicles">Vehicles</string>
+	<string name="char_label_vehicle">Vehicle</string>
 	<string name="char_label_encumbrance">Encumbrance</string>
 	<string name="char_label_encthreshold">Threshold</string>
+	<string name="button_enter_vehicle">Enter Vehicle</string>
+
 
 	<string name="char_label_powers">Powers</string>
 	<string name="library_recordtype_empty_power">&#171; New Power &#187;</string>

@@ -891,6 +891,21 @@
 		</windowlist>
 	</template>
 
+	<template name="list_npcskill">
+		<windowlist>
+			<child></child>
+			<child><backcolor>1A40301E</backcolor></child>
+			<datasource>.skilllist</datasource>
+			<class>npc_skill</class>
+			<sortby>
+				<control>name</control>
+			</sortby>
+			<script file="campaign/scripts/char_skilllist.lua" />
+		</windowlist>
+	</template>
+
+
+
 	<template name="button_career_checkbox">
 		<buttonfield>
 			<state icon="button_career_off" />
@@ -902,140 +917,219 @@
 		<genericcontrol>
 			<stateicons>
 				<on>button_skill_on</on>
-				<off>button_skill_off</off>
+				<off>button_skill_off_inv</off>
 			</stateicons>
 			<script file="common/scripts/buttongroup_counter.lua" />
 		</genericcontrol>
 	</template>
 
-				<!-- GENERAL skilllist LIST! .......................................................................... -->
-				<windowclass name="char_skill">
-				<margins control="0,0,0,2" />
-				<script file="campaign/scripts/char_skill.lua" />
-				<sheetdata>
-					<button_career_checkbox name="career_skill">
-						<bounds>22,8,12,12</bounds>
-						<script>
-						function onInit()
-							if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
-								if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
-									setVisible(true);
-									setTooltipText("Minion skill?");
-								else
-									setVisible(false);
-								end
-							else
-								setTooltipText("Career Skill");
-							end
+	<!-- GENERAL skilllist LIST! .......................................................................... -->
+	<windowclass name="char_skill">
+	<margins control="0,0,0,2" />
+	<script file="campaign/scripts/char_skill.lua" />
+	<sheetdata>
+		<button_career_checkbox name="career_skill">
+			<bounds>22,8,12,12</bounds>
+			<script>
+			function onInit()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						setVisible(true);
+						setTooltipText("Minion skill?");
+					else
+						setVisible(false);
+					end
+				else
+					setTooltipText("Career Skill");
+				end
 
-						end
+			end
 
-						function onValueChanged()
-							if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
-								if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
-									MinionManager.updateSkill(window.getDatabaseNode());
-								end
-							end
-						end
-					</script>
-					</button_career_checkbox>
-					<genericcontrol name="rightanchor">
-						<anchored width="0" height="0">
-							<top />
-							<right />
-						</anchored>
-						<invisible />
-					</genericcontrol>
-					<button_idelete name="idelete">
-						<anchored width="20" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
-						</anchored>
-					</button_idelete>
-					<genericcontrol name="idelete_spacer">
-						<anchored width="20" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
-						</anchored>
-						<disabled />
-						<invisible />
-					</genericcontrol>
-					<!-- FIELDS START HERE -->
-					<skilldicepool>
-						<anchored width="20" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-						</anchored>
+			function onValueChanged()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						MinionManager.updateSkill(window.getDatabaseNode());
+					end
+				end
+			end
+		</script>
+		</button_career_checkbox>
+		<genericcontrol name="rightanchor">
+			<anchored width="0" height="0">
+				<top />
+				<right />
+			</anchored>
+			<invisible />
+		</genericcontrol>
+		<button_idelete name="idelete">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+			</anchored>
+		</button_idelete>
+		<genericcontrol name="idelete_spacer">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+			</anchored>
+			<disabled />
+			<invisible />
+		</genericcontrol>
+		<!-- FIELDS START HERE -->
+		<skilldicepool>
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</skilldicepool>
+		<buttongroup_skill_counter name="advances">
+			<anchored width="30" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		  <sourcefields><current>advances</current></sourcefields>
+		  <values><maximum>10</maximum></values>
+		</buttongroup_skill_counter>
+		<stringu name="characteristic">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+			</anchored>
+			<script>
+				function onEnter()
+					window.windowlist.addEntry(true);
+					return true;
+				end
+			</script>
+		</stringu>
+		<stringu name="category">
+			<anchored width="70" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</stringu>
+		<stringu name="name">
+			<anchored height="20">
+				<top offset="2" />
+				<left offset="40" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+			<tabtarget next="sublabel" />
+		</stringu>
+		<buttoncontrol name="shortcut">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
+			</anchored>
+			<icon normal="button_link" pressed="button_link_down" />
+			<script file="campaign/scripts/char_skilllink.lua" />
+		</buttoncontrol>
+		</sheetdata>
+	</windowclass>
 
-					</skilldicepool>
-	<!--
-					<number_charskilltotal name="advances">
-						<anchored width="30" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-						</anchored>
-					</number_charskilltotal>
-	JOHN -->
+	<!-- GENERAL skilllist LIST! .......................................................................... -->
+	<windowclass name="npc_skill">
+	<margins control="0,0,0,2" />
+	<script file="campaign/scripts/char_skill.lua" />
+	<sheetdata>
+		<button_career_checkbox name="career_skill">
+			<bounds>22,8,12,12</bounds>
+			<script>
+			function onInit()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						setVisible(true);
+						setTooltipText("Minion skill?");
+					else
+						setVisible(false);
+					end
+				else
+					setTooltipText("Career Skill");
+				end
 
-					<buttongroup_skill_counter name="advances">
-						<anchored width="30" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-						</anchored>
-					  <sourcefields><current>advances</current></sourcefields>
-					  <values><maximum>5</maximum></values>
-					</buttongroup_skill_counter>
+			end
 
-					<stringu name="characteristic">
-						<anchored width="20" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
-						</anchored>
-						<script>
-							function onEnter()
-								window.windowlist.addEntry(true);
-								return true;
-							end
-						</script>
-					</stringu>
-					<stringu name="category">
-						<anchored width="70" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-						</anchored>
-					</stringu>
-<!--
-					<genericcontrol name="die_icons">
-						<anchored height="20">
-							<top offset="2" />
-							<left offset="40" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-						</anchored>
-						<script file="classes/desktop/diebox.lua" />
-					</genericcontrol>
--->
-
-					<stringu name="name">
-						<anchored height="20">
-							<top offset="2" />
-							<left offset="40" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-						</anchored>
-						<tabtarget next="sublabel" />
-					</stringu>
-
-					<buttoncontrol name="shortcut">
-						<anchored width="20" height="20">
-							<top offset="2" />
-							<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
-						</anchored>
-						<icon normal="button_link" pressed="button_link_down" />
-						<script file="campaign/scripts/char_skilllink.lua" />
-					</buttoncontrol>
-					</sheetdata>
-				</windowclass>
-
-
+			function onValueChanged()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						MinionManager.updateSkill(window.getDatabaseNode());
+					end
+				end
+			end
+		</script>
+		</button_career_checkbox>
+		<genericcontrol name="rightanchor">
+			<anchored width="0" height="0">
+				<top />
+				<right />
+			</anchored>
+			<invisible />
+		</genericcontrol>
+		<button_idelete name="idelete">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+			</anchored>
+		</button_idelete>
+		<genericcontrol name="idelete_spacer">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+			</anchored>
+			<disabled />
+			<invisible />
+		</genericcontrol>
+		<!-- FIELDS START HERE -->
+		<skilldicepool>
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</skilldicepool>
+		<buttongroup_skill_counter name="advances">
+			<anchored width="30" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		  <sourcefields><current>advances</current></sourcefields>
+		  <values><maximum>10</maximum></values>
+		</buttongroup_skill_counter>
+		<stringu name="characteristic">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+			</anchored>
+			<script>
+				function onEnter()
+					window.windowlist.addEntry(true);
+					return true;
+				end
+			</script>
+		</stringu>
+		<stringu name="category">
+			<anchored width="70" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</stringu>
+		<stringu name="name">
+			<anchored height="20">
+				<top offset="2" />
+				<left offset="40" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+			<tabtarget next="sublabel" />
+		</stringu>
+		<buttoncontrol name="shortcut">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
+			</anchored>
+			<icon normal="button_link" pressed="button_link_down" />
+			<script file="campaign/scripts/char_skilllink.lua" />
+		</buttoncontrol>
+		</sheetdata>
+	</windowclass>
 
 
 	<template name="number_charskillfield">
@@ -1241,6 +1335,13 @@
 			<link_listitem_column name="shortcut">
 				<class>vehicle</class>
 			</link_listitem_column>
+
+			<button_vehicle name="enter_vehicle">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_vehicle>
 
 			<string_listitem_column_name name="name">
 					<disabled />

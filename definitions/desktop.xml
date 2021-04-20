@@ -14,6 +14,8 @@
 	<!-- Character List -->
 
 	<!-- Identity List -->
+
+<!-- TESTING
 	<panel name="identitylist" modes="host">
 		<class>identitylist</class>
 		<bounds>
@@ -37,7 +39,8 @@
 		</bounds>
 	</panel>
 
-	<!-- Modified Stack -->
+
+
 	<panel name="modifierstack" merge="join">
 		<class>modifierstack</class>
 		<bounds>
@@ -57,13 +60,15 @@
 			</anchored>
 		</bounds>
 	</panel>
+-->
+
 
 	<!-- Die Box -->
 	<panel name="diebox">
 		<class>diebox</class>
 		<bounds>
 			<!--<rect>14,-237,387,40</rect>-->
-			<rect>14,-237,387,40</rect>
+			<rect>14,-217,387,40</rect>
 		</bounds>
 	</panel>
 
@@ -71,37 +76,37 @@
 	<panel name="dAbility">
 		<class>dAbility</class>
 		<bounds>
-			<rect>19,-187,55,55</rect>
+			<rect>19,-167,55,55</rect>
 		</bounds>
 	</panel>
 	<panel name="dProficiency">
 		<class>dProficiency</class>
 		<bounds>
-			<rect>77,-187,55,55</rect>
+			<rect>77,-167,55,55</rect>
 		</bounds>
 	</panel>
 	<panel name="dDifficulty">
 		<class>dDifficulty</class>
 		<bounds>
-			<rect>135,-187,55,55</rect>
+			<rect>135,-167,55,55</rect>
 		</bounds>
 	</panel>
 	<panel name="dChallenge">
 		<class>dChallenge</class>
 		<bounds>
-			<rect>193,-187,55,55</rect>
+			<rect>193,-167,55,55</rect>
 		</bounds>
 	</panel>
 	<panel name="dBoost">
 		<class>dBoost</class>
 		<bounds>
-			<rect>251,-187,55,55</rect>
+			<rect>251,-167,55,55</rect>
 		</bounds>
 	</panel>
 	<panel name="dSetback">
 		<class>dSetback</class>
 		<bounds>
-			<rect>309,-187,55,55</rect>
+			<rect>309,-167,55,55</rect>
 		</bounds>
 	</panel>
 <!--	<panel name="dForce">
@@ -123,31 +128,31 @@
 	<panel name="criticalchit" modes="host,client">
 		<class>criticalchit</class>
 		<bounds>
-			<rect>193,-122,56,56</rect>
+			<rect>193,-102,56,56</rect>
 		</bounds>
 	</panel>
 	<panel name="woundchit" modes="host,client">
 		<class>woundchit</class>
 		<bounds>
-			<rect>249,-128,56,56</rect>
+			<rect>249,-108,56,56</rect>
 		</bounds>
 	</panel>
 	<panel name="strainchit" modes="host,client">
 		<class>strainchit</class>
 		<bounds>
-			<rect>297,-128,56,56</rect>
+			<rect>297,-108,56,56</rect>
 		</bounds>
 	</panel>
 	<panel name="StoryPointPCchit" modes="host,client">
 		<class>StoryPointPCchit</class>
 		<bounds>
-			<rect>352,-128,56,56</rect>
+			<rect>352,-108,56,56</rect>
 		</bounds>
 	</panel>
 	<panel name="StoryPointGMchit" modes="host,client">
 		<class>StoryPointGMchit</class>
 		<bounds>
-			<rect>412,-128,56,56</rect>
+			<rect>412,-108,56,56</rect>
 		</bounds>
 	</panel>
 

@@ -16,9 +16,7 @@ function updateSkills(npcNode)
 				end
 			end
 		end
-
 	end
-
 end
 
 function updateSkill(skillNode)
@@ -33,16 +31,4 @@ function updateSkill(skillNode)
 			skillNode.getChild(".advances").setValue(0);
 		end
 	end
-
---	local skillsNode = npcNode.getChild("...skills");
---	if skillsNode then
---		local aSkills = skillsNode.getChildren();
-
-		--for k,v in pairs(aSkills) do
-			--if v.getChild(".skillcheck").getValue() == 1 then
-				--v.getChild(".advances").setValue(minionsRemaining - 1);
-			--end
-		--end
-	--end
-
 end

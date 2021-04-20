@@ -190,11 +190,18 @@ function processDice(rSource, rTarget, rRoll)
 
 
 --Comm.throwDice(type, dice, modifier, description .. "<.>" .. sourcenodename .. "<.>" .. msgidentity .. "<.>" .. gmonly);
+--  Debug.chat("processDice");
+--  Debug.chat("rSource", rSource);
+--  Debug.chat("rTarget", rTarget);
+--  Debug.chat("rRoll", rRoll);
 
   local ThrowDiceInfo = StringManager.split(rSource.sDesc, "<>", true);
 	-- get the message details
 	local type = rSource.sType;
 	local description = ThrowDiceInfo[1];
+  if description == nil then
+    description = "";
+  end
 	local modifier = rSource.nMod;
 	--local sourcenode = '';   --TODO_john: find rTarget.node? rSource.getDatabaseNode();
 	local gmonly = false;
@@ -209,6 +216,7 @@ function processDice(rSource, rTarget, rRoll)
 	-- get the identity
 	local identity = ThrowDiceInfo[3];
   local characternode = ThrowDiceInfo[2];
+  local sActorType, nodeActor = ActorManager.getTypeAndNode(characternode);
 --	if not identity then
 --		identity = User.getUsername();
 --	end
@@ -264,12 +272,28 @@ function processDice(rSource, rTarget, rRoll)
 
 	-- build the header message
 	if identity ~= "" then
-
 		-- build the header message
 		local headerMsg = {};
+
+    -- Add portrait
+    if sActorType == "pc" then
+      headerMsg.icon = "portrait_" .. nodeActor.getName() .. "_chat";
+    else
+      local sIdentity = User.getCurrentIdentity();
+      if sIdentity then
+        headerMsg.icon = "portrait_" .. User.getCurrentIdentity() .. "_chat";
+      else
+        if User.isHost() then
+          headerMsg.icon = "portrait_gm_token";
+        end
+      end
+    end
+
+
+
 		headerMsg.font = "narratorfont";
 		headerMsg.sender = identity;
-		headerMsg.text = description;
+    headerMsg.text = description;
 		headerMsg.dicesecret = gmonly;
 		if User.isHost() and (gmonly or not revealalldice) then
 			Comm.addChatMessage(headerMsg);
@@ -1073,6 +1097,10 @@ end
 ---------------------------------------------------------------------------------
 
 function processDiceCritical(rSource, rTarget, rRoll)
+--  Debug.chat("processDiceCritical");
+--  Debug.chat("rSource",rSource);
+--  Debug.chat("rTarget",rTarget);
+--  Debug.chat("rRoll",rRoll);
 	-- get the message details
 --	local type = rSource.sType;
 	local description = "[CRITICAL]";

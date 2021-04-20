@@ -8,7 +8,7 @@
 <!-- d10 -->
 <die name="d10">
 	<icon>d10icon</icon>
-	<position>110,-103</position>
+	<position>110,-73</position>
 </die>
 
  <!-- Genesys Dice definitions

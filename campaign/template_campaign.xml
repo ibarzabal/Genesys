@@ -7,6 +7,30 @@
 
 <root>
 
+	<template name="button_vehicle">
+		<buttoncontrol>
+			<anchored width="20" height="20" />
+			<state icon="button_vehicle_enter"/>
+<!--			<state icon="button_vehicle_enter_down" tooltipres="button_deleteconfirm" /> -->
+			<tooltip textres="button_enter_vehicle" />
+			<script>
+				function setVisibility(bVisible)
+					setValue(0);
+					setVisible(bVisible);
+				end
+
+				function onButtonPress()
+					local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
+					local vehiclenode = window.getDatabaseNode().getNodeName();
+					actornode.createChild("vehicle_current","string").setValue(vehiclenode);
+
+
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+
+
 	<template name="sub_record_header">
 		<subwindow>
 			<anchored>

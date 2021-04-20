@@ -16,7 +16,7 @@ end
 function addCritical()
 		-- Genesys
 		Debug.console("Running addCritical dropped in chat window");
-		local modifier = 0;
+		local modifier = ModifierStack.getSum();
 		-- Set the description
 		local description = "[CRITICAL]"
 		-- build the dice table
@@ -24,6 +24,7 @@ function addCritical()
 		table.insert(dice, "d10");
 		table.insert(dice, "d10");
 
+  	ModifierStack.reset(); --  Reset Modifierstack on desktop
 		-- throw the dice - need to handle the result in the chatmanager handler.
     --Comm.throwDice("dice" , dice, modifier, description, {"", msgidentity, gmonly});
 		Comm.throwDice("critical", dice, modifier,"");
@@ -35,7 +36,7 @@ end
 function addCriticalVehicle()
 	-- Genesys
 	Debug.console("Running addCriticalVehicle dropped in chat window.");
-	local modifier = 0;
+	local modifier = ModifierStack.getSum();
 	-- Set the description
 	local description = "[CRITVEHICLE]"
 	-- build the dice table

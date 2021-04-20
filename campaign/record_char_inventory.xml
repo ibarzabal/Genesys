@@ -152,9 +152,9 @@
 			</label_charframetopg>
 
 			<number_dropadd name="coinamount1" source="coins.slot1.amount">
-				<anchored to="moneytitle" width="30" height="20">
+				<anchored to="moneytitle" width="70" height="20">
 					<top anchor="bottom" relation="relative" offset="10" />
-					<left anchor="center" offset="-160" />
+					<left anchor="center" offset="-220" />
 				</anchored>
 				<hideonvalue>0</hideonvalue>
 				<description field="name" />
@@ -163,9 +163,9 @@
 				<anchored to="coinamount1" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount2" source="coins.slot2.amount">
-				<anchored to="moneytitle" width="30" height="20">
+				<anchored to="moneytitle" width="70" height="20">
 					<top anchor="bottom" relation="relative" offset="10" />
-					<left anchor="center" offset="-160" />
+					<left anchor="center" offset="-220" />
 				</anchored>
 				<hideonvalue>0</hideonvalue>
 				<description field="name" />
@@ -174,7 +174,7 @@
 				<anchored to="coinamount2" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount3" source="coins.slot3.amount">
-				<anchored to="coinname1" position="righthigh" offset="10,0" width="30" height="20" />
+				<anchored to="coinname1" position="righthigh" offset="10,0" width="70" height="20" />
 				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
@@ -182,7 +182,7 @@
 				<anchored to="coinamount3" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount4" source="coins.slot4.amount">
-				<anchored to="coinname2" position="righthigh" offset="10,0" width="30" height="20" />
+				<anchored to="coinname2" position="righthigh" offset="10,0" width="70" height="20" />
 				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
@@ -190,7 +190,7 @@
 				<anchored to="coinamount4" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount5" source="coins.slot5.amount">
-				<anchored to="coinname3" position="righthigh" offset="10,0" width="30" height="20" />
+				<anchored to="coinname3" position="righthigh" offset="10,0" width="70" height="20" />
 				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
@@ -198,7 +198,7 @@
 				<anchored to="coinamount5" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount6" source="coins.slot6.amount">
-				<anchored to="coinname4" position="righthigh" offset="10,0" width="30" height="20" />
+				<anchored to="coinname4" position="righthigh" offset="10,0" width="70" height="20" />
 				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
@@ -288,11 +288,14 @@
 					<name>brawn.current</name>
 					<op>+</op>
 				</source>
-				<source>
-			    <name>abilities.strength.bonus</name>
-			    <op>+</op>
-			  </source>
-
+				<script>
+					function onSourceValue(source, sourcename)
+						if sourcename == "brawn.current" then
+							return source.getValue() + 5;
+						end
+						return super.onSourceValue(source, sourcename);
+					end
+				</script>
 			</number_linked>
 			<label_fieldtop name="encumbrancethreshold_label">
 				<anchored to="encumbrancethreshold" />

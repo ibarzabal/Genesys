@@ -7,6 +7,13 @@
 
 
 <root>
+<!-- Overwritting core -->
+<template name="ft_columnh">
+  <ft_column>
+    <script file="common/scripts/column_ft.lua" />
+  </ft_column>
+</template>
+  
 <!-- RESKIN  -->
 <template name="anchor_title_charsheet">
   <genericcontrol>

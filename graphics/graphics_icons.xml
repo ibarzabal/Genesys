@@ -35,8 +35,13 @@
 	<icon name="button_career_off" file="graphics/buttons/career_off.png" />
 	<icon name="button_skill_on" file="graphics/buttons/skill_on.png" />
 	<icon name="button_skill_off" file="graphics/buttons/skill_off.png" />
+	<icon name="button_skill_off_inv" file="graphics/buttons/skill_off_inv.png" />
 
-
+	<icon name="button_vehicle_enter" file="graphics/buttons/button_vehicle_enter1.png" />
+	<!--
+	<icon name="button_vehicle_enter" file="graphics/buttons/button_vehicle_enter.png" />
+	<icon name="button_vehicle_enter_down" file="graphics/buttons/button_vehicle_enter_down.png" />
+ 	-->
 
 
 	<icon name="button_minisheet" file="graphics/buttons/button_minisheet.png" />

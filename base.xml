@@ -93,6 +93,8 @@
 		<!-- overriding ItemManager so handling items to npc also work -->
 		<script name="ItemManager" file="scripts/manager_item_genesys.lua" />
 
+		<script name="StringManagerGenesys" file="scripts/manager_string_genesys.lua" />
+
 
 
 		<!-- initialization -->
