@@ -14,6 +14,8 @@
 <string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
 <string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
 
+<string name="char_label_powers">Powers</string>
+<string name="library_recordtype_empty_power">&#171; New Power &#187;</string>
 <!-- Combat Tracker Genesys -->
 <string name="ct_label_init_skill">Init Skill:</string>
 
@@ -68,7 +70,7 @@
 	<string name="char_label_item_encumbrance">Enc</string>
 	<string name="char_tooltip_item_encumbrance">Encumbrance</string>
 	<!-- Char Abilities window -->
-	<string name="char_abilities_label_racial_traits">Species and Special Abilities</string>
+	<string name="char_abilities_label_racial_traits">Special Abilities</string>
 	<string name="char_abilities_label_talents">Talents</string>
 	<string name="char_abilities_label_criticals">Critical Injuries</string>
 
@@ -88,6 +90,91 @@
 	<string name="ref_type_feature">Feature</string>
 	<string name="ref_type_trait">Trait</string>
 	<string name="ref_type_talent">Talent</string>
+	<string name="ref_type_power">Power</string>
+
+	<!-- Powers window -->
+	<string name="power_label_mode">Mode</string>
+	<string name="power_label_modestd">Standard</string>
+	<string name="power_label_modeprep">Preparation</string>
+	<string name="power_label_modecombat">Combat</string>
+	<string name="power_label_display">Display</string>
+	<string name="power_label_displaygroup">Group</string>
+	<string name="power_label_displaysummary">Summary</string>
+	<string name="power_label_displayaction">Actions</string>
+
+<!-- ================================================================ -->
+<!-- Powers -->
+<string name="power_label_useperiod_daily">Daily</string>
+<string name="power_label_useperiod_enc">Rest</string>
+<string name="power_label_useperiod_once">Once</string>
+<string name="power_tooltip_grouptypeability">Abilities</string>
+<string name="power_tooltip_grouptypeprep">Spells</string>
+
+<string name="power_label_mode">Mode</string>
+<string name="power_label_modestd">Standard</string>
+<string name="power_label_modeprep">Preparation</string>
+<string name="power_label_modecombat">Combat</string>
+<string name="power_label_display">Display</string>
+<string name="power_label_displaygroup">Group</string>
+<string name="power_label_displaysummary">Summary</string>
+<string name="power_label_displayaction">Actions</string>
+
+<string name="power_empty_group">&#171; Spell or Ability Group &#187;</string>
+<string name="power_label_groupspells">Spells</string>
+<string name="power_label_groupabilities">Abilities</string>
+<string name="power_label_groupcantrips">Cantrips</string>
+
+<string name="power_groupdetail_title">Power Group</string>
+<string name="power_label_groupname">Group Name</string>
+<string name="power_label_grouptype">Group Type</string>
+<string name="power_label_groupstat">Ability</string>
+<string name="power_label_groupatk">Attack</string>
+<string name="power_label_groupsave">Save DC</string>
+<string name="power_label_groupuses">Uses</string>
+<string name="power_label_groupprepared">Prepared</string>
+
+<string name="power_tooltip_prepared">Uses per day</string>
+<string name="power_tooltip_group">Ability Group</string>
+<string name="power_tooltip_toggle">Click to edit / hide details</string>
+<string name="power_tooltip_summary">Ability Summary</string>
+
+<string name="power_tooltip_typecast">Cast</string>
+<string name="power_tooltip_typedamage">Damage</string>
+<string name="power_tooltip_typeheal">Heal</string>
+<string name="power_tooltip_typeeffect">Effect</string>
+<!-- modified genesys: -->
+<string name="power_label_cast">Skill:</string>
+<string name="power_tooltip_skill">Type the exact name of the skill to roll</string>
+<string name="char_tooltip_actionaddpower">Add Power</string>
+
+
+
+
+<string name="power_label_atk">Atk</string>
+<string name="power_label_save">Save</string>
+<string name="power_label_dmg">Dmg</string>
+<string name="power_label_heal">Heal</string>
+<string name="power_label_effect">Effect</string>
+
+<string name="power_tooltip_targetself">Apply to self</string>
+<string name="power_tooltip_targetother">Apply to current target</string>
+
+<string name="power_menu_addaction">Add Action</string>
+<string name="power_menu_addcast">Add Skill Roll</string>
+<string name="power_menu_adddamage">Add Damage</string>
+<string name="power_menu_addheal">Add Heal</string>
+<string name="power_menu_addeffect">Add Effect</string>
+<string name="power_menu_reparse">Reparse spell actions</string>
+<string name="power_menu_actiondelete">Remove Action</string>
+
+<string name="power_error_spellgroupnotfound">[ERROR] Unable to locate spell group to resolve spell modifiers or DCs.</string>
+<string name="power_error_spellcastingnotfound">[ERROR] Unable to locate spellcasting trait to resolve spell modifiers or DCs.</string>
+<string name="power_error_innatespellcastingnotfound">[ERROR] Unable to locate innate spellcasting trait to resolve spell modifiers or DCs.</string>
+
+<!-- ================================================================ -->
+
+
+
 
 	<!-- Item -->
 	<string name="tooltip_weapon_range">[S]hort, [M]edium, [L]ong, [E]xtreme, [ST]rategic, [-]Engaged</string>
@@ -121,6 +208,12 @@
 	<string name="item_button_armor">Armor</string>
 	<string name="item_button_gear">Gear</string>
 	<string name="item_grouped_tooltip_maxstatbonus">Maximum Dexterity Bonus</string>
+
+ <!-- Skills Window -->
+ <string name="skill_label_name">Name</string>
+ <string name="category_label">Category</string>
+ <string name="characteristic_label">Charactetistic</string>
+
 
 
 	<!-- Desktop decal options -->

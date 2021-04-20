@@ -91,13 +91,15 @@ function rollSingleNPCInit()
 		local dice = {};
 		local skilldescription;
 		local msgidentity = DB.getValue(initskillnode, "...name", "");
+		local override_clear = "default"
 		DicePoolManager.addSkillDice(initskillnode, dice);
 		if table.getn(dice) > 0 then
 			if initskillnode.getChild("name") then
 				skilldescription = initskillnode.getChild("name").getValue() .. " [INIT]";
+				override_clear = "clear"; -- Force clearing the diebox, we only want the init dice in there....
 			end
 			 local actornode = getDatabaseNode();
-			 DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode);
+			 DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode,override_clear);
 		end
 
 		--Roll the dice in the diebox - INIT will be populated to the correct init slot when the dice roll ends.

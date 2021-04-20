@@ -205,6 +205,7 @@ function performAction(draginfo, rActor, rRoll)
 end
 
 function performMultiAction(draginfo, rActor, sType, rRolls)
+
 	if not rRolls or #rRolls < 1 then
 		return false;
 	end
@@ -281,6 +282,7 @@ function actionDropHelper(draginfo, bResolveIfNoDice)
 end
 
 function actionDirect(rActor, sDragType, rRolls, aTargeting)
+
 	if not aTargeting then
 		if ModifierStack.getTargeting() then
 			aTargeting = getTargeting(rActor, nil, sDragType, rRolls);
@@ -491,9 +493,7 @@ function applyModifiersAndRoll(rSource, vTarget, bMultiTarget, rRoll)
 	else
 		bModStackUsed = applyModifiers(rSource, vTarget, rNewRoll);
 	end
-
 	roll(rSource, vTarget, rNewRoll, bMultiTarget);
-
 	return bModStackUsed;
 end
 
@@ -643,6 +643,7 @@ function onDiceLanded(draginfo)
 end
 
 function handleResolution(vRoll, rSource, aTargets)
+
 	if vRoll.sReplaceDieResult then
 		local aReplaceDieResult = StringManager.split(vRoll.sReplaceDieResult, "|");
 		for kDie,vDie in ipairs(vRoll.aDice) do
@@ -657,7 +658,6 @@ function handleResolution(vRoll, rSource, aTargets)
 	if fPostRoll then
 		fPostRoll(rSource, vRoll);
 	end
-
 	if not aTargets or (#aTargets == 0) then
 		resolveAction(rSource, nil, vRoll);
 	elseif #aTargets == 1 then

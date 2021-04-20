@@ -145,7 +145,7 @@ function processSpecialMessage(msg)
 		end
 	else
 		return true;
-end
+	end
 	-- Handle the special message
 	return handleSpecialMessage(msgtype, msguser, msgidentity, msgparams);
 end

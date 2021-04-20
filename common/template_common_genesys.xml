@@ -8,7 +8,19 @@
 
 <root>
 
+
+
 <!-- Genesys templates -->
+
+<template name="simpleft">
+  <baseformattedtextfield />
+</template>
+
+<template name="ft_record">
+  <baseformattedtextfield>
+    <footer>footer_narrow</footer>
+  </baseformattedtextfield>
+</template>
 
 <template name="basestringcontrol">
   <stringcontrol>
@@ -182,22 +194,6 @@
 
 <template name="baseformattedtextfield">
   <formattedtextfield>
-    <font>
-      <normal>chatfont</normal>
-      <bold>narratorfont</bold>
-      <italic>reference-i</italic>
-      <bolditalic>reference-bi</bolditalic>
-      <title>sheetlabel</title>
-    </font>
-    <linkicon>
-      <link>button_link</link>
-      <emptylink>button_emptytarget</emptylink>
-    </linkicon>
-    <icon>
-      <chat>button_speak</chat>
-    </icon>
-    <!--<footer>footer_narrow</footer>-->
-    <selectioncolor>#FFD296</selectioncolor>
     <empty>Click to enter text</empty>
     <script file="common/scripts/baseformattedtextfield.lua" />
   </formattedtextfield>
@@ -275,6 +271,24 @@
     <script file="common/scripts/rangecontrol.lua" />
   </genericcontrol>
 </template>
+
+<template name="characteristiccontrolh">
+  <genericcontrol>
+    <frame>
+      <name>fielddark</name>
+      <offset>4,5,4,4</offset>
+    </frame>
+    <anchored>
+      <size>
+        <width>45</width>
+        <height>20</height>
+      </size>
+    </anchored>
+    <tooltip textres="tooltip_characteristic"/>
+    <script file="common/scripts/characteristiccontrol.lua" />
+  </genericcontrol>
+</template>
+
 
 
 

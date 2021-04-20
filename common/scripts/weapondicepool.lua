@@ -19,11 +19,11 @@ end
 -- 	dragging = false;
 -- 	return onDrag(button, x, y, draginfo);
 -- end
--- 
+--
 -- function onDrag(button, x, y, draginfo)
--- 
+--
 -- 	if not dragging then
--- 
+--
 -- 		--Debug.console("Weapon roll from window class = " .. window.getClass() .. ". window database node = " .. window.getDatabaseNode().getNodeName());
 -- 		local weaponnode = window.getDatabaseNode();
 -- 		local weaponname = DB.getValue(window.getDatabaseNode(), "name");
@@ -31,7 +31,7 @@ end
 -- 		local weapondamagevalue = weaponnode.getChild("damage").getValue();
 -- 		local weaponcriticalvalue = weaponnode.getChild("critical").getValue();
 -- 		local charnode;
--- 
+--
 -- 		local skillsnode;
 -- 		-- See if we're rolling form the party sheet (group vehicle) or from a character sheet.
 -- 		if string.find(window.getDatabaseNode().getNodeName(), "partysheet.inventory") then
@@ -43,13 +43,13 @@ end
 -- 			charnode = DB.getParent(DB.getParent(window.getDatabaseNode()));
 -- 			skillsnode = charnode.getChild("skilllist");
 -- 		end
--- 
+--
 -- 		-- If we don't have the skillsnode then we can't populate the dice pool with anything - exit function.
 -- 		if skillsnode == nil then
 -- 			return;
 -- 		end
--- 
--- 
+--
+--
 -- --		--Debug.console("Weapon name = " .. weaponname .. ", weapon node = " .. weaponnode.getNodeName());
 -- --		--Debug.console("Weapon skill name = " .. weaponskillvalue .. ", PC skills node = " .. skillsnode.getNodeName());
 -- --
@@ -80,7 +80,7 @@ end
 -- --			Debug.console("weapondicepool.lua: onDoubleClick.  No match for skill assigned to weapon - make sure a skill is assigned to the weapon.");
 -- --			return false;
 -- --		end
--- 
+--
 -- 		local weaponskillnode = nil;
 -- 		for k,v in pairs(skillsnode.getChildren()) do
 -- 			--Debug.console("Looking at current child: " .. k .. ", skillname = " .. v.getChild("name").getValue());
@@ -90,7 +90,7 @@ end
 -- 				break;
 -- 			end
 -- 		end
--- 
+--
 -- 		local dice = {};
 -- 		local skilldescription;
 -- 		local msgidentity = DB.getValue(weaponskillnode, "...name", "");
@@ -106,7 +106,7 @@ end
 -- 			return true;
 -- 			--DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity);
 -- 		end
--- 
+--
 -- --		local dice = {};
 -- --		DicePoolManager.addSkillDice(initskillnode, dice);
 -- --		if table.getn(dice) > 0 then
@@ -122,7 +122,7 @@ end
 -- 	end
 -- 	return false;
 -- end
--- 
+--
 -- function onDragEnd(draginfo)
 -- 	dragging = false;
 -- end
@@ -175,6 +175,6 @@ function onDoubleClick()
 			skilldescription = weaponname .. " - " .. weaponskillvalue .. " [ATTACK]\r[DAMAGE: " .. weapondamagevalue .. "] [CRIT: " .. weaponcriticalvalue .. "]";
 		end
 		local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
-		DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode);
+		DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode,"default");
 	end
 end

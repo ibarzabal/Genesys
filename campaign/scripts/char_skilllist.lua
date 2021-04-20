@@ -4,16 +4,19 @@
 --
 function onInit()
 	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
-
+	--local char_class = window.parentcontrol.window.getClass();
+ 	--local npc_type = DB.getValue(DB.getChild(getDatabaseNode().getParent(),"main_npc_category"),"","");
+	--if char_class == "npc" and npc_type == "minion" then
+	--	constructDefaultskilllist("short");
+	--else
+	--	constructDefaultskilllist("full");
+	--end
 	constructDefaultskilllist();
-
 	-- CharManager.updateSkillPoints(window.getDatabaseNode());
-
-	local nodeChar = getDatabaseNode().getParent();
---	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildUpdate", onStatUpdate);
-
---	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildAdded", onSkillDataUpdate);
---	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildDeleted", onSkillDataUpdate);
+	-- local nodeChar = getDatabaseNode().getParent();
+	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildUpdate", onStatUpdate);
+	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildAdded", onSkillDataUpdate);
+	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildDeleted", onSkillDataUpdate);
 end
 
 function onClose()
@@ -77,7 +80,11 @@ function onMenuSelection(item)
 end
 
 -- Create default skill selection
-function constructDefaultskilllist(sCategory)
+function constructDefaultskilllist(sListType)
+--	if sListType == "short" then
+--		return 1;
+--	end
+
 	local aSystemskilllist = DataCommon.skilldata;
 	-- Create missing entries for all known skilllist
 	local entrymap = {};

@@ -28,34 +28,34 @@ end
 
 -- Genesys - for now dragging genesys dice is causing too many issues with FGU and FGC
 -- disabling drag, players should double click instead
---function onDragStart(button, x, y, draginfo)
---	dragging = false;
---	return onDrag(button, x, y, draginfo);
---end
---
---function onDrag(button, x, y, draginfo)
---	if not dragging then
---		if Input.isControlPressed() or button > 1 then
---			if modifier then
---				draginfo.setType("dice");
---				draginfo.setDieList({ modifier[1] });
---				dragging = true;
---				return true;
---			end
---		else
---			if type then
---				draginfo.setType("dice");
---				draginfo.setDieList({ type[1] });
---				dragging = true;
---				return true;
---			end
---		end
---	end
---end
---
---function onDragEnd(draginfo)
---	dragging = false;
---end
+function onDragStart(button, x, y, draginfo)
+	dragging = false;
+	return onDrag(button, x, y, draginfo);
+end
+
+function onDrag(button, x, y, draginfo)
+	if not dragging then
+		if Input.isControlPressed() or button > 1 then
+			if modifier then
+				draginfo.setType("dice");
+				draginfo.setDieList({ modifier[1] });
+				dragging = true;
+				return true;
+			end
+		else
+			if type then
+				draginfo.setType("dice");
+				draginfo.setDieList({ type[1] });
+				dragging = true;
+				return true;
+			end
+		end
+	end
+end
+
+function onDragEnd(draginfo)
+	dragging = false;
+end
 
 function onDoubleClick(x, y)
 	if type then

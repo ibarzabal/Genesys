@@ -11,7 +11,7 @@
 		<sheetdata>
 			<!-- NOTES -->
 			<sheetframe name="notes_notes">
-				<bounds>15,100,-39,-1</bounds>
+				<bounds>15,0,-39,-1</bounds>
 			</sheetframe>
 			<sheetframetitle name="notes_notes_title">
 				<anchored>
@@ -45,13 +45,11 @@
 				</anchored>
 				<!--Custom onDrop function for this control.  return nil so that formatted text control allows dropping of links
 				This means that the overiding manager drop code does not execute for this control.-->
-<!--				<script>
+				<script>
 					function onDrop(x, y, draginfo)
 						return;
 					end
 				</script>
-
--->
 			</sheetformattedtextfield>
 			<scrollbar>
 				<anchored>

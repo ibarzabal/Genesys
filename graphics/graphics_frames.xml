@@ -99,6 +99,17 @@
 			<bottomright rect="238,238,14,14" />
 		</framedef>
 
+		<!-- Characters -->
+		<framedef name="charsheet">
+			<bitmap file="graphics/frames/charsheet.png" />
+			<offset>50,50,45,45</offset>
+			<insideoffset>0,5,12,14</insideoffset>
+		</framedef>
+		<framedef name="charsheethelper">
+			<bitmap file="graphics/frames/charsheet.png" />
+			<offset>50,50,45,45</offset>
+			<insideoffset>0,5,12,14</insideoffset>
+		</framedef>
 
 
 </root>

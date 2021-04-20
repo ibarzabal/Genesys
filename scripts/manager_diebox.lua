@@ -69,16 +69,16 @@ function getActorNode()
 end
 
 -- Added to allow skill dice to be added to the die box by clicking on the button next to the skill.
-function addSkillDice(skilldescription, dice, sourcenode, msgidentity,actornode)
+function addSkillDice(skilldescription, dice, sourcenode, msgidentity,actornode,override_clear)
     if actornode then
       l_actornode = actornode;
     else
       l_actornode = nil;
     end
-    
+
    	if dice then
-  		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
-  			control.resetAll();
+  		if (OptionsManager.getOption("interface_cleardicepoolondrag") == "on"  or override_clear == "clear") and override_clear ~= "keep" then
+        control.resetAll();
   		end
 		control.setType("skill");
 		control.setDescription(skilldescription);

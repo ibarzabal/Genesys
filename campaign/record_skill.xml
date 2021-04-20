@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<!-- 
-  Please see the license.html file included with this distribution for 
+<!--
+  Please see the license.html file included with this distribution for
   attribution and copyright information.
 -->
 
@@ -39,12 +39,12 @@
 				<class>ref_skill_stats</class>
 			</sub_ref_content>
 			<scrollbar_ref_content />
-			
+
 			<resize_referencepage />
 			<close_referencepage />
 		</sheetdata>
 	</windowclass>
-	
+
 	<windowclass name="ref_skill_header">
 		<margins control="0,0,0,7" />
 		<script>
@@ -70,7 +70,7 @@
 			</string_record_name>
 		</sheetdata>
 	</windowclass>
-	
+
 	<windowclass name="ref_skill_stats">
 		<script>
 			function onInit()
@@ -79,58 +79,69 @@
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
 				if bReadOnly then
-					local aLabel = {};
-					table.insert(aLabel, ability.getValue());
-					if trained.getValue() ~= 0 then
-						table.insert(aLabel, "Trained only");
-					end
-					if armorcheckpenalty.getValue() ~= 0 then
-						table.insert(aLabel, "Armor check penalty");
-					end
-					type_label.setValue("[" .. table.concat(aLabel, "; ") .. "]");
-					type_label.setVisible(true);
-					
-					ability.update(bReadOnly, true);
-					trained.update(bReadOnly, true);
-					armorcheckpenalty.update(bReadOnly, true);
+					name_biglabel.setValue("[" .. name.getValue() .. "]");
+					name_biglabel.setVisible(true);
+
+					name.update(bReadOnly, true);
+					namelabel.setVisible(false);
 				else
-					type_label.setVisible(false);
-					
-					ability.update(bReadOnly);
-					trained.update(bReadOnly);
-					armorcheckpenalty.update(bReadOnly);
+					name_biglabel.setVisible(false);
+					name.update(bReadOnly);
+					namelabel.setVisible(false);
 				end
-				text.update(bReadOnly);
+				category.update(bReadOnly);
+				characteristic.update(bReadOnly);
+				description.update(bReadOnly);
+				setting.update(bReadOnly);
 			end
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			
-			<label name="type_label">
+
+			<hs name="name" />
+
+			<label_column name="name_biglabel">
 				<anchored>
-					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
-					<left />
-					<right />
+					<top relation="relative" offset="7" />
 				</anchored>
 				<font>reference-b-large</font>
-			</label>
+			</label_column>
 
-			<label_column name="ability_label">
-				<static textres="skill_label_ability" />
+			<label_column name="namelabel">
+				<static textres="skill_label_name" />
 			</label_column>
-			<string_columnh name="ability" />
-			
-			<label_column name="trained_label">
-				<static textres="skill_label_trainedonly" />
+			<string_columnh name="name" />
+
+			<label_column name="category_label">
+				<static textres="category_label" />
 			</label_column>
-			<button_checkbox_columnh name="trained" />
-			
-			<label_column name="armorcheckpenalty_label">
-				<static textres="skill_label_armorcheckpenalty" />
+			<string_columnh name="category" />
+
+			<label_column name="characteristic_label">
+				<static textres="characteristic_label" />
 			</label_column>
-			<number_columnh name="armorcheckpenalty" />
-			
-			<ft_columnh name="text" />
+<!--			<string_columnh name="characteristic" /> -->
+
+			<characteristiccontrolh name="characteristic">
+				<sourcename>characteristic</sourcename>
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="95" />
+			<!-- 					<right offset="-5" /> -->
+				</anchored>
+			</characteristiccontrolh>
+
+
+
+
+
+
+			<ft_columnh name="description" />
+
+			<label_column name="setting_label">
+				<static textres="talent_label_setting" />
+			</label_column>
+			<string_columnh name="setting" />
 		</sheetdata>
 	</windowclass>
 </root>

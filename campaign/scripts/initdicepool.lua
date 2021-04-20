@@ -29,11 +29,11 @@ end
 -- 	dragging = false;
 -- 	return onDrag(button, x, y, draginfo);
 -- end
--- 
+--
 -- function onDrag(button, x, y, draginfo)
 -- 	if not dragging then
 -- 		local sourcenode = window.getDatabaseNode();
--- 
+--
 -- 		local skilllistnode = window.getDatabaseNode().getChild("skilllist");
 -- 		local initskillnode = nil;
 -- 		local initskillname = "";
@@ -43,7 +43,7 @@ end
 -- 		elseif self.getName() == "combat_init_vigilance_btn" then
 -- 			initskillname = "Vigilance";
 -- 		end
--- 
+--
 -- 		for k,v in pairs(skilllistnode.getChildren()) do
 -- 			--Debug.console("Looking at current child: " .. k);
 -- 			if v.getChild("name").getValue() == initskillname then
@@ -52,7 +52,7 @@ end
 -- 				break;
 -- 			end
 -- 		end
--- 
+--
 -- 		-- Try secondary skilllist of "Cool" or "Vigilance" (named without the characterstic)
 -- 		if not initskillnode then
 -- 			if self.getName() == "combat_init_cool_btn" then
@@ -60,7 +60,7 @@ end
 -- 			elseif self.getName() == "combat_init_vigilance_btn" then
 -- 				initskillname = "Vigilance";
 -- 			end
--- 
+--
 -- 			for k,v in pairs(skilllistnode.getChildren()) do
 -- 				--Debug.console("Looking at current child: " .. k);
 -- 				if v.getChild("name").getValue() == initskillname then
@@ -70,9 +70,9 @@ end
 -- 				end
 -- 			end
 -- 		end
--- 
+--
 -- 		-- TODO: Need to code for no match in skilllist - i.e. use characteristic score only.
--- 
+--
 -- 		local dice = {};
 -- 		DicePoolManager.addSkillDice(initskillnode, dice);
 -- 		if table.getn(dice) > 0 then
@@ -87,10 +87,10 @@ end
 -- 	end
 -- 	return false;
 -- end
--- 
--- 
--- 
--- 
+--
+--
+--
+--
 -- function onDragEnd(draginfo)
 -- 	dragging = false;
 -- end
@@ -143,7 +143,7 @@ function onDoubleClick()
 			skilldescription = initskillnode.getChild("name").getValue() .. " [INIT]";
 		end
 		local actornode = window.getDatabaseNode();
-		DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity, actornode);
+		DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity, actornode,"clear");
 
 	end
 end

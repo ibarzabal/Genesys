@@ -163,12 +163,23 @@
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_combat</class>
 			</subwindow>
+
+			<subwindow name="actions">
+				<bounds>15,80,-20,-20</bounds>
+<!--				<bounds>0,45,-1,-20</bounds> -->
+				<class>charsheet_actions</class>
+			</subwindow>
+
+
 			<subwindow name="inventory">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_inventory</class>
 			</subwindow>
+
+
+
 			<subwindow name="notes">
-				<bounds>0,45,-1,-20</bounds>
+				<bounds>0,85,-1,-20</bounds>
 				<class>charsheet_notes</class>
 			</subwindow>
 
@@ -193,14 +204,23 @@
 					<icon>tab_combat</icon>
 					<subwindow>combat</subwindow>
 				</tab>
+
+				<tab>
+					<icon>tab_actions</icon>
+					<subwindow>actions</subwindow>
+				</tab>
+
+
 				<tab>
 					<icon>tab_inventory</icon>
 					<subwindow>inventory</subwindow>
 				</tab>
+
 				<tab>
 					<icon>tab_notes</icon>
 					<subwindow>notes</subwindow>
 				</tab>
+
 				<activate>1</activate>
 			</tabs_charsheet>
 

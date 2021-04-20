@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<!-- FG Classic should use fgf and FU Unity will load ttf -->
+<root>
+<font name="dieresult">
+
+		<fgffile name="graphics/fonts/dieresult.fgf" />
+		<ttf file="graphics/fonts/dieresult.ttf" size="0"/>
+		<color value="#ffffff" />
+	</font>
+
+
+	<!-- Chit Numbering-->
+	<font name="chitnumbers">
+		<ttf file="graphics/fonts/AlegreyaSansSC-Bold.ttf" name="Alegreya Sans SC" size="40" />
+		<color value="#000000" />
+		<shadow offset="1,1" color="#808080" />
+	</font>
+
+	<font name="subwindowsmalltitle">
+		<fgffile name="graphics/fonts/bold-10.fgf" />
+		<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="12" />
+		<color value="FFF1CC" />
+		<shadow offset="1,1" color="000000" />
+	</font>
+
+</root>

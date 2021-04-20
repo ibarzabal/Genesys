@@ -8,6 +8,7 @@
 <root>
 	<windowclass name="charsheet_notes">
 		<sheetdata>
+<!--
 			<frame_char name="motivationsframe">
 				<bounds>15,45,-29,190</bounds>
 			</frame_char>
@@ -15,7 +16,7 @@
 				<anchored to="motivationsframe" />
 				<static textres="char_label_motivations" />
 			</label_frametop>
-			<stringfield name="motivations">
+			<formattedtextfield name="motivations">
 				<anchored to="motivationsframe">
 					<top offset="30" />
 					<left offset="15" />
@@ -24,35 +25,63 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 				<nodrag />
-			</stringfield>
+			</formattedtextfield>
 			<scrollbar_list>
 				<anchored to="motivations" />
 				<target>motivations</target>
 			</scrollbar_list>
+-->
+
+<!-- NOTES -->
+<sheetframe name="notes_notes">
+	<bounds>15,0,-29,-70</bounds>
+</sheetframe>
+<sheetframetitle name="notes_notes_title">
+	<anchored>
+		<to>notes_notes</to>
+	</anchored>
+	<static>Notes</static>
+</sheetframetitle>
 
 
-
-						<frame_char name="notesframe">
-							<bounds>15,235,-29,-70</bounds>
-						</frame_char>
-						<label_frametop>
-							<anchored to="notesframe" />
-							<static textres="char_label_notes" />
-						</label_frametop>
-						<stringfield name="notes">
-							<anchored to="notesframe">
-								<top offset="30" />
-								<left offset="15" />
-								<right offset="-20" />
-								<bottom offset="-15" />
-							</anchored>
-							<multilinespacing>20</multilinespacing>
-							<nodrag />
-						</stringfield>
-						<scrollbar_list>
-							<anchored to="notes" />
-							<target>notes</target>
-						</scrollbar_list>
+<sheetformattedtextfield name="notes_notes_notes" source="char_notes">
+	<anchored>
+		<left>
+			<parent>notes_notes</parent>
+			<anchor>left</anchor>
+			<offset>8</offset>
+		</left>
+		<right>
+			<parent>notes_notes</parent>
+			<anchor>right</anchor>
+			<offset>-10</offset>
+		</right>
+		<top>
+			<parent>notes_notes</parent>
+			<anchor>top</anchor>
+			<offset>20</offset>
+		</top>
+		<bottom>
+			<parent>notes_notes</parent>
+			<anchor>bottom</anchor>
+			<offset>-20</offset>
+		</bottom>
+	</anchored>
+	<!--Custom onDrop function for this control.  return nil so that formatted text control allows dropping of links
+	This means that the overiding manager drop code does not execute for this control.-->
+	<script>
+		function onDrop(x, y, draginfo)
+			return;
+		end
+	</script>
+</sheetformattedtextfield>
+<scrollbar>
+	<anchored>
+		<to>notes_notes_notes</to>
+		<offset>-6,0</offset>
+	</anchored>
+	<target>notes_notes_notes</target>
+</scrollbar>
 
 			<!-- EXPERIENCE -->
 						<sheetframe name="main_experience">
