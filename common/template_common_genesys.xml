@@ -8,6 +8,19 @@
 
 <root>
 <!-- Overwritting core -->
+
+
+<template name="simplestring">
+  <stringfield>
+    <script file="common/scripts/simplestring.lua" />
+    <droptypes>
+      <type>string</type>
+    </droptypes>
+    <font>sheettext</font>
+  </stringfield>
+</template>
+
+
 <template name="ft_columnh">
   <ft_column>
     <script file="common/scripts/column_ft.lua" />

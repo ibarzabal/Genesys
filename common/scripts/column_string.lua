@@ -1,38 +1,33 @@
--- GENESYS: replacing CORE column_ft.lua
-
 --
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
 
- -- GENESYS
-local updating = false;
-local node = nil;
-
 function onInit()
 	if isReadOnly() then
 		self.update(true);
 	else
-		node = getDatabaseNode();
+		local node = getDatabaseNode();
 		if not node or node.isReadOnly() then
 			self.update(true);
 		end
 	end
 end
 
+
 function onLoseFocus()
 	update();
 end
 
-function onGainFocus()
-	update(false,false,true);
-end
 
-function update(bReadOnly, bForceHide, Reverse)
+
+
+
+function update(bReadOnly, bForceHide)
 	local bLocalShow;
 
 
-	-- GENESYS
+  -- GENESYS
 	-- Replaces special codes with Genesys Symbols
 	if not updating then
 		if node and node.isOwner() and not node.isStatic() then
@@ -40,7 +35,7 @@ function update(bReadOnly, bForceHide, Reverse)
 			updating = true;
 			-- get the source node value
 			local oldvalue = node.getValue();
-			local newvalue = StringManagerGenesys.ReplaceCodeWithSymbols(oldvalue, Reverse);
+			local newvalue = StringManagerGenesys.ReplaceCodeWithSymbols(oldvalue);
 			if newvalue ~= oldvalue then
 				node.setValue(newvalue);
 			end
@@ -60,8 +55,8 @@ function update(bReadOnly, bForceHide, Reverse)
 		end
 	end
 
-	setVisible(bLocalShow);
 	setReadOnly(bReadOnly);
+	setVisible(bLocalShow);
 
 	local sLabel = getName() .. "_label";
 	if window[sLabel] then

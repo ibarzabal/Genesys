@@ -19,8 +19,11 @@ function onLoseFocus()
 	update();
 end
 
+function onGainFocus()
+	update(true);
+end
 
-function update()
+function update(Reverse)
 	if not updating then
 		if sourcenode and sourcenode.isOwner() and not sourcenode.isStatic() then
 
@@ -29,7 +32,7 @@ function update()
 
 			-- get the source node value
 			local oldvalue = sourcenode.getValue();
-			local newvalue = StringManagerGenesys.ReplaceCodeWithSymbols(oldvalue);
+			local newvalue = StringManagerGenesys.ReplaceCodeWithSymbols(oldvalue, Reverse);
 
 -- Replaced with StringManagerGenesys.ReplaceCodeWithSymbols....
 --			local newvalue = oldvalue;

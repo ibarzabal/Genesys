@@ -29,7 +29,7 @@
   <string name="char_message_careeradd">Career '%s' added to '%s'.</string>
 	<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
 	<string name="char_label_inventory">Equipment</string>
-	<string name="char_label_skills">Skills</string>	
+	<string name="char_label_skills">Skills</string>
 	<string name="char_label_vehicles">Vehicles</string>
 	<string name="char_label_vehicle">Vehicle</string>
 	<string name="char_label_encumbrance">Encumbrance</string>
@@ -282,7 +282,7 @@
 	<string name="vehicle_label_encumbrance_capacity">Encumbrance Capacity</string>
 	<string name="vehicle_label_consumables">Consumables</string>
 	<string name="vehicle_label_control_skill">Control Skill</string>
-	<string name="vehicle_label_compliment">Compliment</string>
+	<string name="vehicle_label_compliment">Complement</string>
 	<string name="vehicle_label_passenger_capacity">Passenger Cap.</string>
 	<string name="item_header_weapons">Weapons</string>
 	<string name="vehicle_header_critical">Critical Damage</string>
