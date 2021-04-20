@@ -30,7 +30,9 @@
 	<!-- Character Main -->
 	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
   <string name="char_message_careeradd">Career '%s' added to '%s'.</string>
-	<string name="char_label_motivation">Motivation</string>
+	<string name="char_label_motivation">Motivations</string>
+	<string name="char_label_weapon">Weapons</string>
+	<string name="char_label_initiative">Initiative</string>
 	<string name="char_label_inventory">Equipment</string>
 	<string name="char_label_skills">Skills</string>
 	<string name="char_label_vehicles">Vehicles</string>

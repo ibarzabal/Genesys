@@ -86,11 +86,11 @@
 	<sub_charsheet name="abilities">
 		<class>charsheet_abilities</class>
 	</sub_charsheet>
--->
+
 	<sub_charsheet name="combat">
 		<class>charsheet_combat</class>
 	</sub_charsheet>
-
+-->
 	<sub_charsheet name="actions">
 		<class>charsheet_actions</class>
 	</sub_charsheet>
@@ -131,17 +131,12 @@
 					<icon>tab_abilities</icon>
 					<subwindow>abilities</subwindow>
 				</tab>
--->
+
 				<tab>
 					<icon>tab_combat</icon>
 					<subwindow>combat</subwindow>
 				</tab>
-
-				<tab>
-					<icon>tab_actions</icon>
-					<subwindow>actions</subwindow>
-				</tab>
-
+-->
 
 				<tab>
 					<icon>tab_inventory</icon>
@@ -165,6 +160,13 @@
 					<icon>tab_notes</icon>
 					<subwindow>notes</subwindow>
 				</tab>
+
+				<tab>
+					<icon>tab_actions</icon>
+					<subwindow>actions</subwindow>
+				</tab>
+
+
 
 				<activate>1</activate>
 			</tabs_charsheet>

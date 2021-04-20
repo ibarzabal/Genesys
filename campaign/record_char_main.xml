@@ -64,6 +64,16 @@
 					<anchored to="label_species_archetype" position="belowleft" offset="-5,5" height="20">
 						<right parent="species_archetypelink" anchor="left" offset="-5" />
 					</anchored>
+					<script>
+						function onInit()
+							onValueChanged();
+						end
+						function onValueChanged()
+							if isEmpty() then
+								window.species_archetypelink.setValue("");
+							end
+						end
+					</script>
 				</stringu>
 
 
@@ -99,6 +109,16 @@
 					<anchored to="label_char_label_career" position="belowleft" offset="-5,5" height="20">
 						<right parent="careerlink" anchor="left" offset="-5" />
 					</anchored>
+					<script>
+						function onInit()
+							onValueChanged();
+						end
+						function onValueChanged()
+							if isEmpty() then
+								window.careerlink.setValue("");
+							end
+						end
+					</script>
 				</stringu>
 
 				<frame_statblock1 name="main_statblock1">
@@ -272,9 +292,9 @@
 
 				<subwindow name="contents">
 					<anchored>
-						<top offset="200" />
+						<top offset="210" />
 						<bottom offset="-40" />
-						<left offset="10" />
+						<left offset="5" />
 						<right offset="-15" />  <!-- -150 if using the subwindows below: -->
 					</anchored>
 					<class>charsheet_main_contents</class>
@@ -312,8 +332,39 @@
 			<margins control="0,0,0,2" />
 			<!-- <script file="campaign/scripts/char_abilities.lua" /> -->
 			<sheetdata>
-				<label_charframetopg name="featstitle">
+
+				<label_charframetopg name="traitstitle">
 					<bounds>15,10,-10,20</bounds>
+					<anchored to="motivationtitle" height="20">
+						<top anchor="bottom" relation="relative" offset="7" />
+						<left />
+						<right />
+					</anchored>
+					<static textres="char_abilities_label_criticals" />
+				</label_charframetopg>
+				<list_abilities name="traits">
+					<anchored to="traitstitle">
+						<top anchor="bottom" relation="relative" offset="5" />
+						<left />
+						<right />
+					</anchored>
+					<datasource>.criticals</datasource>
+					<class>critical_item</class>
+					<listheader>traitstitle</listheader>
+				</list_abilities>
+				<button_iadd name="traits_iadd">
+					<anchored to="traitstitle" position="insidetopright" offset="5,0" />
+					<target>traits</target>
+				</button_iadd>
+
+
+				<label_charframetopg name="featstitle">
+					<anchored to="traitstitle" height="20">
+						<top anchor="bottom" relation="relative" offset="7" />
+						<left />
+						<right />
+					</anchored>
+
 					<static textres="char_abilities_label_racial_traits" />
 					<icons>open_database</icons>
 					<target>special_ability</target>
@@ -388,31 +439,6 @@
 					<target>motivations</target>
 				</button_iadd>
 
-
-				<label_charframetopg name="traitstitle">
-					<anchored to="motivationtitle" height="20">
-						<top anchor="bottom" relation="relative" offset="7" />
-						<left />
-						<right />
-					</anchored>
-					<static textres="char_abilities_label_criticals" />
-					<icons>char_abilities</icons>
-					<target>traits</target>
-				</label_charframetopg>
-				<list_abilities name="traits">
-					<anchored to="traitstitle">
-						<top anchor="bottom" relation="relative" offset="5" />
-						<left />
-						<right />
-					</anchored>
-					<datasource>.criticals</datasource>
-					<class>critical_item</class>
-					<listheader>traitstitle</listheader>
-				</list_abilities>
-				<button_iadd name="traits_iadd">
-					<anchored to="traitstitle" position="insidetopright" offset="5,0" />
-					<target>traits</target>
-				</button_iadd>
 			</sheetdata>
 		</windowclass>
 

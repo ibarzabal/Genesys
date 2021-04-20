@@ -86,6 +86,7 @@
 			</stringu>
 
 			<!-- CATEGORY -->
+
 			<button_stringcycler name="main_npc_category" source="categoryname">
 				<anchored to="main_character" position="insidetopleft" offset="315,14" width="60" height="15" />
 				<parameters>
@@ -111,10 +112,11 @@
 							window.main.subwindow.onInit();
 						end
 
-						if window.combat.subwindow then
+--[[						if window.combat.subwindow then
 							window.combat.subwindow.onInit();
-						end
 
+						end
+]]
 						if string.lower(getValue()) == "minion" then
 							window.main_minion_numbers.setVisible(true);
 						else
@@ -251,12 +253,12 @@
 				<bounds>0,65,-1,-10</bounds>
 				<class>charsheet_skilllist</class>
 			</subwindow>
--->
+
 			<subwindow name="combat">
 				<bounds>20,85,-30,-20</bounds>
 				<class>charsheet_combat</class>
 			</subwindow>
-
+-->
 			<subwindow name="actions">
 				<bounds>15,80,-20,-20</bounds>
 <!--				<bounds>0,45,-1,-20</bounds> -->
@@ -292,18 +294,12 @@
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
 				</tab>
--->
+
 				<tab>
 					<icon>tab_combat</icon>
 					<subwindow>combat</subwindow>
 				</tab>
-
-				<tab>
-					<icon>tab_actions</icon>
-					<subwindow>actions</subwindow>
-				</tab>
-
-
+-->
 				<tab>
 					<icon>tab_inventory</icon>
 					<subwindow>inventory</subwindow>
@@ -319,6 +315,10 @@
 					<subwindow>notes</subwindow>
 				</tab>
 
+				<tab>
+					<icon>tab_actions</icon>
+					<subwindow>actions</subwindow>
+				</tab>
 				<activate>1</activate>
 			</tabs_charsheet>
 			<close_charsheet />

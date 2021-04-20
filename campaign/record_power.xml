@@ -75,13 +75,11 @@
 		</sheetdata>
 	</windowclass>
 
-
 	<windowclass name="power_page">
 		<margins control="0,0,0,2" />
 		<script file="campaign/scripts/power_page.lua" />
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-
 			<list_powers name="powers" />
 		</sheetdata>
 	</windowclass>
@@ -143,9 +141,20 @@
 				<invisible />
 			</cycler_power_useperiod>
 -->
+
+			<genericcontrol>
+				<anchored height="3">
+					<top parent="leftanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="5" />
+					<right />
+				</anchored>
+				<frame name="separatorline" />
+				<disabled />
+			</genericcontrol>
+
 			<string_power name="name">
 				<anchored>
-					<top offset="2" />
+					<top offset="10" />
 					<left parent="leftanchor" anchor="right" relation="relative" offset="10" />
 					<right anchor="center" offset="0" />
 				</anchored>
@@ -167,7 +176,7 @@
 			</genericcontrol>
 			<string_power name="group">
 				<anchored>
-					<top offset="2" />
+					<top offset="10" />
 					<left parent="name" anchor="right" offset="10" />
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 				</anchored>
@@ -202,11 +211,6 @@
 					<left anchor="left" offset="20" />
 					<right anchor="right" offset="-10" />
 				</anchored>
-
-
-
-
-
 				<tooltip textres="power_tooltip_summary" />
 <!--				<invisible /> -->
 			</string_power>
@@ -242,7 +246,7 @@
 -->
 			<button_idelete name="idelete">
 				<anchored to="rightanchor">
-					<top />
+					<top offset="5" />
 					<right anchor="left" relation="relative" offset="-5" />
 				</anchored>
 			</button_idelete>
@@ -260,7 +264,7 @@
 						DB.addHandler(DB.getPath(node, "actions"), "onChildDeleted", update);
 
 						local bShow = (DB.getChildCount(window.getDatabaseNode(), "actions") > 0);
-						setVisible(bShow);
+--[[						setVisible(bShow);  ]]
 						setValue(1);
 					end
 
@@ -273,10 +277,10 @@
 					function update()
 						if DB.getChildCount(window.getDatabaseNode(), "actions") > 0 then
 							setValue(1);
-							setVisible(true);
+--[[							setVisible(true); ]]
 						else
 							setValue(0);
-							setVisible(false);
+--[[							setVisible(false); ]]
 						end
 					end
 				</script>

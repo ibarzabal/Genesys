@@ -196,6 +196,7 @@ function updateDisplay()
 				w.iadd.setVisible(bEditMode);
 			else
 				w.idelete.setVisibility(bEditMode);
+--				w.group.setVisible(bEditMode); Not working, for some reason....
 			end
 		end
 	end

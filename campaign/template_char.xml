@@ -1394,6 +1394,40 @@
 		</buttonfield>
 	</template>
 
+
+	<template name="list_charweapon2">
+		<windowlist>
+			<datasource>.inventorylist</datasource>
+			<class>charsheet_combat_weapon</class>
+			<script>
+				function onFilter(w)
+					local itemnode = w.getDatabaseNode();
+					local carried = itemnode.getChild("carried");
+					local isweapon = itemnode.getChild("type");
+					local isIDnode = itemnode.getChild("isidentified");
+
+					if isweapon == nil then
+						return false;
+					end
+					if isIDnode == nil then
+						isID = 1;
+					else
+						isID = isIDnode.getValue();
+					end
+					if carried.getValue() == 2 and isweapon.getValue():lower() == "weapon" and isID == 1 then
+						return true;
+					else
+						return false;
+					end
+				end
+			</script>
+			<sortby><control>name</control></sortby>
+		</windowlist>
+	</template>
+
+
+
+
 	<template name="number_charweaponfullattack">
 		<basicnumber>
 			<frame merge="delete" />

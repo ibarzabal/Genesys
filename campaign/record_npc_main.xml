@@ -103,6 +103,16 @@
 				<anchored to="label_species_archetype" position="belowleft" offset="-5,5" height="20">
 					<right parent="species_archetypelink" anchor="left" offset="-5" />
 				</anchored>
+				<script>
+					function onInit()
+						onValueChanged();
+					end
+					function onValueChanged()
+						if isEmpty() then
+							window.species_archetypelink.setValue("");
+						end
+					end
+				</script>				
 			</stringu>
 
 			<!--NPC Power Levels -->

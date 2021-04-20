@@ -6,6 +6,7 @@
 -->
 
 <root>
+
 	<windowclass name="charsheet_actions">
 		<script>
 			function onDrop(x, y, draginfo)
@@ -16,6 +17,7 @@
 			end
 		</script>
 		<sheetdata>
+
 <!--
 			<frame_char name="skillframe">
 				<bounds>1,1,-1,-1</bounds>
@@ -112,14 +114,79 @@
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 
-<!-- Re-enable later ??
-			<label_charframetop name="weapontitle">
+
+
+			<label_charframetopg name="init_title">
 				<anchored height="20">
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
 					<left offset="15" />
 					<right offset="-10" />
 				</anchored>
-				<icons>char_attacks</icons>
+				<static textres="char_label_initiative" />
+				<script>
+					function onClickDown()
+						return true;
+					end
+
+					function onClickRelease()
+						local bVisible = window.combat_init_cool.isVisible ();
+						if bVisible then
+							setFont("subwindowsmalltitle_disabled");
+							window.combat_init_cool.setVisible(false);
+							window.combat_init_cool_btn.setVisible(false);
+							window.combat_init_vigilance.setVisible(false);
+							window.combat_init_vigilance_btn.setVisible(false);
+						else
+							setFont("subwindowsmalltitle");
+							window.combat_init_cool.setVisible(true);
+							window.combat_init_cool_btn.setVisible(true);
+							window.combat_init_vigilance.setVisible(true);
+							window.combat_init_vigilance_btn.setVisible(true);
+						end
+						return true;
+					end
+				</script>
+			</label_charframetopg>
+
+		<!-- Cool -->
+		<sheetlabel name="combat_init_cool">
+			<anchored height="20">
+				<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
+				<left offset="100" />
+			</anchored>
+			<static>Cool</static>
+		</sheetlabel>
+
+		<initdicepool name="combat_init_cool_btn">
+			<anchored to="combat_init_cool" position="righthigh" offset="20,0" width="30" height="20" />
+		</initdicepool>
+
+		<!-- Vigilance -->
+		<sheetlabel name = "combat_init_vigilance">
+			<anchored to="combat_init_cool_btn" position="righthigh" offset="100,0" width="64" height="20" />
+			<static>Vigilance</static>
+		</sheetlabel>
+
+		<initdicepool name="combat_init_vigilance_btn">
+			<anchored to="combat_init_vigilance" position="righthigh" offset="20,0" width="30" height="20" />
+		</initdicepool>
+
+
+
+
+
+
+
+
+
+
+
+			<label_charframetopg name="weapontitle">
+				<anchored height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
+					<left offset="15" />
+					<right offset="-10" />
+				</anchored>
 				<static textres="char_label_weapon" />
 				<script>
 					function onClickDown()
@@ -138,7 +205,8 @@
 						return true;
 					end
 				</script>
-			</label_charframetop>
+			</label_charframetopg>
+<!--
 			<buttoncontrol name="weapons_global_detail">
 				<anchored to="weapontitle" position="insidetopright" offset="20,1" width="20" height="20" />
 				<state icon="button_details" pressed="button_details_down" />
@@ -159,7 +227,18 @@
 				<noscroll />
 			</list_charweapon>
 
+
 -->
+
+			<list_charweapon2 name="weapons">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="10" />
+					<left offset="10" />
+					<right offset="-5" />
+				</anchored>
+				<class>charsheet_combat_weapon</class>
+				<noscroll />
+			</list_charweapon2>
 
 <!--
 			<subwindow name="spellslots_prep">
@@ -199,6 +278,7 @@
 
 		</sheetdata>
 	</windowclass>
+
 
 	<windowclass name="char_weaponmeta">
 		<frame>charsheethelper</frame>
