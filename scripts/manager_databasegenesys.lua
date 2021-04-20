@@ -31,6 +31,26 @@ function checkForDuplicateName(listnode, sourcenode)
 	return false;
 end
 
+function ActorVehicle(actornode)
+	local current_vehicle;
+	local current_vehicle_node;
+	local npc_child_list;
+--	Debug.chat("DBManagerGenesys.Actorvehicle");
+
+	if DB.getValue(actornode,"vehicle_current","") == "" then
+		return "",nil;
+	end
+
+	if ActorManager.isPC(actornode) then
+		current_vehicle = DB.getValue(actornode,"vehicle_current","");
+		current_vehicle_node = DB.findNode(current_vehicle);
+	else
+		current_vehicle_node = actornode.getChild("vehicleslist." .. DB.getValue(actornode,"vehicle_current",""));
+		current_vehicle = current_vehicle_node.getNodeName();
+	end
+	return current_vehicle,current_vehicle_node;
+end
+
 
 -- JOHN: I will re-enable and update each function below as they come up needed in the process of recreating this ruleset
 

@@ -917,6 +917,16 @@
 		<genericcontrol>
 			<stateicons>
 				<on>button_skill_on</on>
+				<off>button_skill_off</off>
+			</stateicons>
+			<script file="common/scripts/buttongroup_counter.lua" />
+		</genericcontrol>
+	</template>
+
+	<template name="buttongroup_skill_counteri">
+		<genericcontrol>
+			<stateicons>
+				<on>button_skill_on</on>
 				<off>button_skill_off_inv</off>
 			</stateicons>
 			<script file="common/scripts/buttongroup_counter.lua" />
@@ -982,14 +992,27 @@
 				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 			</anchored>
 		</skilldicepool>
-		<buttongroup_skill_counter name="advances">
+
+		<buttongroup_skill_counteri name="advances">
 			<anchored width="30" height="20">
 				<top offset="2" />
 				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 			</anchored>
 		  <sourcefields><current>advances</current></sourcefields>
 		  <values><maximum>10</maximum></values>
+		</buttongroup_skill_counteri>
+
+		<buttongroup_skill_counter name="advances_edit">
+			<anchored width="30" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		  <sourcefields><current>advances</current></sourcefields>
+		  <values><maximum>10</maximum></values>
+			<invisible />
 		</buttongroup_skill_counter>
+
+
 		<stringu name="characteristic">
 			<anchored width="20" height="20">
 				<top offset="2" />
@@ -1039,12 +1062,9 @@
 				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
 					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
 						setVisible(true);
-						setTooltipText("Minion skill?");
 					else
 						setVisible(false);
 					end
-				else
-					setTooltipText("Career Skill");
 				end
 
 			end
@@ -1057,6 +1077,8 @@
 				end
 			end
 		</script>
+		<tooltip textres="npc_sheet_minion_skill" />
+
 		</button_career_checkbox>
 		<genericcontrol name="rightanchor">
 			<anchored width="0" height="0">
@@ -1086,14 +1108,28 @@
 				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 			</anchored>
 		</skilldicepool>
-		<buttongroup_skill_counter name="advances">
+
+		<buttongroup_skill_counteri name="advances">
 			<anchored width="30" height="20">
 				<top offset="2" />
 				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 			</anchored>
 		  <sourcefields><current>advances</current></sourcefields>
 		  <values><maximum>10</maximum></values>
+		</buttongroup_skill_counteri>
+
+		<buttongroup_skill_counter name="advances_edit">
+			<anchored width="30" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		  <sourcefields><current>advances</current></sourcefields>
+		  <values><maximum>10</maximum></values>
+			<invisible />
 		</buttongroup_skill_counter>
+
+
+
 		<stringu name="characteristic">
 			<anchored width="20" height="20">
 				<top offset="2" />
@@ -1333,15 +1369,15 @@
 			</button_idelete>
 
 			<link_listitem_column name="shortcut">
-				<class>vehicle</class>
+				<class>vehicle_char</class>
 			</link_listitem_column>
 
-			<button_vehicle name="enter_vehicle">
+			<button_vehicle_enter name="enter_vehicle">
 				<anchored to="rightanchor">
 					<top />
 					<right anchor="left" relation="relative" offset="-5" />
 				</anchored>
-			</button_vehicle>
+			</button_vehicle_enter>
 
 			<string_listitem_column_name name="name">
 					<disabled />

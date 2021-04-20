@@ -7,11 +7,11 @@
 
 <root>
 
-	<template name="button_vehicle">
+
+	<template name="button_vehicle_enter">
 		<buttoncontrol>
 			<anchored width="20" height="20" />
-			<state icon="button_vehicle_enter"/>
-<!--			<state icon="button_vehicle_enter_down" tooltipres="button_deleteconfirm" /> -->
+			<icon normal="button_sizedown" pressed="button_sizedown_down" />
 			<tooltip textres="button_enter_vehicle" />
 			<script>
 				function setVisibility(bVisible)
@@ -21,10 +21,36 @@
 
 				function onButtonPress()
 					local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
-					local vehiclenode = window.getDatabaseNode().getNodeName();
+					local vehiclenode;
+					if ActorManager.isPC(actornode) then
+						vehiclenode = window.getDatabaseNode().getNodeName();
+					else
+						vehiclenode = window.getDatabaseNode().getName();
+					end
 					actornode.createChild("vehicle_current","string").setValue(vehiclenode);
+					local msg = {font = "systemfont"};
+					msg.text = Interface.getString("button_vehicle_enter_message");
+					Comm.addChatMessage(msg);
+				end
+			</script>
+		</buttoncontrol>
+	</template>
 
 
+	<template name="button_vehicle_exit">
+		<buttoncontrol>
+			<anchored width="20" height="20" />
+			<icon normal="button_close" pressed="button_close_down" />
+			<tooltip textres="button_exit_vehicle" />
+
+			<script>
+				function onButtonPress()
+					local node = window.getDatabaseNode();
+					DB.setValue(node, "vehicle_current", "string","");
+					local current_vehicle, current_vehicle_node = DBManagerGenesys.ActorVehicle(node);
+					local msg = {font = "systemfont"};
+					msg.text = Interface.getString("button_vehicle_exit_message");
+					Comm.addChatMessage(msg);
 				end
 			</script>
 		</buttoncontrol>

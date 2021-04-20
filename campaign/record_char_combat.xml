@@ -403,7 +403,7 @@
 						<anchored>
 							<to>combat_weapons</to>
 							<position>insidetopleft</position>
-							<offset>262,8</offset>
+							<offset>282,8</offset>
 							<size>
 								<width>25</width>
 							</size>
@@ -417,7 +417,7 @@
 						<anchored>
 							<to>combat_weapons</to>
 							<position>insidetopleft</position>
-							<offset>351,8</offset>
+							<offset>385,8</offset>
 							<size>
 								<width>25</width>
 							</size>
@@ -430,7 +430,7 @@
 						<anchored>
 							<to>combat_weapons</to>
 							<position>insidetopleft</position>
-							<offset>380,8</offset>
+							<offset>415,8</offset>
 							<size>
 								<width>25</width>
 							</size>
@@ -443,7 +443,7 @@
 						<anchored>
 							<to>combat_weapons</to>
 							<position>insidetopleft</position>
-							<offset>409,8</offset>
+							<offset>440,8</offset>
 							<size>
 								<width>25</width>
 							</size>
@@ -492,13 +492,14 @@
 								else
 									isID = isIDnode.getValue();
 								end
-								if carried.getValue() == 2 and isweapon.getValue():lower() == "weapon" and isID == 1 then
+								if isweapon.getValue():lower() == "weapon" and isID == 1 then
 									return true;
 								else
 									return false;
 								end
 							end
 						</script>
+						<!-- Removed  [carried.getValue() == 2 and ] from condition above, so it does not matter id the weapon is equiped or not -->
 					</sheetlist>
 					<scrollbar>
 						<anchored>

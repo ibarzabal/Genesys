@@ -67,6 +67,11 @@ function update()
 			w.characteristic.setLine(true);
 			w.category.setEnabled(true);
 			w.category.setLine(true);
+			w.advances.setEnabled(true);
+			w.advances_edit.setEnabled(true);
+			w.advances.setVisible(false);
+			w.advances_edit.setVisible(true);
+			w.career_skill.setEnabled(true);
 		else
 			w.idelete_spacer.setVisible(bEditMode);
 			w.idelete.setVisibility(false);
@@ -79,6 +84,11 @@ function update()
 			w.characteristic.setLine(false);
 			w.category.setEnabled(false);
 			w.category.setLine(false);
+			w.advances.setEnabled(false);
+			w.advances_edit.setEnabled(false);
+			w.advances.setVisible(true);
+			w.advances_edit.setVisible(false);
+			w.career_skill.setEnabled(false);
 		end
 	end
 end
@@ -116,7 +126,6 @@ function constructDefaultskilllist(sListType)
 	local entrymap = {};
 	for _,w in pairs(getWindows()) do
 		local sLabel = w.name.getValue();
---		Debug.chat("sLabel",sLabel);
 		local t = aSystemskilllist[sLabel];
 		if t and not t.sublabeling then
 			if not entrymap[sLabel] then

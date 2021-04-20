@@ -259,8 +259,8 @@ end
 -- 			Interface.openWindow("charsheet", characternode);
 -- 			-- Call the OOB message so that the GM can give this player ownership of the character in the database.
 -- 			playerSelectedPC(characternode, User.getUsername());
--- 			-- Change name in diebox viewer - need to tell the GM to rebuild the die box viewer
--- 			DieBoxViewListManager.remoteRebuildDieBoxData();
+-- 			-- Change name in dieboxgen viewer - need to tell the GM to rebuild the die box viewer
+-- 			DieBoxGenViewListManager.remoteRebuildDieBoxGenData();
 -- 		else
 -- 			charactersheetwindowreference.close();
 -- 		end
@@ -304,9 +304,7 @@ function getCharacterName(characternode)
 end
 
 function onDrop(characternode, x, y, draginfo)
-
-
-	Debug.console("charactermanager.lua:onDrop: Type = " .. draginfo.getType());
+--	Debug.console("charactermanager.lua:onDrop: Type = " .. draginfo.getType());
 
 	-- Added to allow dragging of damage (type = wounds) drag data.
 	if draginfo.isType("wounds") then
@@ -666,18 +664,33 @@ function addCritical(characternode)
 end
 
 function addCriticalVehicle(characternode)
-
-	Debug.console("Running addCriticalVehicle.  characternode = " .. characternode.getNodeName());
+--	Debug.chat("addCriticalVehicle");
+--	Debug.chat("addCriticalVehicle-> characternode", characternode);
+--	Debug.console("Running addCriticalVehicle.  characternode = " .. characternode.getNodeName());
 
 --	if User.isHost() or User.isOwnedIdentity(getIdentityName(characternode)) then
 
 			-- get the criticals node.  Used to check the number of current criticals sustained.
-			local criticalsnode = characternode.createChild("vehicle.shipcriticals");
 
+
+			local current_vehicle, current_vehicle_node = DBManagerGenesys.ActorVehicle(characternode);
+
+--			local current_vehicle = DB.getValue(characternode,"vehicle_current","");
+--	    local current_vehicle_node = DB.findNode(current_vehicle);
+--			Debug.chat(current_vehicle);
+--			Debug.chat(current_vehicle_node);
+			if current_vehicle =="" then
+				local msg = {font = "systemfont"};
+				msg.text = Interface.getString("vehicle_error_not_in_vehicle_message");
+				Comm.addChatMessage(msg);
+				return true;
+			end
+			local criticalsnode = DB.createChild(current_vehicle_node, "critical_damage");
 			-- Get the current number of criticals sustained.
-
+--			Debug.chat("manager_char_genesys.lua -> addCriticalVehicle");
 			local critsSustained = criticalsnode.getChildCount();
-			local modifier = critsSustained * 10;
+			local modifier = (critsSustained * 10) + ModifierStack.getSum();
+
 
 			-- Roll d100 and add criticals sustained x 10.
 
@@ -686,8 +699,9 @@ function addCriticalVehicle(characternode)
 
 			-- build the dice table
 			local dice = {};
-			table.insert(dice, "d100");
 			table.insert(dice, "d10");
+			table.insert(dice, "d10");
+			ModifierStack.reset(); --  Reset Modifierstack on desktop
 
 			-- character node name - used to apply result of critical in Chat Manager critical result handler
 			if characternode then
@@ -695,7 +709,8 @@ function addCriticalVehicle(characternode)
 			end
 
 			-- throw the dice - need to handle the result in the chatmanager handler.
-			Comm.throwDice("criticalvehicle", dice, modifier, description, {characternodename, msgidentity, gmonly});
+			Comm.throwDice("critical_vehicle", dice, modifier, characternodename);
+--			Comm.throwDice("criticalvehicle", dice, modifier, description, {characternodename, msgidentity, gmonly});
 
 		-- and return
 		return true;
@@ -1300,7 +1315,7 @@ function handleAddPlayerDice(msguser, msgidentity, msgparams)
 
 			-- add the dice to the dice pool
 			for n = 1, msgparams[3] do
-				DieBoxManager.addDie(msgparams[3 + n]);
+				DieBoxGenManager.addDie(msgparams[3 + n]);
 			end
 
 			-- print a message

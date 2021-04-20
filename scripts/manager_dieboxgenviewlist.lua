@@ -1,17 +1,17 @@
-SPECIAL_MSGTYPE_UPDATEDIEBOXLIST = "updatedieboxlist";
-SPECIAL_MSGTYPE_UPDATECLIENTDIEBOXLIST = "updateclientdieboxlist";
-SPECIAL_MSGTYPE_SYNCHDIEBOXDATA = "synchdieboxdata";
-SPECIAL_MSGTYPE_REMOTEREBUILDDIEBOX = "remoterebuilddiebox";
+SPECIAL_MSGTYPE_UPDATEDIEBOXLIST = "updatedieboxgenlist";
+SPECIAL_MSGTYPE_UPDATECLIENTDIEBOXLIST = "updateclientdieboxgenlist";
+SPECIAL_MSGTYPE_SYNCHDIEBOXDATA = "synchdieboxgendata";
+SPECIAL_MSGTYPE_REMOTEREBUILDDIEBOX = "remoterebuilddieboxgen";
 
-local dieboxviewlistcontrol = nil;
+local dieboxgenviewlistcontrol = nil;
 
 function onInit()
-	Debug.console("dieboxviewlistmanager.lua: onInit()");
+	Debug.console("dieboxgenviewlistmanager.lua: onInit()");
 	-- Register special message handler to allow sharing dicepool info with all connected clients
-	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEDIEBOXLIST, handleUpdateDieBoxList);
-	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATECLIENTDIEBOXLIST, handleUpdateClientDieBoxList);
-	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_SYNCHDIEBOXDATA, handleSynchDieBoxData);
-	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_REMOTEREBUILDDIEBOX, handleRemoteRebuildDieBox);
+	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEDIEBOXLIST, handleUpdateDieBoxGenList);
+	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATECLIENTDIEBOXLIST, handleUpdateClientDieBoxGenList);
+	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_SYNCHDIEBOXDATA, handleSynchDieBoxGenData);
+	ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_REMOTEREBUILDDIEBOX, handleRemoteRebuildDieBoxGen);
 
 	--Avoid error messages by oob handler
 	OOBManager.registerOOBMsgHandler(SPECIAL_MSGTYPE_UPDATEDIEBOXLIST, ProcessNothing);
@@ -33,47 +33,47 @@ local nada = "";
 end
 
 function onLogin(username, activated)
-	-- Update the diebox list to all clients & GM when a player logs in (activated = true) or out
-	Debug.console("dieboxviewlistmanager.lua: onLogin(), username = " .. username);
+	-- Update the dieboxgen list to all clients & GM when a player logs in (activated = true) or out
+	Debug.console("dieboxgenviewlistmanager.lua: onLogin(), username = " .. username);
 	if User.isHost() and activated then
 		-- We have a new user logging in - update die box view list across all clients.
-		updateDieBoxList("");
+		updateDieBoxGenList("");
 	else
 		-- A user is logging out, remove them from the die box view list.
-		updateDieBoxList(username, true);
+		updateDieBoxGenList(username, true);
 	end
 end
 
 function registerControl(control)
-	dieboxviewlistcontrol = control;
+	dieboxgenviewlistcontrol = control;
 end
 
 function unregisterSMHandler()
-	Debug.console("dieboxviewlistmanager.lua: unregisterSMHandler()");
-	dieboxviewlistcontrol = nil;
-	--ChatManagerGenesys.unregisterSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEDIEBOXLIST, handleUpdateDieBoxList);
+	Debug.console("dieboxgenviewlistmanager.lua: unregisterSMHandler()");
+	dieboxgenviewlistcontrol = nil;
+	--ChatManagerGenesys.unregisterSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEDIEBOXLIST, handleUpdateDieBoxGenList);
 	--if not User.isHost() then
 		-- Do not unregister is the user is host (GM) - this allows the players to use the diceboxviewlist even if the GM doesn't have it open.
-		--ChatManagerGenesys.unregisterSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATECLIENTDIEBOXLIST, handleUpdateClientDieBoxList);
+		--ChatManagerGenesys.unregisterSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATECLIENTDIEBOXLIST, handleUpdateClientDieBoxGenList);
 	--end
 end
 
-function remoteRebuildDieBoxData()
+function remoteRebuildDieBoxGenData()
 	-- Called by a remote client to rebuild the die box - usually when the player switches PCs or selects their first PC.
-	Debug.console("dieboxviewlistmanager.lua: remoteRebuildDieBoxData()");
+	Debug.console("dieboxgenviewlistmanager.lua: remoteRebuildDieBoxGenData()");
 
 	ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_REMOTEREBUILDDIEBOX, {});
 end
 
-function handleRemoteRebuildDieBox()
+function handleRemoteRebuildDieBoxGen()
 	if User.isHost() then
-		updateDieBoxList("");
+		updateDieBoxGenList("");
 	end
 end
 
-function synchDieBoxData()
+function synchDieBoxGenData()
 	-- Called when the die box viewer is first opened to synch current die pool data.
-	Debug.console("dieboxviewlistmanager.lua: synchDieBoxData()");
+	Debug.console("dieboxgenviewlistmanager.lua: synchDieBoxGenData()");
 	--local msgparams = {};
 	-- Only the GM can create the list of logged in users.
 	--msgparams[1] = User.getUsername();
@@ -81,21 +81,21 @@ function synchDieBoxData()
 
 end
 
-function handleSynchDieBoxData(msguser, msgidentity, msgparams)
+function handleSynchDieBoxGenData(msguser, msgidentity, msgparams)
 	--local username = msgparams[1];
-	--Debug.console("dieboxviewlist.lua: handleSynchDieBoxData()  Username = " .. username);
-	Debug.console("dieboxviewlistmanager.lua: handleSynchDieBoxData()");
-	--updateClientDieBoxList();
+	--Debug.console("dieboxgenviewlist.lua: handleSynchDieBoxGenData()  Username = " .. username);
+	Debug.console("dieboxgenviewlistmanager.lua: handleSynchDieBoxGenData()");
+	--updateClientDieBoxGenList();
 	--if User.isHost() then
-	--	updateDieBoxList(username);
+	--	updateDieBoxGenList(username);
 	--end
 
-	DieBoxManager.readDicepool();
+	DieBoxGenManager.readDicepool();
 
 end
 
-function updateClientDieBoxList()
-	Debug.console("dieboxviewlistmanager.lua: updateClientDieBoxList()");
+function updateClientDieBoxGenList()
+	Debug.console("dieboxgenviewlistmanager.lua: updateClientDieBoxGenList()");
 	local msgparams = {};
 	-- Only the GM can create the list of logged in users.
 	msgparams[1] = User.getUsername();
@@ -103,35 +103,35 @@ function updateClientDieBoxList()
 
 end
 
-function handleUpdateClientDieBoxList(msguser, msgidentity, msgparams)
+function handleUpdateClientDieBoxGenList(msguser, msgidentity, msgparams)
 	local username = msgparams[1];
-	Debug.console("dieboxviewlistmanager.lua: handleUpdateClientDieBoxList()  Username = " .. username);
+	Debug.console("dieboxgenviewlistmanager.lua: handleUpdateClientDieBoxGenList()  Username = " .. username);
 	if User.isHost() then
-		updateDieBoxList(username);
+		updateDieBoxGenList(username);
 	end
 
 end
 
-function updateDieBoxList(username, isLogout)
+function updateDieBoxGenList(username, isLogout)
 	--Used to update the die box list.  Just the top level die boxes, not the content of the die boxes.
 	-- if isLogout = true a user is logging out and we need to remove the dix box view slot associated with the username
 	-- if isLogout is false or not present, username is used to update only for a specific user - request from user side for an update
-	--Debug.console("dieboxviewlist.lua: updateDieBoxList()  getWindowCount() = " .. getWindowCount());
+	--Debug.console("dieboxgenviewlist.lua: updateDieBoxGenList()  getWindowCount() = " .. getWindowCount());
 	local userlist = {};
 
 	-- Only the GM can create the list of logged in users.
 	if User.isHost() then
-		-- Create the GM dieboxviewslot
+		-- Create the GM dieboxgenviewslot
 		--local gmname = "GM - " .. User.getUsername();
 		--Just use GM as the GM name - this will cause issues if a player has logged in with the username of GM!
 		-- TODO: Code to avoid a clash if a player has logged in as GM.
 		local gmname = "GM";
 		table.insert(userlist, gmname);
-		-- Create all of the dieboxviewslot windows based off all of the logged in players.
+		-- Create all of the dieboxgenviewslot windows based off all of the logged in players.
 		for k,v in pairs(User.getActiveUsers()) do
 			table.insert(userlist, v);
-			--local dieboxwindow = createWindow();
-			--dieboxwindow.setIdentityName(v);
+			--local dieboxgenwindow = createWindow();
+			--dieboxgenwindow.setIdentityName(v);
 		end
 
 		if isLogout then
@@ -147,26 +147,26 @@ function updateDieBoxList(username, isLogout)
 
 		local msgparams = {};
 		userliststring = table.concat(userlist, ",");
-		Debug.console("dieboxviewlist.lua: updateDieBoxList().  User list = " .. userliststring);
+		Debug.console("dieboxgenviewlist.lua: updateDieBoxGenList().  User list = " .. userliststring);
 		--Debug.console("dicepoolmanager.lua: readDicepool.  Dieliststring = " .. dieliststring);
 		msgparams[1] = userliststring;
 		msgparams[2] = username;
 		ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_UPDATEDIEBOXLIST, msgparams);
 
 		-- Update refreshed die box view list with data
-		synchDieBoxData();
+		synchDieBoxGenData();
 	end
 
 end
 
-function handleUpdateDieBoxList(msguser, msgidentity, msgparams)
-	if dieboxviewlistcontrol then
+function handleUpdateDieBoxGenList(msguser, msgidentity, msgparams)
+	if dieboxgenviewlistcontrol then
 		local userliststring = msgparams[1];
 		local username = msgparams[2];
 		local userlist = {};
-		Debug.console("dieboxviewlist.lua: handleUpdateDieBoxList()  userliststring = " .. userliststring .. ", username = " .. username);
+		Debug.console("dieboxgenviewlist.lua: handleUpdateDieBoxGenList()  userliststring = " .. userliststring .. ", username = " .. username);
 		if username == "" or User.getUsername() == username then
-			--Debug.console("dieboxviewlist.lua: handleUpdateDieBoxList()  updating...");
+			--Debug.console("dieboxgenviewlist.lua: handleUpdateDieBoxGenList()  updating...");
 
 			--Debug.console("dicepoolmanager.lua: handleSendPlayerDicepool. msguser = " .. msguser .. ", msgidentity = " .. msgidentity);
 
@@ -174,11 +174,11 @@ function handleUpdateDieBoxList(msguser, msgidentity, msgparams)
 			userlist = StringManager.split(userliststring, ",");
 
 			-- Remove all current windows in the windowlist - we will add in new ones.
-			dieboxviewlistcontrol.closeAll();
-			-- Create all of the dieboxviewslot windows based off all of the logged in players.
+			dieboxgenviewlistcontrol.closeAll();
+			-- Create all of the dieboxgenviewslot windows based off all of the logged in players.
 			for k,v in pairs(userlist) do
-				--Debug.console("dieboxviewlist.lua: handleUpdateDieBoxList().  Looping through userlist table - " .. k .. ", " .. v);
-				-- Don't add the local diebox to the view - we can already see it!
+				--Debug.console("dieboxgenviewlist.lua: handleUpdateDieBoxGenList().  Looping through userlist table - " .. k .. ", " .. v);
+				-- Don't add the local dieboxgen to the view - we can already see it!
 				local localusername = "";
 				if User.isHost() then
 					localusername = "GM";
@@ -188,20 +188,20 @@ function handleUpdateDieBoxList(msguser, msgidentity, msgparams)
 
 				if v ~= localusername then
 					-- Create the die box view control in the list
-					local dieboxwindow = dieboxviewlistcontrol.createWindow();
-					--Debug.console("dieboxviewlist.lua: handleUpdateDieBoxList(). After creating window.");
-					dieboxwindow.setIdentityName(v);
+					local dieboxgenwindow = dieboxgenviewlistcontrol.createWindow();
+					--Debug.console("dieboxgenviewlist.lua: handleUpdateDieBoxGenList(). After creating window.");
+					dieboxgenwindow.setIdentityName(v);
 
 					-- Set the name of the entry in the dicepool viewer to the name of the currently active PC for the player in question
 					-- Sets the name to the player name if no PC is currently selected.
 					--if User.getIdentityLabel(User.getCurrentIdentity(v)) == nil then
-					--	dieboxwindow.setIdentityName(v);
+					--	dieboxgenwindow.setIdentityName(v);
 					--else
-					--	dieboxwindow.setIdentityName(User.getIdentityLabel(User.getCurrentIdentity(v)));
+					--	dieboxgenwindow.setIdentityName(User.getIdentityLabel(User.getCurrentIdentity(v)));
 					--end
 				end
 			end
-			--Debug.console("dieboxviewlist.lua: handleUpdateDieBoxList()  getWindowCount() = " .. self.getWindowCount());
+			--Debug.console("dieboxgenviewlist.lua: handleUpdateDieBoxGenList()  getWindowCount() = " .. self.getWindowCount());
 		end
 	end
 end
@@ -213,12 +213,12 @@ end
 function setDiceBoxViewListData(username, dielist, description)
 	Debug.console("diceboxviewlistmanager.lua: setDiceBoxViewListData.  username = " .. username);
 	local diceboxviewwindows = {}
-	if dieboxviewlistcontrol then
-		diceboxviewwindows = dieboxviewlistcontrol.getWindows();
+	if dieboxgenviewlistcontrol then
+		diceboxviewwindows = dieboxgenviewlistcontrol.getWindows();
 		for k,v in pairs(diceboxviewwindows) do
 			if v.getIdentityName() == username then
-				v.dieboxremote.setDice(dielist);
-				v.dieboxremote.setDescription(description);
+				v.dieboxgenremote.setDice(dielist);
+				v.dieboxgenremote.setDescription(description);
 			end
 		end
 	end

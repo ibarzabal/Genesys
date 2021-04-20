@@ -21,7 +21,7 @@ function onMenuSelection(selection)
 		for index = 1, selection + 1 do
 			table.insert(dice, type[1]);
 		end
-		DieBoxManager.addDice(dice);
+		DieBoxGenManager.addDice(dice);
 		return true;
 	end
 end
@@ -59,7 +59,7 @@ end
 
 function onDoubleClick(x, y)
 	if type then
-		DieBoxManager.addDie(type[1]);
+		DieBoxGenManager.addDie(type[1]);
 		return true;
 	end
 end

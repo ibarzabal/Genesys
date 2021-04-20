@@ -501,8 +501,9 @@
 		</framedef>
 
 		<!-- Chat die box frame -->
-		<framedef name="diebox">
-			<bitmap file="graphics/frames/diebox.png" />
+<!--
+		<framedef name="dieboX">
+			<bitmap file="graphics/frames/dieboX.png" />
 			<topleft rect="2,2,14,14" />
 			<top rect="16,2,222,14" />
 			<topright rect="238,2,14,14" />
@@ -513,7 +514,7 @@
 			<bottom rect="16,238,222,14" />
 			<bottomright rect="238,238,14,14" />
 		</framedef>
-
+-->
 		<!-- Characters -->
 <!--
 		<framedef name="charsheet">

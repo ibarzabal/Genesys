@@ -10,18 +10,18 @@
 		<frame>charsheet</frame>
 		<placement>
 			<size>
-				<width>525</width>
+				<width>545</width>
 				<height>640</height>
 			</size>
 		</placement>
 		<sizelimits>
 			<dynamic />
 			<minimum>
-				<width>525</width>
+				<width>545</width>
 				<height>640</height>
 			</minimum>
 			<maximum>
-				<width>525</width>
+				<width>545</width>
 			</maximum>
 		</sizelimits>
 		<minimize>minimized_npc</minimize>
@@ -87,7 +87,7 @@
 
 			<!-- CATEGORY -->
 			<button_stringcycler name="main_npc_category" source="categoryname">
-				<anchored to="main_character" position="insidetopleft" offset="295,14" width="60" height="15" />
+				<anchored to="main_character" position="insidetopleft" offset="315,14" width="60" height="15" />
 				<parameters>
 					<labelsres>npc_category_nemesis|npc_category_minion</labelsres>
 					<values>nemesis|minion</values>
@@ -173,7 +173,7 @@
 				<anchored>
 					<to>main_character</to>
 					<position>insidetopright</position>
-					<offset>15,14</offset>
+					<offset>0,14</offset>
 					<size>
 						<width>15</width>
 					</size>
@@ -269,6 +269,12 @@
  				<class>npcsheet_inventory</class>
 			</subwindow>
 
+			<subwindow name="vehicle">
+				<bounds>20,90,-20,-10</bounds>
+				<class>charsheet_vehicle</class>
+			</subwindow>
+
+
 			<subwindow name="notes">
 				<bounds>10,90,-1,-20</bounds>
  				<class>npcsheet_notes</class>
@@ -303,6 +309,12 @@
 					<icon>tab_inventory</icon>
 					<subwindow>inventory</subwindow>
 				</tab>
+
+				<tab>
+					<icon>tab_vehicles</icon>
+					<subwindow>vehicle</subwindow>
+				</tab>
+
 				<tab>
 					<icon>tab_notes</icon>
 					<subwindow>notes</subwindow>

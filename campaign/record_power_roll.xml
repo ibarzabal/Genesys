@@ -730,7 +730,7 @@
 					<values>self</values>
 				</parameters>
 			</button_stringcycler>
-
+<!--
 			<label_column name="apply_label">
 				<static textres="power_label_effect_apply" />
 			</label_column>
@@ -745,6 +745,8 @@
 					<values>action|roll|single</values>
 				</parameters>
 			</button_stringcycler>
+-->
+
 		</sheetdata>
 	</windowclass>
 </root>

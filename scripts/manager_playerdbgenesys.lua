@@ -132,7 +132,7 @@ end
 function createCriticalNonOwnedDB(nodeRecord, name, description, severity)
 	-- Called when the player needs to create a new child record in the database, but they don't own the record so FG blocks the change.
 	-- Need to pass the info to the GM for the GM to update.
-	
+
 	local msgparams = {};
 	-- Only the GM can create the list of logged in users.
 	msgparams[1] = nodeRecord.getNodeName();
@@ -153,11 +153,11 @@ function handleCreateCriticalNonOwnedDB(msguser, msgidentity, msgparams)
 		local severity = msgparams[4];
 		nodeRecord = DB.findNode(nodeRecordName);
 		if nodeRecord then
-			Debug.console("handleCreateCriticalNonOwnedDB().  " .. nodeRecord.getNodeName() .. ", critical name = " .. name);
+--			Debug.console("handleCreateCriticalNonOwnedDB().  " .. nodeRecord.getNodeName() .. ", critical name = " .. name);
 			-- get the criticals node
 			if string.find(nodeRecord.getNodeName(), "vehicle") then
 				-- We are adding a vehicle critical - handle slightly differently
-				criticalsnode = nodeRecord.createChild("shipcriticals");
+				criticalsnode = nodeRecord.createChild("critical_damage");
 			else
 				criticalsnode = nodeRecord.createChild("criticals");
 			end

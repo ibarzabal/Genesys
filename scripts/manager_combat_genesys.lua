@@ -735,7 +735,7 @@ function rollInit(initSkill,sType)
 				end
 			end
 
-			-- Populate the diebox with the dice for this INIT roll.
+			-- Populate the dieboxgen with the dice for this INIT roll.
 			local dice = {};
 			local skilldescription;
 			local msgidentity = DB.getValue(initskillnode, "...name", "");
@@ -747,11 +747,11 @@ function rollInit(initSkill,sType)
 					override_clear = "clear";
 				end
 
-				DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity,actornode,override_clear);
+				DieBoxGenManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity,actornode,override_clear);
 			end
 
-			--Roll the dice in the diebox - INIT will be populated to the correct init slot when the dice roll ends.
-			DieBoxManager.rollInitDice();
+			--Roll the dice in the dieboxgen - INIT will be populated to the correct init slot when the dice roll ends.
+			DieBoxGenManager.rollInitDice();
 		end
 	end
 

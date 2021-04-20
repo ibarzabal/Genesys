@@ -59,8 +59,8 @@
 	</panel>
 
 	<!-- Die Box -->
-	<panel name="diebox">
-		<class>diebox</class>
+	<panel name="dieboxgen">
+		<class>dieboxgen</class>
 		<bounds>
 			<!--<rect>14,-237,387,40</rect>-->
 			<rect>14,-237,387,40</rect>

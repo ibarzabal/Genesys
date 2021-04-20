@@ -434,6 +434,92 @@ skilldata = {
 	};
 
 
+	critical_vehicle_result_data = {
+		["Rattled"] = {
+				d100_start = 1,
+				d100_end = 18,
+				name = "Rattled",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 1,
+			},
+		["Shrapnel Spray"] = {
+				d100_start = 19,
+				d100_end = 36,
+				name = "Shrapnel Spray",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 1,
+			},
+		["Hull Damaged"] = {
+				d100_start = 37,
+				d100_end = 54,
+				name = "Hull Damaged",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 1,
+			},
+		["Navigation Damaged"] = {
+				d100_start = 55,
+				d100_end = 63,
+				name = "Navigation Damaged",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 2,
+			},
+		["Propulsion Damaged"] = {
+				d100_start = 64,
+				d100_end = 72,
+				name = "Propulsion Damaged",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 2,
+			},
+		["Defenses Damaged"] = {
+				d100_start = 73,
+				d100_end = 81,
+				name = "Defenses Damaged",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 2,
+			},
+		["Weapons Damaged"] = {
+				d100_start = 82,
+				d100_end = 108,
+				name = "Weapons Damaged",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 3,
+			},
+		["Brakes Damaged"] = {
+				d100_start = 109,
+				d100_end = 126,
+				name = "Brakes Damaged",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 3,
+			},
+		["All Systems Down"] = {
+				d100_start = 127,
+				d100_end = 138,
+				name = "All Systems Down",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 4,
+			},
+		["Fire!"] = {
+				d100_start = 139,
+				d100_end = 144,
+				name = "Fire!",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 4,
+			},
+		["Breaking Up"] = {
+				d100_start = 145,
+				d100_end = 153,
+				name = "Breaking Up",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 4,
+			},
+		["Vaporized"] = {
+				d100_start = 154,
+				d100_end = 9999,
+				name = "Vaporized",
+				description = "<p>See page 230 Genesys Core Rulebook.</p>",
+				severity = 999,
+			}
+	};
 	--
 	-- Please see the license.html file included with this distribution for
 	-- attribution and copyright information.

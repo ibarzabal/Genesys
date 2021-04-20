@@ -51,12 +51,13 @@ function onDoubleClick()
 	local dice = {};
 	local skilldescription;
 	local msgidentity = DB.getValue(sourcenode, "...name", "");
+	local actornode = sourcenode.getParent().getParent().getParent();
 	DicePoolManager.addSkillDice(sourcenode, dice);
 	if table.getn(dice) > 0 then
 		if sourcenode.getChild("name") then
 			skilldescription = sourcenode.getChild("name").getValue() .. " (" .. sourcenode.getChild("characteristic").getValue() .. ")";
 		end
 		local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
-		DieBoxManager.addSkillDice(skilldescription, dice, sourcenode, msgidentity, actornode,"default");
+		DieBoxGenManager.addSkillDice(skilldescription, dice, sourcenode, msgidentity, actornode,"default");
 	end
 end

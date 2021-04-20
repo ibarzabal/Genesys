@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
-	<!--diceboxremote used to display the contents of the diebox on the remote FG instance - i.e. allows the GM and players to view other people's dieboxes.-->
-	<template name="dieboxremote">
+	<!--diceboxremote used to display the contents of the dieboxgen on the remote FG instance - i.e. allows the GM and players to view other people's dieboxgenes.-->
+	<template name="dieboxgenremote">
 <!--		<sizelimits>
 			<minimum>
 				<height>30</height>
@@ -16,7 +16,7 @@
 			</size>
 		</placement>-->		
 		<!--<sheetdata>-->
-			<genericcontrol name="dieboxcontrol">
+			<genericcontrol name="dieboxgencontrol">
 				<bounds>0,0,-1,-1</bounds>
 <!--				<droptypes>
 					<type>dice</type>
@@ -27,7 +27,7 @@
 						<offset>-3,-3,-2,-2</offset>
 					</drophilight>
 				</stateframe>
-				<script file="classes/desktop/dieboxremote.lua" />				
+				<script file="classes/desktop/dieboxgenremote.lua" />				
 			</genericcontrol>		
 			<closebutton />			
 		<!--</sheetdata>-->

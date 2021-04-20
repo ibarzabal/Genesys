@@ -16,6 +16,8 @@
 
 						window.contents.subwindow.inventorylist_iadd.setVisible(bEditMode);
 						window.contents.subwindow.inventorylist.update();
+						window.contents.subwindow.vehicleslist_iadd.setVisible(bEditMode);
+						window.contents.subwindow.vehicleslist.update();
 					end
 				</script>
 				<target>inventorylist</target>
@@ -112,6 +114,34 @@
 				</anchored>
 				<noscroll />
 			</list_charinv>
+
+
+			<!-- Vehicles -->
+			<label_charframetopg name="vehiclestitle">
+				<anchored to="invtitle" height="20">
+					<top anchor="bottom" relation="relative" offset="10" />
+					<left />
+					<right />
+				</anchored>
+<!--				<icons>char_treasure</icons> -->
+				<static textres="char_label_vehicles" />
+			</label_charframetopg>
+			<button_iadd name="vehicleslist_iadd">
+				<anchored to="vehiclestitle" position="insidetopright" offset="0,0" />
+				<target>vehicleslist</target>
+			</button_iadd>
+			<list_vehiclesinv name="vehicleslist">
+				<anchored to="invtitle">
+					<top anchor="bottom" relation="relative" offset="2" />
+					<right offset="5" />
+					<left offset="-5" />
+				</anchored>
+				<noscroll />
+			</list_vehiclesinv>
+			<!-- Vehicles END -->
+
+
+
 		</sheetdata>
 	</windowclass>
 </root>

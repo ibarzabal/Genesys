@@ -5,49 +5,48 @@ local sourcenode = nil;
 local entries = {};
 local descriptionwidget = nil;
 local shadowwidget = nil;
-local dieboxidentity = nil;
+local dieboxgenidentity = nil;
 
 function onInit()
-	DieBoxManager.registerControl(self);
+	--DieBoxGenManager.registerControl(self);
 	registerMenuItem("Clear dice", "erase", 4);
-	registerMenuItem("Dicepool Tracker", "broadcast", 5);
-
-	Comm.registerSlashHandler("rolldicepool", onDieboxButtonPress);
 end
 
--- Genesys - for now dragging genesys dice is causing too many issues with FGU and FGC
--- disabling drag, players should double click instead
---function onDragStart(button, x, y, draginfo)
---	dragging = false;
---	return onDrag(button, x, y, draginfo);
---end
---
---function onDrag(button, x, y, draginfo)
---	if table.getn(entries) > 0 then
---		if not dragging then
---			if table.getn(getDice()) > 0 then
---				draginfo.setType(typename);
---				draginfo.setDescription(getDescription());
---				draginfo.setDieList(getDice());
---				draginfo.setDatabaseNode(sourcenode);
---				dragging = true;
---				if OptionsManager.getOption("interface_cleardicepoolondrag") then
---					resetAll();
---				end
---				return true;
---			end
---		end
---	end
---end
---
---function onDragEnd(draginfo)
---	dragging = false;
---end
+function onDragStart(button, x, y, draginfo)
+	--dragging = false;
+	--return onDrag(button, x, y, draginfo);
+end
+
+function onDrag(button, x, y, draginfo)
+	if table.getn(entries) > 0 then
+		if not dragging then
+			if table.getn(getDice()) > 0 then
+				draginfo.setType(typename);
+				draginfo.setDescription(getDescription());
+				draginfo.setDieList(getDice());
+				draginfo.setDatabaseNode(sourcenode);
+				dragging = true;
+				if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
+					resetAll();
+				end
+				return true;
+			end
+		end
+	end
+end
+
+function onDragEnd(draginfo)
+	dragging = false;
+end
 
 function onDrop(x, y, draginfo)
-	if OptionsManager.getOption("interface_cleardicepoolondrag") then
-		Debug.console("Campaign Option interface_cleardicepoolondrag set");
-	end
+
+	-- Don't allow dropping of dice or anything else to the viewer - it is not two-way and there is no drop functionality.
+	return true;
+
+end
+
+function XXX_Old_onDrop(x, y, draginfo)
 	if not dragging then
 
 		-- Dice
@@ -63,21 +62,13 @@ function onDrop(x, y, draginfo)
 
 		-- Chit
 		if draginfo.isType("chit") then
+
 			if draginfo.getCustomData() == "StoryPointPC" then
 				-- Upgrade PC dice or downgrade NPC dice.
-				if User.isHost() then
-					DieBoxUpgradeDowngradeButtonPress("dieboxupgradedifficulty");
-				else
-					DieBoxUpgradeDowngradeButtonPress("dieboxupgradeability");
-				end
+				Debug.console("TODO: Story Point (Player) token code.");
 			elseif draginfo.getCustomData() == "StoryPointGM" then
 				-- Downgrade PC dice or upgrade NPC dice.
-				Debug.console("TODO: Darkside destiny token code.");
-				if User.isHost() then
-					DieBoxUpgradeDowngradeButtonPress("dieboxupgradeability");
-				else
-					--DieBoxUpgradeDowngradeButtonPress("dieboxupgradeability");
-				end
+				Debug.console("TODO: Story Point (GM) token code.");
 			end
 
 			-- WFRP3
@@ -87,13 +78,12 @@ function onDrop(x, y, draginfo)
 			--	addDie("dChallenge");
 			--end
 		end
+
 		-- Action
 		if draginfo.isType("action") then
 			local dielist = draginfo.getDieList();
 			if dielist then
-				if OptionsManager.getOption("interface_cleardicepoolondrag") then
-					resetAll();
-				end
+				resetAll();
 				setType(draginfo.getType());
 				setDescription(draginfo.getDescription());
 				setSourcenode(draginfo.getDatabaseNode());
@@ -107,9 +97,7 @@ function onDrop(x, y, draginfo)
 		if draginfo.isType("characteristic") then
 			local dielist = draginfo.getDieList();
 			if dielist then
-				if OptionsManager.getOption("interface_cleardicepoolondrag") then
-					resetAll();
-				end
+				resetAll();
 				setType(draginfo.getType());
 				setDescription(draginfo.getDescription());
 				setSourcenode(draginfo.getDatabaseNode());
@@ -123,9 +111,7 @@ function onDrop(x, y, draginfo)
 		if draginfo.isType("skill") then
 			local dielist = draginfo.getDieList();
 			if dielist then
-				if OptionsManager.getOption("interface_cleardicepoolondrag") then
-					resetAll();
-				end
+				resetAll();
 				setType(draginfo.getType());
 				setDescription(draginfo.getDescription());
 				setSourcenode(draginfo.getDatabaseNode());
@@ -139,9 +125,7 @@ function onDrop(x, y, draginfo)
 		if draginfo.isType("specialisation") then
 			local dielist = draginfo.getDieList();
 			if dielist then
-				if OptionsManager.getOption("interface_cleardicepoolondrag") then
-					resetAll();
-				end
+				resetAll();
 				setType(draginfo.getType());
 				setDescription(draginfo.getDescription());
 				setSourcenode(draginfo.getDatabaseNode());
@@ -161,9 +145,7 @@ function onDrop(x, y, draginfo)
 				local modifiers = {};
 				local recordnode = DB.findNode(recordname);
 				if recordnode then
-					if OptionsManager.getOption("interface_cleardicepoolondrag") then
-						resetAll();
-					end
+					resetAll();
 					setType("skill");
 					local namenode = recordnode.getChild("name");
 					if namenode then
@@ -182,9 +164,7 @@ function onDrop(x, y, draginfo)
 				local modifiers = {};
 				local recordnode = DB.findNode(recordname);
 				if recordnode then
-					if OptionsManager.getOption("interface_cleardicepoolondrag") then
-						resetAll();
-					end
+					resetAll();
 					setType("action");
 					local namenode = recordnode.getChild("name");
 					if namenode then
@@ -203,9 +183,7 @@ function onDrop(x, y, draginfo)
 				local modifiers = {};
 				local recordnode = DB.findNode(recordname);
 				if recordnode then
-					if OptionsManager.getOption("interface_cleardicepoolondrag") then
-						resetAll();
-					end
+					resetAll();
 					setType("specialisation");
 					local namenode = recordnode.getChild("name");
 					if namenode then
@@ -255,28 +233,7 @@ function removeDie(index)
 	end
 end
 
-function findDieOfType(dietype)
-	for k, v in pairs(getDice()) do
-		if v == dietype then
-			return k;
-		end
-	end
-	return 0;
-end
-
-function replaceDie(dielistindex, dietype)
-	local entry = {};
-	entry.type = dietype;
-	entry.icon = addBitmapWidget(dietype .. "icon");
-	table.insert(entries, dielistindex, entry);
-	removeDie(dielistindex + 1);
-	updateIcons();
-
-end
-
-
 function updateIcons()
-
 	if table.getn(entries) > 0 then
 		local position = 0 - (iconwidth * (table.getn(entries) - 1)) / 2;
 		for k, v in ipairs(entries) do
@@ -292,16 +249,6 @@ function updateIcons()
 	if descriptionwidget then
 		descriptionwidget.bringToFront();
 	end
-
-
-	-- Update any remote clients viewing this diebox.  Only send GM info if reveal is on.
-	if User.isHost() then
-		if not ChatManagerGenesys.gmDieHide() then
-			DieBoxManager.sendPlayerDicepool(getDice(), getDescription());
-		end
-	else
-		DieBoxManager.sendPlayerDicepool(getDice(), getDescription());
-	end
 end
 
 function resetEntries()
@@ -311,7 +258,6 @@ function resetEntries()
 		end
 		entries = {};
 	end
-
 end
 
 function getDice()
@@ -325,6 +271,7 @@ function getDice()
 end
 
 function setDice(dielist)
+	Debug.console("dieboxgenremote.lua: setDice");
 	resetEntries();
 	--for k, v in ipairs(dielist) do
 	addDice(dielist);
@@ -347,21 +294,13 @@ function onDoubleClick(x, y)
 	end
 end
 
-function onMenuSelection(selection, subselection)
-	if selection == 4 then
-		resetAll();
-	elseif selection == 5 then
-		Interface.openWindow("dieboxview", "");
-	end
+function onMenuSelection(...)
+	resetAll();
 end
 
-
---function onMenuSelection(...)
---	resetAll();
---end
-
 function setDescription(description)
-	if description and description ~= "" then
+	--if description and description ~= "" then
+	if description then
 		if descriptionwidget then
 			descriptionwidget.setText(description);
 		else
@@ -381,7 +320,6 @@ function resetDescription()
 	if descriptionwidget then
 		descriptionwidget.destroy();
 		descriptionwidget = nil;
-
 	end
 	if shadowwidget then
 		shadowwidget.destroy();
@@ -402,9 +340,6 @@ function resetAll()
 	resetSourcenode();
 	resetEntries();
 	resetIdentity();
-
-	-- Update any remote clients viewing this diebox
-	DieBoxManager.sendPlayerDicepool(getDice(), getDescription());
 end
 
 function setType(type)
@@ -424,11 +359,11 @@ function resetSourcenode()
 end
 
 function setIdentity(actoridentity)
-	dieboxidentity = actoridentity;
+	dieboxgenidentity = actoridentity;
 end
 
 function resetIdentity()
-	dieboxidentity = nil;
+	dieboxgenidentity = nil;
 end
 
 function onDieboxButtonPress()
@@ -442,78 +377,23 @@ function onDieboxButtonPress()
 		local modifier = "0";
 		-- source node name
 		if sourcenode then
-			sourcenodename = sourcenode.getParent().getParent().getNodeName();
+			sourcenodename = sourcenode.getNodeName();
 		end
 		-- gm only
 		--local gmonly = OptionsManager.getOption("interface_gmonly");
-		--local gmonly = ChatManagerGenesys.gmDieHide();
-		local gmonly = "show";
-		if ChatManagerGenesys.gmDieHide() then
-			gmonly = "hide";
-		end
-
-
-
+		local gmonly = ChatManagerGenesys.gmDieHide();
 		-- build the dice table
 		local dice = getDice();
 		-- verify the identity - use the user if no identity has been set via setIdentity
---		msgidentity = dieboxidentity;
---		if msgidentity == "" then
---			msgidentity = msguser;
---		end
-
-
-		msgidentity = DB.getValue(sourcenode, "...name", User.getUsername());
-
-		-- throw the dice
-		if 	type == "dice" then
-			type = "dicegen";
+		msgidentity = dieboxgenidentity;
+		if msgidentity == "" then
+			msgidentity = msguser;
 		end
-		Comm.throwDice(type, dice, modifier, description .. "<>" .. sourcenodename .. "<>" .. msgidentity .. "<>" .. gmonly);
-		resetAll();
-end
+		-- throw the dice
+		Comm.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
 
-function DieBoxUpgradeDowngradeButtonPress(controlname)
-	--Debug.console("diebox.lua: DieBoxUpgradeDowngradeButtonPress().  Controlname = " .. controlname);
 
-	local dietoreplace = "";
-	local dietochangeto = "";
-	local keepupgrading = false;
-
-	if controlname == "dieboxupgradedifficulty" then
-		dietoreplace = "dDifficulty";
-		dietochangeto = "dChallenge";
-		keepupgrading = true;
-	elseif controlname == "dieboxdowngradechallenge" then
-		dietoreplace = "dChallenge";
-		dietochangeto = "dDifficulty";
-	elseif controlname == "dieboxupgradeability" then
-		dietoreplace = "dAbility";
-		dietochangeto = "dProficiency";
-		keepupgrading = true;
-	elseif controlname == "dieboxdowngradeproficiency" then
-		dietoreplace = "dProficiency";
-		dietochangeto = "dAbility";
-	end
-
-	--Debug.console("diebox.lua: DieBoxUpgradeDowngradeButtonPress().  Looking to replace " .. dietoreplace .. ", with " .. dietochangeto);
-	local dietoreplaceindex = findDieOfType(dietoreplace);
-	if dietoreplaceindex > 0 then
-		replaceDie(dietoreplaceindex, dietochangeto);
-	elseif keepupgrading then
-		-- No more dice found to upgrade, but this is an upagrade process that can keep going!  Add another die.
-		addDie(dietoreplace);
-	end
-
-end
-
-function onHiddenButtonPress(control)
-	Debug.console("diebox.lua: onHiddenButtonPress.  Button state = " .. control.getValue());
-	if control.getValue() == 0 then
-		DieBoxManager.readDicepool();
-		ChatManagerGenesys.gmRevealDieRolls(true);
-	elseif control.getValue() == 1 then
-		DieBoxManager.sendPlayerDicepool({}, "");
-		ChatManagerGenesys.gmRevealDieRolls(false);
-	end
+		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
+			resetAll();
+		end
 end

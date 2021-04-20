@@ -87,7 +87,7 @@ function rollSingleNPCInit()
 			end
 		end
 
-		-- Populate the diebox with the dice for this INIT roll.
+		-- Populate the dieboxgen with the dice for this INIT roll.
 		local dice = {};
 		local skilldescription;
 		local msgidentity = DB.getValue(initskillnode, "...name", "");
@@ -96,14 +96,14 @@ function rollSingleNPCInit()
 		if table.getn(dice) > 0 then
 			if initskillnode.getChild("name") then
 				skilldescription = initskillnode.getChild("name").getValue() .. " [INIT]";
-				override_clear = "clear"; -- Force clearing the diebox, we only want the init dice in there....
+				override_clear = "clear"; -- Force clearing the dieboxgen, we only want the init dice in there....
 			end
 			 local actornode = getDatabaseNode();
-			 DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode,override_clear);
+			 DieBoxGenManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode,override_clear);
 		end
 
-		--Roll the dice in the diebox - INIT will be populated to the correct init slot when the dice roll ends.
-		DieBoxManager.rollInitDice();
+		--Roll the dice in the dieboxgen - INIT will be populated to the correct init slot when the dice roll ends.
+		DieBoxGenManager.rollInitDice();
 
 		--InitiativeManager.updateActorInitiative(v.getDatabaseNode(), initiativecount)
 		--InitiativeManager.removeActor(v.getDatabaseNode());

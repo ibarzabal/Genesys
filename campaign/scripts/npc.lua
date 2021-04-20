@@ -15,6 +15,11 @@ function onDrop(x, y, draginfo)
 			CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
 			return true;
 		end
+		if StringManager.contains({"vehicle"}, sClass) then
+			addVehicle(getDatabaseNode(), sClass, sRecord)
+			return true;
+		end
+
 		if StringManager.contains({"item"}, sClass) then
 			ItemManager.handleAnyDrop(getDatabaseNode(), draginfo);
 			return true;
@@ -23,6 +28,23 @@ function onDrop(x, y, draginfo)
 
 	return CharManager.onDrop(getDatabaseNode(), x, y, draginfo);
 end
+
+
+function addVehicle(nodeChar, sClass, sRecord)
+--	local attachment_desc = DB.getValue(nodeSource, "name", "");
+--	local sFormat = Interface.getString("char_message_attachmentadd");
+--	local sMsg = string.format(sFormat, attachment_desc, DB.getValue(nodeItem, "name", ""));
+	local recordnode = DB.findNode(sRecord);
+	-- local AttachmentType = DB.getValue(recordnode,"equipment_type","");
+	local newitemnode;
+
+
+	newitemnode = nodeChar.createChild("vehicleslist").createChild();
+	DBManagerGenesys.copyNode(recordnode, newitemnode);
+	return true;
+
+end
+
 
 -- function onInit()
 -- 	TypeChanged();

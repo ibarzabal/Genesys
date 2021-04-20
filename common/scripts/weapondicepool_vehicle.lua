@@ -131,17 +131,14 @@ end
 function onDoubleClick()
 	Debug.console("Weapon roll from window class = " .. window.getClass() .. ". window database node = " .. window.getDatabaseNode().getNodeName());
 	--Debug.console("TODO - code Cool initiative roll.  Control = " .. self.getName());
---	local weaponnode = window.getDatabaseNode();
---	local weaponname = DB.getValue(window.getDatabaseNode(), "name");
---	local weaponskillvalue = weaponnode.getChild("skill").getValue();
---	local weapondamagevalue = weaponnode.getChild("damage").getValue();
---	local weaponcriticalvalue = weaponnode.getChild("critical").getValue();
-
 	local weaponnode = window.getDatabaseNode();
+	local vehiclename = DB.getValue(window.getDatabaseNode().getParent().getParent(), "name","");
+
 	local weaponname = DB.getValue(window.getDatabaseNode(), "name","");
 	local weaponskillvalue = DB.getValue(weaponnode.getChild("skill"),"");
 	local weapondamagevalue = weaponnode.getChild("damage").getValue();
 	local weaponcriticalvalue = weaponnode.getChild("critical").getValue();
+
 	if (weapondamagevalue == "" or weaponskillvalue =="") then
 		return
 	end
@@ -150,7 +147,6 @@ function onDoubleClick()
 
 	local skillsnode;
 
-
 --	-- See if we're rolling form the party sheet (group vehicle) or from a character sheet.
 --	if string.find(window.getDatabaseNode().getNodeName(), "partysheet.inventory") then
 --		if User.getCurrentIdentity() then
@@ -158,7 +154,7 @@ function onDoubleClick()
 --			skillsnode = DB.findNode("charsheet." .. User.getCurrentIdentity() .. ".skillist");
 --		end
 --	else
-		charnode = DB.getParent(DB.getParent(window.getDatabaseNode()));
+		charnode = DB.getParent(DB.getParent(DB.getParent(window.getDatabaseNode())));
 		skillsnode = charnode.getChild("skilllist");
 --	end
 	-- If we don't have the skillsnode then we can't populate the dice pool with anything - exit function.
@@ -184,7 +180,7 @@ function onDoubleClick()
 	DicePoolManager.addSkillDice(weaponskillnode, dice);
 	if table.getn(dice) > 0 then
 		if weaponskillnode.getChild("name") then
-			skilldescription = weaponname .. " - " .. weaponskillvalue .. " [ATTACK]\r[DAMAGE: " .. weapondamagevalue .. "] [CRIT: " .. weaponcriticalvalue .. "]";
+			skilldescription = "[Vehicle: " .. vehiclename .. "]\n" .. weaponname .. " - " .. weaponskillvalue .. " [ATTACK]\r[DAMAGE: " .. weapondamagevalue .. "] [CRIT: " .. weaponcriticalvalue .. "]";
 		end
 		local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
 		DieBoxGenManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode,"default");

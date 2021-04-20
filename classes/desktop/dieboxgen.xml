@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
 
-	<windowclass name="diebox">
+	<windowclass name="dieboxgen">
 		<sizelimits>
 			<minimum>
 				<height>30</height>
@@ -9,7 +9,7 @@
 		</sizelimits>
 		<frame>collectordesk</frame>
 		<sheetdata>
-			<genericcontrol name="dieboxcontrol">
+			<genericcontrol name="dieboxgencontrol">
 				<bounds>0,0,-1,-1</bounds>
 				<droptypes>
 					<type>dice</type>
@@ -20,9 +20,9 @@
 						<offset>-3,-3,-2,-2</offset>
 					</drophilight>
 				</stateframe>
-				<script file="classes/desktop/diebox.lua" />
+				<script file="classes/desktop/dieboxgen.lua" />
 			</genericcontrol>
-			<buttoncontrol name="dieboxupgradedifficulty">
+			<buttoncontrol name="dieboxgenupgradedifficulty">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>2,2,20,20</bounds>
 <!--LOBOSOLO edit button positions - END -->
@@ -35,17 +35,17 @@
 				</tooltip>
 				<script>
 					function onButtonPress()
-						window.dieboxcontrol.DieBoxUpgradeDowngradeButtonPress(self.getName());
+						window.dieboxgencontrol.DieBoxGenUpgradeDowngradeButtonPress(self.getName());
 					end
 
 					function onDrop(x, y, draginfo)
-						window.dieboxcontrol.onDrop(x, y, draginfo);
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
 						return true;
 					end
 				</script>
 			</buttoncontrol>
 
-			<buttoncontrol name="dieboxdowngradechallenge">
+			<buttoncontrol name="dieboxgendowngradechallenge">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>2,22,20,20</bounds>
 <!--LOBOSOLO edit button positions - END -->
@@ -58,17 +58,17 @@
 				</tooltip>
 				<script>
 					function onButtonPress()
-						window.dieboxcontrol.DieBoxUpgradeDowngradeButtonPress(self.getName());
+						window.dieboxgencontrol.DieBoxGenUpgradeDowngradeButtonPress(self.getName());
 					end
 
 					function onDrop(x, y, draginfo)
-						window.dieboxcontrol.onDrop(x, y, draginfo);
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
 						return true;
 					end
 				</script>
 			</buttoncontrol>
 
-			<buttoncontrol name="dieboxupgradeability">
+			<buttoncontrol name="dieboxgenupgradeability">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>22,2,20,20</bounds>
 <!--LOBOSOLO edit button positions - END -->
@@ -81,17 +81,17 @@
 				</tooltip>
 				<script>
 					function onButtonPress()
-						window.dieboxcontrol.DieBoxUpgradeDowngradeButtonPress(self.getName());
+						window.dieboxgencontrol.DieBoxGenUpgradeDowngradeButtonPress(self.getName());
 					end
 
 					function onDrop(x, y, draginfo)
-						window.dieboxcontrol.onDrop(x, y, draginfo);
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
 						return true;
 					end
 				</script>
 			</buttoncontrol>
 
-			<buttoncontrol name="dieboxdowngradeproficiency">
+			<buttoncontrol name="dieboxgendowngradeproficiency">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>22,22,20,20</bounds>
 <!--LOBOSOLO edit button positions - END -->
@@ -104,17 +104,17 @@
 				</tooltip>
 				<script>
 					function onButtonPress()
-						window.dieboxcontrol.DieBoxUpgradeDowngradeButtonPress(self.getName());
+						window.dieboxgencontrol.DieBoxGenUpgradeDowngradeButtonPress(self.getName());
 					end
 
 					function onDrop(x, y, draginfo)
-						window.dieboxcontrol.onDrop(x, y, draginfo);
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
 						return true;
 					end
 				</script>
 			</buttoncontrol>
 
-			<buttoncontrol name="dieboxroll">
+			<buttoncontrol name="dieboxgenroll">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>-31,1,31,21</bounds>
 <!--LOBOSOLO edit button positions - END -->
@@ -127,17 +127,17 @@
 				</tooltip>
 				<script>
 					function onButtonPress()
-						window.dieboxcontrol.onDieboxButtonPress();
+						window.dieboxgencontrol.onDieboxButtonPress();
 					end
 
 					function onDrop(x, y, draginfo)
-						window.dieboxcontrol.onDrop(x, y, draginfo);
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
 						return true;
 					end
 				</script>
 			</buttoncontrol>
 
-			<buttoncontrol name="dieboxgmhidden">
+			<buttoncontrol name="dieboxgengmhidden">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>-31,22,31,21</bounds>
 <!--LOBOSOLO edit button positions - END -->
@@ -155,16 +155,16 @@
 				<script>
 					function onInit()
 						if User.isHost() then
-							DieBoxManager.registerGMHiddenControl(self);
+							DieBoxGenManager.registerGMHiddenControl(self);
 						end
 					end
 
 					function onValueChanged()
-						window.dieboxcontrol.onHiddenButtonPress(self);
+						window.dieboxgencontrol.onHiddenButtonPress(self);
 					end
 
 					function onDrop(x, y, draginfo)
-						window.dieboxcontrol.onDrop(x, y, draginfo);
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
 						return true;
 					end
 				</script>

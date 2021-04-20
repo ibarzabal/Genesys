@@ -159,4 +159,74 @@
 		</sheetdata>
 	</windowclass>
 
+
+
+		<windowclass name="critical_item1">
+			<margins control="0,0,0,2" />
+			<sheetdata>
+				<genericcontrol name="rightanchor">
+					<anchored position="insidetopright" offset="0,2" height="0" width="0" />
+				</genericcontrol>
+				<button_idelete name="idelete">
+					<anchored width="20" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+					</anchored>
+				</button_idelete>
+				<linkcontrol name="shortcut">
+					<anchored to="rightanchor" width="20" height="20">
+						<top />
+						<right anchor="left" relation="relative" offset="-2" />
+					</anchored>
+					<class>critical</class>
+					<readonly />
+				</linkcontrol>
+				<basenumberfield name="severity">
+					<anchored to="rightanchor" width="20" height="20">
+						<top />
+						<right anchor="left" relation="relative" offset="-10" />
+					</anchored>
+					<disabled />
+				</basenumberfield>
+				<string_textlistitem name="name">
+					<anchored to="rightanchor">
+						<top />
+						<left parent="" offset="5" />
+						<right anchor="left" relation="relative" offset="-10" />
+					</anchored>
+					<multilinespacing>20</multilinespacing>
+				</string_textlistitem>
+			</sheetdata>
+		</windowclass>
+
+
+<windowclass name="critical_item">
+	<margins control="0,0,0,2" />
+	<sheetdata>
+		<anchor_listitem_column_right name="rightanchor" />
+
+		<!--			<button_listitem_column_delete name="idelete" /> -->
+		<button_idelete name="idelete">
+			<anchored to="rightanchor">
+				<top />
+				<right anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</button_idelete>
+
+		<link_listitem_column name="shortcut">
+			<class>critical</class>
+		</link_listitem_column>
+		<basenumberfield name="severity">
+			<anchored to="rightanchor" width="20" height="20">
+				<top />
+				<right anchor="left" relation="relative" offset="-10" />
+			</anchored>
+			<disabled />
+		</basenumberfield>
+		<string_listitem_column_name name="name">
+				<disabled />
+		</string_listitem_column_name>
+		</sheetdata>
+</windowclass>
+
 </root>

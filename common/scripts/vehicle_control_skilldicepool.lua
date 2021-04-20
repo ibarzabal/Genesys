@@ -129,7 +129,7 @@ end
 
 -- Allows population of the dice pool by a double-click on the dice button by the skill
 function onDoubleClick()
-	Debug.console("Weapon roll from window class = " .. window.getClass() .. ". window database node = " .. window.getDatabaseNode().getNodeName());
+--	Debug.console("Weapon roll from window class = " .. window.getClass() .. ". window database node = " .. window.getDatabaseNode().getNodeName());
 	--Debug.console("TODO - code Cool initiative roll.  Control = " .. self.getName());
 --	local weaponnode = window.getDatabaseNode();
 --	local weaponname = DB.getValue(window.getDatabaseNode(), "name");
@@ -137,19 +137,11 @@ function onDoubleClick()
 --	local weapondamagevalue = weaponnode.getChild("damage").getValue();
 --	local weaponcriticalvalue = weaponnode.getChild("critical").getValue();
 
-	local weaponnode = window.getDatabaseNode();
-	local weaponname = DB.getValue(window.getDatabaseNode(), "name","");
-	local weaponskillvalue = DB.getValue(weaponnode.getChild("skill"),"");
-	local weapondamagevalue = weaponnode.getChild("damage").getValue();
-	local weaponcriticalvalue = weaponnode.getChild("critical").getValue();
-	if (weapondamagevalue == "" or weaponskillvalue =="") then
-		return
-	end
-
-	local charnode;
-
-	local skillsnode;
-
+	local charnode = window.getDatabaseNode();
+	local vehiclenode = charnode.getChild("temp_vehicle");
+	local vehiclename = DB.getValue((vehiclenode), "name","");
+	local skillvalue = DB.getValue(vehiclenode.getChild("control_skill"),"");
+	local handling = DB.getValue(vehiclenode.getChild("handling"),"");
 
 --	-- See if we're rolling form the party sheet (group vehicle) or from a character sheet.
 --	if string.find(window.getDatabaseNode().getNodeName(), "partysheet.inventory") then
@@ -158,7 +150,6 @@ function onDoubleClick()
 --			skillsnode = DB.findNode("charsheet." .. User.getCurrentIdentity() .. ".skillist");
 --		end
 --	else
-		charnode = DB.getParent(DB.getParent(window.getDatabaseNode()));
 		skillsnode = charnode.getChild("skilllist");
 --	end
 	-- If we don't have the skillsnode then we can't populate the dice pool with anything - exit function.
@@ -166,12 +157,12 @@ function onDoubleClick()
 		return;
 	end
 
-	local weaponskillnode = nil;
+	local controlskillnode = nil;
 	for k,v in pairs(skillsnode.getChildren()) do
 		--Debug.console("Looking at current child: " .. k .. ", skillname = " .. v.getChild("name").getValue());
-		if v.getChild("name").getValue() == weaponskillvalue then
+		if v.getChild("name").getValue() == skillvalue then
 			--Debug.console("Have the " .. weaponskillname1 .. " db node = " .. v.getNodeName());
-			weaponskillnode = v;
+			controlskillnode = v;
 			break;
 		end
 	end
@@ -180,13 +171,36 @@ function onDoubleClick()
 
 	local dice = {};
 	local skilldescription;
-	local msgidentity = DB.getValue(weaponskillnode, "...name", "");
-	DicePoolManager.addSkillDice(weaponskillnode, dice);
+	local msgidentity = DB.getValue(charnode, "name", "");
+	DicePoolManager.addSkillDice(controlskillnode, dice);
 	if table.getn(dice) > 0 then
-		if weaponskillnode.getChild("name") then
-			skilldescription = weaponname .. " - " .. weaponskillvalue .. " [ATTACK]\r[DAMAGE: " .. weapondamagevalue .. "] [CRIT: " .. weaponcriticalvalue .. "]";
+		if controlskillnode.getChild("name") then
+			skilldescription = "[Vehicle: " .. vehiclename .. "]\n[Control Skill: " .. skillvalue .. "] [Handling:" .. handling .. "]";
 		end
-		local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
-		DieBoxGenManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode,"default");
+		DieBoxGenManager.addSkillDice(skilldescription, dice, controlskillnode, msgidentity, charnode,"default");
 	end
+
+
+	local nodeActionDifficultyMod = 0;
+	local adddice;
+
+	if handling > 0 then
+		adddice = "dBoost";
+		nodeActionDifficultyMod = handling;
+	else
+		if handling < 0 then
+			adddice = "dSetback";
+			nodeActionDifficultyMod = handling *-1;
+		end
+	end
+
+	if nodeActionDifficultyMod > 0 then
+		for i = 1, nodeActionDifficultyMod, 1
+		do
+			DieBoxGenManager.addDie(adddice);
+		end
+	end
+
+
+
 end

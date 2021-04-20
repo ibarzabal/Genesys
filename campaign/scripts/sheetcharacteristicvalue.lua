@@ -99,7 +99,7 @@ function onDoubleClick()
 		local msgidentity = DB.getValue(sourcenode, "..name", "");
 		DicePoolManager.addCharacteristicDice(sourcenode, dice);
 		if table.getn(dice) > 0 then
-			DieBoxManager.addCharacteristicDice(description, dice, sourcenode, msgidentity);
+			DieBoxGenManager.addCharacteristicDice(description, dice, sourcenode, msgidentity);
 		end
 	end
 end

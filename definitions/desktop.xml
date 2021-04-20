@@ -64,8 +64,8 @@
 
 
 	<!-- Die Box -->
-	<panel name="diebox">
-		<class>diebox</class>
+	<panel name="dieboxgen">
+		<class>dieboxgen</class>
 		<bounds>
 			<!--<rect>14,-237,387,40</rect>-->
 			<rect>14,-217,387,40</rect>
@@ -119,12 +119,13 @@
 
 	<!-- Chits -->
 
-<!--	<panel name="criticalvehiclechit" modes="host,client">
+-	<panel name="criticalvehiclechit" modes="host,client">
 		<class>criticalvehiclechit</class>
 		<bounds>
-			<rect>136,-122,56,56</rect>
+			<rect>136,-102,56,56</rect>
 		</bounds>
-	</panel> -->
+	</panel>
+
 	<panel name="criticalchit" modes="host,client">
 		<class>criticalchit</class>
 		<bounds>

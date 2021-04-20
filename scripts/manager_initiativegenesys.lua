@@ -21,8 +21,8 @@ function openCharacterSheet(characternode, identity)
 			Interface.openWindow("charsheet", characternode);
 			-- Call the OOB message so that the GM can give this player ownership of the character in the database.
 			playerSelectedPC(characternode, User.getUsername());
-			-- Change name in diebox viewer - need to tell the GM to rebuild the die box viewer
--- JOHN Disabled			DieBoxViewListManager.remoteRebuildDieBoxData();
+			-- Change name in dieboxgen viewer - need to tell the GM to rebuild the die box viewer
+-- JOHN Disabled			DieBoxGenViewListManager.remoteRebuildDieBoxGenData();
 		else
 			charactersheetwindowreference.close();
 		end

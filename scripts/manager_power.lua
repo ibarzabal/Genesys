@@ -618,12 +618,12 @@ function performActionGenesys(rActor, rAction, nodeAction)
 				skilldescription = "[" .. rAction.label .. "] - " .. locatedskillnode.getChild("name").getValue() .. " (" .. locatedskillnode.getChild("characteristic").getValue() .. ") - " .. "Range: [" .. nodeActionRange .. "]";
 			end
 			local actornode = DB.getChildren(nodeAction,".....");
-			DieBoxManager.addSkillDice(skilldescription, dice, locatedskillnode, msgidentity, actornode);
+			DieBoxGenManager.addSkillDice(skilldescription, dice, locatedskillnode, msgidentity, actornode);
 
 			if nodeActionDifficultyMod > 0 then
 				for i = 1, nodeActionDifficultyMod, 1
 				do
-					DieBoxManager.addDie("dDifficulty");
+					DieBoxGenManager.addDie("dDifficulty");
 				end
 			end
 		end

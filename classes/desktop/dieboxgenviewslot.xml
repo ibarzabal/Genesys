@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
 
-	<windowclass name="dieboxviewslot">
+	<windowclass name="dieboxgenviewslot">
 		<!--<frame>tooltipbox</frame> -->
 		<frame>collectordesk</frame>
 		<sizelimits>
@@ -12,7 +12,7 @@
 		</sizelimits>
 		<sheetdata>
 
-		<stringcontrol name="dieboxviewslotname">
+		<stringcontrol name="dieboxgenviewslotname">
 				<bounds>0,0,0,0</bounds>
 				<invisible />
 <!--				<font>sheetlabel</font>
@@ -21,7 +21,7 @@
 				<!--<center />-->
 		</stringcontrol>
 
-		<stringcontrol name="dieboxviewplayername">
+		<stringcontrol name="dieboxgenviewplayername">
 				<bounds>5,2,150,12</bounds>
 				<font>sheetlabel</font>
 <!--				<color>#ffffffff</color> -->
@@ -29,10 +29,10 @@
 				<!--<center />-->
 		</stringcontrol>
 
-		<dieboxremote name="dieboxremote" />
+		<dieboxgenremote name="dieboxgenremote" />
 
 		</sheetdata>
-		<script file="classes/desktop/dieboxviewslot.lua" />
+		<script file="classes/desktop/dieboxgenviewslot.lua" />
 	</windowclass>
 
 </root>

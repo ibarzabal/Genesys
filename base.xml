@@ -68,9 +68,9 @@
 		<script name="DataCommon" file="scripts/data_common_genesys.lua" />
 		<script name="DiceManager" file="scripts/manager_action_dice.lua" />
 		<script name="ChatManagerGenesys" file="scripts/manager_chat2.lua" />
-		<script name="DieBoxManager" file="scripts/manager_diebox.lua" />
+		<script name="DieBoxGenManager" file="scripts/manager_dieboxgen.lua" />
 		<script name="DicePoolManager" file="scripts/manager_dicepool.lua" />
-		<script name="DieBoxViewListManager" file="scripts/manager_dieboxviewlist.lua" />
+		<script name="DieBoxGenViewListManager" file="scripts/manager_dieboxgenviewlist.lua" />
 
  		<script name="CharManager" file="scripts/manager_char_genesys.lua" />
 <!-- Warhammer/SW had something called DatabaseManager. I need to be careful
@@ -85,7 +85,7 @@
 
 		<script name="CombatManager" file="scripts/manager_combat.lua" />
 		<script name="CombatManager2" file="scripts/manager_combat_genesys.lua" />
-<!--		<script name="EffectManager5E" file="scripts/manager_effects.lua" /> -->
+		<script name="EffectManager5E" file="scripts/manager_effect_5E.lua" />		
 
 			<!--Overriding the original manager_actions.lua from CoreRPG
 		  	this is a workaround for the moment.... -->

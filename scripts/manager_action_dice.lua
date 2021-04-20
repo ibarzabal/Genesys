@@ -37,7 +37,8 @@ function onInit()
   ActionsManager.registerResultHandler("dicegen", onDice);
   ActionsManager.registerResultHandler("skill", onDice);
   ActionsManager.registerResultHandler("characteristic", onDice);
-  ActionsManager.registerResultHandler("critical", processDiceCritical);
+  ActionsManager.registerResultHandler("critical", processDiceCriticalPersonal);
+  ActionsManager.registerResultHandler("critical_vehicle", processDiceCriticalVehicle);
 
 	Comm.registerSlashHandler("diegen", processDiegen);
 
@@ -92,7 +93,7 @@ end
 
 local revealalldice = true;
 
--- Added to allow the diebox.lua script to determine if the /die reveal or /die hide slash commands are active
+-- Added to allow the dieboxgen.lua script to determine if the /die reveal or /die hide slash commands are active
 function gmDieHide()
 	return not revealalldice;
 end
@@ -187,14 +188,6 @@ function processDiceLanded(draginfo)
 end
 
 function processDice(rSource, rTarget, rRoll)
-
-
---Comm.throwDice(type, dice, modifier, description .. "<.>" .. sourcenodename .. "<.>" .. msgidentity .. "<.>" .. gmonly);
---  Debug.chat("processDice");
---  Debug.chat("rSource", rSource);
---  Debug.chat("rTarget", rTarget);
---  Debug.chat("rRoll", rRoll);
-
   local ThrowDiceInfo = StringManager.split(rSource.sDesc, "<>", true);
 	-- get the message details
 	local type = rSource.sType;
@@ -305,6 +298,7 @@ function processDice(rSource, rTarget, rRoll)
 
 	-- build our dice result message
 	local resultMsg = {};
+  resultMsg.dicedisplay = 0;
 	if showsummary then
 		resultMsg.text = "Result:";
 	end
@@ -359,6 +353,7 @@ function processDice(rSource, rTarget, rRoll)
 
 		-- build the success message
 		local successMsg = {};
+    successMsg.dicedisplay = 0;
 		if resultSummary.success > 0 then
 			successMsg.text = "Success:";
 		else
@@ -393,6 +388,7 @@ function processDice(rSource, rTarget, rRoll)
 
 			-- build the boon message
 			local boonMsg = {};
+      boonMsg.dicedisplay = 0;
 			if resultSummary.boon > 0 then
 				boonMsg.text = "Advantage:";
 				-- TODO - Launch advantage info/spend window
@@ -451,10 +447,12 @@ function processDice(rSource, rTarget, rRoll)
 
 			-- build the special message
 			local specialMsg = {};
+      specialMsg.dicedisplay = 0;
 			specialMsg.text = "Special:";
 --			specialMsg.font = "chatitalicfont";
 			specialMsg.dice = specialDice;
 			specialMsg.dicesecret = gmonly;
+      specialMsg.dicedisplay = 0;
 			if User.isHost() and (gmonly or not revealalldice) then
 				Comm.addChatMessage(specialMsg);
 			else
@@ -1096,14 +1094,15 @@ end
 
 ---------------------------------------------------------------------------------
 
-function processDiceCritical(rSource, rTarget, rRoll)
---  Debug.chat("processDiceCritical");
---  Debug.chat("rSource",rSource);
---  Debug.chat("rTarget",rTarget);
---  Debug.chat("rRoll",rRoll);
-	-- get the message details
---	local type = rSource.sType;
-	local description = "[CRITICAL]";
+function processDiceCriticalPersonal(rSource, rTarget, rRoll)
+  processDiceCritical(rSource, rTarget, rRoll, "[CRITICAL]");
+end
+
+function processDiceCriticalVehicle(rSource, rTarget, rRoll)
+  processDiceCritical(rSource, rTarget, rRoll, "[CRITVEHICLE]");
+end
+
+function processDiceCritical(rSource, rTarget, rRoll, description)
 	local modifier = rRoll.nMod;
 	local characternode = DB.findNode(rRoll.sDesc); -- Character node receiving the critical damage
 	local gmonly = false;
@@ -1227,9 +1226,9 @@ function processDiceCritical(rSource, rTarget, rRoll)
 	end
 
 
-
 	-- Handle critical roll here - indicated by CRITICAL in roll description
-	if string.find(description, "CRITICAL") then
+	if description == "[CRITICAL]" then
+--	if string.find(description, "[CRITICAL]") then
 		--resultMsg.dice = resultdice;
 		local critModifier = resultMsg.diemodifier;
 		local critResult = 0;
@@ -1280,18 +1279,18 @@ function processDiceCritical(rSource, rTarget, rRoll)
 	end
 
 	-- Handle vehicle critical roll here - indicated by CRITVEHICLE in roll description
-	if string.find(description, "CRITVEHICLE") then
-		Debug.console("Critical vehicle result handler.")
-		Debug.console("Target node for critical = ", sourcenode);
-
+	if description == "[CRITVEHICLE]" then
+--	if string.find(description, "[CRITVEHICLE]") then
 		--resultMsg.dice = resultdice;
 		local critModifier = resultMsg.diemodifier;
-
 		local critResult = 0 + critModifier;
-
 		for k,v in ipairs(resultMsg.dice) do
 			critResult = critResult + v.result;
 		end
+    if critResult == 0 then
+      critResult = 100;
+    end
+    critResult = critResult + critModifier;
 
 		Debug.console("Critical result = " .. critResult)
 
@@ -1314,12 +1313,24 @@ function processDiceCritical(rSource, rTarget, rRoll)
 		msg.font = "msgfont";
 		msg.type = "critvehicle";
 
-		if sourcenode.getNodeName() ~= "" then
-			PlayerDBManager.createCriticalNonOwnedDB(sourcenode.createChild("vehicle"), critDetails.name, critDetails.description, critDetails.severity);
+	   local current_vehicle, current_vehicle_node = DBManagerGenesys.ActorVehicle(characternode);
+
+
+    if current_vehicle ~="" and current_vehicle_node then
+      local current_vehicle_owner_node = current_vehicle_node.getParent().getParent();
+      local vehicle_name = DB.getValue(current_vehicle_node,"name","");
+      local vehicle_owner = DB.getValue(current_vehicle_owner_node,"name","");
+      local sVehicleName;
+      PlayerDBManager.createCriticalNonOwnedDB(current_vehicle_node, critDetails.name, critDetails.description, critDetails.severity);
+      if ActorManager.isPC(current_vehicle_owner_node) then
+        sVehicleName = "[Vehicle: " .. vehicle_name .. "] [Owner: " .. vehicle_owner .. "]";
+      else
+        sVehicleName = "[Vehicle: " .. vehicle_name .. "]";
+      end
 			if critDetails.severity == 999 then
-				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
+				msg.text = sVehicleName  .. "\nhas gained the critical: \n" .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  \nSeverity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
+				msg.text = sVehicleName  .. "\nhas gained the critical: \n" .. critDetails.name .. ".\nSeverity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then
@@ -1329,9 +1340,6 @@ function processDiceCritical(rSource, rTarget, rRoll)
 			end
 		end
 		Comm.deliverChatMessage(msg);
-
-
-
 	end
 
 	-- and return true

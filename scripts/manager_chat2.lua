@@ -361,7 +361,7 @@ end
 
 local revealalldice = true;
 
--- Added to allow the diebox.lua script to determine if the /die reveal or /die hide slash commands are active
+-- Added to allow the dieboxgen.lua script to determine if the /die reveal or /die hide slash commands are active
 function gmDieHide()
 	return not revealalldice;
 end

@@ -302,7 +302,7 @@
 				<static textres="char_label_encthreshold" />
 			</label_fieldtop>
 
-
+<!--
 			<linkednumber name="meleeattackbonus" source="attackbonus.melee">
 			  <anchored to="combatframe" position="insidetop" offset="-20,100" height="30" />
 			  <frame name="bonus" offset="5,5,5,5" />
@@ -320,7 +320,7 @@
 			  </source>
 			</linkednumber>
 
-<!--
+
 			<number_linked name="encumbrancedrag" source="encumbrance.liftpushdrag">
 				<anchored to="encumbranceanchor" width="60" height="30">
 					<top />

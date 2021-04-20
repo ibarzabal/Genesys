@@ -13,14 +13,29 @@
 				<icons>char_inventory</icons>
 				<static textres="char_label_vehicle" />
 			</label_charframetopg>
+			<button_vehicle_exit name="leave_vehicle">
+				<anchored to="vehicletitle">
+					<top />
+					<right anchor="insideright" relation="relative" offset="-5" />
+				</anchored>
+			</button_vehicle_exit>
 
-			<subwindow name="contents">
+
+
+			<stringu name="display_vehicle" source="vehicle_current">
 				<script>
-					function OnInit()
-						window.contents.setVisible(false);
+					function onValueChanged()
+						window.contents.subwindow.onLinkChanged();
+						window.contents.subwindow.weapons.setReadOnly(true);
+						window.contents.subwindow.attachments.setReadOnly(true);
 					end
 				</script>
+				<anchored to="vehicletitle" position="belowleft" offset="0,0" width="300" height="20" />
+				<invisible/>
+			</stringu>
+<!--			<link_vehicle name="link" /> -->
 
+			<subwindow name="contents">
 				<anchored>
 					<bottom offset="-40" />
 					<top offset="38" />
@@ -39,19 +54,295 @@
 
 	<windowclass name="charsheet_active_vehicle">
 		<margins control="0,0,0,2" />
+		<script file="campaign/scripts/char_current_vehicle.lua" />
 		<sheetdata>
-			<anchor_column name="columnanchor" />
-			<subwindow name="actions">
-				<anchored>
-					<top parent="columnanchor" anchor="bottom" relation="relative" offset="0" />
-					<left />
-					<right />
-				</anchored>
-				<activate />
-				<fastinit />
-				<class>power_page</class>
+			<!-- Characteristic Block -->
+			<frame_statblock_vehicle name="main_statblock1">
+				<bounds>0,10,480,97</bounds>
+			</frame_statblock_vehicle>
 
-			</subwindow>
+
+			<!-- Silhouette -->
+			<vehicle_stat_linked name="main_statblock1_silhouette" source="silhouette">
+				<anchored to="main_statblock1" offset="26,7"/>
+				<nolinkwidget />
+				<readonly />
+			</vehicle_stat_linked>
+			<title_statblock>
+				<anchored height="20">
+					<top parent="main_statblock1_silhouette" anchor="bottom" offset="6"/>
+					<left parent="main_statblock1_silhouette" anchor="left" offset="-20"/>
+					<right parent="main_statblock1_silhouette" anchor="right" offset="20"/>
+				</anchored>
+				<center />
+				<static>Silhouette</static>
+			</title_statblock>
+
+			<!-- Speed -->
+			<vehicle_stat_linked name="main_statblock1_speed" source=".temp_vehicle.speed.max">
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>105,7</offset>
+				</anchored>
+				<nolinkwidget />
+				<readonly />
+			</vehicle_stat_linked>
+			<title_statblock>
+				<anchored height="20">
+					<top parent="main_statblock1_speed" anchor="bottom" offset="6"/>
+					<left parent="main_statblock1_speed" anchor="left" offset="-21"/>
+					<right parent="main_statblock1_speed" anchor="right" offset="20"/>
+				</anchored>
+				<center />
+				<static>Max Speed</static>
+			</title_statblock>
+			<!-- Handling -->
+			<vehicle_stat_linked name="main_statblock1_handling" source=".temp_vehicle.handling">
+				<displaysign />
+				<minvalue>-999</minvalue>
+				<anchored>
+					<to>main_statblock1</to>
+					<offset>185,7</offset>
+				</anchored>
+				<nolinkwidget />
+				<readonly />
+			</vehicle_stat_linked>
+			<title_statblock>
+				<anchored height="20">
+					<top parent="main_statblock1_handling" anchor="bottom" offset="6"/>
+					<left parent="main_statblock1_handling" anchor="left" offset="-20"/>
+					<right parent="main_statblock1_handling" anchor="right" offset="20"/>
+				</anchored>
+				<center />
+				<static>Handling</static>
+			</title_statblock>
+			<!-- Defense -->
+			<title_statblock>
+				<anchored to="main_statblock1" position="insidetopleft" offset="275,1" height="20" />
+				<static>Defense</static>
+			</title_statblock>
+			<sheetnumberfieldtr_linked name="vehicle_defense" source=".temp_vehicle.defense">
+				<anchored to="main_statblock1" position="insidetopleft" offset="285,25" height="20" />
+				<nolinkwidget />
+				<readonly />
+			</sheetnumberfieldtr_linked>
+			<!-- Armor -->
+			<title_statblock>
+				<anchored to="main_statblock1" position="insidetopleft" offset="400,1" height="20" />
+				<static>Armor</static>
+			</title_statblock>
+			<sheetnumberfieldtr_linked name="vehicle_armor" source=".temp_vehicle.armor">
+				<anchored to="main_statblock1" position="insidetopleft" offset="405,25" height="20" />
+				<nolinkwidget />
+				<readonly />
+			</sheetnumberfieldtr_linked>
+			<!-- Hull Trauma -->
+			<title_statblock>
+				<anchored to="main_statblock1" position="insidetopleft" offset="265,52" height="20" />
+				<static>Hull Trauma</static>
+			</title_statblock>
+
+			<sheetnumberfieldtr_linked name="hull_trauma_threshold" source=".temp_vehicle.hull_trauma.threshold">
+				<tooltip text="Threshold" />
+				<anchored to="main_statblock1" position="insidetopleft" offset="265,76" height="20" />
+				<nolinkwidget />
+				<readonly />
+			</sheetnumberfieldtr_linked>
+
+
+			<sheetnumberfieldtr_linked name="hull_trauma_current_link" source=".temp_vehicle.hull_trauma.current">
+				<anchored to="main_statblock1" position="insidetopleft" offset="265,76" height="20" />
+				<invisible />
+			</sheetnumberfieldtr_linked>
+			<sheetnumberfieldtr_linked name="system_strain_current_link" source=".temp_vehicle.system_strain.current">
+				<anchored to="main_statblock1" position="insidetopleft" offset="265,76" height="20" />
+				<invisible />
+			</sheetnumberfieldtr_linked>
+
+
+			<woundnumberfield name="hull_trauma_current" source=".temp_vehicle.hull_trauma.current">
+				<tooltip text="Current" />
+				<chit>wound</chit>
+				<anchored to="main_statblock1" position="insidetopleft" offset="305,76" height="20" />
+			</woundnumberfield>
+
+			<!-- System Strain -->
+			<title_statblock>
+				<anchored to="main_statblock1" position="insidetopleft" offset="378,52" height="20" />
+				<static>System Strain</static>
+			</title_statblock>
+			<sheetnumberfieldtr_linked name="system_strain_threshold" source=".temp_vehicle.system_strain.threshold">
+				<tooltip text="Threshold" />
+				<anchored to="main_statblock1" position="insidetopleft" offset="385,76" height="20" />
+				<nolinkwidget />
+				<readonly />
+			</sheetnumberfieldtr_linked>
+			<woundnumberfield name="system_strain_current" source=".temp_vehicle.system_strain.current">
+				<tooltip text="Current" />
+				<chit>strain</chit>
+				<anchored to="main_statblock1" position="insidetopleft" offset="425,76" height="20" />
+			</woundnumberfield>
+
+
+<!--			<anchor_column name="columnanchor" /> -->
+
+			<genericcontrol name="columnanchor">
+				<anchored position="insidetop" offset="0,120" height="0"/>
+				<disabled />
+				<invisible />
+			</genericcontrol>
+
+			<label_column name="owner_label">
+				<static textres="vehicle_label_owner" />
+			</label_column>
+			<string_columnh_linked name="owner" source = ".temp_vehicle.owner">
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+			<label_column name="name_label">
+				<static textres="vehicle_label_name" />
+			</label_column>
+			<string_columnh_linked name="name" source = ".temp_vehicle.name">
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+
+			<label_column name="type_label">
+				<static textres="vehicle_label_type" />
+			</label_column>
+			<string_columnh_linked name="type" source = ".temp_vehicle.type">
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+
+
+			<label_column name="control_skill_label">
+				<static textres="vehicle_label_control_skill" />
+			</label_column>
+
+			<skilldicepool>
+				<script file="common/scripts/vehicle_control_skilldicepool.lua" />
+				<anchored to="control_skill_label" width="20" height="20">
+					<top />
+					<left anchor="right" relation="relative" offset="5" />
+				</anchored>
+			</skilldicepool>
+
+
+			<string_columnh_linked name="control_skill" source = ".temp_vehicle.control_skill" >
+				<anchored mergerule="replace">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7"/>
+					<left offset="97" />
+					<right offset="-200" />
+				</anchored>
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+			<label_column name="compliment_label">
+				<static textres="vehicle_label_compliment" />
+			</label_column>
+			<string_columnh_linked name="compliment" source = ".temp_vehicle.compliment">
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+			<label_column name="passenger_capacity_label">
+				<static textres="vehicle_label_passenger_capacity" />
+			</label_column>
+			<string_columnh_linked name="passenger_capacity" source = ".temp_vehicle.passenger_capacity">
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+
+			<label_column name="encumbrance_capacity_label">
+				<static textres="vehicle_label_encumbrance_capacity" />
+			</label_column>
+			<number_columnh_linked name="encumbrance_capacity" source = ".temp_vehicle.encumbrance_capacity">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="135" />
+				</anchored>
+				<nolinkwidget />
+				<readonly />
+			</number_columnh_linked>
+
+
+			<label_column name="consumables_label">
+				<static textres="vehicle_label_consumables" />
+			</label_column>
+			<string_columnh_linked name="consumables" source = ".temp_vehicle.consumables" >
+				<nolinkwidget />
+				<readonly />
+			</string_columnh_linked>
+
+			<!-- Attachments -->
+			<label_column name="hard_points_label">
+				<static textres="item_label_hard_points" />
+			</label_column>
+			<number_columnh_linked name="hard_points" source = ".temp_vehicle.hard_points">
+				<nolinkwidget />
+				<readonly />
+			</number_columnh_linked>
+
+
+			<!-- weapons -->
+			<header_column name="weapons_header">
+			  <static textres="item_header_weapons"/>
+			  <center />
+			</header_column>
+
+			<list_column name="weapons">
+			  <datasource>.temp_vehicle.weapons</datasource>
+			  <class>ref_vehicle_weapon_char</class>
+			</list_column>
+			<!-- weapons END-->
+
+			<!-- Attachments -->
+			<header_column name="attachments_header">
+				<static textres="item_header_attachments"/>
+				<center />
+			</header_column>
+			<list_column name="attachments">
+				<datasource>.temp_vehicle.attachments</datasource>
+				<class>ref_item_attachment</class>
+			</list_column>
+			<!-- Attachments END-->
+
+			<!-- Critical Damage -->
+			<header_column name="critical_damage_header">
+			  <static textres="vehicle_header_critical"/>
+			  <center />
+			</header_column>
+<!--
+			<button_iedit name="critical_damage_iedit">
+				<anchored to="critical_damage_header" position="righthigh" offset="-20,0" />
+				<target>critical_damage</target>
+			</button_iedit>
+			<button_iadd name="critical_damage_iadd">
+				<anchored to="critical_damage_iedit" position="lefthigh" offset="5,0" />
+				<target>critical_damage</target>
+			</button_iadd>
+-->
+
+			<list_column name="critical_damage">
+			  <datasource>.temp_vehicle.critical_damage</datasource>
+			  <class>critical_item</class>
+			</list_column>
+			<!-- Critical Damage END-->
+
+
+			<line_column name="divider" />
+
+			<ft_columnh_linked name="notes" source = ".temp_vehicle.notes" >
+				<readonly />
+				<nolinkwidget />
+			</ft_columnh_linked>
+
 		</sheetdata>
 	</windowclass>
 

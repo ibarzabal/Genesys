@@ -98,6 +98,7 @@ end
 -- Allows population of the dice pool by a double-click on the dice button by the skill
 function onDoubleClick()
 	local skilllistnode = window.getDatabaseNode().getChild("skilllist");
+
 	if not skilllistnode then
 		return;
 	end
@@ -132,10 +133,34 @@ function onDoubleClick()
 		end
 	end
 
-	--todo: Need to code for no match in skilllist - i.e. use characteristic score only.
 
 	local dice = {};
 	local skilldescription;
+
+
+	--todo: Need to code for no match in skilllist - i.e. use characteristic score only.
+	-- If Pc/NPC does not have the correct skill... roll using characteristic
+
+-- WORK IN PROGRESS
+--	if not initskillnode then
+--		local skillcheckvalue;
+--		local msgidentity = DB.getValue(window.getDatabaseNode(),"name","");
+--		if initskillname == "Cool" then
+--			skillcheckvalue = "presence";
+--		else
+--			skillcheckvalue = "willpower";
+--		end
+--		local characteristicnode = actionnode.getChild("..." .. skillcheckvalue .. ".current");
+--		if characteristicnode then
+--			DicePoolManager.addCharacteristicDice(characteristicnode, dice);
+--		end
+--	end
+
+
+
+
+
+
 	local msgidentity = DB.getValue(initskillnode, "...name", "");
 	DicePoolManager.addSkillDice(initskillnode, dice);
 	if table.getn(dice) > 0 then
@@ -143,7 +168,7 @@ function onDoubleClick()
 			skilldescription = initskillnode.getChild("name").getValue() .. " [INIT]";
 		end
 		local actornode = window.getDatabaseNode();
-		DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity, actornode,"clear");
+		DieBoxGenManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity, actornode,"clear");
 
 	end
 end

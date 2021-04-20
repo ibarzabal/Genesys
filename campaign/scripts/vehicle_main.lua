@@ -56,9 +56,15 @@ function update()
 	if bReadOnly then
 		attachments_iedit.setVisible(false);
 		weapons_iedit.setVisible(false);
+		if critical_damage_iedit then
+			critical_damage_iedit.setVisible(false);
+		end
 	else
 		attachments_iedit.setVisible(true);
 		weapons_iedit.setVisible(true);
+		if critical_damage_iedit then
+			critical_damage_iedit.setVisible(true);
+		end
 	end
 
 	if OptionsManager.isOption("VHPT", "off") then

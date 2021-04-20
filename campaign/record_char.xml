@@ -9,11 +9,11 @@
 	<windowclass name="charsheet">
 		<frame>charsheet</frame>
 		<placement>
-			<size width="525" height="568" />
+			<size width="545" height="640" />
 		</placement>
 		<sizelimits>
-            <minimum width="525" height="568" />
-						<maximum width="525" />
+            <minimum width="545" height="640" />
+						<maximum width="545" />
 			<dynamic />
         </sizelimits>
 		<softclose />
@@ -97,11 +97,11 @@
 	<sub_charsheet name="inventory">
 		<class>charsheet_inventory</class>
 	</sub_charsheet>
-<!--
+
 	<sub_charsheet name="vehicle">
 		<class>charsheet_vehicle</class>
 	</sub_charsheet>
--->
+
 
 <!--
 	<sub_charsheet name="other">
@@ -146,12 +146,12 @@
 					<subwindow>inventory</subwindow>
 				</tab>
 
-<!--
+
 				<tab>
 					<icon>tab_vehicles</icon>
 					<subwindow>vehicle</subwindow>
 				</tab>
--->
+
 
 <!--
 				<tab>

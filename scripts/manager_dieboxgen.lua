@@ -115,15 +115,15 @@ end
 
 function readDicepool()
 	-- Used to pass dicepool info to GM/client to enable viewing of the dicepool remotely.
-	local dieboxremote = nil;
+	local dieboxgenremote = nil;
 	local dielist = control.getDice();
 	--Debug.console("diceboxmanager.lua: readDicepool.  Dicepool description =  = " .. control.getDescription());
 	for k, n in pairs(dielist) do
 		--Debug.console("diceboxmanager.lua: readDicepool.  Dice = " .. k .. ", " .. n);
 	end
-	--dieboxremote = Interface.openWindow("dieboxremote", "");
-	--dieboxremote.dieboxcontrol.setDice(dielist);
-	--dieboxremote.dieboxcontrol.setDescription(control.getDescription());
+	--dieboxgenremote = Interface.openWindow("dieboxgenremote", "");
+	--dieboxgenremote.dieboxgencontrol.setDice(dielist);
+	--dieboxgenremote.dieboxgencontrol.setDescription(control.getDescription());
 
 	sendPlayerDicepool(dielist, control.getDescription());
 end
@@ -135,10 +135,10 @@ function sendPlayerDicepool(dielist, description)
 	--local dieliststring = "";
 	for k, n in pairs(dielist) do
 	--	dieliststring = dieliststring .. k .. "," .. v .. "||");
-		--Debug.console("dieboxmanager.lua: readDicepool.  Dice = " .. k .. ", " .. n);
+		--Debug.console("dieboxgenmanager.lua: readDicepool.  Dice = " .. k .. ", " .. n);
 	end
 	dieliststring = table.concat(dielist, ",");
-	Debug.console("dieboxmanager.lua: sendPlayerDicepool.  Dieliststring = " .. dieliststring);
+	Debug.console("dieboxgenmanager.lua: sendPlayerDicepool.  Dieliststring = " .. dieliststring);
 	msgparams[1] = dieliststring;
 	msgparams[2] = description;
 	if User.isHost() then
@@ -159,23 +159,23 @@ function handleSendPlayerDicepool(msguser, msgidentity, msgparams)
 		-- Make dielist table from dieliststring
 		dielist = StringManager.split(dieliststring, ",");
 
-		-- Open diebox on remote desktop and send die and description info.
-		--dieboxremote = Interface.openWindow("dieboxremote", "");
-		--dieboxremote.dieboxcontrol.setDice(dielist);
-		--dieboxremote.dieboxcontrol.setDescription(description);
+		-- Open dieboxgen on remote desktop and send die and description info.
+		--dieboxgenremote = Interface.openWindow("dieboxgenremote", "");
+		--dieboxgenremote.dieboxgencontrol.setDice(dielist);
+		--dieboxgenremote.dieboxgencontrol.setDescription(description);
 
-		DieBoxViewListManager.setDiceBoxViewListData(username, dielist, description);
+		DieBoxGenViewListManager.setDiceBoxViewListData(username, dielist, description);
 
 	end
 
 	--Debug.console("charlistentry.lua: handleSendPlayerDicepool.  msguser = " .. msguser .. ", msgidentity = " .. msgidentity .. ", dicepoolPlayer = " .. dicepoolPlayer);
 	--if User.getUsername() == dicepoolPlayer then
 	--	Debug.console("charlistentry.lua: handleSendPlayerDicepool.  I am the player with the dicepool!  This is the dicepool you are looking for.");
-	--	DieBoxManager.readDicepool();
+	--	DieBoxGenManager.readDicepool();
 	--end
 end
 
--- Added to allow double clicking on force dice to add to the diebox without overwriting it - thanks to Archamus for this
+-- Added to allow double clicking on force dice to add to the dieboxgen without overwriting it - thanks to Archamus for this
 function addForceDice(dice, sourcenode, msgidentity)
 	if dice then
 		control.setType("dice");

@@ -394,12 +394,6 @@ end
 -- NOTE: Assumed target and source base nodes
 -- (item = campaign, charsheet = char inventory, partysheet = party inventory, treasureparcels = parcel inventory)
 function addItemToList(vList, sClass, vSource, bTransferAll, nTransferCount)
---	Debug.chat("addItemToList");
---	Debug.chat(vList);
---	Debug.chat(sClass);
---	Debug.chat(vSource);
---	Debug.chat(bTransferAll);
---	Debug.chat(nTransferCount);
 	-- Get the source item database node object
 	local nodeSource = nil;
 	if type(vSource) == "databasenode" then

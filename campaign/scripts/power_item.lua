@@ -20,7 +20,7 @@ function onInit()
 		registerMenuItem(Interface.getString("power_menu_addcast"), "radial_sword", 3, 2);
 --		registerMenuItem(Interface.getString("power_menu_adddamage"), "radial_damage", 3, 3);
 --		registerMenuItem(Interface.getString("power_menu_addheal"), "radial_heal", 3, 4);
---		registerMenuItem(Interface.getString("power_menu_addeffect"), "radial_effect", 3, 5);
+		registerMenuItem(Interface.getString("power_menu_addeffect"), "radial_effect", 3, 5);
 
 --		registerMenuItem(Interface.getString("power_menu_reparse"), "textlist", 4);
 	end

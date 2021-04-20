@@ -41,10 +41,14 @@ function addCriticalVehicle()
 	local description = "[CRITVEHICLE]"
 	-- build the dice table
 	local dice = {};
-	table.insert(dice, "d100");
 	table.insert(dice, "d10");
+	table.insert(dice, "d10");
+
+
+	ModifierStack.reset(); --  Reset Modifierstack on desktop
  	-- throw the dice - need to handle the result in the chatmanager handler.
-  Comm.throwDice("dice" , dice, modifier, description, {"", msgidentity, gmonly});
+  --Comm.throwDice("dice" , dice, modifier, description, {"", msgidentity, gmonly});
+	Comm.throwDice("critical_vehicle", dice, modifier,"");
 	-- and return
 	return true;
 end
@@ -694,7 +698,6 @@ end
 
 function createActionMessage(rSource, rRoll)
 	local sDesc = rRoll.sDesc;
-
 	-- Build the basic message to deliver
 	local rMessage = ChatManager.createBaseMessage(rSource, rRoll.sUser);
 	rMessage.type = rRoll.sType;

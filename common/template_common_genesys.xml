@@ -13,7 +13,7 @@
     <script file="common/scripts/column_ft.lua" />
   </ft_column>
 </template>
-  
+
 <!-- RESKIN  -->
 <template name="anchor_title_charsheet">
   <genericcontrol>
@@ -280,6 +280,22 @@
   </sheetnumberfieldtr>
 </template>
 
+<template name="vehicle_stat_linked">
+  <sheetnumberfieldtr>
+    <script file="common/scripts/number_crosslink.lua" />
+    <font>sheetlabel</font>
+    <color>ff000000</color>
+    <zerocolor>ff000000</zerocolor>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width>32</width>
+        <height>32</height>
+      </size>
+    </anchored>
+    <isReadOnly/>
+  </sheetnumberfieldtr>
+</template>
 
 
 
@@ -317,6 +333,46 @@
     </frame>
     <script file="common/scripts/sheetnumberfield.lua" />
   </basenumberfield>
+</template>
+
+<template name="sheetnumberfieldtr_linked">
+  <basenumberfield>
+    <color>ff000000</color>
+    <zerocolor>ff000000</zerocolor>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width mergerule="replace">25</width>
+        <height mergerule="replace">17</height>
+      </size>
+    </anchored>
+    <frame mergerule="replace">
+      <name>fieldtransparent</name>
+      <offset>4,5,4,3</offset>
+    </frame>
+    <script file="common/scripts/number_crosslink.lua" />
+  </basenumberfield>
+</template>
+
+<template name="string_columnh_linked">
+  <string_column>
+    <!-- <script file="common/scripts/column_string.lua" /> -->
+    <script file="common/scripts/string_crosslink.lua" />
+  </string_column>
+</template>
+
+<template name="number_columnh_linked">
+  <number_column>
+<!--    <script file="common/scripts/column_number.lua" /> -->
+    <script file="common/scripts/string_crosslink.lua" />
+  </number_column>
+</template>
+
+<template name="ft_columnh_linked">
+  <ft_column>
+<!--    <script file="common/scripts/column_ft.lua" />  -->
+    <script file="common/scripts/string_crosslink.lua" />
+  </ft_column>
 </template>
 
 
@@ -490,6 +546,17 @@
   </buttoncontrol>
 </template>
 
+<template name="weapondicepool_vehicle">
+  <buttoncontrol>
+    <icon>
+      <normal>textentry_die</normal>
+    </icon>
+    <script file="common/scripts/weapondicepool_vehicle.lua" />
+  </buttoncontrol>
+</template>
+
+
+
 <template name="sheetnumbercontrol">
   <basenumbercontrol>
     <anchored>
@@ -552,6 +619,7 @@
     <script file="common/scripts/woundnumberfield.lua" />
   </chitnumberfield>
 </template>
+
 
 <template name="chitnumberfield">
   <sheetnumberfieldtr>

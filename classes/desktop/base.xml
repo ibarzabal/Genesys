@@ -17,7 +17,7 @@
 	<includefile source="classes/desktop/dchallenge.xml" />
 	<includefile source="classes/desktop/dforce.xml" />
 <!--	<includefile source="classes/desktop/dicetower.xml" /> -->
-	<includefile source="classes/desktop/diebox.xml" />
+	<includefile source="classes/desktop/dieboxgen.xml" />
 	<includefile source="classes/desktop/diepanel.xml" />
 <!--	<includefile source="classes/desktop/diseasegenerator.xml" />		 -->
 <!--	<includefile source="classes/desktop/dockitem.xml" /> -->
@@ -47,10 +47,10 @@
 	<includefile source="classes/desktop/criticalchit.xml" />
 	<includefile source="classes/desktop/criticalvehiclechit.xml" />
 
-	<includefile source="classes/desktop/dieboxremote.xml" />
-	<includefile source="classes/desktop/dieboxviewslot.xml" />
-	<includefile source="classes/desktop/dieboxviewlist.xml" />
-	<includefile source="classes/desktop/dieboxview.xml" />
+	<includefile source="classes/desktop/dieboxgenremote.xml" />
+	<includefile source="classes/desktop/dieboxgenviewslot.xml" />
+	<includefile source="classes/desktop/dieboxgenviewlist.xml" />
+	<includefile source="classes/desktop/dieboxgenview.xml" />
 
 
 </root>
