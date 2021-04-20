@@ -10,6 +10,8 @@ local dieboxidentity = nil;
 function onInit()
 	DieBoxManager.registerControl(self);
 	registerMenuItem("Clear dice", "erase", 4);
+	registerMenuItem("Dicepool Tracker", "broadcast", 5);
+
 	Comm.registerSlashHandler("rolldicepool", onDieboxButtonPress);
 end
 
@@ -274,6 +276,7 @@ end
 
 
 function updateIcons()
+
 	if table.getn(entries) > 0 then
 		local position = 0 - (iconwidth * (table.getn(entries) - 1)) / 2;
 		for k, v in ipairs(entries) do
@@ -289,6 +292,7 @@ function updateIcons()
 	if descriptionwidget then
 		descriptionwidget.bringToFront();
 	end
+
 
 	-- Update any remote clients viewing this diebox.  Only send GM info if reveal is on.
 	if User.isHost() then
@@ -343,9 +347,18 @@ function onDoubleClick(x, y)
 	end
 end
 
-function onMenuSelection(...)
-	resetAll();
+function onMenuSelection(selection, subselection)
+	if selection == 4 then
+		resetAll();
+	elseif selection == 5 then
+		Interface.openWindow("dieboxview", "");
+	end
 end
+
+
+--function onMenuSelection(...)
+--	resetAll();
+--end
 
 function setDescription(description)
 	if description and description ~= "" then
@@ -452,7 +465,6 @@ function onDieboxButtonPress()
 		msgidentity = DB.getValue(sourcenode, "...name", "");
 
 		-- throw the dice
-		-- Debug.chat ("Diebox->throwDice",type, dice, modifier, description .. "<.>" .. sourcenodename .. "<.>" .. msgidentity);
 		Comm.throwDice(type, dice, modifier, description .. "<>" .. sourcenodename .. "<>" .. msgidentity .. "<>" .. gmonly);
 		resetAll();
 end

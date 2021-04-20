@@ -70,8 +70,6 @@ end
 function handleRefreshdestinyChits(msguser, msgidentity, msgparams)
 	local StoryPointPCnode = nil;
 	local StoryPointGMnode = nil;
-	-- Debug.chat("handleRefreshdestinyChits.getclass",window.getClass());
-	-- Debug.console("chit.lua: handleRefreshdestinyChits()  window.getClass() = " .. window.getClass());
 
 	if window.getClass() == "StoryPointPCchit" then
 		-- ensure that we have the light side chit node - create it if it does not exist (e.g. for a new campaign)

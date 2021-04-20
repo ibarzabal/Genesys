@@ -30,7 +30,7 @@ end
 
 function onClickRelease(button, x, y)
 	if (getValue() == 0) and User.isHost() then
-		CombatManager.requestActivation(window.getDatabaseNode(), true);
+		CombatManager2.requestActivation(window.getDatabaseNode(), true);
 	end
 	return true;
 end
@@ -45,7 +45,7 @@ end
 
 function onDrop(x, y, draginfo)
 	if draginfo.isType("combattrackeractivation") then
-		CombatManager.requestActivation(window.getDatabaseNode(), true);
+		CombatManager2.requestActivation(window.getDatabaseNode(), true);
 		return true;
 	end
 end

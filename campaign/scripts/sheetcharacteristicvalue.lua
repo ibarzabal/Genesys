@@ -26,7 +26,6 @@ end
 --end
 --
 --function onDrag(button, x, y, draginfo)
-----	Debug.chat("draginfo",draginfo);
 --	if not dragging then
 --		local sourcenode = getDatabaseNode();
 --		if sourcenode then

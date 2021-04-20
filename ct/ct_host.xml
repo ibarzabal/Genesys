@@ -9,10 +9,10 @@
 	<windowclass name="combattracker_host">
 		<frame>ctbox</frame>
 		<placement>
-			<size width="600" height="500" />
+			<size width="700" height="500" />
 		</placement>
 		<sizelimits>
-			<minimum width="600" height="400" />
+			<minimum width="700" height="400" />
 			<dynamic />
 		</sizelimits>
 		<softclose />
@@ -38,16 +38,61 @@
 
 			<label_ct name="label_name">
 				<anchored to="headeranchor" position="insidetopleft" offset="33,0">
-					<right offset="-153" />
+					<left offset="50" />
 				</anchored>
 				<static textres="ct_label_name" />
 				<center />
 			</label_ct>
 			<label_ct name="label_init">
-				<anchored to="headeranchor" position="insidetopright" offset="113,0" width="40" />
+				<anchored to="headeranchor" position="insidetopright" offset="480,0" width="40" />
 				<static textres="ct_label_init" />
 				<center />
 			</label_ct>
+
+			<label_ct name="label_wounds_threshold">
+				<anchored to="headeranchor" position="insidetopright" offset="435,0" width="40" />
+				<static textres="ct_label_wounds_threshold" />
+				<center />
+			</label_ct>
+			<label_ct name="label_wounds_current">
+				<anchored to="headeranchor" position="insidetopright" offset="395,0" width="40" />
+				<static textres="ct_label_wounds_current" />
+				<center />
+			</label_ct>
+			<label_ct name="label_strain_threshold">
+				<anchored to="headeranchor" position="insidetopright" offset="355,0" width="40" />
+				<static textres="ct_label_strain_threshold" />
+				<center />
+			</label_ct>
+			<label_ct name="label_strain_current">
+				<anchored to="headeranchor" position="insidetopright" offset="312,0" width="40" />
+				<static textres="ct_label_strain_current" />
+				<center />
+			</label_ct>
+
+
+
+
+
+
+			<label_ct name="label_melee_defense">
+				<anchored to="headeranchor" position="insidetopright" offset="263,0" width="40" />
+				<static textres="ct_label_melee_defense" />
+				<center />
+			</label_ct>
+			<label_ct name="label_ranged_defense">
+				<anchored to="headeranchor" position="insidetopright" offset="222,0" width="40" />
+				<static textres="ct_label_ranged_defense" />
+				<center />
+			</label_ct>
+			<label_ct name="label_soak">
+				<anchored to="headeranchor" position="insidetopright" offset="182,0" width="40" />
+				<static textres="ct_label_soak" />
+				<center />
+			</label_ct>
+
+
+
 			<frame_ctbox_host_header_toggles />
 			<buttoncontrol name="button_global_targeting">
 				<anchored to="header_toggles" position="insidetopleft" offset="10,8" width="20" height="20" />
@@ -135,7 +180,112 @@
 			<button_ctentry_activatetargeting name="activatetargeting" />
 			<button_ctentry_friendfoe name="friendfoe" />
 
-			<number_ctentry_initresult name="initresult" />
+
+			<string_ct name="npc_category" source="npc_category">
+				<anchored to="rightanchor" width="60" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="" />
+				<lineoffset default="off" mergerule="replace">0</lineoffset>
+				<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</string_ct>
+
+
+			<number_ct_crosslink name="soak" source="armour.soak">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="rangeddefence" source="armour.rangeddefence">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="meleedefence" source="armour.meleedefence">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+
+
+
+
+			<number_ct_crosslink name="strain_current" source="strain.current">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-20" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="strain_threshold" source="strain.threshold">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+
+
+			<number_ct_crosslink name="wounds_current" source="wounds.current">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="wounds_threshold" source="wounds.threshold">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ctentry_initresult name="initresult">
+				<anchored><right offset="-15" /></anchored>
+			</number_ctentry_initresult>
+
+
+<!--
+wounds_current.setLink(nodeChar.createChild("wounds.current", "number"));
+strain_threshold.setLink(nodeChar.createChild("strain.threshold", "number"));
+strain_current.setLink(nodeChar.createChild("strain.current", "number"));
+
+meleedefence.setLink(nodeChar.createChild("armour.meleedefence", "number"));
+rangeddefence.setLink(nodeChar.createChild("armour.rangeddefence", "number"));
+soak.setLink(nodeChar.createChild("armour.soak", "number"));
+
+npc_category.setLink(nodeChar.createChild("npc_category", "string"), true);
+-->
+
 
 			<string_ctname name="name" />
 			<string_ctname_nonid name="nonid_name" />

@@ -3,7 +3,7 @@
 
 	<windowclass name="dieboxviewslot">
 		<!--<frame>tooltipbox</frame> -->
-		<frame>collector</frame>
+		<frame>collectordesk</frame>
 		<sizelimits>
 			<minimum>
 				<height>45</height>
@@ -11,28 +11,28 @@
 			</minimum>
 		</sizelimits>
 		<sheetdata>
-		
-		<stringcontrol name=dieboxviewslotname>
+
+		<stringcontrol name="dieboxviewslotname">
 				<bounds>0,0,0,0</bounds>
 				<invisible />
 <!--				<font>sheetlabel</font>
 				<color>#ffffffff</color>
 				<static>1234567890</static>-->
 				<!--<center />-->
-		</stringcontrol>		
-		
-		<stringcontrol name=dieboxviewplayername>
+		</stringcontrol>
+
+		<stringcontrol name="dieboxviewplayername">
 				<bounds>5,2,150,12</bounds>
 				<font>sheetlabel</font>
-				<color>#ffffffff</color>
+<!--				<color>#ffffffff</color> -->
 				<static>1234567890</static>
 				<!--<center />-->
 		</stringcontrol>
-			
+
 		<dieboxremote name="dieboxremote" />
-		
+
 		</sheetdata>
-		<script file="classes/desktop/dieboxviewslot.lua" />		
+		<script file="classes/desktop/dieboxviewslot.lua" />
 	</windowclass>
-	
+
 </root>

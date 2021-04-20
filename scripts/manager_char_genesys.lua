@@ -7,7 +7,6 @@ function onInit()
 end
 
 function updateEncumbrance(nodeChar)
---	Debug.chat("update encumbrance");
 	local nEncTotal = 0;
 
 	local nCount, sEncumbrance,nEncumbrance, sType;
@@ -280,6 +279,22 @@ end
 function getCharacterName(characternode)
 	local name = "";
 	local namenode = characternode.getChild("name");
+
+	-- if NPC, check if we display ID or nonID name
+	local bIsCTNPC = (UtilityManager.getRootNodeName(characternode) == "combattracker");
+	local sNonIDLocal = DB.getValue(characternode, "nonid_name", "");
+	if sNonIDLocal == "" then
+		sNonIDLocal = Interface.getString("library_recordtype_empty_nonid_npc");
+--	elseif bIsCTNPC then
+--		sNonIDLocal = CombatManager.stripCreatureNumber(sNonIDLocal);
+	end
+	local nLocalID = DB.getValue(characternode, "isidentified", 1);
+
+	-- If this is an unidentified npc, return its non_id name
+	if bIsCTNPC and nLocalID == 0 then
+		return sNonIDLocal;
+	end
+
 	if namenode then
 		name = namenode.getValue();
 	end
@@ -593,9 +608,17 @@ end
 
 function addCritical(characternode)
 
+-- Check if characternode is a minion npc. If yes, it should kill one minion from the group
+-- instead of adding critical
+	if ActorManager.isPC(characternode) == false then
+		local npc_type = characternode.getChild("npc_category");
+		if npc_type.getValue() == "minion" then
+			addWounds(characternode, "","killminion");
+			return true;
+		end
+	end
+
 	Debug.console("Running addCritical.  characternode = " .. characternode.getNodeName());
-
-
 --	if User.isHost() or User.isOwnedIdentity(getIdentityName(characternode)) then
 
 			-- get the criticals node.  Used to check the number of current criticals sustained.
@@ -746,24 +769,39 @@ function addWoundsChit(characternode, draginfo)
 --	end
 end
 
-function addWounds(characternode, wounds)
+function addWounds(characternode, wounds, killminion)
+	local wounds_per_minion;
+	local soaknode;
+	local damage;
+	local sDamage;
+	local soaknode;
+	local modifier;
+
 --	if User.isHost() or User.isLocal() or User.isOwnedIdentity(getIdentityName(characternode)) then
 		if not addWoundsRunning then
 			addWoundsRunning = true;
 			-- get the wounds characternode
 			local woundsnode = characternode.createChild("wounds.current", "number");
 			if woundsnode then
-				local sDamage = string.match(wounds, "%[Damage:%s*(%w+)%]");
-				local soaknode = characternode.createChild("armour.soak", "number");
-				local damage = 0;
-				-- Add modifier stack, then reset stack.
-				local modifier = ModifierStack.getSum();
-				--Debug.console("Modifier = " .. modifier);
-				ModifierStack.reset();
-				if soaknode then
-					damage = tonumber(sDamage) - soaknode.getValue() + modifier;
+				if killminion == "killminion" then
+					wounds_per_minion = characternode.getChild("minion.wounds_per_minion");
+--					local sDamage = tostring(wounds_per_minion.getValue() + 1);
+					soaknode = nil;
+					damage = wounds_per_minion.getValue() + 1;
 				else
-					damage = tonumber(sDamage) + modifier;
+					sDamage = string.match(wounds, "%[Damage:%s*(%w+)%]");
+					soaknode = characternode.createChild("armour.soak", "number");
+					damage = 0;
+					-- Add modifier stack, then reset stack.
+					modifier = ModifierStack.getSum();
+					--Debug.console("Modifier = " .. modifier);
+					ModifierStack.reset();
+
+					if soaknode then
+						damage = tonumber(sDamage) - soaknode.getValue() + modifier;
+					else
+						damage = tonumber(sDamage) + modifier;
+					end
 				end
 
 				if damage > 0 then

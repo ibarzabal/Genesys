@@ -84,7 +84,6 @@
 			<bottomright rect="147,147,3,3" />
 		</framedef>
 
-
 		<!-- Chat die box frame -->
 		<framedef name="diebox">
 			<bitmap file="graphics/frames/diebox.png" />

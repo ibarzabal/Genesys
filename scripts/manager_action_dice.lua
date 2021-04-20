@@ -54,10 +54,6 @@ end
 
 
 function onDice(rSource, rTarget, rRoll)
---  Debug.chat("onDice: ", rRoll);
---  Debug.chat("rSource: ", rSource);
---  Debug.chat("rTarget: ", rTarget);
--- Debug.chat(OptionsManager.getOption("DDCL"));
   local rNada = processDice(rRoll, rSource, rTarget);
 end
 
@@ -206,8 +202,6 @@ function processDice(rSource, rTarget, rRoll)
     gmonly = true;
   end
 
---	Debug.console("processDice - rSource = ", rSource);
---	Debug.chat("processDice - rSource = ", rSource);
 
 	-- Used to track success and advantages for initiative in the form of <successes>.<advantages>
 	local initiativecount = 0;
@@ -247,7 +241,6 @@ function processDice(rSource, rTarget, rRoll)
     local newDie = {};
     newDie.type = rSource.aDice[cnt].type .. "x" .. rSource.aDice[cnt].result;
     newDie.result = rSource.aDice[cnt].result;
-    -- Debug.chat("newDie",newDie);
     table.insert(resultdice, newDie);
 		--processResultDie(resultdice, die);
   end
@@ -298,12 +291,6 @@ function processDice(rSource, rTarget, rRoll)
 		showsummary = false;
 		resultMsg.dicedisplay = 1;
 	end
---    Debug.chat("resultMsg",resultMsg);
---    Debug.chat("resultdice",resultdice);
---    Debug.chat("modifier",modifier);
---    Debug.chat("gmonly",gmonly);
-
-
 	-- resultMsg.font = "chatitalicfont";
 	resultMsg.dice = resultdice;
 	resultMsg.diemodifier = modifier;
@@ -1143,7 +1130,6 @@ function processDiceCritical(rSource, rTarget, rRoll)
     if cnt==1 then
       newDie.result = newDie.result * 10;
     end
-    -- Debug.chat("newDie",newDie);
     table.insert(resultdice, newDie);
 		--processResultDie(resultdice, die);
   end

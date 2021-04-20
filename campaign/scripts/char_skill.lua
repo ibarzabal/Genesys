@@ -47,7 +47,6 @@ end
 -- end
 
 --function onStatUpdate()
---	Debug.chat("char_skill.onStatUpdate executed");
 ----	stat.update(characteristic.getStringValue());
 --end
 

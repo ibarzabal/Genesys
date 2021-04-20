@@ -1,6 +1,5 @@
 function onInit()
-	-- Debug.chat("static",static);
-	if static then
+		if static then
 		local staticvalue = LanguageManager.getString(static[1]);
 		if staticcase then
 			if string.lower(staticcase[1]) == "upper" then

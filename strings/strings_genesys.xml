@@ -6,18 +6,31 @@
 -->
 
 <root>
-
+	<string name="dicepool_tracker_window_title">Dicepool Tracker</string>
 	<!-- Options -->
 	<string name="interface_cleardicepoolondrag_label">Clear Genesys dice pool on drag</string>
 
-<!-- Character Main -->
-<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
-<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
+	<!-- Character Main -->
+	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
+	<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
 
-<string name="char_label_powers">Powers</string>
-<string name="library_recordtype_empty_power">&#171; New Power &#187;</string>
-<!-- Combat Tracker Genesys -->
-<string name="ct_label_init_skill">Init Skill:</string>
+	<string name="char_label_powers">Powers</string>
+	<string name="library_recordtype_empty_power">&#171; New Power &#187;</string>
+	<!-- Combat Tracker Genesys -->
+	<string name="ct_label_init_skill">Init Skill:</string>
+	<string name="ct_label_init">Init</string>
+
+	<string name="ct_label_wounds_threshold">WT</string>
+	<string name="ct_label_wounds_current">WC</string>
+	<string name="ct_label_strain_threshold">ST</string>
+	<string name="ct_label_strain_current">SC</string>
+
+	<string name="ct_label_melee_defense">MDef</string>
+	<string name="ct_label_ranged_defense">RDef</string>
+	<string name="ct_label_soak">Soak</string>
+
+
+
 
 	<!-- Common -->
 	<string name="characteristics">Characteristics</string>

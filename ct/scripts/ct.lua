@@ -2,11 +2,12 @@
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
-
+local CheckOnDrop;
 local enableglobaltoggle = true;
 local enablevisibilitytoggle = true;
 
 function onInit()
+	CheckOnDrop = 0;
 	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
 
 	Interface.onHotkeyActivated = onHotkey;
@@ -160,6 +161,13 @@ function onEntrySectionToggle()
 end
 
 function onDrop(x, y, draginfo)
+	if ActionsManager.isClientFGU() == false then
+		CheckOnDrop = CheckOnDrop +1;
+		if CheckOnDrop > 1 then
+			CheckOnDrop = 0;
+			return true;
+		end
+	end
 	if draginfo.isType("shortcut") then
 		return CampaignDataManager.handleDrop("combattracker", draginfo);
 	end

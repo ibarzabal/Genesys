@@ -1,7 +1,6 @@
 labelwidget = nil;
 
 function onInit()
---	Debug.chat("label",name);
 	super.onInit();
 	if label then
 		labelwidget = addTextWidget("sheetlabelinline", string.upper(label[1]));

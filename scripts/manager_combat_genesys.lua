@@ -4,17 +4,96 @@
 --
 
 function onInit()
-	CombatManager.setCustomSort(CombatManager.sortfuncDnD);
-
-	CombatManager.setCustomAddNPC(addNPC);
-	CombatManager.setCustomNPCSpaceReach(getNPCSpaceReach);
-
-	CombatManager.setCustomRoundStart(onRoundStart);
-	CombatManager.setCustomTurnEnd(onTurnEnd);
+	CombatManager.setCustomSort(CombatManager.sortfuncStandard);
 	CombatManager.setCustomCombatReset(resetInit);
+
+	-- CombatManager.setCustomSort(CombatManager.sortfuncDnD);
+
+	-- CombatManager.setCustomAddNPC(addNPC);
+	-- CombatManager.setCustomNPCSpaceReach(getNPCSpaceReach);
+
+	-- CombatManager.setCustomRoundStart(onRoundStart);
+	-- CombatManager.setCustomTurnEnd(onTurnEnd);
+	CombatManager.setCustomCombatReset(resetInit);
+	CombatManager.setCustomDrop(onDropEvent);
 end
 
 
+function resetInit()
+	for _,v in pairs(CombatManager.getCombatantNodes()) do
+		DB.setValue(v, "initresult", "number", 0);
+	end
+end
+
+
+
+function onDropEvent(rSource, rTarget, draginfo)
+	local TargetNode = ActorManager.getCreatureNode(rTarget);
+	if TargetNode == nil then
+		return true;
+	end
+
+	if TargetNode.isPublic() or TargetNode.isOwner() then
+		CharManager.onDrop(ActorManager.getCreatureNode(rTarget), 0, 0, draginfo);
+	end
+
+
+
+--	if sDragType == "benny" then
+--		if User.isHost() then
+--			local nodeCT = CombatManager.getNodeCTFromActorRef(rTarget)
+--			if CharacterManager.isWildCard(nodeCT) then
+--				local winCombatant, winTracker, bWindowOpened = getCombatantWindow(nodeCT)
+--				if winCombatant and winCombatant.bennies then
+--					winCombatant.bennies.bennyDropped(draginfo)
+--					if bWindowOpened then
+--						winTracker.close()
+--					end
+--					return true
+--				end
+--			end
+--		end
+--	elseif sDragType == "token" then
+--		if User.isHost() then
+--			local nodeCT = CombatManager.getNodeCTFromActorRef(rTarget)
+--			local winCombatant, winTracker, bWindowOpened = getCombatantWindow(nodeCT)
+--			if winCombatant and winCombatant.token then
+--				winCombatant.token.onDrop(0, 0, draginfo)
+--				if bWindowOpened then
+--					winTracker.close()
+--				end
+--				return true
+--			end
+--		end
+--	elseif sDragType == "effect" then
+--		local rEffect = ActionEffect.dragToEffect(draginfo)
+--		if User.isHost() then
+--			ActionEffect.applyEffect(rSource, rTarget, rEffect)
+--		else
+--			ActionEffect.applyEffectRequest(rSource, rTarget, rEffect)
+--		end
+--		return true
+--	elseif sDragType == "pendingattack" and User.isHost() then
+--		onPendingAttackDrop(rSource, rTarget, draginfo)
+--		return true
+--	elseif onShortcutDrop(rSource, rTarget, draginfo) then
+--		return true
+--	elseif onActionCardDrop(rSource, rTarget, draginfo) then
+--		return true
+--	elseif StringManager.contains(GameSystem.numberactions, sDragType) then
+--		return onNumberActionDrop(rSource, rTarget, draginfo)
+--	elseif sDragType == "string" then
+--		return onStringDrop(rSource, rTarget, draginfo)
+--	elseif StringManager.contains(GameSystem.targetactions, sDragType) then
+--		DragDataUtil.enableTargetingMode(draginfo)
+--		local sSourceType, sSourceRecord = ActorManager.getTypeAndNodeName(rSource)
+--		local rSourceActor = CharacterManager.getActorShortcut(sSourceType, sSourceRecord)
+--		local sTargetType, sTargetRecord = ActorManager.getTypeAndNodeName(rTarget)
+--		local rTargetActor = CharacterManager.getActorShortcut(sTargetType, sTargetRecord)
+--		RollsManager.throwDragged(draginfo, rSourceActor, rTargetActor)
+--		return true
+--	end
+end
 
 
 
@@ -515,13 +594,6 @@ end
 -- RESET FUNCTIONS
 --
 
-function resetInit()
-	function resetCombatantInit(nodeCT)
-		DB.setValue(nodeCT, "initresult", "number", 0);
-		DB.setValue(nodeCT, "immediate", "number", 0);
-	end
-	CombatManager.callForEachCombatant(resetCombatantInit);
-end
 
 function clearExpiringEffects(bShort)
 	function checkEffectExpire(nodeEffect, bShort)
@@ -566,8 +638,7 @@ function rollEntryInit(nodeEntry)
 	if not nodeEntry then
 		return;
 	end
- Debug.chat ("nodeEntry", nodeEntry);
--- 	-- Start with the base initiative bonus
+ -- 	-- Start with the base initiative bonus
 -- 	local nInit = DB.getValue(nodeEntry, "init", 0);
 --
 -- 	-- Get any effect modifiers

@@ -65,8 +65,9 @@
 		<script name="ChatManagerGenesys" file="scripts/manager_chat2.lua" />
 		<script name="DieBoxManager" file="scripts/manager_diebox.lua" />
 		<script name="DicePoolManager" file="scripts/manager_dicepool.lua" />
+		<script name="DieBoxViewListManager" file="scripts/manager_dieboxviewlist.lua" />
 
- 		<script name="CharManager" file="campaign/scripts/manager_char_genesys.lua" />
+ 		<script name="CharManager" file="scripts/manager_char_genesys.lua" />
 <!-- Warhammer/SW had something called DatabaseManager. I need to be careful
 		and only bring code that is needed and does not clash with CoreRPG -->
 		<script name="DBManagerGenesys" file="scripts/manager_databasegenesys.lua" />

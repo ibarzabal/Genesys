@@ -33,8 +33,8 @@ end
 --   DB.removeHandler("StoryPointGMchit.chits", "onUpdate", onStoryPointUpdate);
 -- end
 
-function onStoryPointUpdate()
-	for _,w in pairs(getWindows()) do
---		Debug.chat(w.name);
-	end
-end
+--function onStoryPointUpdate()
+--	for _,w in pairs(getWindows()) do
+--
+--	end
+--end

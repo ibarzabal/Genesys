@@ -1,15 +1,16 @@
 local addWoundsRunning = false;
 
 function getNpcName(npcnode)
-	local name = "";
-	local namenode = npcnode.getChild("name");
-	if namenode then
-		name = namenode.getValue();
-	end
-	if name == "" then
-		name = "- Unnamed -";
-	end
-	return name;
+	return CharManager.getCharacterName(npcnode);
+--	local name = "";
+--	local namenode = npcnode.getChild("name");
+--	if namenode then
+--		name = namenode.getValue();
+--	end
+--	if name == "" then
+--		name = "- Unnamed -";
+--	end
+--	return name;
 end
 
 function openNpcSheet(npcnode)
@@ -876,45 +877,3 @@ function addVehicle(npcnode, vehiclenode)
 		return true;
 	end
 end
-
---function addWounds(characternode, wounds)
---	Debug.console("NPCManagerGenesys.lua: addWounds.");
---	if User.isLocal() then
---		Debug.console("User is local.");
---	end
---	if User.isHost() or User.isLocal() or User.isOwnedIdentity(getIdentityName(characternode)) then
---		if not addWoundsRunning then
---			addWoundsRunning = true;
-			-- get the wounds characternode
---			local woundsnode = characternode.createChild("wounds.current", "number");
---			if woundsnode then
---				local sDamage = string.match(wounds, "%[Damage:%s*(%w+)%]");
---				local soaknode = characternode.createChild("armour.soak", "number");
---				local damage = 0;
---				if soaknode then
---					damage = tonumber(sDamage) - soaknode.getValue();
---				else
---					damage = tonumber(sDamage);
---				end
---				if damage > 0 then
---					-- increase the characters wounds
---					woundsnode.setValue(woundsnode.getValue() + damage);
---				end
---
---				-- print a message
---				local msg = {};
---				msg.font = "msgfont";
---				if damage > 0 then
---					msg.text = getNpcName(characternode) .. " has gained " .. damage .." wounds";
---				else
---					msg.text = getNpcName(characternode) .. " has not taken any damage."
---				end
---				Comm.addChatMessage(msg);
---
---				-- and return
---				addWoundsRunning = false;
---				return true;
---			end
---		end
---	end
---end

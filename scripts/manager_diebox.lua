@@ -6,7 +6,14 @@ SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL = "sendplayerdicepool";
  function onInit()
 --	Register special message handler to share dicepool with other FG instances
   ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL, handleSendPlayerDicepool);
+  OOBManager.registerOOBMsgHandler(SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL, ProcessNothing);
+
 end
+function ProcessNothing()
+local nada = "";
+end
+
+
 
 function registerControl(ctrl)
 	control = ctrl;
@@ -139,18 +146,14 @@ function sendPlayerDicepool(dielist, description)
 	else
 		msgparams[3] = User.getUsername();
 	end
-  -- Debug.chat("broken");
-	-- ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL, msgparams);
+	ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL, msgparams);
 end
 
 function handleSendPlayerDicepool(msguser, msgidentity, msgparams)
-	--Debug.chat("dieboxmanager_onInit");
 	local dieliststring = msgparams[1];
 	local description = msgparams[2];
 	local username = msgparams[3];
 	local dielist = {};
-
-	--Debug.chat("dieboxmanager.lua: handleSendPlayerDicepool. msguser = " .. msguser .. ", msgidentity = " .. msgidentity);
 
 	if User.getUsername() ~= msguser then
 		-- Make dielist table from dieliststring
