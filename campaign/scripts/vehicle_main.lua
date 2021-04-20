@@ -61,8 +61,17 @@ function update()
 		weapons_iedit.setVisible(true);
 	end
 
+	if OptionsManager.isOption("VHPT", "off") then
+		hard_points_label.setVisible(false);
+		hard_points.setVisible(false);
+	end
 
-
+	if OptionsManager.isOption("VATT", "off") then
+		attachments_iedit.setVisible(false);
+		attachments_header.setVisible(false);
+		attachments_iadd.setVisible(false);
+		attachments.setVisible(false);
+	end
 end
 
 

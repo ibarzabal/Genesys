@@ -6,6 +6,9 @@
 -->
 
 <root>
+	<icon name="tab_vehicles" file="graphics/tabs/tab_vehicle.png" />
+
+
 	<!-- Headers -->
 	<framedef name="headerref">
 		<bitmap file="graphics/frames/headerref.png" />

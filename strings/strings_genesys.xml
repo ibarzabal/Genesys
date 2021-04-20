@@ -9,6 +9,24 @@
 	<string name="dicepool_tracker_window_title">Dicepool Tracker</string>
 	<!-- Options -->
 	<string name="interface_cleardicepoolondrag_label">Clear Genesys dice pool on drag</string>
+	<string name="option_header_genesys_house">Genesys: House Rules (GM)</string>
+	<string name="option_label_GATT">Items: Allow Gear Attachments</string>
+	<string name="option_label_VHPT">Vehicles: Allow Hard Points</string>	
+	<string name="option_label_VATT">Vehicles: Allow Attachments</string>
+
+
+
+	<!-- Options -->
+	<string name="option_window_title">Options</string>
+	<string name="option_empty">Unknown Option</string>
+	<string name="option_emptyset">&#171; Option Set &#187;</string>
+	<string name="option_header_client">Client</string>
+
+	<string name="option_header_combat">Combat (GM)</string>
+
+
+
+
 
 	<!-- Character Main -->
 	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>

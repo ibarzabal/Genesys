@@ -33,6 +33,10 @@
 		<script file="campaign/scripts/npc.lua" />
 
 		<sheetdata>
+			<link_record_header_id name="link">
+				<bounds>10,25,20,20</bounds>
+				<class>npc</class>
+			</link_record_header_id>
 			<genericcontrol name="rightanchor">
 				<anchored height="0" width="0">
 					<top offset="25" />

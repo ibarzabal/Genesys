@@ -182,7 +182,19 @@
 	</template>
 
 
-
+	<template name="anchor_inventorytab_right">
+		<genericcontrol name="inventorytab_rightanchor">
+			<anchored height="0" width="0">
+				<top />
+				<left />
+			</anchored>
+<!--			<script>
+				function onInit()
+					setAnchor("left", "", "left", "absolute", #window.getTabNames()*75-10)
+				end
+			</script>  -->
+		</genericcontrol>
+	</template>
 
 
 	<template name="derived_attribute">

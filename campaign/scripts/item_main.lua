@@ -45,6 +45,7 @@ function update()
 		bWeapon = true;
 	end
 	local bArmor = (sType == "Armor");
+	local bGear = (sType == "Gear");
 
 	local bSection1 = false;
 	if User.isHost() then
@@ -95,7 +96,7 @@ function update()
 	divider4.setVisible((bSection1 or bSection2 or bSection3 or bSection4));
 	-- Make hard points only visible for weapons and armor
 
-	if (bWeapon or bArmor) then
+	if (bWeapon or bArmor) or (bGear and OptionsManager.isOption("GATT", "on")) then
 		hard_points_label.setVisible(true);
 		hard_points.setVisible(true);
 		attachments_header.setVisible(true);

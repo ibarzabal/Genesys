@@ -117,6 +117,7 @@
 		<includefile source="campaign/record_char_other.xml" />
 		<includefile source="campaign/record_char_notes.xml" />
 		<includefile source="campaign/record_char_actions.xml" />
+		<includefile source="campaign/record_char_vehicle.xml" />
 
 <!-- NO longer used: we now use combat tracker CORERPG effects to track these
 		<includefile source="campaign/record_condition.xml" /> -->
