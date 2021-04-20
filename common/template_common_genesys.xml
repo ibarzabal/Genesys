@@ -385,6 +385,21 @@
   </basicnumber>
 </template>
 
+<template name="ranknumberfield">
+  <basicnumber>
+    <font>sheetlabel</font>
+    <color>ff000000</color>
+    <zerocolor>20000000</zerocolor>
+    <minvalue>0</minvalue>
+    <noreset />
+    <nodrop />
+    <nodrag />
+   <script file="common/scripts/ranknumberfield.lua" />
+ </basicnumber>
+</template>
+
+
+
 
 <template name="rangecontrol">
   <genericcontrol>

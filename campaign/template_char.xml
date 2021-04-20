@@ -116,6 +116,8 @@
 				function update()
 					local bEdit = (window.parentcontrol.window.actions_iedit.getValue() == 1);
 					for _,w in ipairs(getWindows()) do
+						w.name.setEnabled(bEdit);
+						w.name.setLine(bEdit);
 						w.idelete.setVisibility(bEdit);
 					end
 				end

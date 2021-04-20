@@ -104,7 +104,7 @@
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
 					<left offset="135" />
 				</anchored>
-			</number_columnh>				
+			</number_columnh>
 
       <ft_columnh name="description" />
 
@@ -137,7 +137,7 @@
     </script>
     <sheetdata>
       <link_record_header_id name="link">
-        <class>item_attachment</class>
+        <class>reference_item_attachment</class>
       </link_record_header_id>
 
       <anchor_record_header_right name="rightanchor" />

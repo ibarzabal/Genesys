@@ -22,12 +22,14 @@
 		<playercontrol />
 		<sharable />
 		<script file="campaign/scripts/species_archetype.lua" />
+
 		<sheetdata>
 			<sub_record_header name="header">
 				<class>ref_species_archetype_header</class>
 			</sub_record_header>
 
-			<frame_record_content name="contentframe" />
+			<frame_ref_content />
+<!--			<frame_record_content name="contentframe" /> -->
 
 			<subwindow_record name="main">
 				<class>species_main</class>

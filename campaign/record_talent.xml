@@ -19,31 +19,24 @@
 		<nodelete />
 		<playercontrol />
 		<sharable />
-		<script>
-			function onLockChanged()
-				if header.subwindow then
-					header.subwindow.update();
-				end
-				if content.subwindow then
-					content.subwindow.update();
-				end
-			end
-		</script>
-
+		<script file="campaign/scripts/talent.lua" />
 
 		<sheetdata>
 			<sub_record_header name="header">
 				<class>ref_talent_header</class>
 			</sub_record_header>
 
-			<frame_ref_content />
-			<sub_ref_content name="content">
-				<class>ref_talent_stats</class>
-			</sub_ref_content>
-			<scrollbar_ref_content />
+			<frame_record_content name="contentframe" />
 
-			<resize_referencepage />
-			<close_referencepage />
+			<subwindow_record name="main">
+				<class>ref_talent_stats</class>
+				<activate />
+			</subwindow_record>
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<resize_recordsheet />
+			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
 
@@ -74,57 +67,15 @@
 	</windowclass>
 
 	<windowclass name="ref_talent_stats">
-		<script>
-			function onInit()
-				update();
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				local sRanked = ranked.getValue();
-				local bRanked = (sRanked == "Yes");
-				if bReadOnly then
-					name.update(bReadOnly, true);
-				else
-					name.update(bReadOnly);
-				end
-				if ranked.getValue() == "Yes" then
-					ranks.setVisible(true);
-				else
-					ranks.setVisible(false);
-				end
-				tier.update(bReadOnly);
-				summary.update(bReadOnly);
-				description.update(bReadOnly);
-				ranked.update(bReadOnly);
-				ranks.update(bReadOnly);
-				activation.update(bReadOnly);
-				setting.update(bReadOnly);
-			end
-		</script>
+		<margins control="0,0,0,2" />
+ 		<script file="campaign/scripts/talent_main.lua" />
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-
-			<label_column name="name_biglabel">
-				<anchored>
-					<top relation="relative" offset="7" />
-				</anchored>
-				<font>reference-b-large</font>
-				<invisible />
-			</label_column>
-
-			<label_column name="namelabel">
-				<static textres="talent_label_name" />
-				<invisible />
-			</label_column>
-			<string_columnh name="name">
-				<invisible />
-			</string_columnh>
 
 			<label_column name="tier_label">
 				<static textres="talent_label_tier" />
 			</label_column>
 			<string_columnh name="tier" />
-
 
 			<label_column name="activation_label">
 				<static textres="talent_label_activation" />
@@ -143,7 +94,6 @@
 					end
 				</script>
 			</string_columnh>
-
 
 			<label_column name="ranks_label">
 				<static textres="talent_label_rank" />

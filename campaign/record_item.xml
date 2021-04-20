@@ -35,7 +35,6 @@
 			<scrollbar_record>
 				<target>main</target>
 			</scrollbar_record>
-
 			<resize_recordsheet />
 			<close_recordsheet />
 		</sheetdata>

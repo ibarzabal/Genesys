@@ -517,7 +517,7 @@ function processDice(rSource, rTarget, rRoll)
 			if critDetails.severity == 999 then
 				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  \nSeverity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then
@@ -569,7 +569,7 @@ function processDice(rSource, rTarget, rRoll)
 			if critDetails.severity == 999 then
 				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  \nSeverity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then
@@ -1239,7 +1239,7 @@ function processDiceCritical(rSource, rTarget, rRoll)
 			if critDetails.severity == 999 then
 				msg.text = NPCManagerGenesys.getNpcName(characternode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NPCManagerGenesys.getNpcName(characternode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(characternode) .. " has gained the critical:  " .. critDetails.name .. ".  \nSeverity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then
@@ -1291,7 +1291,7 @@ function processDiceCritical(rSource, rTarget, rRoll)
 			if critDetails.severity == 999 then
 				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  \nSeverity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then

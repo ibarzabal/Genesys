@@ -208,6 +208,9 @@
 	<string name="item_label_hard_points">Hard Points</string>
 	<string name="item_grouped_label_encumbrance">Enc</string>
 	<string name="item_grouped_tooltip_encumbrance">Encumbrance</string>
+	<string name="item_grouped_label_hard_points">HP</string>
+	<string name="item_grouped_tooltip_hard_points">Hard Points</string>
+
 	<string name="item_grouped_label_def">Def</string>
 	<string name="item_grouped_tooltip_def">Defense</string>
 	<string name="item_grouped_label_soak">Soak</string>

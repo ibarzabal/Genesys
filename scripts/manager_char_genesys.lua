@@ -76,13 +76,12 @@ function addInfoDB(nodeChar, sClass, sRecord, nodeTargetList)
 		addSpecies(nodeChar, sClass, sRecord);
 	elseif sClass == "referencecareer" then
 		addCareer(nodeChar, sClass, sRecord);
-
-	elseif sClass == "referenceracialtrait" then
-		addRacialTrait(nodeChar, sClass, sRecord, nodeTargetList);
-	elseif sClass == "referenceclassability" then
-		addClassFeature(nodeChar, sClass, sRecord, nodeTargetList);
-	elseif sClass == "referencefeat" then
-		addFeat(nodeChar, sClass, sRecord, nodeTargetList);
+--	elseif sClass == "referenceracialtrait" then
+--		addRacialTrait(nodeChar, sClass, sRecord, nodeTargetList);
+--	elseif sClass == "referenceclassability" then
+--		addClassFeature(nodeChar, sClass, sRecord, nodeTargetList);
+--	elseif sClass == "referencefeat" then
+--		addFeat(nodeChar, sClass, sRecord, nodeTargetList);
 	else
 		return false;
 	end
@@ -346,6 +345,17 @@ function onDrop(characternode, x, y, draginfo)
 				return addTalent(characternode, recordnode);
 			end
 		end
+
+		-- Talent
+		if class == "referenceracialtrait" then
+			local recordnode = DB.findNode(recordname);
+			if recordnode then
+				return addSpecialAbility(characternode, recordnode);
+			end
+		end
+
+
+
 
 
 		-- Obligation
@@ -996,6 +1006,43 @@ function addTalent(characternode, talentnode)
 		return true;
 	end
 end
+
+
+function addSpecialAbility(characternode, abilitynode)
+	if User.isHost() or User.isLocal() or User.isOwnedIdentity(getIdentityName(characternode)) then
+
+		-- get the abilities node
+		local abilitiesnode = characternode.createChild("abilities");
+
+		-- check for duplicates
+		if DBManagerGenesys.checkForDuplicateName(abilitiesnode, abilitynode) then
+			-- print a message
+			local msg = {};
+			msg.font = "msgfont";
+			msg.text = "Cannot add Special Ability as " .. getCharacterName(characternode) .. " already has Special Ability: " .. abilitynode.getChild("name").getValue();
+			Comm.deliverChatMessage(msg);
+			return true;
+		end
+
+		-- get the new talent
+		local newabilitynode = abilitiesnode.createChild();
+
+		-- copy the talent
+		DBManagerGenesys.copyNode(abilitynode, newabilitynode);
+
+		-- print a message
+		local msg = {};
+		msg.font = "msgfont";
+		msg.text = getCharacterName(characternode) .. " has gained the Special Ability: " .. abilitynode.getChild("name").getValue();
+		Comm.deliverChatMessage(msg);
+
+		-- and return
+		return true;
+	end
+end
+
+
+
 
 function addObligation(characternode, obligationnode)
 	if User.isHost() or User.isLocal() or User.isOwnedIdentity(getIdentityName(characternode)) then
