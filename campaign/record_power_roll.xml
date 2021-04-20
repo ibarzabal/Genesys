@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<!-- 
-  Please see the license.html file included with this distribution for 
+<!--
+  Please see the license.html file included with this distribution for
   attribution and copyright information.
 -->
 
@@ -17,14 +17,14 @@
 		</sizelimits>
 		<nodelete />
 		<playercontrol />
-		<minimize>minimized_char</minimize>
+		<minimize>minimized_npc</minimize>
 		<tooltip control="name" />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<resource>power_title_cast</resource>
 			</windowtitlebar_char>
 			<anchor_title_charsheethelper name="contentanchor" />
-			
+
 			<genericcontrol name="contentframe">
 				<anchored to="contentanchor">
 					<top anchor="bottom" offset="0" />
@@ -53,12 +53,12 @@
 			function onInit()
 				updateDisplay();
 			end
-			
+
 			function updateDisplay()
 				local node = getDatabaseNode();
 				local bAtkAbilityMode = (DB.getValue(node, "atkbase", "") == "ability");
 				local bSaveAbilityMode = (DB.getValue(node, "savedcbase", "") == "ability");
-				
+
 				atkstat.setVisible(bAtkAbilityMode);
 				label_atkstat.setVisible(bAtkAbilityMode);
 				atkplus.setVisible(bAtkAbilityMode);
@@ -86,7 +86,7 @@
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			
+
 			<label_column name="name_label">
 				<static textres="power_label_name" />
 			</label_column>
@@ -100,7 +100,7 @@
 				<font>sheettext</font>
 				<readonly />
 			</stringcontrol>
-			
+
 			<header_column name="header_attack">
 				<static textres="power_header_cast_attack" />
 				<center />
@@ -170,7 +170,7 @@
 				<anchored to="atkmod" />
 				<static textres="power_label_atkmod" />
 			</label_fieldtop>
-			
+
 			<header_column name="header_save">
 				<static textres="power_header_cast_save" />
 				<center />
@@ -272,14 +272,14 @@
 		</sizelimits>
 		<nodelete />
 		<playercontrol />
-		<minimize>minimized_char</minimize>
+		<minimize>minimized_npc</minimize>
 		<tooltip control="name" />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<resource>power_title_damage</resource>
 			</windowtitlebar_char>
 			<anchor_title_charsheethelper name="contentanchor" />
-			
+
 			<genericcontrol name="contentframe">
 				<anchored to="contentanchor">
 					<top anchor="bottom" offset="0" />
@@ -307,7 +307,7 @@
 		<script>
 			function onDrop(x, y, draginfo)
 				local sDragType = draginfo.getType();
-				
+
 				if sDragType == "dice" then
 					local w = list.addEntry(true);
 					for _, vDie in ipairs(draginfo.getDieList()) do
@@ -323,7 +323,7 @@
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			
+
 			<label_column name="name_label">
 				<static textres="power_label_name" />
 			</label_column>
@@ -337,7 +337,7 @@
 				<font>sheettext</font>
 				<readonly />
 			</stringcontrol>
-			
+
 			<header_column name="header_damage">
 				<static textres="power_header_damage" />
 				<center />
@@ -355,7 +355,7 @@
 				<datasource>.damagelist</datasource>
 				<class>power_damage_entry</class>
 			</list_editor>
-			
+
 			<label_fieldtop>
 				<anchored to="list" position="aboveleft" offset="5,1" width="60" />
 				<static textres="weapon_label_dmgdice" />
@@ -442,14 +442,14 @@
 		</sizelimits>
 		<nodelete />
 		<playercontrol />
-		<minimize>minimized_char</minimize>
+		<minimize>minimized_npc</minimize>
 		<tooltip control="name" />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<resource>power_title_heal</resource>
 			</windowtitlebar_char>
 			<anchor_title_charsheethelper name="contentanchor" />
-			
+
 			<genericcontrol name="contentframe">
 				<anchored to="contentanchor">
 					<top anchor="bottom" offset="0" />
@@ -477,7 +477,7 @@
 		<script>
 			function onDrop(x, y, draginfo)
 				local sDragType = draginfo.getType();
-				
+
 				if sDragType == "dice" then
 					local w = list.addEntry(true);
 					for _, vDie in ipairs(draginfo.getDieList()) do
@@ -493,7 +493,7 @@
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			
+
 			<label_column name="name_label">
 				<static textres="power_label_name" />
 			</label_column>
@@ -512,7 +512,7 @@
 				<static textres="power_header_heal_other" />
 				<center />
 			</header_column>
-			
+
 			<label_column name="healtargeting_label">
 				<static textres="power_label_targeting" />
 			</label_column>
@@ -527,7 +527,7 @@
 					<values>self</values>
 				</parameters>
 			</button_stringcycler>
-			
+
 			<label_column name="healtype_label">
 				<static textres="power_label_healtype" />
 			</label_column>
@@ -560,7 +560,7 @@
 				<datasource>.heallist</datasource>
 				<class>power_heal_entry</class>
 			</list_editor>
-			
+
 			<label_fieldtop>
 				<anchored to="list" position="aboveleft" offset="5,1" width="60" />
 				<static textres="weapon_label_dmgdice" />
@@ -636,14 +636,14 @@
 		</sizelimits>
 		<nodelete />
 		<playercontrol />
-		<minimize>minimized_char</minimize>
+		<minimize>minimized_npc</minimize>
 		<tooltip control="name" />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<resource>power_title_effect</resource>
 			</windowtitlebar_char>
 			<anchor_title_charsheethelper name="contentanchor" />
-			
+
 			<genericcontrol name="contentframe">
 				<anchored to="contentanchor">
 					<top anchor="bottom" offset="0" />
@@ -670,7 +670,7 @@
 	<windowclass name="power_effect_editor_main">
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-			
+
 			<label_column name="name_label">
 				<static textres="power_label_name" />
 			</label_column>
@@ -690,7 +690,7 @@
 				<center />
 			</header_column>
 			<string_column_full name="label" />
-			
+
 			<header_column name="header_duration">
 				<static textres="power_header_effect_duration" />
 				<center />
@@ -710,12 +710,12 @@
 					<values>minute|hour|day</values>
 				</parameters>
 			</button_stringcycler>
-			
+
 			<header_column name="header_other">
 				<static textres="power_header_effect_other" />
 				<center />
 			</header_column>
-			
+
 			<label_column name="targeting_label">
 				<static textres="power_label_targeting" />
 			</label_column>
@@ -730,7 +730,7 @@
 					<values>self</values>
 				</parameters>
 			</button_stringcycler>
-			
+
 			<label_column name="apply_label">
 				<static textres="power_label_effect_apply" />
 			</label_column>

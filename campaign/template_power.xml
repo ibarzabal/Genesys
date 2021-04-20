@@ -6,6 +6,19 @@
 -->
 
 <root>
+	<template name="subwindow_inventory">
+		<subwindow>
+			<anchored>
+				<top parent="header" anchor="bottom" offset="25" />
+				<left offset="15" />
+				<right offset="-10" />
+				<bottom offset="-142" />
+			</anchored>
+			<frame name="groupbox" />
+		</subwindow>
+	</template>
+
+
 	<template name="button_grouptype">
 		<button_iconcycler name="castertype">
 			<anchored width="20" height="20" />

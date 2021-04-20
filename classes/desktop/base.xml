@@ -15,7 +15,7 @@
 	<includefile source="classes/desktop/ddifficulty.xml" />
 	<includefile source="classes/desktop/dproficiency.xml" />
 	<includefile source="classes/desktop/dchallenge.xml" />
-<!--	<includefile source="classes/desktop/dforce.xml" /> -->
+	<includefile source="classes/desktop/dforce.xml" />
 <!--	<includefile source="classes/desktop/dicetower.xml" /> -->
 	<includefile source="classes/desktop/diebox.xml" />
 	<includefile source="classes/desktop/diepanel.xml" />

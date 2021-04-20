@@ -11,7 +11,7 @@
 	<string name="interface_cleardicepoolondrag_label">Clear Genesys dice pool on drag</string>
 	<string name="option_header_genesys_house">Genesys: House Rules (GM)</string>
 	<string name="option_label_GATT">Items: Allow Gear Attachments</string>
-	<string name="option_label_VHPT">Vehicles: Allow Hard Points</string>	
+	<string name="option_label_VHPT">Vehicles: Allow Hard Points</string>
 	<string name="option_label_VATT">Vehicles: Allow Attachments</string>
 
 
@@ -24,14 +24,14 @@
 
 	<string name="option_header_combat">Combat (GM)</string>
 
-
-
-
-
 	<!-- Character Main -->
 	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
   <string name="char_message_careeradd">Career '%s' added to '%s'.</string>
 	<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
+	<string name="char_label_inventory">Equipment</string>
+	<string name="char_label_vehicles">Vehicles</string>
+	<string name="char_label_encumbrance">Encumbrance</string>
+	<string name="char_label_encthreshold">Threshold</string>
 
 	<string name="char_label_powers">Powers</string>
 	<string name="library_recordtype_empty_power">&#171; New Power &#187;</string>
@@ -796,7 +796,7 @@
 	<string name="char_label_invarmormaxability">Max Stat</string>
 	<string name="char_label_invarmorskillcheckpenalty">Skill Chk</string>
 	<string name="char_label_invarmorspellfailure">Spell Fail</string>
-	<string name="char_label_total_encumbrance">Total encumbrance</string>
+	<string name="char_label_total_encumbrance">Total</string>
 	<string name="char_label_invenclt">Light</string>
 	<string name="char_label_invencmed">Medium</string>
 	<string name="char_label_invenchvy">Heavy</string>

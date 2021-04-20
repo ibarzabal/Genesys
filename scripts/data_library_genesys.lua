@@ -146,7 +146,7 @@ aRecordOverrides = {
 		sRecordDisplayClass = "referenceskill",
 		aCustomFilters = {
 			["Category"] = { sField = "category" },
-			["Charactetistic"] = { sField = "characteristic" },
+			["Characteristic"] = { sField = "characteristic" },
 		},
 	},
 	["npc"] = {
@@ -375,7 +375,7 @@ aListViews = {
 
 				{ sName = "cost", sType = "string", sHeadingRes = "vehicle_grouped_label_cost", nWidth=100, bCentered=true },
 				{ sName = "rarity", sType = "number", sHeadingRes = "vehicle_grouped_label_rarity", bCentered=true },
-				{ sName = "encumbrance", sType = "string", sHeadingRes = "vehicle_grouped_label_encumbrance_capacity", sTooltipRes = "vehicle_grouped_tooltip_encumbrance_capacity", bCentered=true },
+				{ sName = "encumbrance_capacity", sType = "number", sHeadingRes = "vehicle_grouped_label_encumbrance_capacity", sTooltipRes = "vehicle_grouped_tooltip_encumbrance_capacity", bCentered=true },
 			},
 			aFilters = {},
 			aGroups = { { sDBField = "type" } },

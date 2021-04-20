@@ -11,7 +11,16 @@ function onInit()
 	--else
 	--	constructDefaultskilllist("full");
 	--end
-	constructDefaultskilllist();
+
+
+	-- If Character has 0 skills, populate it with default skills
+	local CharSkillCount = DB.getChildCount(window.getDatabaseNode(), "skilllist");
+	if CharSkillCount == 0 then
+		constructDefaultskilllist();
+	end
+
+
+
 	-- CharManager.updateSkillPoints(window.getDatabaseNode());
 	-- local nodeChar = getDatabaseNode().getParent();
 	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildUpdate", onStatUpdate);
@@ -107,7 +116,7 @@ function constructDefaultskilllist(sListType)
 	local entrymap = {};
 	for _,w in pairs(getWindows()) do
 		local sLabel = w.name.getValue();
-
+--		Debug.chat("sLabel",sLabel);
 		local t = aSystemskilllist[sLabel];
 		if t and not t.sublabeling then
 			if not entrymap[sLabel] then
@@ -118,33 +127,33 @@ function constructDefaultskilllist(sListType)
 		end
 	end
 
-					-- Set properties and create missing entries for all known skilllist
-					for k, t in pairs(DataCommon.skilldata) do
-						if not t.sublabeling then
-							local matches = entrymap[k];
-							if not matches then
-								local w = createWindow();
-								if w then
-									w.name.setValue(k);
-									if t.characteristic then
-										w.characteristic.setValue(t.characteristic);
-									else
-										w.characteristic.setValue("");
-									end
-									if t.category then
-										w.category.setValue(t.category);
-									else
-										w.category.setValue("");
-									end
-
-									if t.trainedonly then
-										w.showonminisheet.setValue(0);
-									end
-									matches = { w };
-								end
-							end
-						end
+	-- Set properties and create missing entries for all known skilllist
+	for k, t in pairs(DataCommon.skilldata) do
+		if not t.sublabeling then
+			local matches = entrymap[k];
+			if not matches then
+				local w = createWindow();
+				if w then
+					w.name.setValue(k);
+					if t.characteristic then
+						w.characteristic.setValue(t.characteristic);
+					else
+						w.characteristic.setValue("");
 					end
+					if t.category then
+						w.category.setValue(t.category);
+					else
+						w.category.setValue("");
+					end
+
+					if t.trainedonly then
+						w.showonminisheet.setValue(0);
+					end
+					matches = { w };
+				end
+			end
+		end
+	end
 
 	-- Set properties for all skilllist
 --	for _,w in pairs(getWindows()) do

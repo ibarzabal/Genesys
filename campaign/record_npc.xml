@@ -265,7 +265,7 @@
 			</subwindow>
 
 			<subwindow name="inventory">
-				<bounds>10,75,-10,-1</bounds>
+				<bounds>20,90,-20,-10</bounds>
  				<class>npcsheet_inventory</class>
 			</subwindow>
 

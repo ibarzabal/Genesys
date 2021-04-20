@@ -19,7 +19,7 @@
 		<softclose />
 		<nodelete />
 		<playercontrol />
-		<minimize>minimized_char</minimize>
+		<minimize>minimized_npc</minimize>
 		<tooltip field="name" />
 		<script file="campaign/scripts/char.lua" />
 		<sheetdata>

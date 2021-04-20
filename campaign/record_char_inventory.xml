@@ -8,28 +8,57 @@
 <root>
 	<windowclass name="charsheet_inventory">
 		<sheetdata>
-			<frame_char name="inventoryframe">
-				<bounds>0,0,-1,-205</bounds>
-			</frame_char>
+			<button_iedit name="inventory_iedit">
+				<anchored position="insidebottomright" offset="10,10" />
+				<script>
+					function onValueChanged()
+						local bEditMode = (getValue() == 1);
+
+						window.contents.subwindow.inventorylist_iadd.setVisible(bEditMode);
+						window.contents.subwindow.vehicleslist_iadd.setVisible(bEditMode);
+						window.contents.subwindow.inventorylist.update();
+						window.contents.subwindow.vehicleslist.update();
+
+					end
+				</script>
+				<target>inventorylist</target>
+			</button_iedit>
+
+			<subwindow name="contents">
+				<anchored>
+					<top offset="0" />
+					<bottom offset="-40" />
+					<left offset="0" />
+					<right offset="-15" />
+				</anchored>
+				<class>charsheet_inventory_contents</class>
+				<activate />
+				<fastinit />
+			</subwindow>
+			<scrollbar_charcontents />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_inventory_contents">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<label_charframetopg name="invtitle">
+				<bounds>15,10,-10,20</bounds>
+				<icons>char_inventory</icons>
+				<static textres="char_label_inventory" />
+			</label_charframetopg>
 
 			<label name="count_label">
-				<anchored to="inventoryframe" position="insidetopleft" offset="20,10" width="20" />
+				<anchored to="invtitle" width="20">
+					<top anchor="bottom" relation="relative" offset="5" />
+					<left offset="-3" />
+				</anchored>
 				<center />
 				<static>#</static>
 			</label>
 			<genericcontrol name="rightanchor">
-				<anchored to="inventoryframe" width="0" height="0">
-					<top offset="10" />
-					<right offset="-20" />
-				</anchored>
+				<anchored to="invtitle" position="belowright" offset="-5,5" width="0" />
 				<invisible />
-			</genericcontrol>
-			<genericcontrol name="idelete_header">
-				<anchored to="rightanchor" width="20" height="20">
-					<top />
-					<right anchor="left" relation="relative" offset="-5" />
-				</anchored>
-				<disabled />
 			</genericcontrol>
 			<genericcontrol name="shortcut_header">
 				<anchored to="rightanchor" width="20" height="20">
@@ -46,7 +75,7 @@
 				<icon>char_inv_carried_header</icon>
 				<tooltip textres="char_tooltip_itemcarried" />
 			</genericcontrol>
-			<label name="encumbrance_label">
+			<label name="weight_label">
 				<anchored to="rightanchor" width="30">
 					<top />
 					<right anchor="left" relation="relative" offset="-10" />
@@ -64,187 +93,250 @@
 				<static textres="char_label_itemlocation" />
 			</label>
 			<label name="name_label">
-				<anchored to="rightanchor">
-					<top />
-					<left parent="inventoryframe" offset="55" />
-					<right anchor="left" relation="relative" offset="-5" />
+				<anchored to="invtitle">
+					<top anchor="bottom" offset="5"/>
+					<left offset="55" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 				</anchored>
 				<static textres="char_label_itemname" />
 				<center />
 			</label>
 
-			<list_charinv name="inventorylist">
-				<anchored to="inventoryframe">
-					<top offset="40" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
-				</anchored>
-			</list_charinv>
-			<scrollbar>
-				<anchored to="inventorylist" />
-				<target>inventorylist</target>
-			</scrollbar>
 
-			<button_iedit name="inventorylist_iedit">
-				<anchored to="inventorylist" position="aboveright" offset="5,10" />
-				<target>inventorylist</target>
-			</button_iedit>
 			<button_iadd name="inventorylist_iadd">
-				<anchored to="inventorylist_iedit" position="lefthigh" offset="5,0" />
+				<anchored to="invtitle" position="insidetopright" offset="0,0" />
 				<target>inventorylist</target>
 			</button_iadd>
+			<list_charinv name="inventorylist">
+				<anchored to="invtitle">
+					<top anchor="bottom" relation="relative" offset="2" />
+					<right offset="5" />
+					<left offset="-5" />
+				</anchored>
+				<noscroll />
+			</list_charinv>
+			<!-- Inventory END -->
 
-			<frame_char name="encumbranceframe">
-				<bounds>0,-205,240,-1</bounds>
-			</frame_char>
-			<simplenumber name="encumbranceload" source="encumbrance.load">
-				<anchored to="encumbranceframe" position="insidetopleft" offset="160,30" width="55" height="20" />
-				<frame name="fieldlight" offset="7,5,7,5" />
-				<readonly />
-			</simplenumber>
-			<label name="encumbrance_label">
-				<anchored to="encumbranceframe" position="insidetopleft" offset="15,30" />
-				<static textres="char_label_total_encumbrance" />
-			</label>
+			<!-- Vehicles -->
+			<label_charframetopg name="vehiclestitle">
+				<anchored to="invtitle" height="20">
+					<top anchor="bottom" relation="relative" offset="10" />
+					<left />
+					<right />
+				</anchored>
+<!--				<icons>char_treasure</icons> -->
+				<static textres="char_label_vehicles" />
+			</label_charframetopg>
+			<button_iadd name="vehicleslist_iadd">
+				<anchored to="vehiclestitle" position="insidetopright" offset="0,0" />
+				<target>vehicleslist</target>
+			</button_iadd>
+			<list_vehiclesinv name="vehicleslist">
+				<anchored to="invtitle">
+					<top anchor="bottom" relation="relative" offset="2" />
+					<right offset="5" />
+					<left offset="-5" />
+				</anchored>
+				<noscroll />
+			</list_vehiclesinv>
+			<!-- Vehicles END -->
 
-			<frame_char name="coinframe">
-				<bounds>243,-205,-1,-1</bounds>
-			</frame_char>
-			<label_frametop name="coin_label">
-				<anchored to="coinframe" />
+			<label_charframetopg name="moneytitle">
+				<anchored to="invtitle" height="20">
+					<top anchor="bottom" relation="relative" offset="10" />
+					<left />
+					<right />
+				</anchored>
+<!--				<icons>char_treasure</icons> -->
 				<static textres="char_label_money" />
-			</label_frametop>
+			</label_charframetopg>
+
 			<number_dropadd name="coinamount1" source="coins.slot1.amount">
-				<anchored to="coinframe" position="insidetopleft" offset="20,30" width="40" height="20" />
+				<anchored to="moneytitle" width="30" height="20">
+					<top anchor="bottom" relation="relative" offset="10" />
+					<left anchor="center" offset="-160" />
+				</anchored>
+				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
 			<stringu name="coinname1" source="coins.slot1.name">
-				<anchored to="coinframe" position="insidetopleft" offset="70,30" width="60" height="20" />
+				<anchored to="coinamount1" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount2" source="coins.slot2.amount">
-				<anchored to="coinamount1" position="below" offset="0,6" height="20" />
+				<anchored to="moneytitle" width="30" height="20">
+					<top anchor="bottom" relation="relative" offset="10" />
+					<left anchor="center" offset="-160" />
+				</anchored>
+				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
 			<stringu name="coinname2" source="coins.slot2.name">
-				<anchored to="coinname1" position="below" offset="0,6" height="20" />
+				<anchored to="coinamount2" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount3" source="coins.slot3.amount">
-				<anchored to="coinamount2" position="below" offset="0,6" height="20" />
+				<anchored to="coinname1" position="righthigh" offset="10,0" width="30" height="20" />
+				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
 			<stringu name="coinname3" source="coins.slot3.name">
-				<anchored to="coinname2" position="below" offset="0,6" height="20" />
+				<anchored to="coinamount3" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount4" source="coins.slot4.amount">
-				<anchored to="coinamount3" position="below" offset="0,6" height="20" />
+				<anchored to="coinname2" position="righthigh" offset="10,0" width="30" height="20" />
+				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
 			<stringu name="coinname4" source="coins.slot4.name">
-				<anchored to="coinname3" position="below" offset="0,6" height="20" />
+				<anchored to="coinamount4" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount5" source="coins.slot5.amount">
-				<anchored to="coinamount4" position="below" offset="0,6" height="20" />
+				<anchored to="coinname3" position="righthigh" offset="10,0" width="30" height="20" />
+				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
 			<stringu name="coinname5" source="coins.slot5.name">
-				<anchored to="coinname4" position="below" offset="0,6" height="20" />
+				<anchored to="coinamount5" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
 			<number_dropadd name="coinamount6" source="coins.slot6.amount">
-				<anchored to="coinamount5" position="below" offset="0,6" height="20" />
+				<anchored to="coinname4" position="righthigh" offset="10,0" width="30" height="20" />
+				<hideonvalue>0</hideonvalue>
 				<description field="name" />
 			</number_dropadd>
 			<stringu name="coinname6" source="coins.slot6.name">
-				<anchored to="coinname5" position="below" offset="0,6" height="20" />
+				<anchored to="coinamount6" position="righthigh" offset="10,0" width="60" height="20" />
 			</stringu>
-			<basicstring name="coinother">
-				<anchored>
-					<left parent="coinname1" anchor="right" offset="10" />
-					<right parent="coinframe" offset="-15" />
-					<top parent="coinamount1" />
-					<bottom parent="coinamount6" />
-				</anchored>
-				<multilinespacing>20</multilinespacing>
-			</basicstring>
-		</sheetdata>
-	</windowclass>
-
-	<windowclass name="char_invitem">
-		<margins control="0,0,0,2" />
-		<script>
-			function onInit()
-				getDatabaseNode().onDelete = onDelete;
-			end
-			function onDelete(node)
-				ItemManager.onCharRemoveEvent(node);
-			end
-		</script>
-		<sheetdata>
-			<hidden_record_isidentified name="isidentified"><class>item</class><ignorehost /></hidden_record_isidentified>
-
-			<number_charinv name="count">
-				<bounds>5,2,20,20</bounds>
-				<tabtarget next="name" />
-				<default>1</default>
-			</number_charinv>
-
-			<genericcontrol name="rightanchor">
-				<anchored width="0" height="0">
-					<top />
+			<stringu name="coinother">
+				<anchored to="moneytitle">
+					<top anchor="bottom" relation="relative" offset="5" />
+					<left />
 					<right />
 				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+
+			<label_charframetopg name="encumbrancetitle">
+				<anchored to="moneytitle" height="20">
+					<top anchor="bottom" relation="relative" offset="10" />
+					<left />
+					<right />
+				</anchored>
+				<icons>char_inventory</icons>
+				<static textres="char_label_encumbrance" />
+			</label_charframetopg>
+			<simplenumber name="encumbranceload" source="encumbrance.load">
+				<anchored to="encumbrancetitle" width="60" height="30">
+					<top anchor="bottom" relation="relative" offset="20" />
+					<right offset="-10" />
+				</anchored>
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<font>sheetlabel</font>
+				<readonly />
+			</simplenumber>
+			<label_fieldtop name="encumbranceload_label">
+				<anchored to="encumbranceload" />
+				<static textres="char_label_total_encumbrance" />
+			</label_fieldtop>
+
+			<genericcontrol name="encumbranceanchor">
+				<anchored to="encumbrancetitle" position="belowleft" offset="0,20" width="0" height="30" />
 				<invisible />
 			</genericcontrol>
-			<button_idelete name="idelete">
-				<anchored width="20" height="20">
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-				</anchored>
-			</button_idelete>
-			<linkcontrol_id name="shortcut">
-				<anchored width="20" height="20">
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
-				</anchored>
-				<class>item</class>
-				<readonly />
-			</linkcontrol_id>
-			<button_char_inv_carried name="carried">
-				<anchored width="20" height="20">
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-				</anchored>
-			</button_char_inv_carried>
-			<number_charinv name="encumbrance">
-				<anchored width="30" height="20">
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
-				</anchored>
-				<delaykeyupdate />
-				<tabtarget prev="location" />
-			</number_charinv>
-			<string_charinvloc name="location">
-				<anchored width="80" height="20">
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
-				</anchored>
-				<tabtarget next="encumbrance" prev="nonid_name" />
-			</string_charinvloc>
 
-			<string_charinvname name="name">
-				<anchored position="insidetopleft" offset="35,2" height="20">
-					<right parent="rightanchor" anchor="left" relation="current" offset="-5" />
+<!--
+			<number_linked name="encumbrancebase" source="encumbrance.encumbered">
+				<anchored to="encumbranceanchor" width="60" height="30">
+					<top />
+					<left anchor="right" relation="relative" offset="10" />
 				</anchored>
-				<tabtarget next="nonid_name" prev="count" />
-			</string_charinvname>
-			<string_charinvname name="nonid_name">
-				<anchored position="insidetopleft" offset="35,2" height="20">
-					<right parent="rightanchor" anchor="left" relation="current" offset="-5" />
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<source>
+					<name>abilities.strength.score</name>
+					<op>+</op>
+				</source>
+				<source><string /><name>size</name></source>
+			</number_linked>
+			<label_fieldtop name="encumbrancebase_label">
+				<anchored to="encumbrancebase" />
+				<static textres="char_label_encbase" />
+			</label_fieldtop>
+
+			<number_linked name="encumbranceheavy" source="encumbrance.encumberedheavy">
+				<anchored to="encumbranceanchor" width="60" height="30">
+					<top />
+					<left anchor="right" relation="relative" offset="10" />
 				</anchored>
-				<empty textres="library_recordtype_empty_nonid_item" />
-				<invisible />
-				<tabtarget next="location" prev="name" />
-			</string_charinvname>
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<source>
+					<name>encumbrance.encumbered</name>
+					<op>+</op>
+				</source>
+			</number_linked>
+			<label_fieldtop name="encumbranceheavy_label">
+				<anchored to="encumbranceheavy" />
+				<static textres="char_label_encheavy" />
+			</label_fieldtop>
+-->
+
+
+			<number_linked name="encumbrancethreshold" source="encumbrance.threshold">
+				<anchored to="encumbranceanchor" width="60" height="30">
+					<top />
+					<left anchor="right" relation="relative" offset="10" />
+				</anchored>
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<source>
+					<name>brawn.current</name>
+					<op>+</op>
+				</source>
+				<source>
+			    <name>abilities.strength.bonus</name>
+			    <op>+</op>
+			  </source>
+
+			</number_linked>
+			<label_fieldtop name="encumbrancethreshold_label">
+				<anchored to="encumbrancethreshold" />
+				<static textres="char_label_encthreshold" />
+			</label_fieldtop>
+
+
+			<linkednumber name="meleeattackbonus" source="attackbonus.melee">
+			  <anchored to="combatframe" position="insidetop" offset="-20,100" height="30" />
+			  <frame name="bonus" offset="5,5,5,5" />
+			  <font>sheetnumber</font>
+			  <displaysign />
+			  <readonly />
+			  <description text="Melee attack" />
+			  <source>
+			    <name>attackbonus.base</name>
+			    <op>+</op>
+			  </source>
+			  <source>
+			    <name>abilities.strength.bonus</name>
+			    <op>+</op>
+			  </source>
+			</linkednumber>
+
+<!--
+			<number_linked name="encumbrancedrag" source="encumbrance.liftpushdrag">
+				<anchored to="encumbranceanchor" width="60" height="30">
+					<top />
+					<left anchor="right" relation="relative" offset="10" />
+				</anchored>
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<source>
+					<name>encumbrance.encumbered</name>
+					<op>+</op>
+				</source>
+			</number_linked>
+			<label_fieldtop name="encumbrancedrag_label">
+				<anchored to="encumbrancedrag" offset="8,1" />
+				<static textres="char_label_encdrag" />
+			</label_fieldtop>
+-->
+
+
 		</sheetdata>
 	</windowclass>
+
 </root>

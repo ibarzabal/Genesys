@@ -7,6 +7,34 @@
 
 <root>
 
+	<template name="button_inventorytab">
+		<genericcontrol>
+			<anchored width="85" height="31">
+				<top parent="header" anchor="bottom" offset="4" />
+				<right parent="inventorytab_rightanchor" anchor="left" relation="relative" offset="15" />
+			</anchored>
+			<icon>tabhorizontal</icon>
+			<initcolor>FFB0B0B0</initcolor>
+			<script>
+				function onInit()
+					if initcolor then
+						setColor(initcolor[1])
+					end
+					if label then
+						createLabel(label[1])
+					elseif labelres then
+						createLabel(Interface.getString(labelres[1]))
+					end
+				end
+				function createLabel(sLabel)
+					addTextWidget("tabtext_horizontal", sLabel)
+				end
+				function onClickDown(...)
+					window.toggleTabButton(getName())
+				end
+			</script>
+		</genericcontrol>
+	</template>
 
 	<template name="subwindow_charcontents">
 		<subwindow name="contents">
@@ -1104,6 +1132,125 @@
 			<script file="campaign/scripts/char_invlist.lua" />
 		</windowlist>
 	</template>
+
+	<template name="list_vehiclesinv">
+		<windowlist>
+			<child></child>
+			<child><backcolor>1A40301E</backcolor></child>
+			<datasource>.vehicleslist</datasource>
+			<class>char_inv_vehicle</class>
+			<allowdelete />
+			<script file="campaign/scripts/char_vehicleslist.lua" />
+		</windowlist>
+	</template>
+
+
+	<windowclass name="char_invitem">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				getDatabaseNode().onDelete = onDelete;
+			end
+			function onDelete(node)
+				ItemManager.onCharRemoveEvent(node);
+			end
+		</script>
+		<sheetdata>
+			<hidden_record_isidentified name="isidentified"><class>item</class><ignorehost /></hidden_record_isidentified>
+
+			<number_charinv name="count">
+				<bounds>5,2,20,20</bounds>
+				<tabtarget next="name" />
+				<default>1</default>
+			</number_charinv>
+
+			<genericcontrol name="rightanchor">
+				<anchored width="0" height="0">
+					<top />
+					<right />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored width="20" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+			<linkcontrol_id name="shortcut">
+				<anchored width="20" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+				</anchored>
+				<class>item</class>
+				<readonly />
+			</linkcontrol_id>
+			<button_char_inv_carried name="carried">
+				<anchored width="20" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_char_inv_carried>
+			<string_charinvname name="encumbrance">
+				<anchored width="30" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<delaykeyupdate />
+				<tabtarget prev="location" />
+			</string_charinvname>
+
+			<string_charinvloc name="location">
+				<anchored width="80" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<tabtarget next="encumbrance" prev="nonid_name" />
+			</string_charinvloc>
+
+			<string_charinvname name="name">
+				<anchored position="insidetopleft" offset="35,2" height="20">
+					<right parent="rightanchor" anchor="left" relation="current" offset="-5" />
+				</anchored>
+				<tabtarget next="nonid_name" prev="count" />
+			</string_charinvname>
+			<string_charinvname name="nonid_name">
+				<anchored position="insidetopleft" offset="35,2" height="20">
+					<right parent="rightanchor" anchor="left" relation="current" offset="-5" />
+				</anchored>
+				<empty textres="library_recordtype_empty_nonid_item" />
+				<invisible />
+				<tabtarget next="location" prev="name" />
+			</string_charinvname>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="char_inv_vehicle">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+
+			<!--			<button_listitem_column_delete name="idelete" /> -->
+			<button_idelete name="idelete">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+
+			<link_listitem_column name="shortcut">
+				<class>vehicle</class>
+			</link_listitem_column>
+
+			<string_listitem_column_name name="name">
+					<disabled />
+			</string_listitem_column_name>
+	<!--				<empty textres="library_recordtype_empty_subracialtrait" />
+			</string_listitem_column_name>
+	-->
+			</sheetdata>
+	</windowclass>
+
 
 	<template name="list_charweapon">
 		<windowlist>
