@@ -689,108 +689,194 @@
 				</anchored>
 			</sheetnumberfield>
 
-<!-- CONDITIONS -->
-			<sheetframe name="main_conditions">
-				<!--<bounds>12,201,236,252</bounds>-->
-				<bounds>14,154,470,200</bounds>
-				<frame>
-				</frame>
-			</sheetframe>
 
-			<!-- Conditions -->
-			<basewindowlist name="main_conditions_conditions">
-				<class>empty</class>
-				<skipempty />
-				<anchored>
-					<left>
-						<parent>main_conditions</parent>
-						<anchor>left</anchor>
-						<offset>8</offset>
-					</left>
-					<right>
-						<parent>main_conditions</parent>
-						<anchor>right</anchor>
-						<offset>-10</offset>
-					</right>
-					<top>
-						<parent>main_conditions</parent>
-						<anchor>top</anchor>
-						<offset>20</offset>
-					</top>
-					<bottom>
-						<parent>main_conditions</parent>
-						<anchor>bottom</anchor>
-						<offset>-20</offset>
-					</bottom>
-				</anchored>
-				<script>
-					function onInit()
-						createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
-						createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
-					end
-				</script>
-			</basewindowlist>
-			<scrollbar>
-				<anchored>
-					<to>main_conditions_conditions</to>
-					<offset>-6,0</offset>
-				</anchored>
-				<target>main_conditions_conditions</target>
-			</scrollbar>
+						<!-- GENERAL skilllist FRAME ......................................................................... -->
+						<frame_char name="skillframe">
+							<bounds>15,155,-25,-15</bounds>
+						</frame_char>
 
-			<!-- NOTES -->
-			<sheetframe name="notes_notes">
-				<bounds>14,350,470,200</bounds>
-			</sheetframe>
-			<sheetframetitle name="notes_notes_title">
-				<anchored>
-					<to>notes_notes</to>
-				</anchored>
-				<static>Notes</static>
-			</sheetframetitle>
+						<button_iedit name="skilllist_iedit">
+							<anchored to="skillframe" position="insidetopright" offset="0,0" />
+							<target>skilllist</target>
+							<script>
+								function onValueChanged()
+									local bEdit = (getValue() == 1);
+									window.skilllist_iadd.setVisible(bEdit);
+									window.skilllist.update();
+								end
+							</script>
+						</button_iedit>
 
-			<sheetformattedtextfield name="notes_notes_notes" source="notes">
-				<anchored>
-					<left>
-						<parent>notes_notes</parent>
-						<anchor>left</anchor>
-						<offset>8</offset>
-					</left>
-					<right>
-						<parent>notes_notes</parent>
-						<anchor>right</anchor>
-						<offset>-10</offset>
-					</right>
-					<top>
-						<parent>notes_notes</parent>
-						<anchor>top</anchor>
-						<offset>20</offset>
-					</top>
-					<bottom>
-						<parent>notes_notes</parent>
-						<anchor>bottom</anchor>
-						<offset>-20</offset>
-					</bottom>
-				</anchored>
-				<!--Custom onDrop function for this control.  return nil so that formatted text control allows dropping of links
-				This means that the overiding manager drop code does not execute for this control.-->
-<!--				<script>
-					function onDrop(x, y, draginfo)
-						return;
-					end
-				</script>
-
--->
-			</sheetformattedtextfield>
-			<scrollbar>
-				<anchored>
-					<to>notes_notes_notes</to>
-					<offset>-6,0</offset>
-				</anchored>
-				<target>notes_notes_notes</target>
-			</scrollbar>
+						<button_iadd name="skilllist_iadd">
+							<anchored to="skilllist_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
+							<target>skilllist</target>
+							<tooltip textres="char_tooltip_skilladd" />
+						</button_iadd>
 
 
+
+
+			<!--
+						<genericcontrol>
+							<anchored to="skillframe" position="insidetopleft" offset="17,15" width="10" height="10" />
+							<icon>char_quicklist</icon>
+							<tooltip textres="char_tooltip_skilllisthowmini" />
+						</genericcontrol>
+			-->
+						<genericcontrol>
+							<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
+							<icon>char_encumbrance</icon>
+						</genericcontrol>
+						<label>
+							<anchored to="skillframe" position="insidetopleft" offset="50,10" />
+							<static textres="skill_name_title" />
+						</label>
+						<genericcontrol name="rightanchor">
+							<anchored to="skillframe" width="0" height="0">
+								<top offset="10" />
+								<right offset="-25" />
+							</anchored>
+							<invisible />
+						</genericcontrol>
+						<genericcontrol name="idelete_header">
+							<anchored to="rightanchor" width="20" height="20">
+								<top />
+								<right anchor="left" relation="relative" offset="-2" />
+							</anchored>
+							<disabled />
+							<invisible />
+						</genericcontrol>
+
+						<list_charskill name="skilllist">
+							<anchored to="skillframe">
+								<top offset="30" />
+								<left offset="10" />
+								<right offset="-25" />
+								<bottom offset="-15" />
+							</anchored>
+			<!--				<script>
+								function onInit()
+									local sCategory = "general";
+									InitList(sCategory);
+								end
+							</script>
+
+						-->
+						</list_charskill>
+						<scrollbar>
+							<anchored to="skilllist" />
+							<target>skilllist</target>
+						</scrollbar>
+			<!-- GENERAL skilllist FRAME END......................................................................... -->
 		</sheetdata>
 	</windowclass>
+
+	<!-- GENERAL skilllist LIST! .......................................................................... -->
+	<windowclass name="char_skill">
+	<margins control="0,0,0,2" />
+	<script file="campaign/scripts/char_skill.lua" />
+	<sheetdata>
+		<button_checkbox name="career_skill">
+			<bounds>22,8,12,12</bounds>
+			<tooltip>
+				<text>Career Skill</text>
+			</tooltip>
+			<script>
+			function onInit()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						setVisible(true);
+						setTooltipText("Minion skill?");
+					else
+						setVisible(false);
+					end
+				end
+
+			end
+
+			function onValueChanged()
+				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+						MinionManager.updateSkill(window.getDatabaseNode());
+					end
+				end
+			end
+		</script>
+		</button_checkbox>
+		<genericcontrol name="rightanchor">
+			<anchored width="0" height="0">
+				<top />
+				<right />
+			</anchored>
+			<invisible />
+		</genericcontrol>
+		<button_idelete name="idelete">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+			</anchored>
+		</button_idelete>
+		<genericcontrol name="idelete_spacer">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+			</anchored>
+			<disabled />
+			<invisible />
+		</genericcontrol>
+		<!-- FIELDS START HERE -->
+		<skilldicepool>
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+
+		</skilldicepool>
+
+		<number_charskilltotal name="advances">
+			<anchored width="30" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</number_charskilltotal>
+
+		<stringu name="characteristic">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+			</anchored>
+			<script>
+				function onEnter()
+					window.windowlist.addEntry(true);
+					return true;
+				end
+			</script>
+		</stringu>
+		<stringu name="category">
+			<anchored width="70" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</stringu>
+		<stringu name="name">
+			<anchored height="20">
+				<top offset="2" />
+				<left offset="40" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+			<tabtarget next="sublabel" />
+		</stringu>
+		<buttoncontrol name="shortcut">
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
+			</anchored>
+			<icon normal="button_link" pressed="button_link_down" />
+			<script file="campaign/scripts/char_skilllink.lua" />
+		</buttoncontrol>
+		</sheetdata>
+	</windowclass>
+
+
+
 </root>

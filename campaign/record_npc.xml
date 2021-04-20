@@ -6,25 +6,6 @@
 -->
 
 <root>
-<!-- 	<windowclass name="npcsmall">  -->
-<!-- 		<sizelimits>  -->
-<!-- 			<maximum>  -->
-<!-- 				<height>20</height>  -->
-<!-- 			</maximum>  -->
-<!-- 		</sizelimits>  -->
-<!-- 		<sheetdata>  -->
-<!-- 			<windowbutton name="open">  -->
-<!-- 				<bounds>0,0,20,20</bounds>  -->
-<!-- 				<class>npc</class>  -->
-<!-- 			</windowbutton>  -->
-<!-- 			<basestringfield name="name">  -->
-<!-- 				<bounds>22,3,-1,20</bounds>  -->
-<!-- 				<empty>&#171; New NPC &#187;</empty>  -->
-<!-- 				<disabled />  -->
-<!-- 			</basestringfield>  -->
-<!-- 		</sheetdata>  -->
-<!-- 	</windowclass>  -->
-
 	<windowclass name="npc">
 		<frame>charsheet</frame>
 		<placement>
@@ -152,14 +133,14 @@
 							window.main_minion_numbers.setVisible(false);
 						end
 
-						if window.skills.subwindow then
+						if window.main.subwindow then
 							local visible = false;
 
 							if string.lower(getValue()) == "minion" then
 								visible = true;
 							end
 
-							local aRows = window.skills.subwindow.skilllist.getWindows();
+							local aRows = window.main.subwindow.skilllist.getWindows();
 							for k,v in pairs(aRows) do
 								v.career_skill.setVisible(visible);
 							end
@@ -320,24 +301,32 @@
 				<bounds>0,75,-1,-1</bounds>
 				<class>npcmain</class>
 			</subwindow>
+
+			<subwindow name="abilities">
+				<bounds>15,80,-20,-20</bounds>
+				<class>charsheet_abilities</class>
+			</subwindow>
+
+<!--
 			<subwindow name="skills">
 				<bounds>0,65,-1,-10</bounds>
 				<class>charsheet_skilllist</class>
 			</subwindow>
+-->
 			<subwindow name="combat">
-				<bounds>0,65,-1,-1</bounds>
+				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_combat</class>
 			</subwindow>
+
 			<subwindow name="inventory">
 				<bounds>0,65,-1,-1</bounds>
  				<class>npcsheet_inventory</class>
 			</subwindow>
-<!-- 			<subwindow name="starship"> -->
-<!-- 				<bounds>0,75,-1,-1</bounds> -->
-<!-- 				<class>npcstarship</class> -->
-<!-- 				<script file="classes/campaign/npcvehicle.lua" />								 -->
-<!-- 			</subwindow>			 -->
 
+			<subwindow name="notes">
+				<bounds>0,10,-1,-20</bounds>
+ 				<class>npcsheet_notes</class>
+			</subwindow>
 
 			<tabs_charsheet name="tabs">
 				<tab>
@@ -345,9 +334,14 @@
 					<subwindow>main</subwindow>
 				</tab>
 				<tab>
+					<icon>tab_abilities</icon>
+					<subwindow>abilities</subwindow>
+				</tab>
+<!--				<tab>
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
 				</tab>
+-->
 				<tab>
 					<icon>tab_combat</icon>
 					<subwindow>combat</subwindow>
@@ -357,9 +351,10 @@
 					<subwindow>inventory</subwindow>
 				</tab>
 				<tab>
-<!-- 					<icon>tab_vehicle</icon> -->
-<!-- 					<subwindow>starship</subwindow> -->
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
 				</tab>
+
 				<activate>1</activate>
 			</tabs_charsheet>
 			<close_charsheet />

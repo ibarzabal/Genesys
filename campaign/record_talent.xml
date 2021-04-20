@@ -80,6 +80,8 @@
 			end
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				local sRanked = ranked.getValue();
+				local bRanked = (sRanked == "Yes");
 				if bReadOnly then
 					name_biglabel.setValue("[" .. name.getValue() .. "]");
 					name_biglabel.setVisible(true);
@@ -91,10 +93,16 @@
 					name.update(bReadOnly);
 					namelabel.setVisible(false);
 				end
+				if ranked.getValue() == "Yes" then
+					ranks.setVisible(true);
+				else
+					ranks.setVisible(false);
+				end
 				tier.update(bReadOnly);
 				summary.update(bReadOnly);
 				description.update(bReadOnly);
 				ranked.update(bReadOnly);
+				ranks.update(bReadOnly);
 				activation.update(bReadOnly);
 				setting.update(bReadOnly);
 			end
@@ -130,7 +138,21 @@
 			<label_column name="ranked_label">
 				<static textres="talent_label_ranked" />
 			</label_column>
-			<string_columnh  name="ranked" />
+			<string_columnh  name="ranked">
+				<nohide />
+				<delaykeyupdate />
+				<script>
+					function onValueChanged()
+						window.update();
+					end
+				</script>
+			</string_columnh>
+
+
+			<label_column name="ranks_label">
+				<static textres="talent_label_rank" />
+			</label_column>
+			<string_columnh name="ranks" />
 
 			<ft_columnh name="description" />
 

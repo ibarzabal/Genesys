@@ -479,7 +479,9 @@ function processDice(rSource, rTarget, rRoll)
         if bFlatDamage == true then
           damagemsg.text = "[Damage: " .. totaldamage .. "]";
         else
-          damagemsg.text = "[Damage: " .. totaldamage .. "+ Brawn]";
+          local iBrawn = DB.getValue(DB.findNode(characternode), "brawn.current", 0);
+          totaldamage = totaldamage + iBrawn;
+          damagemsg.text = "[Damage: " .. totaldamage .. "]";
         end
 				if User.isHost() and (gmonly or not revealalldice) then
 					Comm.addChatMessage(damagemsg);

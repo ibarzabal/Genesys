@@ -269,13 +269,13 @@ end
 -- 	end
 -- end
 
--- function getIdentityName(characternode)
--- 	return characternode.getName();
--- end
+function getIdentityName(characternode)
+	return characternode.getName();
+end
 --
--- function getCharacterNode(identityname)
--- 	return DB.findNode("charsheet." .. identityname);
--- end
+function getCharacterNode(identityname)
+	return DB.findNode("charsheet." .. identityname);
+end
 --
 function getCharacterName(characternode)
 	local name = "";

@@ -278,195 +278,194 @@
 			</initdicepool>
 
 
-<!-- EXPERIENCE -->
-			<sheetframe name="main_experience">
-				<bounds>363,97,121,94</bounds>
-			</sheetframe>
-			<sheetframetitle name="main_experience_title">
-				<anchored>
-					<to>main_experience</to>
-				</anchored>
-				<static>Experience</static>
-			</sheetframetitle>
+			<!-- GENERAL skilllist FRAME ......................................................................... -->
+			<frame_char name="skillframe">
+				<bounds>15,100,-39,-1</bounds>
+			</frame_char>
 
-			<!-- TOTAL -->
-			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,22</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Total</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_experience_total" source="experience.total">
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,21</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				<tabtarget>
-					<next>main_experience_spent</next>
-				</tabtarget>
-			</sheetnumberfield>
-
-			<!-- SPENT -->
-			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,42</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Spent</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_experience_spent" source="experience.spent">
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,41</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				<tabtarget>
-					<next>main_fortune_maximum</next>
-					<prev>main_experience_total</prev>
-				</tabtarget>
+			<button_iedit name="skilllist_iedit">
+				<anchored to="skillframe" position="insidetopright" offset="0,0" />
+				<target>skilllist</target>
 				<script>
-					local totalnode = nil;
-
 					function onValueChanged()
-						local totalvalue = totalnode.getValue();
-						local value = getValue();
-						if value == 0 then
-							setColor(zerocolor[1]);
-						else
-							setColor(color[1]);
-						end
-						if 0 > value then
-							setValue(0);
-						end
-						if value > totalvalue then
-							setValue(totalvalue);
-						end
-					end
-
-					function onInit()
-						local windownode = window.getDatabaseNode();
-						totalnode = windownode.getChild("experience.total");
-						onValueChanged();
+						local bEdit = (getValue() == 1);
+						window.skilllist_iadd.setVisible(bEdit);
+						window.skilllist.update();
 					end
 				</script>
-			</sheetnumberfield>
+			</button_iedit>
 
-			<!-- REMAINING -->
-			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,62</offset>
-					<size>
-						<width>64</width>
-					</size>
+			<button_iadd name="skilllist_iadd">
+				<anchored to="skilllist_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
+				<target>skilllist</target>
+				<tooltip textres="char_tooltip_skilladd" />
+			</button_iadd>
+
+
+
+
+<!--
+			<genericcontrol>
+				<anchored to="skillframe" position="insidetopleft" offset="17,15" width="10" height="10" />
+				<icon>char_quicklist</icon>
+				<tooltip textres="char_tooltip_skilllisthowmini" />
+			</genericcontrol>
+-->
+			<genericcontrol>
+				<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
+				<icon>char_encumbrance</icon>
+			</genericcontrol>
+			<label>
+				<anchored to="skillframe" position="insidetopleft" offset="50,10" />
+				<static textres="skill_name_title" />
+			</label>
+			<genericcontrol name="rightanchor">
+				<anchored to="skillframe" width="0" height="0">
+					<top offset="10" />
+					<right offset="-25" />
 				</anchored>
-				<static>Remaining</static>
-			</sheetlabel>
-			<sheetnumbercontrol>
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,61</offset>
-					<size>
-						<width>30</width>
-					</size>
+				<invisible />
+			</genericcontrol>
+			<genericcontrol name="idelete_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-2" />
 				</anchored>
 				<disabled />
-				<script>
-					local totalnode = nil;
-					local spentnode = nil;
+				<invisible />
+			</genericcontrol>
 
-					function onUpdate(source)
-						local totalvalue = totalnode.getValue();
-						local spentvalue = spentnode.getValue();
-						setValue(totalvalue - spentvalue);
-						onValueChanged();
-					end
-
+			<list_charskill name="skilllist">
+				<anchored to="skillframe">
+					<top offset="30" />
+					<left offset="10" />
+					<right offset="-25" />
+					<bottom offset="-15" />
+				</anchored>
+<!--				<script>
 					function onInit()
-						local windownode = window.getDatabaseNode();
-						totalnode = windownode.getChild("experience.total");
-						totalnode.onUpdate = onUpdate;
-						spentnode = windownode.getChild("experience.spent");
-						spentnode.onUpdate = onUpdate;
-						onUpdate(nil);
-						onValueChanged();
+						local sCategory = "general";
+						InitList(sCategory);
 					end
 				</script>
-			</sheetnumbercontrol>
 
-			<!-- TALENTS -->
-						<frame_char name="talents_talents">
-							<!--<bounds>12,81,351,390</bounds>-->
-							<bounds>14,97,350,-5</bounds>
-						</frame_char>
-						<sheetframetitle name="talents_talents_title">
-							<anchored>
-								<to>talents_talents</to>
-							</anchored>
-							<static>Abilities, Talents, Critical Injuries</static>
-						</sheetframetitle>
-
-						<!-- Talents -->
-						<basewindowlist name="talents_talents_talents">
-							<class>empty</class>
-							<skipempty />
-							<anchored>
-								<left>
-									<parent>talents_talents</parent>
-									<anchor>left</anchor>
-									<offset>8</offset>
-								</left>
-								<right>
-									<parent>talents_talents</parent>
-									<anchor>right</anchor>
-									<offset>-15</offset>
-								</right>
-								<top>
-									<parent>talents_talents</parent>
-									<anchor>top</anchor>
-									<offset>21</offset>
-								</top>
-								<bottom>
-									<parent>talents_talents</parent>
-									<anchor>bottom</anchor>
-									<offset>-21</offset>
-								</bottom>
-							</anchored>
-							<script>
-								function onInit()
-									createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
-									createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
-									createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
-									createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
-								end
-							</script>
-						</basewindowlist>
-						<scrollbar>
-							<anchored>
-								<to>talents_talents_talents</to>
-								<offset>-1,-2</offset>
-							</anchored>
-							<target>talents_talents_talents</target>
-						</scrollbar>
-
-
+			-->
+			</list_charskill>
+			<scrollbar>
+				<anchored to="skilllist" />
+				<target>skilllist</target>
+			</scrollbar>
+<!-- GENERAL skilllist FRAME END......................................................................... -->
 
 
 				</sheetdata>
 			</windowclass>
 
+			<!-- GENERAL skilllist LIST! .......................................................................... -->
+			<windowclass name="char_skill">
+			<margins control="0,0,0,2" />
+			<script file="campaign/scripts/char_skill.lua" />
+			<sheetdata>
+				<button_checkbox name="career_skill">
+					<bounds>22,8,12,12</bounds>
+					<tooltip>
+						<text>Career Skill</text>
+					</tooltip>
+					<script>
+					function onInit()
+						if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+							if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+								setVisible(true);
+								setTooltipText("Minion skill?");
+							else
+								setVisible(false);
+							end
+						end
+
+					end
+
+					function onValueChanged()
+						if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+							if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+								MinionManager.updateSkill(window.getDatabaseNode());
+							end
+						end
+					end
+				</script>
+				</button_checkbox>
+				<genericcontrol name="rightanchor">
+					<anchored width="0" height="0">
+						<top />
+						<right />
+					</anchored>
+					<invisible />
+				</genericcontrol>
+				<button_idelete name="idelete">
+					<anchored width="20" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+					</anchored>
+				</button_idelete>
+				<genericcontrol name="idelete_spacer">
+					<anchored width="20" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+					</anchored>
+					<disabled />
+					<invisible />
+				</genericcontrol>
+				<!-- FIELDS START HERE -->
+				<skilldicepool>
+					<anchored width="20" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+					</anchored>
+
+				</skilldicepool>
+
+				<number_charskilltotal name="advances">
+					<anchored width="30" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+					</anchored>
+				</number_charskilltotal>
+
+				<stringu name="characteristic">
+					<anchored width="20" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+					</anchored>
+					<script>
+						function onEnter()
+							window.windowlist.addEntry(true);
+							return true;
+						end
+					</script>
+				</stringu>
+				<stringu name="category">
+					<anchored width="70" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+					</anchored>
+				</stringu>
+				<stringu name="name">
+					<anchored height="20">
+						<top offset="2" />
+						<left offset="40" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+					</anchored>
+					<tabtarget next="sublabel" />
+				</stringu>
+				<buttoncontrol name="shortcut">
+					<anchored width="20" height="20">
+						<top offset="2" />
+						<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
+					</anchored>
+					<icon normal="button_link" pressed="button_link_down" />
+					<script file="campaign/scripts/char_skilllink.lua" />
+				</buttoncontrol>
+				</sheetdata>
+			</windowclass>
 
 
 </root>

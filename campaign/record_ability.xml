@@ -20,7 +20,7 @@
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ability">
+	<windowclass name="referenceability">
 		<frame>abilitysheet</frame>
 		<placement>
 			<size>

@@ -646,7 +646,7 @@
 		<!-- WEAPONS (the listbox)-->
 					<sheetframe name="combat_weapons">
 						<!--<bounds>208,148,276,320</bounds>-->
-						<bounds>210,165,274,-10</bounds>
+						<bounds>15,165,-40,-10</bounds>
 					</sheetframe>
 
 					<sheettitle name="combat_weapons_weapon">
@@ -770,60 +770,6 @@
 						</anchored>
 						<target>combat_weapons_weapons</target>
 					</scrollbar>
-
-					<!-- CONDITIONS -->
-								<sheetframe name="combat_conditions">
-									<!--<bounds>12,201,236,252</bounds>-->
-									<bounds>14,163,199,-10</bounds>
-								</sheetframe>
-
-								<!-- Conditions -->
-								<basewindowlist name="combat_conditions_conditions">
-									<class>empty</class>
-									<skipempty />
-									<anchored>
-										<left>
-											<parent>combat_conditions</parent>
-											<anchor>left</anchor>
-											<offset>8</offset>
-										</left>
-										<right>
-											<parent>combat_conditions</parent>
-											<anchor>right</anchor>
-											<offset>-10</offset>
-										</right>
-										<top>
-											<parent>combat_conditions</parent>
-											<anchor>top</anchor>
-											<offset>20</offset>
-										</top>
-										<bottom>
-											<parent>combat_conditions</parent>
-											<anchor>bottom</anchor>
-											<offset>-20</offset>
-										</bottom>
-									</anchored>
-									<script>
-										function onInit()
-											createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
-											createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
-											createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
-											createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
-										end
-									</script>
-								</basewindowlist>
-								<scrollbar>
-									<anchored>
-										<to>combat_conditions_conditions</to>
-										<offset>-6,0</offset>
-									</anchored>
-									<target>combat_conditions_conditions</target>
-								</scrollbar>
-
-
-
-
-
 
 		</sheetdata>
 	</windowclass>

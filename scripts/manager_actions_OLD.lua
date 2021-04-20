@@ -7,11 +7,6 @@
 
 -- If FG updates this in CoreRPG, i need to also update here.
 
---FGU is also updating this file... might have to diff and update from time to time
-
-function isClientFGU()
-	return (Interface.getVersion() >= 4);
-end
 
 function addCritical()
 		-- Genesys
@@ -52,6 +47,7 @@ end
 
 
 
+
 --
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
@@ -74,11 +70,6 @@ end
 
 function onInit()
 	Interface.onHotkeyActivated = actionHotkey;
-end
-
-local bUseFGUDiceValues = false;
-function useFGUDiceValues(bState)
-	bUseFGUDiceValues = bState;
 end
 
 --
@@ -229,20 +220,17 @@ function actionHotkey(draginfo)
 end
 
 function actionDrop(draginfo, rTarget)
-	-- Genesys updates:
-		if draginfo.isType("chit") then
-			Debug.console("Customdata = " .. draginfo.getCustomData());
+-- Genesys updates:
+	if draginfo.isType("chit") then
+		Debug.console("Customdata = " .. draginfo.getCustomData());
 
-			if draginfo.getCustomData() == "critical" then
-				return addCritical();
-			elseif draginfo.getCustomData() == "criticalvehicle" then
-				return addCriticalVehicle();
-			end
-			return true;
+		if draginfo.getCustomData() == "critical" then
+			return addCritical();
+		elseif draginfo.getCustomData() == "criticalvehicle" then
+			return addCriticalVehicle();
 		end
-
-
-
+		return true;
+	end
 
 	local sDragType = draginfo.getType();
 	if not GameSystem.actions[sDragType] then
@@ -648,7 +636,6 @@ function handleResolution(vRoll, rSource, aTargets)
 		for kDie,vDie in ipairs(vRoll.aDice) do
 			if aReplaceDieResult[kDie] then
 				vDie.result = tonumber(aReplaceDieResult[kDie]) or 0;
-				vDie.value = nil;
 			end
 		end
 	end
@@ -693,6 +680,7 @@ function resolveAction(rSource, rTarget, rRoll)
 end
 
 function createActionMessage(rSource, rRoll)
+	-- Genesys: modified
 	local sDesc = rRoll.sDesc;
 
 	-- Build the basic message to deliver
@@ -713,12 +701,9 @@ function createActionMessage(rSource, rRoll)
 	end
 
 	-- Show total if option enabled
-	if not UtilityManager.isClientFGU() then
-		if OptionsManager.isOption("TOTL", "on") and rRoll.aDice and ((#(rRoll.aDice) > 0) or ((rRoll.aDice.expr or "") ~= "")) then
-			rMessage.dicedisplay = 1;
-		end
+	if OptionsManager.isOption("TOTL", "on") and rRoll.aDice and ((#(rRoll.aDice) > 0) or ((rRoll.aDice.expr or "") ~= "")) then
+		rMessage.dicedisplay = 1;
 	end
-
 
 	-- GENESYS - Begin Genesys Ruleset Modification:
 	local resultdice = {};
@@ -737,6 +722,7 @@ function createActionMessage(rSource, rRoll)
 
 
 
+
 	return rMessage;
 end
 
@@ -744,11 +730,7 @@ function total(rRoll)
 	local nTotal = 0;
 
 	for _,v in ipairs(rRoll.aDice) do
-		if bUseFGUDiceValues and v.value then
-			nTotal = nTotal + v.value;
-		else
-			nTotal = nTotal + v.result;
-		end
+		nTotal = nTotal + v.result;
 	end
 	nTotal = nTotal + rRoll.nMod;
 

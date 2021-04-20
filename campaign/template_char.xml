@@ -7,6 +7,7 @@
 
 <root>
 
+
 	<template name="subwindow_charcontents">
 		<subwindow name="contents">
 			<anchored>
@@ -61,8 +62,6 @@
 	</template>
 
 
-
-
 	<template name="number_chartotal">
 		<number_modifier>
 			<frame name="fieldlight" offset="7,5,7,5" />
@@ -70,7 +69,104 @@
 		</number_modifier>
 	</template>
 
+	<template name="cycler_ability">
+		<button_stringcycler>
+			<parameters>
+				<defaultlabelres mergerule="replace">dash</defaultlabelres>
+				<labelsres>str|dex|con|int|wis|cha</labelsres>
+				<values>strength|dexterity|constitution|intelligence|wisdom|charisma</values>
+			</parameters>
+		</button_stringcycler>
+	</template>
+	<template name="cycler_abilitybase">
+		<cycler_ability>
+			<parameters>
+				<defaultlabelres mergerule="replace">base</defaultlabelres>
+			</parameters>
+		</cycler_ability>
+	</template>
 
+	<template name="list_abilities">
+		<list_text>
+			<child></child>
+			<child><backcolor>1A40301E</backcolor></child>
+			<allowcreate />
+			<allowdelete />
+			<sortby mergerule="replace"><control>name</control></sortby>
+			<noscroll />
+			<script>
+				function onListChanged()
+					update();
+					if listheader and listheader[1] and not isVisible() then
+						window[listheader[1]].expand();
+					end
+				end
+
+				function update()
+					local bEdit = (window.parentcontrol.window.actions_iedit.getValue() == 1);
+					for _,w in ipairs(getWindows()) do
+						w.idelete.setVisibility(bEdit);
+					end
+				end
+
+				function addEntry(bFocus)
+					local w = createWindow();
+					if bFocus then
+						w.name.setFocus();
+					end
+					return w;
+				end
+			</script>
+		</list_text>
+	</template>
+
+	<template name="button_char_skills_iedit">
+		<buttoncontrol>
+			<anchored width="20" height="20" />
+			<state icon="button_edit" tooltipres="button_editon" />
+			<state icon="button_edit_down" tooltipres="button_editoff" />
+			<script>
+				function onInit()
+					local node = window.getDatabaseNode();
+					if not node or node.isReadOnly() then
+						setVisible(false);
+					end
+				end
+
+				function onValueChanged()
+					window.contents.subwindow.skills_iadd.setVisible(getValue() == 1);
+					window.contents.subwindow.skills.update();
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+
+	<template name="string_char_background">
+		<stringu>
+			<multilinespacing>20</multilinespacing>
+			<script>
+				function onDrop(x, y, draginfo)
+					if draginfo.isType("shortcut") then
+						local sClass = draginfo.getShortcutData();
+						if sClass == "reference_tableresult" then
+							local node = draginfo.getDatabaseNode();
+							local sNew = DB.getValue(node, "result", "");
+							if sNew ~= "" then
+								local aMerge = { };
+								local sOld = getValue();
+								if sOld ~= "" then
+									table.insert(aMerge, sOld);
+								end
+								table.insert(aMerge, sNew);
+								setValue(table.concat(aMerge, ";\n"));
+							end
+							return true;
+						end
+					end
+				end
+			</script>
+		</stringu>
+	</template>
 
 
 
@@ -929,4 +1025,11 @@
 			</sourcefields>
 		</buttongroup_counter>
 	</template>
+
+
+<!-- newly added genesys -->
+
+
+
+
 </root>

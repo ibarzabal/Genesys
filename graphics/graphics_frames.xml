@@ -16,6 +16,20 @@
 -->
 
 <!-- Controls -->
+<framedef name="metalplate">
+	<bitmap file="graphics/frames/leathertag.png" />
+	<topleft rect="0,0,11,10" />
+	<top rect="11,0,177,10" />
+	<topright rect="188,0,12,10" />
+	<left rect="0,10,11,30" />
+	<middle rect="11,10,177,30" />
+	<right rect="188,10,12,30" />
+	<bottomleft rect="0,40,11,10" />
+	<bottom rect="11,40,177,10" />
+	<bottomright rect="188,40,12,10" />
+</framedef>
+
+
 
 <!-- Desktop background -->
 	<framedef name="desktop">

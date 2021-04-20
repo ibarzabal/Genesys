@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+
+	<windowclass name="npcsheet_notes">
+		<sheetdata>
+			<!-- NOTES -->
+			<sheetframe name="notes_notes">
+				<bounds>15,100,-39,-1</bounds>
+			</sheetframe>
+			<sheetframetitle name="notes_notes_title">
+				<anchored>
+					<to>notes_notes</to>
+				</anchored>
+				<static>Notes</static>
+			</sheetframetitle>
+
+			<sheetformattedtextfield name="notes_notes_notes" source="notes">
+				<anchored>
+					<left>
+						<parent>notes_notes</parent>
+						<anchor>left</anchor>
+						<offset>8</offset>
+					</left>
+					<right>
+						<parent>notes_notes</parent>
+						<anchor>right</anchor>
+						<offset>-10</offset>
+					</right>
+					<top>
+						<parent>notes_notes</parent>
+						<anchor>top</anchor>
+						<offset>20</offset>
+					</top>
+					<bottom>
+						<parent>notes_notes</parent>
+						<anchor>bottom</anchor>
+						<offset>-20</offset>
+					</bottom>
+				</anchored>
+				<!--Custom onDrop function for this control.  return nil so that formatted text control allows dropping of links
+				This means that the overiding manager drop code does not execute for this control.-->
+<!--				<script>
+					function onDrop(x, y, draginfo)
+						return;
+					end
+				</script>
+
+-->
+			</sheetformattedtextfield>
+			<scrollbar>
+				<anchored>
+					<to>notes_notes_notes</to>
+					<offset>-6,0</offset>
+				</anchored>
+				<target>notes_notes_notes</target>
+			</scrollbar>
+
+
+		</sheetdata>
+	</windowclass>
+</root>

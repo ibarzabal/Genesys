@@ -51,7 +51,6 @@ function onDrag(button, x, y, draginfo)
 			end
 		end
 
-
 		-- Try secondary skilllist of "Cool" or "Vigilance" (named without the characterstic)
 		if not initskillnode then
 			if self.getName() == "combat_init_cool_btn" then
@@ -76,11 +75,10 @@ function onDrag(button, x, y, draginfo)
 		DicePoolManager.addSkillDice(initskillnode, dice);
 		if table.getn(dice) > 0 then
 			draginfo.setType("skill");
-			if initskillnode.getChild("name") then
-				draginfo.setDescription(initskillnode.getChild("name").getValue()  .. " [INIT]");
-			end
+			draginfo.setDescription(initskillname  .. " [INIT]");
 			draginfo.setDieList(dice);
 			draginfo.setDatabaseNode(initskillnode);
+--			draginfo.setIdentity(initskillnode.getChild("name").getValue()  .. " [INIT]");
 			dragging = true;
 			return true;
 		end
@@ -88,22 +86,21 @@ function onDrag(button, x, y, draginfo)
 	return false;
 end
 
+
+
+
 function onDragEnd(draginfo)
 	dragging = false;
 end
 
 -- Allows population of the dice pool by a double-click on the dice button by the skill
 function onDoubleClick()
-	-- Debug.console("initdicepool.lua - onDoubleClick");
-	--local sourcenode = window.getDatabaseNode();
 	local skilllistnode = window.getDatabaseNode().getChild("skilllist");
---	Debug.chat(window.getDatabaseNode());
 	if not skilllistnode then
 		return;
 	end
 	local initskillnode = nil;
 	local initskillname = "";
-	--Debug.console("skilllist node = " .. skilllistnode.getNodeName());
 	if self.getName() == "combat_init_cool_btn" then
 		initskillname = "Cool";
 	elseif self.getName() == "combat_init_vigilance_btn" then
@@ -111,9 +108,7 @@ function onDoubleClick()
 	end
 
 	for k,v in pairs(skilllistnode.getChildren()) do
-		--Debug.console("Looking at current child: " .. k);
 		if v.getChild("name").getValue() == initskillname then
-			--Debug.console("Have the " .. initskillname .. " db node = " .. v.getNodeName());
 			initskillnode = v;
 			break;
 		end
@@ -135,7 +130,7 @@ function onDoubleClick()
 		end
 	end
 
-	-- TODO: Need to code for no match in skilllist - i.e. use characteristic score only.
+	--todo: Need to code for no match in skilllist - i.e. use characteristic score only.
 
 	local dice = {};
 	local skilldescription;

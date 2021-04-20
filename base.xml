@@ -75,7 +75,7 @@
 		<script name="InitiativeManager" file="scripts/manager_initiativegenesys.lua" />
 		<script name="UserManager" file="scripts/manager_usermanagergenesys.lua" />
 
-		
+
 		<script name="CombatManager" file="scripts/manager_combat.lua" />
 		<script name="CombatManager2" file="scripts/manager_combat_genesys.lua" />
 			<!--Overriding the original manager_actions.lua from CoreRPG
@@ -102,12 +102,17 @@
 		<includefile source="campaign/record_char.xml" />
  		<includefile source="campaign/record_char_main.xml" />
  		<includefile source="campaign/record_char_skills.xml" />
+		<includefile source="campaign/record_char_abilities.xml" />
  		<includefile source="campaign/record_char_combat.xml" />
 		<includefile source="campaign/record_char_combat_sub.xml" />
 		<includefile source="campaign/record_char_inventory.xml" />
 		<includefile source="campaign/record_char_notes.xml" />
-		<includefile source="campaign/record_condition.xml" />
+
+<!-- NO longer used: we now use combat tracker CORERPG effects to track these
+		<includefile source="campaign/record_condition.xml" /> -->
+
 		<includefile source="campaign/record_ability.xml" />
+		<includefile source="campaign/record_abilities.xml" />
 		<includefile source="campaign/record_critical.xml" />
 		<includefile source="campaign/record_talent.xml" />
 
@@ -123,6 +128,7 @@
 		<includefile source="campaign/record_npc.xml" />
 		<includefile source="campaign/record_npc_main.xml" />
 		<includefile source="campaign/record_npc_inventory.xml" />
+		<includefile source="campaign/record_npc_notes.xml" />
 
 
 <!-- 		<includefile source="campaign/record_encounter.xml" /> -->

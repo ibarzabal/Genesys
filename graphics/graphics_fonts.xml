@@ -22,4 +22,11 @@
 		<shadow offset="1,1" color="#808080" />
 	</font>
 
+	<font name="subwindowsmalltitle">
+		<fgffile name="graphics/fonts/bold-10.fgf" />
+		<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="12" />
+		<color value="FFF1CC" />
+		<shadow offset="1,1" color="000000" />
+	</font>
+
 </root>

@@ -442,10 +442,13 @@ function onDieboxButtonPress()
 		-- build the dice table
 		local dice = getDice();
 		-- verify the identity - use the user if no identity has been set via setIdentity
-		msgidentity = dieboxidentity;
-		if msgidentity == "" then
-			msgidentity = msguser;
-		end
+--		msgidentity = dieboxidentity;
+--		if msgidentity == "" then
+--			msgidentity = msguser;
+--		end
+
+		msgidentity = DB.getValue(sourcenode, "...name", "");
+
 		-- throw the dice
 		-- Debug.chat ("Diebox->throwDice",type, dice, modifier, description .. "<.>" .. sourcenodename .. "<.>" .. msgidentity);
 		Comm.throwDice(type, dice, modifier, description .. "<>" .. sourcenodename .. "<>" .. msgidentity .. "<>" .. gmonly);

@@ -31,68 +31,159 @@
 			</scrollbar_list>
 
 
-			<frame_char name="notesframe">
-				<bounds>15,235,-29,-5</bounds>
-			</frame_char>
-			<label_frametop>
-				<anchored to="notesframe" />
-				<static textres="char_label_notes" />
-			</label_frametop>
-			<stringfield name="notes">
-				<anchored to="notesframe">
-					<top offset="30" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
-				</anchored>
-				<multilinespacing>20</multilinespacing>
-				<nodrag />
-			</stringfield>
-			<scrollbar_list>
-				<anchored to="notes" />
-				<target>notes</target>
-			</scrollbar_list>
-		</sheetdata>
-	</windowclass>
 
-	<windowclass name="char_language">
-		<margins control="0,0,0,2" />
-		<script>
-			function onDragStart(button, x, y, draginfo)
-				local sLang = name.getValue()
-				if sLang ~= "" then
-					draginfo.setType("language")
-					draginfo.setIcon("button_speak")
-					draginfo.setStringData(sLang)
-					return true
-				end
-			end
-		</script>
-		<sheetdata>
-			<genericcontrol name="rightanchor">
-				<anchored height="0" width="0">
-					<top />
-					<right />
-				</anchored>
-			</genericcontrol>
-			<button_idelete name="idelete">
-				<anchored>
-					<top />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-				</anchored>
-			</button_idelete>
-			<string_textlistitem name="name">
-				<anchored height="20">
-					<top />
-					<left />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-				</anchored>
-				<script>
-					function onDragStart(...)
-						return window.onDragStart(...)
-					end
-				</script>
-			</string_textlistitem>
+						<frame_char name="notesframe">
+							<bounds>15,235,-29,-70</bounds>
+						</frame_char>
+						<label_frametop>
+							<anchored to="notesframe" />
+							<static textres="char_label_notes" />
+						</label_frametop>
+						<stringfield name="notes">
+							<anchored to="notesframe">
+								<top offset="30" />
+								<left offset="15" />
+								<right offset="-20" />
+								<bottom offset="-15" />
+							</anchored>
+							<multilinespacing>20</multilinespacing>
+							<nodrag />
+						</stringfield>
+						<scrollbar_list>
+							<anchored to="notes" />
+							<target>notes</target>
+						</scrollbar_list>
+
+			<!-- EXPERIENCE -->
+						<sheetframe name="main_experience">
+<!--							<bounds>363,397,121,94</bounds> -->
+							<bounds>15,-60,-29,-5</bounds>
+
+						</sheetframe>
+						<sheetframetitle name="main_experience_title">
+							<anchored>
+								<to>main_experience</to>
+							</anchored>
+							<static>Experience</static>
+						</sheetframetitle>
+
+						<!-- TOTAL -->
+						<sheetlabel>
+							<anchored>
+								<to>main_experience</to>
+								<offset>13,22</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Total</static>
+						</sheetlabel>
+						<sheetnumberfield name="main_experience_total" source="experience.total">
+							<anchored>
+								<to>main_experience</to>
+								<offset>83,21</offset>
+								<size>
+									<width>30</width>
+								</size>
+							</anchored>
+							<tabtarget>
+								<next>main_experience_spent</next>
+							</tabtarget>
+						</sheetnumberfield>
+
+						<!-- SPENT -->
+						<sheetlabel>
+							<anchored>
+								<to>main_experience</to>
+								<offset>203,22</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Spent</static>
+						</sheetlabel>
+						<sheetnumberfield name="main_experience_spent" source="experience.spent">
+							<anchored>
+								<to>main_experience</to>
+								<offset>273,21</offset>
+								<size>
+									<width>30</width>
+								</size>
+							</anchored>
+							<tabtarget>
+								<next>main_fortune_maximum</next>
+								<prev>main_experience_total</prev>
+							</tabtarget>
+							<script>
+								local totalnode = nil;
+
+								function onValueChanged()
+									local totalvalue = totalnode.getValue();
+									local value = getValue();
+									if value == 0 then
+										setColor(zerocolor[1]);
+									else
+										setColor(color[1]);
+									end
+									if 0 > value then
+										setValue(0);
+									end
+									if value > totalvalue then
+										setValue(totalvalue);
+									end
+								end
+
+								function onInit()
+									local windownode = window.getDatabaseNode();
+									totalnode = windownode.getChild("experience.total");
+									onValueChanged();
+								end
+							</script>
+						</sheetnumberfield>
+
+						<!-- REMAINING -->
+						<sheetlabel>
+							<anchored>
+								<to>main_experience</to>
+								<offset>360,22</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Remaining</static>
+						</sheetlabel>
+						<sheetnumbercontrol>
+							<anchored>
+								<to>main_experience</to>
+								<offset>430,21</offset>
+								<size>
+									<width>30</width>
+								</size>
+							</anchored>
+							<disabled />
+							<script>
+								local totalnode = nil;
+								local spentnode = nil;
+
+								function onUpdate(source)
+									local totalvalue = totalnode.getValue();
+									local spentvalue = spentnode.getValue();
+									setValue(totalvalue - spentvalue);
+									onValueChanged();
+								end
+
+								function onInit()
+									local windownode = window.getDatabaseNode();
+									totalnode = windownode.getChild("experience.total");
+									totalnode.onUpdate = onUpdate;
+									spentnode = windownode.getChild("experience.spent");
+									spentnode.onUpdate = onUpdate;
+									onUpdate(nil);
+									onValueChanged();
+								end
+							</script>
+						</sheetnumbercontrol>
+
 		</sheetdata>
 	</windowclass>
 </root>
