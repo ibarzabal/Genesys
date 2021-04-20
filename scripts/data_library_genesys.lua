@@ -217,6 +217,7 @@ aListViews = {
 				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
 				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
 				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true },
+				{ sName = "special", sType = "string", sHeadingRes = "item_grouped_label_special", nWidth=400 },								
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Armor" },
@@ -249,8 +250,10 @@ aListViews = {
 			sTitleRes = "item_grouped_title_gear",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
-				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
 				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
+				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true },
+				{ sName = "special", sType = "string", sHeadingRes = "item_grouped_label_special", nWidth=400 },
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Gear" },

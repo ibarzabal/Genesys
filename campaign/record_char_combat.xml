@@ -299,26 +299,6 @@
 								<static>Current</static>
 							</title_statblock_sm>
 
-							<!-- DEFENSE -->
-							<title_statblock>
-								<anchored to="main_statblock2a" position="insidetopleft" offset="365,3" height="20" />
-								<static>Defense</static>
-							</title_statblock>
-							<title_statblock_sm>
-								<anchored to="main_statblock2a" position="insidetopleft" offset="348,47"/>
-								<static>Ranged</static>
-							</title_statblock_sm>
-							<title_statblock_sm>
-								<anchored to="main_statblock2a" position="insidetopleft" offset="392,47"/>
-								<static>Melee</static>
-							</title_statblock_sm>
-							<sheetnumberfieldtr name="combat_armour_rangeddefence" source="armour.rangeddefence">
-								<anchored to="main_statblock2a" position="insidetopleft" offset="360,25" height="20" />
-							</sheetnumberfieldtr>
-							<sheetnumberfieldtr name="combat_armour_meleedefence" source="armour.meleedefence">
-								<anchored to="main_statblock2a" position="insidetopleft" offset="390,25" height="20" />
-							</sheetnumberfieldtr>
-
 							<!-- MINION INFO -->
 							<title_statblock name="combat_minion_info_title">
 								<anchored to="main_statblock2a" position="insidetopleft" offset="245,3" height="20" />
@@ -375,6 +355,28 @@
 								<static>#/Group</static>
 								<invisible />
 							</title_statblock_sm>
+
+
+
+							<!-- DEFENSE -->
+							<title_statblock>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="365,3" height="20" />
+								<static>Defense</static>
+							</title_statblock>
+							<title_statblock_sm>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="348,47"/>
+								<static>Ranged</static>
+							</title_statblock_sm>
+							<title_statblock_sm>
+								<anchored to="main_statblock2a" position="insidetopleft" offset="392,47"/>
+								<static>Melee</static>
+							</title_statblock_sm>
+							<sheetnumberfieldtr name="combat_armour_rangeddefence" source="armour.rangeddefence">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="360,25" height="20" />
+							</sheetnumberfieldtr>
+							<sheetnumberfieldtr name="combat_armour_meleedefence" source="armour.meleedefence">
+								<anchored to="main_statblock2a" position="insidetopleft" offset="390,25" height="20" />
+							</sheetnumberfieldtr>
 
 
 
