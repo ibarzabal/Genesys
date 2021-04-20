@@ -188,6 +188,7 @@ aRecordOverrides = {
 		},
 	},
 	["item_attachment"] = {
+		bExport = true,
 		fIsIdentifiable = isItemIdentifiable,
 		aDataMap = { "item_attachment", "reference.item_attachment_armor", "reference.item_attachment_weapon"},
 		aDisplayIcon = { "button_item_attachments", "button_item_attachments_down" },
