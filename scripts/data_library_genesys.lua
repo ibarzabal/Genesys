@@ -161,8 +161,8 @@ aRecordOverrides = {
 		aDataMap = { "item", "reference.equipment", "reference.weapon", "reference.armor", "reference.magicitems", "reference.gear" },
 		fRecordDisplayClass = getItemRecordDisplayClass,
 		aRecordDisplayClasses = { "item", "referencearmor", "referenceweapon", "referenceequipment", "referencegear" },
-		aGMListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear" };
-		aPlayerListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear" };
+		aGMListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear", "button_item_vehicle_weapons" };
+		aPlayerListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear", "button_item_vehicle_weapons" };
 		aCustomFilters = {
 			["Setting"] = { sField = "setting", sType = "string"},
 			["Skill"] = { sField = "skill" },
@@ -290,6 +290,32 @@ aListViews = {
 			aGroups = { { sDBField = "subtype" } },
 			aGroupValueOrder = { "Ammunition", "Adventuring Gear", "Special Substances And Items", "Tools And Skill Kits", "Clothing", "Food, Drink, And Lodging", "Mounts And Related Gear", "Transport", "Spellcasting And Services" },
 		},
+
+
+		["vehicle weapon"] = {
+			sTitleRes = "item_grouped_title_vehicle_weapons",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=150 },
+				{ sName = "skill", sType = "string", sHeadingRes = "item_grouped_label_skill", nWidth=100 },
+				{ sName = "fire_arc", sType = "string", sHeadingRes = "item_grouped_label_fire_arc", nWidth=100 },
+				{ sName = "damage", sType = "string", sHeadingRes = "item_grouped_label_damage", nWidth=60, bCentered=true },
+				{ sName = "critical", sType = "number", sHeadingRes = "item_grouped_label_critical", bCentered=true },
+				{ sName = "range", sType = "string", sHeadingRes = "item_grouped_label_range", sTooltipRes = "item_grouped_tooltip_range", nWidth=30, bCentered=true },
+				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
+				{ sName = "hard_points", sType = "number", sHeadingRes = "item_grouped_label_hard_points", sTooltipRes = "item_grouped_tooltip_hard_points", nWidth=30, bCentered=true },
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
+				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true },
+				{ sName = "special", sType = "string", sHeadingRes = "item_grouped_label_special", nWidth=400 },
+			},
+			aFilters = {
+				{ sDBField = "type", vFilterValue = "Vehicle Weapon" },
+				{ sCustom = "item_isidentified" }
+			},
+			aGroups = { { sDBField = "subtype" } },
+			aGroupValueOrder = { "Simple Unarmed Melee", "Simple Light Melee", "Simple One-Handed Melee", "Simple Two-Handed Melee", "Simple Ranged", "Martial Light Melee", "Martial One-Handed Melee", "Martial Two-Handed Melee", "Martial Ranged", "Exotic Light Melee", "Exotic One-Handed Melee", "Exotic Two-Handed Melee", "Exotic Ranged" },
+		},
+
+
 		["equipment"] = {
 			sTitleRes = "item_grouped_title_equipment",
 			aColumns = {
@@ -365,5 +391,5 @@ function onInit()
 			LibraryData.setListView(kRecordType, kListView, vListView);
 		end
 	end
-	LibraryData.setRecordTypeInfo("vehicle", nil);
+--	LibraryData.setRecordTypeInfo("vehicle", nil);
 end

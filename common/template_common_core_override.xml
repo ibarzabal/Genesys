@@ -507,6 +507,7 @@
 			</anchored>
 		</button_idelete>
 	</template>
+
 	<template name="string_listitem_column_name">
 		<stringfield name="name">
 			<anchored position="insidetopleft" offset="5,2">

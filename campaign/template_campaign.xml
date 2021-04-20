@@ -90,6 +90,30 @@
 	</template>
 
 
+	<template name="button_item_vehicle_weapons">
+		<button_text_sm>
+			<anchored to="buttonanchor" width="120">
+				<top />
+				<left anchor="right" relation="relative" offset="5" />
+			</anchored>
+			<state textres="item_button_vehicle_weapons" />
+			<script>
+				function onButtonPress()
+					local w = Interface.findWindow("reference_groupedlist", "reference.weapon");
+					if w then
+						Interface.toggleWindow("reference_groupedlist", "reference.weapon");
+					else
+						w = Interface.openWindow("reference_groupedlist", "reference.weapon");
+						w.init({ sRecordType = "item", sListView = "vehicle weapon" });
+					end
+				end
+			</script>
+		</button_text_sm>
+	</template>
+
+
+
+
 		<template name="button_item_attachment_armor">
 			<button_text_sm>
 				<anchored to="buttonanchor" width="80">

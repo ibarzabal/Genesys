@@ -92,6 +92,11 @@
 			</label_column>
 			<string_columnh name="skill" />
 
+			<label_column name="fire_arc_label">
+				<static textres="item_label_fire_arc" />
+			</label_column>
+			<string_columnh name="fire_arc" />
+
 			<label_column name="damage_label">
 				<static textres="item_label_damage" />
 			</label_column>
@@ -195,10 +200,17 @@
 		<sheetdata>
 			<anchor_listitem_column_right name="rightanchor" />
 
+			<!--			<button_listitem_column_delete name="idelete" /> -->
+			<button_idelete name="idelete">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+
 			<link_listitem_column name="shortcut">
 				<class>reference_item_attachment</class>
 			</link_listitem_column>
-			<button_listitem_column_delete name="idelete" />
 
 			<basenumberfield name="hardpoints_required">
 				<anchored to="rightanchor" width="20" height="20">
@@ -209,7 +221,9 @@
 			</basenumberfield>
 
 
-			<string_listitem_column_name name="name" />
+			<string_listitem_column_name name="name">
+					<disabled />
+			</string_listitem_column_name>
 <!--				<empty textres="library_recordtype_empty_subracialtrait" />
 			</string_listitem_column_name>
 -->

@@ -43,14 +43,14 @@
 
 			<button_activateid>
 				<anchored to="rightanchor" width="23" height="22">
-					<top offset="-2" />
+					<top offset="15" />
 					<right anchor="left" relation="relative" offset="-30" />
 				</anchored>
 			</button_activateid>
 
 			<tokenfield name="token">
 				<anchored to="rightanchor" width="25" height="25">
-					<top offset="-2" />
+					<top offset="15" />
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-8" />
 				</anchored>
 				<empty>token_empty</empty>

@@ -199,6 +199,7 @@
 	<string name="item_label_soak">Soak</string>
 	<string name="item_label_defense">Defense</string>
 	<string name="item_label_skill">Skill</string>
+	<string name="item_label_fire_arc">Fire Arc</string>
 	<string name="item_label_unidentifiednotes">Non-ID Notes</string>
 	<string name="item_label_description">Description</string>
 	<string name="item_label_rarity">Rarity</string>
@@ -218,18 +219,31 @@
 	<string name="item_grouped_title_armor">Armor</string>
 	<string name="item_grouped_title_weapons">Weapons</string>
 	<string name="item_grouped_title_gear">Gear</string>
+	<string name="item_grouped_title_vehicle_weapons">Vehicle Weapons</string>
+
 	<string name="item_grouped_label_rarity">Rarity</string>
 	<string name="item_grouped_label_skill">Skill</string>
+	<string name="item_grouped_label_fire_arc">Fire Arc</string>
 	<string name="item_grouped_label_special">Special</string>
 	<string name="item_grouped_label_setting">Setting</string>
 
 	<!-- Item Attachments -->
-	<string name="item_header_attachments">ATTACHMENTS</string>
+	<string name="item_header_attachments">Attachments</string>
 	<string name="char_message_attachmentadd">Attachment '%s' added to '%s'.</string>
 	<string name="char_message_attachmentmismatch">Attachment [Equipment type] does not match [Equipment type].</string>
 
+	<!-- Vehicles -->
+	<string name="vehicle_label_encumbrance_capacity">Encumbrance Capacity</string>
+	<string name="vehicle_label_consumables">Consumables</string>
+	<string name="vehicle_label_control_skill">Control Skill</string>
+	<string name="vehicle_label_compliment">Compliment</string>
+	<string name="vehicle_label_passenger_capacity">Passenger Capacity</string>
+	<string name="item_header_weapons">Weapons</string>
+	<string name="char_message_vehicle_weapon_mismatch">Item type is not [Weapon] or [Vehicle Weapon].</string>
+
 	<!-- Items window -->
 	<string name="item_button_weapons">Weapons</string>
+	<string name="item_button_vehicle_weapons">Vehicle Weapons</string>
 	<string name="item_button_armor">Armor</string>
 	<string name="item_button_gear">Gear</string>
 	<string name="item_grouped_tooltip_maxstatbonus">Maximum Dexterity Bonus</string>

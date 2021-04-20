@@ -340,10 +340,18 @@
 		<sheetdata>
 			<anchor_listitem_column_right name="rightanchor" />
 
+			<!--			<button_listitem_column_delete name="idelete" /> -->
+			<button_idelete name="idelete">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+
+
 			<link_listitem_column name="shortcut">
 				<class>referenceracialtrait</class>
 			</link_listitem_column>
-			<button_listitem_column_delete name="idelete" />
 
 			<string_listitem_column_name name="name" />
 <!--				<empty textres="library_recordtype_empty_subracialtrait" />

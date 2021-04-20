@@ -44,6 +44,15 @@ function update()
   main_statblock1_cunning_current.setReadOnly(bReadOnly);
   main_statblock1_willpower_current.setReadOnly(bReadOnly);
   main_statblock1_presence_current.setReadOnly(bReadOnly);
+
+	if bReadOnly then
+		abilities_iedit.setVisible(false);
+	else
+		abilities_iedit.setVisible(true);
+	end
+
+
+
 end
 
 

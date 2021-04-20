@@ -40,6 +40,10 @@ function update()
 
 	local sType = type.getValue();
 	local bWeapon = (sType == "Weapon");
+	local bVehicleWeapon = (sType == "Vehicle Weapon");
+	if bVehicleWeapon then
+		bWeapon = true;
+	end
 	local bArmor = (sType == "Armor");
 
 	local bSection1 = false;
@@ -67,6 +71,7 @@ function update()
 
 	local bSection4 = false;
 	if updateControl("skill", bReadOnly, bID and bWeapon) then bSection4 = true; end
+	if updateControl("fire_arc", bReadOnly, bID and bVehicleWeapon) then bSection4 = true; end
 	if updateControl("damage", bReadOnly, bID and bWeapon) then bSection4 = true; end
 --	if updateControl("damagetype", bReadOnly, bID and bWeapon) then bSection4 = true; end
 	if updateControl("critical", bReadOnly, bID and bWeapon) then bSection4 = true; end
@@ -89,6 +94,7 @@ function update()
 	divider3.setVisible((bSection1 or bSection2 or bSection3) and bSection4);
 	divider4.setVisible((bSection1 or bSection2 or bSection3 or bSection4));
 	-- Make hard points only visible for weapons and armor
+
 	if (bWeapon or bArmor) then
 		hard_points_label.setVisible(true);
 		hard_points.setVisible(true);
@@ -101,6 +107,9 @@ function update()
 		attachments_header.setVisible(false);
 		attachments_iedit.setVisible(false);
 		attachments.setVisible(false);
+	end
+	if bReadOnly then
+		attachments_iedit.setVisible(false);
 	end
 --	divider5.setVisible((bSection1 or bSection2 or bSection3 or bSection4) and bSection6);
 end

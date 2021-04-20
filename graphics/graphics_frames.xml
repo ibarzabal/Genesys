@@ -391,6 +391,13 @@
 	<middle>0,0,260,47</middle>
 </framedef>
 
+<framedef name="statblock_vehicle">
+	<bitmap file="graphics/frames/stat_block_vehicle.png" />
+	<middle>0,0,480,97</middle>
+</framedef>
+
+
+
 
 
 <framedef name="dicetower_normal">

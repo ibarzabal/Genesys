@@ -80,6 +80,13 @@
   </genericcontrol>
 </template>
 
+<template name="frame_statblock_vehicle">
+  <genericcontrol>
+    <frame name="statblock_vehicle" />
+  </genericcontrol>
+</template>
+
+
 <template name="frame_npc_power_level">
   <genericcontrol>
     <frame name="npc_power_level" />
@@ -243,6 +250,18 @@
 </template>
 
 <template name="sheetstartingcharacteristic">
+  <sheetnumberfieldtr>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width>32</width>
+        <height>32</height>
+      </size>
+    </anchored>
+  </sheetnumberfieldtr>
+</template>
+
+<template name="vehicle_stat">
   <sheetnumberfieldtr>
     <anchored>
       <position>insidetopleft</position>
