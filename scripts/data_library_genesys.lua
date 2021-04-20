@@ -71,6 +71,9 @@ function getItemRecordDisplayClass(vNode)
 				sRecordDisplayClass = "referencearmor";
 			elseif sSecondPath == "equipment" then
 				sRecordDisplayClass = "referenceequipment";
+			-- added for genesys
+			elseif sSecondPath == "gear" then
+				sRecordDisplayClass = "referencegear";
 			else
 				sRecordDisplayClass = "item";
 			end
@@ -148,11 +151,11 @@ aRecordOverrides = {
 
 	["item"] = {
 		fIsIdentifiable = isItemIdentifiable,
-		aDataMap = { "item", "reference.equipment", "reference.weapon", "reference.armor", "reference.magicitems" },
+		aDataMap = { "item", "reference.equipment", "reference.weapon", "reference.armor", "reference.magicitems", "reference.gear" },
 		fRecordDisplayClass = getItemRecordDisplayClass,
-		aRecordDisplayClasses = { "item", "referencearmor", "referenceweapon", "referenceequipment" },
-		aGMListButtons = { "button_item_armor", "button_item_weapons" };
-		aPlayerListButtons = { "button_item_armor", "button_item_weapons" };
+		aRecordDisplayClasses = { "item", "referencearmor", "referenceweapon", "referenceequipment", "referencegear" },
+		aGMListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear" };
+		aPlayerListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear" };
 		aCustomFilters = {
 			["Type"] = { sField = "type" },
 		},
@@ -186,10 +189,11 @@ aListViews = {
 			sTitleRes = "item_grouped_title_armor",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
+				{ sName = "defense", sType = "number", sHeadingRes = "item_grouped_label_def", sTooltipRes = "item_grouped_tooltip_def", nWidth=40, bCentered=true, nSortOrder=1 },
+				{ sName = "soak", sType = "number", sHeadingRes = "item_grouped_label_soak", sTooltipRes = "item_grouped_tooltip_soak", bCentered=true },
+				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
 				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
-				{ sName = "defense", sType = "number", sHeadingRes = "item_grouped_label_ac", sTooltipRes = "item_grouped_tooltip_ac", nWidth=40, bCentered=true, nSortOrder=1 },
-				{ sName = "soak", sType = "number", sHeadingRes = "item_grouped_label_ac", sTooltipRes = "item_grouped_tooltip_maxstatbonus", bCentered=true },
-				{ sName = "weight", sType = "number", sHeadingRes = "item_grouped_label_weight", sTooltipRes = "item_grouped_tooltip_weight", nWidth=30, bCentered=true }
+				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true }
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Armor" },
@@ -202,11 +206,15 @@ aListViews = {
 			sTitleRes = "item_grouped_title_weapons",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
-				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
+				{ sName = "skill", sType = "string", sHeadingRes = "item_grouped_label_skill", nWidth=100 },
 				{ sName = "damage", sType = "string", sHeadingRes = "item_grouped_label_damage", nWidth=60, bCentered=true },
 				{ sName = "critical", sType = "number", sHeadingRes = "item_grouped_label_critical", bCentered=true },
 				{ sName = "range", sType = "string", sHeadingRes = "item_grouped_label_range", sTooltipRes = "item_grouped_tooltip_range", nWidth=30, bCentered=true },
-				{ sName = "weight", sType = "number", sHeadingRes = "item_grouped_label_weight", sTooltipRes = "item_grouped_tooltip_weight", nWidth=30, bCentered=true },
+				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
+				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true },
+				{ sName = "special", sType = "string", sHeadingRes = "item_grouped_label_special", nWidth=400 },
+
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Weapon" },
@@ -215,12 +223,26 @@ aListViews = {
 			aGroups = { { sDBField = "subtype" } },
 			aGroupValueOrder = { "Simple Unarmed Melee", "Simple Light Melee", "Simple One-Handed Melee", "Simple Two-Handed Melee", "Simple Ranged", "Martial Light Melee", "Martial One-Handed Melee", "Martial Two-Handed Melee", "Martial Ranged", "Exotic Light Melee", "Exotic One-Handed Melee", "Exotic Two-Handed Melee", "Exotic Ranged" },
 		},
+		["gear"] = {
+			sTitleRes = "item_grouped_title_gear",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
+				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
+			},
+			aFilters = {
+				{ sDBField = "type", vFilterValue = "Gear" },
+				{ sCustom = "item_isidentified" }
+			},
+			aGroups = { { sDBField = "subtype" } },
+			aGroupValueOrder = { "Ammunition", "Adventuring Gear", "Special Substances And Items", "Tools And Skill Kits", "Clothing", "Food, Drink, And Lodging", "Mounts And Related Gear", "Transport", "Spellcasting And Services" },
+		},
 		["equipment"] = {
 			sTitleRes = "item_grouped_title_equipment",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
 				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
-				{ sName = "weight", sType = "number", sHeadingRes = "item_grouped_label_weight", sTooltipRes = "item_grouped_tooltip_weight", nWidth=30, bCentered=true },
+				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
 			},
 			aFilters = {
 				{ sCustom = "item_isidentified" }

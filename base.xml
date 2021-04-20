@@ -79,6 +79,9 @@
 			<!--Overriding the original manager_actions.lua from CoreRPG
 		  	this is a workaround for the moment.... -->
  		<script name="ActionsManager" file="scripts/manager_actions.lua" />
+		<!-- overriding ItemManager so handling items to npc also work -->
+		<script name="ItemManager" file="scripts/manager_item_genesys.lua" />
+
 
 
 		<!-- initialization -->
@@ -129,4 +132,9 @@
 <!-- 		<includefile source="campaign/record_feat.xml" /> -->
  		<includefile source="campaign/record_species_archetype.xml" />
 <!-- 		<includefile source="campaign/record_skill.xml" /> -->
+
+<!-- Reference -->
+<includefile source="ref/ref_equipment.xml" />
+<includefile source="ref/ref_equipment_lists.xml" />
+
 </root>

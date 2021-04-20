@@ -47,14 +47,14 @@
 				<icon>char_inv_carried_header</icon>
 				<tooltip textres="char_tooltip_itemcarried" />
 			</genericcontrol>
-			<label name="weight_label">
+			<label name="encumbrance_label">
 				<anchored to="rightanchor" width="30">
 					<top />
 					<right anchor="left" relation="relative" offset="-10" />
 				</anchored>
 				<center />
-				<static textres="char_label_itemweight" />
-				<tooltip textres="char_tooltip_itemweight" />
+				<static textres="char_label_item_encumbrance" />
+				<tooltip textres="char_tooltip_item_encumbrance" />
 			</label>
 			<label name="location_label">
 				<anchored to="rightanchor" width="80">
@@ -106,7 +106,7 @@
 <!-- 			</simplenumber> -->
 <!-- 			<label name="encumbrance_label"> -->
 <!-- 				<anchored to="encumbranceframe" position="insidetopleft" offset="15,30" /> -->
-<!-- 				<static textres="char_label_totalweight" /> -->
+<!-- 				<static textres="char_label_total_encumbrance" /> -->
 <!-- 			</label> -->
 <!--  -->
 <!-- 			<frame_char name="coinframe"> -->
@@ -216,20 +216,21 @@
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 				</anchored>
 			</button_char_inv_carried>
-			<number_charinv name="weight">
+			<string_charinvname name="encumbrance">
 				<anchored width="30" height="20">
 					<top offset="2" />
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
 				</anchored>
 				<delaykeyupdate />
 				<tabtarget prev="location" />
-			</number_charinv>
+			</string_charinvname>
+
 			<string_charinvloc name="location">
 				<anchored width="80" height="20">
 					<top offset="2" />
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
 				</anchored>
-				<tabtarget next="weight" prev="nonid_name" />
+				<tabtarget next="encumbrance" prev="nonid_name" />
 			</string_charinvloc>
 
 			<string_charinvname name="name">

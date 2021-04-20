@@ -141,6 +141,8 @@ function onClickDown(button, x, y)
 				sourcenode.setValue("L");
 			elseif value == "L" then
 				sourcenode.setValue("E");
+			elseif value == "E" then
+				sourcenode.setValue("ST");				
 			else
 				sourcenode.setValue("");
 			end

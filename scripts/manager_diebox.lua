@@ -1,6 +1,6 @@
 local control = nil;
 local gmhiddencontrol = nil;
-
+local l_actornode = nil;
 SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL = "sendplayerdicepool";
 
  function onInit()
@@ -62,13 +62,24 @@ function addDice(dice)
 	end
 end
 
+function getActorNode()
+  if l_actornode then
+    return l_actornode;
+  end
+end
+
 -- Added to allow skill dice to be added to the die box by clicking on the button next to the skill.
-function addSkillDice(skilldescription, dice, sourcenode, msgidentity)
+function addSkillDice(skilldescription, dice, sourcenode, msgidentity,actornode)
+    if actornode then
+      l_actornode = actornode;
+    else
+      l_actornode = nil;
+    end
 
    	if dice then
-		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
-			control.resetAll();
-		end
+  		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
+  			control.resetAll();
+  		end
 		control.setType("skill");
 		control.setDescription(skilldescription);
 		control.setSourcenode(sourcenode);

@@ -2,27 +2,48 @@
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
-
 function onInit()
 	ItemManager.setCustomCharAdd(onCharItemAdd);
 end
 
 function updateEncumbrance(nodeChar)
+--	Debug.chat("update encumbrance");
 	local nEncTotal = 0;
 
-	local nCount, nWeight;
+	local nCount, sEncumbrance,nEncumbrance, sType;
 	for _,vNode in pairs(DB.getChildren(nodeChar, "inventorylist")) do
 		if DB.getValue(vNode, "carried", 0) ~= 0 then
 			nCount = DB.getValue(vNode, "count", 0);
 			if nCount < 1 then
 				nCount = 1;
 			end
-			nWeight = DB.getValue(vNode, "weight", 0);
+			sEncumbrance = DB.getValue(vNode, "encumbrance", "");
+			if sEncumbrance == "" then
+				nEncumbrance = 0;
+			else
+				if sEncumbrance:sub(1, 1) =="+" then
+					-- change this later, instead of subtracting total enc, add this to enc threshold
+					nEncumbrance = tonumber(sEncumbrance)*-1;
+				else
+					nEncumbrance = tonumber(sEncumbrance);
+				end
+			end
+			-- If this is equiped armor, Encumbrance should be -3, minimum of 0
+			sType = DB.getValue(vNode, "type", ""):lower();
+			if (sType == "armor" and DB.getValue(vNode, "carried", 0) ==2) then
+				nEncumbrance = nEncumbrance - 3;
+				if nEncumbrance < 0 then
+					nEncumbrance = 0;
+				end
+			end
 
-			nEncTotal = nEncTotal + (nCount * nWeight);
+			nEncTotal = nEncTotal + (nCount * nEncumbrance);
 		end
 	end
 
+	if nEncTotal < 0 then
+		nEncTotal = 0;
+	end
 	DB.setValue(nodeChar, "encumbrance.load", "number", nEncTotal);
 end
 
@@ -269,6 +290,8 @@ function getCharacterName(characternode)
 end
 
 function onDrop(characternode, x, y, draginfo)
+
+
 	Debug.console("charactermanager.lua:onDrop: Type = " .. draginfo.getType());
 
 	-- Added to allow dragging of damage (type = wounds) drag data.

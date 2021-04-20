@@ -172,6 +172,7 @@ function onDoubleClick()
 		if weaponskillnode.getChild("name") then
 			skilldescription = weaponname .. " - " .. weaponskillvalue .. " [ATTACK]\r[DAMAGE: " .. weapondamagevalue .. "] [CRIT: " .. weaponcriticalvalue .. "]";
 		end
-		DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity);
+		local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
+		DieBoxManager.addSkillDice(skilldescription, dice, weaponskillnode, msgidentity, actornode);
 	end
 end

@@ -15,10 +15,11 @@ function onDrop(x, y, draginfo)
 			CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
 			return true;
 		end
+
 	end
+
 	return CharManager.onDrop(getDatabaseNode(), x, y, draginfo);
 end
-
 
 
 -- function onInit()

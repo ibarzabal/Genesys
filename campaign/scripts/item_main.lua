@@ -54,7 +54,7 @@ function update()
 
 	local bSection3 = false;
 	if updateControl("cost", bReadOnly, bID) then bSection3 = true; end
-	if updateControl("weight", bReadOnly, bID) then bSection3 = true; end
+	if updateControl("encumbrance", bReadOnly, bID) then bSection3 = true; end
 	if updateControl("rarity", bReadOnly, bID) then bSection3 = true; end
 	if updateControl("special", bReadOnly, bID) then bSection3 = true; end
 

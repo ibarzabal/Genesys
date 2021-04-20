@@ -107,10 +107,10 @@
 
 			<line_column name="divider2" />
 
-			<label_column name="weight_label">
-				<static textres="item_label_weight" />
+			<label_column name="encumbrance_label">
+				<static textres="item_label_encumbrance" />
 			</label_column>
-			<number_columnh name="weight" />
+			<string_columnh name="encumbrance" />
 
 			<label_column name="cost_label">
 				<static textres="item_label_cost" />

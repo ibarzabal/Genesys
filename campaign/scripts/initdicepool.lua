@@ -51,6 +51,7 @@ function onDrag(button, x, y, draginfo)
 			end
 		end
 
+
 		-- Try secondary skilllist of "Cool" or "Vigilance" (named without the characterstic)
 		if not initskillnode then
 			if self.getName() == "combat_init_cool_btn" then
@@ -144,6 +145,8 @@ function onDoubleClick()
 		if initskillnode.getChild("name") then
 			skilldescription = initskillnode.getChild("name").getValue() .. " [INIT]";
 		end
-		DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity);
+		local actornode = window.getDatabaseNode();
+		DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity, actornode);
+
 	end
 end

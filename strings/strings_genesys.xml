@@ -62,8 +62,8 @@
 	<string name="career_header_traits">TRAITS</string>
 	<string name="species_archetype_header_traits">TRAITS</string>
 	<string name="library_recordtype_label_talent">Talents</string>
-	<string name="char_label_itemweight">Enc</string>
-	<string name="char_tooltip_itemweight">Encumbrance</string>
+	<string name="char_label_item_encumbrance">Enc</string>
+	<string name="char_tooltip_item_encumbrance">Encumbrance</string>
 
 	<!-- Character - Abilities -->
 	<string name="char_abilities_label_talents">TALENTS</string>
@@ -84,16 +84,39 @@
 	<string name="ref_type_talent">Talent</string>
 
 	<!-- Item -->
-	<string name="tooltip_weapon_range">[S]hort, [M]edium, [L]ong, [E]xtreme, [-]Engaged</string>
+	<string name="tooltip_weapon_range">[S]hort, [M]edium, [L]ong, [E]xtreme, [ST]rategic, [-]Engaged</string>
 	<string name="item_label_soak">Soak</string>
 	<string name="item_label_defense">Defense</string>
 	<string name="item_label_skill">Skill</string>
 	<string name="item_label_unidentifiednotes">Non-ID Notes</string>
 	<string name="item_label_description">Description</string>
 	<string name="item_label_rarity">Rarity</string>
-	<string name="item_label_weight">Encumbrance</string>
+	<string name="item_label_encumbrance">Encumbrance</string>
 	<string name="item_label_cost">Price</string>
 	<string name="item_label_special">Special</string>
+	<string name="item_grouped_label_encumbrance">Enc</string>
+	<string name="item_grouped_tooltip_encumbrance">Encumbrance</string>
+	<string name="item_grouped_label_def">Def</string>
+	<string name="item_grouped_tooltip_def">Defense</string>
+	<string name="item_grouped_label_soak">Soak</string>
+	<string name="item_grouped_tooltip_soak">Soak</string>
+	<string name="item_grouped_title_armor">Armor</string>
+	<string name="item_grouped_title_weapons">Weapons</string>
+	<string name="item_grouped_title_gear">Gear</string>
+	<string name="item_grouped_label_rarity">Rarity</string>
+	<string name="item_grouped_label_skill">Skill</string>
+	<string name="item_grouped_label_special">Special</string>
+
+
+
+
+	<!-- Items window -->
+	<string name="item_button_weapons">Weapons</string>
+	<string name="item_button_armor">Armor</string>
+	<string name="item_button_gear">Gear</string>
+	<string name="item_grouped_tooltip_maxstatbonus">Maximum Dexterity Bonus</string>
+
+
 	<!-- Desktop decal options -->
 	<string name="option_val_DDCL_genesys_core">Genesys Core</string>
 	<string name="option_val_DDCL_genesys_android">Genesys Android</string>
@@ -130,7 +153,6 @@
 	<string name="npc_category_rival">Rival</string>
 	<string name="npc_category_nemesis">Nemesis</string>
 	<string name="npc_category_blank">**Select**</string>
-
 
 
 
@@ -227,8 +249,6 @@
 
 	<string name="message_rollbab">Base Attack</string>
 
-	<string name="item_button_weapons">Weapons</string>
-	<string name="item_button_armor">Armor</string>
 	<string name="npc_button_letter">By Letter</string>
 	<string name="npc_button_cr">By CR</string>
 	<string name="npc_button_type">By Type</string>
@@ -583,7 +603,7 @@
 	<string name="char_label_invarmormaxability">Max Stat</string>
 	<string name="char_label_invarmorskillcheckpenalty">Skill Chk</string>
 	<string name="char_label_invarmorspellfailure">Spell Fail</string>
-	<string name="char_label_totalweight">Total encumbrance</string>
+	<string name="char_label_total_encumbrance">Total encumbrance</string>
 	<string name="char_label_invenclt">Light</string>
 	<string name="char_label_invencmed">Medium</string>
 	<string name="char_label_invenchvy">Heavy</string>
@@ -661,17 +681,10 @@
 	<string name="battle_label_xp">XP</string>
 	<string name="battle_tooltip_xp">Experience Points</string>
 
-	<!-- Items -->
-	<string name="item_grouped_title_armor">Armor</string>
-	<string name="item_grouped_title_weapons">Weapons</string>
-	<string name="item_grouped_title_equipment">Goods and Services</string>
 
 	<string name="item_grouped_label_name">Name</string>
 	<string name="item_grouped_label_cost">Cost</string>
-	<string name="item_grouped_label_weight">Wt</string>
-	<string name="item_grouped_tooltip_weight">Weight</string>
-	<string name="item_grouped_label_ac">AC</string>
-	<string name="item_grouped_tooltip_ac">Base Armor Class</string>
+
 	<string name="item_grouped_label_maxstatbonus">Max Dex</string>
 	<string name="item_grouped_tooltip_maxstatbonus">Maximum Dexterity Bonus</string>
 	<string name="item_grouped_label_checkpenalty">Skill</string>

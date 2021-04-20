@@ -185,10 +185,6 @@ function processDiceLanded(draginfo)
 end
 
 function processDice(rSource, rTarget, rRoll)
---  Debug.chat("rSource",rSource);
---  Debug.chat("rTarget",rTarget);
---  Debug.chat("rRoll",rRoll);
-
 	-- get the message details
 	local type = rSource.sType;
 	local description = rSource.sDesc;
@@ -239,18 +235,18 @@ function processDice(rSource, rTarget, rRoll)
   end
 
 	-- get the character node
-	local characternode = nil;
-	if sourcenode then
-		if type == SPECIAL_MSGTYPE_ACTION then
-			characternode = sourcenode.getParent().getParent();
-		elseif type == SPECIAL_MSGTYPE_CHARACTERISTIC then
-			characternode = sourcenode.getParent().getParent();
-		elseif type == SPECIAL_MSGTYPE_SKILL then
-			characternode = sourcenode.getParent().getParent();
-		elseif type == SPECIAL_MSGTYPE_SPECIALISATION then
-			characternode = sourcenode.getParent().getParent().getParent().getParent();
-		end
-	end
+	local characternode = DieBoxManager.getActorNode();
+--	if sourcenode then
+--		if type == SPECIAL_MSGTYPE_ACTION then
+--			characternode = sourcenode.getParent().getParent();
+--		elseif type == SPECIAL_MSGTYPE_CHARACTERISTIC then
+--			characternode = sourcenode.getParent().getParent();
+--		elseif type == SPECIAL_MSGTYPE_SKILL then
+--			characternode = sourcenode.getParent().getParent();
+--		elseif type == SPECIAL_MSGTYPE_SPECIALISATION then
+--			characternode = sourcenode.getParent().getParent().getParent().getParent();
+--		end
+--	end
 
 	-- update the identity if we found the character node
 	if characternode then
@@ -962,13 +958,11 @@ end
 
 -- Used to pass rolled initiative to the InitiativeManager script using the Special Message functionality so the GM can act on the player's roll
 function updateActorInit(characternode, initiativecount)
--- JOHN: Initiative track is not working yet, Initiative needs to be populated and handled manually in CT, for this version
-
-
---	local msgparams = {};
---	msgparams[1] = characternode.getNodeName();
---	msgparams[2] = initiativecount;
---	ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_UPDATEACTORINIT, msgparams);
+	local msgparams = {};
+	msgparams[1] = characternode.getNodeName();
+	msgparams[2] = initiativecount;
+-- JOHN TODO  InitiativeManager.updateActorInitiative(characternode, initiativecount);
+	--ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_UPDATEACTORINIT, msgparams);
 end
 
 function handleUpdateActorInit(msguser, msgidentity, msgparams)
@@ -1073,7 +1067,6 @@ end
 ---------------------------------------------------------------------------------
 
 function processDiceCritical(rSource, rTarget, rRoll)
-
 	-- get the message details
 --	local type = rSource.sType;
 	local description = "[CRITICAL]";

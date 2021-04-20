@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<!-- 
-  Please see the license.html file included with this distribution for 
+<!--
+  Please see the license.html file included with this distribution for
   attribution and copyright information.
 -->
 
@@ -46,6 +46,29 @@
 			</script>
 		</button_text_sm>
 	</template>
+	<template name="button_item_gear">
+		<button_text_sm>
+			<anchored to="buttonanchor" width="80">
+				<top />
+				<left anchor="right" relation="relative" offset="5" />
+			</anchored>
+			<state textres="item_button_gear" />
+			<script>
+				function onButtonPress()
+					local w = Interface.findWindow("reference_groupedlist", "reference.gear");
+					if w then
+						Interface.toggleWindow("reference_groupedlist", "reference.gear");
+					else
+						w = Interface.openWindow("reference_groupedlist", "reference.gear");
+						w.init({ sRecordType = "item", sListView = "gear" });
+					end
+				end
+			</script>
+		</button_text_sm>
+	</template>
+
+
+
 	<template name="button_npc_letter">
 		<button_text_sm>
 			<anchored to="buttonanchor" width="80">
@@ -217,7 +240,7 @@
 
 					return true;
 				end
-				
+
 				function onDragStart(button, x, y, draginfo)
 					return action(draginfo);
 				end
@@ -238,11 +261,11 @@
 					ActionSave.performRoll(draginfo, rActor, self.target[1]);
 					return true;
 				end
-				
+
 				function onDragStart(button, x, y, draginfo)
 					return action(draginfo);
 				end
-					
+
 				function onDoubleClick(x, y)
 					return action();
 				end
@@ -258,14 +281,14 @@
 				function action(draginfo)
 					local rActor = ActorManager.getActor("npc", window.getDatabaseNode());
 					ActionAbility.performRoll(draginfo, rActor, self.target[1]);
-					
+
 					return true;
 				end
-				
+
 				function onDragStart(button, x, y, draginfo)
 					return action(draginfo);
 				end
-					
+
 				function onDoubleClick(x, y)
 					return action();
 				end
@@ -348,13 +371,13 @@
 				function onInit()
 					registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
 				end
-				
+
 				function onMenuSelection(selection)
 					if selection == 5 then
 						self.addEntry(true);
 					end
 				end
-				
+
 				function onListChanged()
 					update();
 				end
@@ -365,7 +388,7 @@
 						w.idelete.setVisibility(bEditMode);
 					end
 				end
-				
+
 				function addEntry(bFocus)
 					return createWindow();
 				end

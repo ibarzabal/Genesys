@@ -15,7 +15,7 @@
 				<anchored to="motivationsframe" />
 				<static textres="char_label_motivations" />
 			</label_frametop>
-			<stringu name="motivations">
+			<stringfield name="motivations">
 				<anchored to="motivationsframe">
 					<top offset="30" />
 					<left offset="15" />
@@ -24,7 +24,7 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 				<nodrag />
-			</stringu>
+			</stringfield>
 			<scrollbar_list>
 				<anchored to="motivations" />
 				<target>motivations</target>
@@ -38,7 +38,7 @@
 				<anchored to="notesframe" />
 				<static textres="char_label_notes" />
 			</label_frametop>
-			<stringu name="notes">
+			<stringfield name="notes">
 				<anchored to="notesframe">
 					<top offset="30" />
 					<left offset="15" />
@@ -47,7 +47,7 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 				<nodrag />
-			</stringu>
+			</stringfield>
 			<scrollbar_list>
 				<anchored to="notes" />
 				<target>notes</target>
