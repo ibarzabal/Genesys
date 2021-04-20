@@ -222,7 +222,6 @@
 										</size>
 									</anchored>
 									<disabled />
-									<invisible />
 								</stringfield>
 
 
@@ -265,7 +264,6 @@
 										</size>
 									</anchored>
 									<disabled />
-									<invisible />
 								</stringu>
 							</sheetdata>
 						</windowclass>

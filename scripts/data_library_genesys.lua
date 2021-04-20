@@ -182,7 +182,7 @@ aRecordOverrides = {
 			["Tier"] = { sField = "tier" },
 			["Activation"] = { sField = "activation" },
 			["Ranked"] = { sField = "ranked" },
-			["Description"] = { sField = "description" }
+			["Setting"] = { sField = "setting" }
 		},
 	},
 };

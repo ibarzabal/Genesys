@@ -90,7 +90,6 @@
 <template name="sheetlist">
   <basewindowlist>
     <allowdelete />
-    <useallmodules merge="delete" />
     <script file="common/scripts/sheetlist.lua" />
   </basewindowlist>
 </template>
@@ -117,7 +116,7 @@
 <!-- Placeholder templates  replace after done with conversion -->
 <template name="basewindowlist">
   <windowlist>
-    <useallmodules />
+<!--    <useallmodules /> -->
     <script file="common/scripts/basewindowlist.lua" />
   </windowlist>
 </template>

@@ -642,60 +642,26 @@
 					</genericcontrol>
 
 
-		<!-- CONDITIONS -->
-					<sheetframe name="combat_conditions">
-						<!--<bounds>12,201,236,252</bounds>-->
-						<bounds>14,163,199,-10</bounds>
-					</sheetframe>
-
-					<!-- Conditions -->
-					<basewindowlist name="combat_conditions_conditions">
-						<class>empty</class>
-						<skipempty />
-						<anchored>
-							<left>
-								<parent>combat_conditions</parent>
-								<anchor>left</anchor>
-								<offset>8</offset>
-							</left>
-							<right>
-								<parent>combat_conditions</parent>
-								<anchor>right</anchor>
-								<offset>-10</offset>
-							</right>
-							<top>
-								<parent>combat_conditions</parent>
-								<anchor>top</anchor>
-								<offset>20</offset>
-							</top>
-							<bottom>
-								<parent>combat_conditions</parent>
-								<anchor>bottom</anchor>
-								<offset>-20</offset>
-							</bottom>
-						</anchored>
-						<script>
-							function onInit()
-								createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
-								createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
-								createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
-								createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
-							end
-						</script>
-					</basewindowlist>
-					<scrollbar>
-						<anchored>
-							<to>combat_conditions_conditions</to>
-							<offset>-6,0</offset>
-						</anchored>
-						<target>combat_conditions_conditions</target>
-					</scrollbar>
 
 		<!-- WEAPONS (the listbox)-->
 					<sheetframe name="combat_weapons">
 						<!--<bounds>208,148,276,320</bounds>-->
 						<bounds>210,165,274,-10</bounds>
 					</sheetframe>
+
+					<sheettitle name="combat_weapons_weapon">
+						<anchored>
+							<to>combat_weapons</to>
+							<position>insidetopleft</position>
+							<offset>25,8</offset>
+							<size>
+								<width>50</width>
+							</size>
+						</anchored>
+						<center />
+						<static>Weapon</static>
+					</sheettitle>
+
 					<sheettitle name="combat_weapons_whatskill">
 						<anchored>
 							<to>combat_weapons</to>
@@ -709,6 +675,7 @@
 						<static>Skill</static>
 						<invisible />
 					</sheettitle>
+
 					<sheettitle name="combat_weapons_damage">
 						<anchored>
 							<to>combat_weapons</to>
@@ -721,6 +688,7 @@
 						<center />
 						<static>Dam</static>
 					</sheettitle>
+
 					<sheettitle name="combat_weapons_critical">
 						<anchored>
 							<to>combat_weapons</to>
@@ -733,6 +701,7 @@
 						<center />
 						<static>Crit</static>
 					</sheettitle>
+
 					<sheettitle name="combat_weapons_range">
 						<anchored>
 							<to>combat_weapons</to>
@@ -802,6 +771,54 @@
 						<target>combat_weapons_weapons</target>
 					</scrollbar>
 
+					<!-- CONDITIONS -->
+								<sheetframe name="combat_conditions">
+									<!--<bounds>12,201,236,252</bounds>-->
+									<bounds>14,163,199,-10</bounds>
+								</sheetframe>
+
+								<!-- Conditions -->
+								<basewindowlist name="combat_conditions_conditions">
+									<class>empty</class>
+									<skipempty />
+									<anchored>
+										<left>
+											<parent>combat_conditions</parent>
+											<anchor>left</anchor>
+											<offset>8</offset>
+										</left>
+										<right>
+											<parent>combat_conditions</parent>
+											<anchor>right</anchor>
+											<offset>-10</offset>
+										</right>
+										<top>
+											<parent>combat_conditions</parent>
+											<anchor>top</anchor>
+											<offset>20</offset>
+										</top>
+										<bottom>
+											<parent>combat_conditions</parent>
+											<anchor>bottom</anchor>
+											<offset>-20</offset>
+										</bottom>
+									</anchored>
+									<script>
+										function onInit()
+											createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
+											createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
+											createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
+											createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
+										end
+									</script>
+								</basewindowlist>
+								<scrollbar>
+									<anchored>
+										<to>combat_conditions_conditions</to>
+										<offset>-6,0</offset>
+									</anchored>
+									<target>combat_conditions_conditions</target>
+								</scrollbar>
 
 
 
