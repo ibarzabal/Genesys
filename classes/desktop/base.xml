@@ -40,12 +40,12 @@
 <!--	<includefile source="classes/desktop/shortcuts.xml" /> -->
 <!--	<includefile source="classes/desktop/stackitem.xml" /> -->
 <!--	<includefile source="classes/desktop/stresschit.xml" /> -->
-<!--	<includefile source="classes/desktop/strainchit.xml" /> -->
+	<includefile source="classes/desktop/strainchit.xml" />
 	<includefile source="classes/desktop/woundchit.xml" />
 	<includefile source="classes/desktop/storypointpcchit.xml" />
 	<includefile source="classes/desktop/storypointgmchit.xml" />
-<!--	<includefile source="classes/desktop/criticalchit.xml" /> -->
-<!--	<includefile source="classes/desktop/criticalvehiclechit.xml" /> -->
+	<includefile source="classes/desktop/criticalchit.xml" />
+	<includefile source="classes/desktop/criticalvehiclechit.xml" />
 <!--	<includefile source="classes/desktop/dieboxremote.xml" /> -->
 <!--	<includefile source="classes/desktop/dieboxviewslot.xml" /> -->
 <!--	<includefile source="classes/desktop/dieboxviewlist.xml" /> -->

@@ -66,6 +66,11 @@
 
 			<line_column name="divider3" />
 
+			<label_column name="skill_label">
+				<static textres="item_label_skill" />
+			</label_column>
+			<string_columnh name="skill" />
+
 			<label_column name="damage_label">
 				<static textres="item_label_damage" />
 			</label_column>
@@ -104,7 +109,7 @@
 			</number_columnh>
 
 			<label_column name="soak_label">
-				<static textres="item_label_defense" />
+				<static textres="item_label_soak" />
 			</label_column>
 			<number_columnh name="soak">
 				<delaykeyupdate />

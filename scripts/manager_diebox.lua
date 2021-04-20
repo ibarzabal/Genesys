@@ -64,7 +64,8 @@ end
 
 -- Added to allow skill dice to be added to the die box by clicking on the button next to the skill.
 function addSkillDice(skilldescription, dice, sourcenode, msgidentity)
-	if dice then
+
+   	if dice then
 		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
 			control.resetAll();
 		end
@@ -127,7 +128,8 @@ function sendPlayerDicepool(dielist, description)
 	else
 		msgparams[3] = User.getUsername();
 	end
---	ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL, msgparams);
+  -- Debug.chat("broken");
+	-- ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_SENDPLAYERDICEPOOL, msgparams);
 end
 
 function handleSendPlayerDicepool(msguser, msgidentity, msgparams)
@@ -162,7 +164,7 @@ end
 -- Added to allow double clicking on force dice to add to the diebox without overwriting it - thanks to Archamus for this
 function addForceDice(dice, sourcenode, msgidentity)
 	if dice then
-		control.setType("diegen");
+		control.setType("dice");
 		control.setSourcenode(sourcenode);
 		control.setIdentity(msgidentity);
 		for k, v in pairs(dice) do

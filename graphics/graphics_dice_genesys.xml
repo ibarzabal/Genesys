@@ -117,6 +117,9 @@
 
 
 	<icon name="d10icon" file="graphics/dice_genesys/d10/d10.png" />
+	<!-- Genesys: created a "0" for special critical rolls
+		For critical rolls we roll 2d10 now -->
+	<icon name="d10icon.0" file="graphics/dice_genesys/d10/d10.0.png" />
 	<icon name="d10icon.1" file="graphics/dice_genesys/d10/d10.1.png" />
 	<icon name="d10icon.2" file="graphics/dice_genesys/d10/d10.2.png" />
 	<icon name="d10icon.3" file="graphics/dice_genesys/d10/d10.3.png" />

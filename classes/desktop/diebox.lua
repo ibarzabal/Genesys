@@ -1,6 +1,6 @@
 local iconwidth = 25;
 local dragging = false;
-local typename = "diegen";
+local typename = "dice";
 local sourcenode = nil;
 local entries = {};
 local descriptionwidget = nil;
@@ -21,8 +21,7 @@ function onDrag(button, x, y, draginfo)
 	if table.getn(entries) > 0 then
 		if not dragging then
 			if table.getn(getDice()) > 0 then
-				draginfo.setType("diegen");
---				draginfo.setType(typename);
+				draginfo.setType(typename);
 				draginfo.setDescription(getDescription());
 				draginfo.setDieList(getDice());
 				draginfo.setDatabaseNode(sourcenode);
@@ -47,7 +46,7 @@ function onDrop(x, y, draginfo)
 	if not dragging then
 
 		-- Dice
-		if draginfo.isType("diegen") then
+		if draginfo.isType("dice") then
 			local dielist = draginfo.getDieList();
 			if dielist then
 				setDescription(draginfo.getDescription());
@@ -59,15 +58,14 @@ function onDrop(x, y, draginfo)
 
 		-- Chit
 		if draginfo.isType("chit") then
-
-			if draginfo.getCustomData() == "lightside" then
+			if draginfo.getCustomData() == "StoryPointPC" then
 				-- Upgrade PC dice or downgrade NPC dice.
 				if User.isHost() then
 					DieBoxUpgradeDowngradeButtonPress("dieboxupgradedifficulty");
 				else
 					DieBoxUpgradeDowngradeButtonPress("dieboxupgradeability");
 				end
-			elseif draginfo.getCustomData() == "darkside" then
+			elseif draginfo.getCustomData() == "StoryPointGM" then
 				-- Downgrade PC dice or upgrade NPC dice.
 				Debug.console("TODO: Darkside destiny token code.");
 				if User.isHost() then
@@ -84,7 +82,6 @@ function onDrop(x, y, draginfo)
 			--	addDie("dChallenge");
 			--end
 		end
-
 		-- Action
 		if draginfo.isType("action") then
 			local dielist = draginfo.getDieList();
@@ -399,7 +396,7 @@ function setType(type)
 end
 
 function resetType()
-	typename = "diegen";
+	typename = "dice";
 end
 
 function setSourcenode(node)
@@ -421,7 +418,7 @@ end
 function onDieboxButtonPress()
 		local sourcenodename = "";
 		-- type
-		--local type = "diegen";
+		--local type = "dice";
 		local type = typename;
 		-- description
 		local description = getDescription();
@@ -442,7 +439,7 @@ function onDieboxButtonPress()
 			msgidentity = msguser;
 		end
 		-- throw the dice
-		ChatManagerGenesys.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
+		Comm.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
 		resetAll();
 end
 

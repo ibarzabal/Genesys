@@ -241,8 +241,6 @@
 		<numberfield>
 			<frame name="fieldlight" offset="7,5,7,5" />
 <!--			<displaysign /> -->
-			<rollable/>
-				<script file="campaign/scripts/skilldicepool.lua" />
 		</numberfield>
 	</template>
 
@@ -258,20 +256,6 @@
 			<anchored position="lefthigh" width="85" height="20" />
 			<static />
 		</label>
-	</template>
-	<template name="number_charabilitydamage">
-		<basicnumber>
-			<anchored position="right" offset="65,0" width="30" />
-			<hideonvalue value="0" />
-			<script>
-				function onValueChanged()
-					local nTarget = DB.getValue(window.getDatabaseNode(), "abilities." .. target[1] .. ".score", 0);
-					if getValue() &gt; nTarget then
-						setValue(nTarget);
-					end
-				end
-			</script>
-		</basicnumber>
 	</template>
 
 	<template name="number_charminiabilitydamage">
@@ -903,30 +887,6 @@
 				end
 			</script>
 		</buttonfield>
-	</template>
-	<template name="number_charweaponattacktotal">
-		<number_linked>
-			<displaysign />
-			<source><name>type</name></source>
-			<source><string /><name>attackstat</name></source>
-			<source><name>bonus</name><op>+</op></source>
-			<source><name>...attackbonus.base</name></source>
-			<source><name>...attackbonus.melee.ability</name></source>
-			<source><name>...attackbonus.melee.size</name></source>
-			<source><name>...attackbonus.melee.misc</name></source>
-			<source><name>...attackbonus.melee.temporary</name></source>
-			<source><name>...attackbonus.ranged.ability</name></source>
-			<source><name>...attackbonus.ranged.size</name></source>
-			<source><name>...attackbonus.ranged.misc</name></source>
-			<source><name>...attackbonus.ranged.temporary</name></source>
-			<source><name>...abilities.strength.bonus</name></source>
-			<source><name>...abilities.dexterity.bonus</name></source>
-			<source><name>...abilities.constitution.bonus</name></source>
-			<source><name>...abilities.intelligence.bonus</name></source>
-			<source><name>...abilities.wisdom.bonus</name></source>
-			<source><name>...abilities.charisma.bonus</name></source>
-			<script file="campaign/scripts/char_weaponattack.lua" />
-		</number_linked>
 	</template>
 
 	<template name="number_charweaponfullattack">

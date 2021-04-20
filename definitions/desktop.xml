@@ -111,15 +111,15 @@
 		</bounds>
 	</panel>
 -->
+
 	<!-- Chits -->
 
-<!--
-	<panel name="criticalvehiclechit" modes="host,client">
+<!--	<panel name="criticalvehiclechit" modes="host,client">
 		<class>criticalvehiclechit</class>
 		<bounds>
 			<rect>136,-122,56,56</rect>
 		</bounds>
-	</panel>
+	</panel> -->
 	<panel name="criticalchit" modes="host,client">
 		<class>criticalchit</class>
 		<bounds>
@@ -138,7 +138,6 @@
 			<rect>297,-128,56,56</rect>
 		</bounds>
 	</panel>
--->
 	<panel name="StoryPointPCchit" modes="host,client">
 		<class>StoryPointPCchit</class>
 		<bounds>

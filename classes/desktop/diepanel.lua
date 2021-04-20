@@ -35,14 +35,14 @@ function onDrag(button, x, y, draginfo)
 	if not dragging then
 		if Input.isControlPressed() or button > 1 then
 			if modifier then
-				draginfo.setType("diegen");
+				draginfo.setType("dice");
 				draginfo.setDieList({ modifier[1] });
 				dragging = true;
 				return true;
 			end
 		else
 			if type then
-				draginfo.setType("diegen");
+				draginfo.setType("dice");
 				draginfo.setDieList({ type[1] });
 				dragging = true;
 				return true;

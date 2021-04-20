@@ -360,6 +360,19 @@ function onDrop(characternode, x, y, draginfo)
 --				return addItem(characternode, recordnode);
 --			end
 		end
+		-- JOHN: For now this is a workaround
+		-- This will avoid an error message if someone dragged a critical shortcut from chat
+		-- that someone previously dragged it into chat :P
+		-- Item
+		if class == "critical" then
+			return false;
+--			local recordnode = DB.findNode(recordname);
+--			if recordnode then
+--				return addItem(characternode, recordnode);
+--			end
+		end
+
+
 
 		-- Skill
 		if class == "skill" then
@@ -559,15 +572,18 @@ function addCritical(characternode)
 
 	Debug.console("Running addCritical.  characternode = " .. characternode.getNodeName());
 
+
 --	if User.isHost() or User.isOwnedIdentity(getIdentityName(characternode)) then
 
 			-- get the criticals node.  Used to check the number of current criticals sustained.
 			local criticalsnode = characternode.createChild("criticals");
+			Debug.console("crits sustained.  characternode = " .. characternode.getNodeName());
 
 			-- Get the current number of criticals sustained.
 
 			local critsSustained = criticalsnode.getChildCount();
 			local modifier = critsSustained * 10;
+
 
 			-- Roll d100 and add criticals sustained x 10.
 
@@ -576,7 +592,7 @@ function addCritical(characternode)
 
 			-- build the dice table
 			local dice = {};
-			table.insert(dice, "d100");
+			table.insert(dice, "d10");
 			table.insert(dice, "d10");
 
 			-- character node name - used to apply result of critical in Chat Manager critical result handler
@@ -585,7 +601,10 @@ function addCritical(characternode)
 			end
 
 			-- throw the dice - need to handle the result in the chatmanager handler.
-			Comm.throwDice("dice", dice, modifier, description, {characternodename, msgidentity, gmonly});
+
+			-- Genesys: changed. We sent node info in the description
+
+			Comm.throwDice("critical", dice, modifier, characternodename);
 
 		-- and return
 		return true;
@@ -623,7 +642,7 @@ function addCriticalVehicle(characternode)
 			end
 
 			-- throw the dice - need to handle the result in the chatmanager handler.
-			Comm.throwDice("dice", dice, modifier, description, {characternodename, msgidentity, gmonly});
+			Comm.throwDice("criticalvehicle", dice, modifier, description, {characternodename, msgidentity, gmonly});
 
 		-- and return
 		return true;
@@ -692,7 +711,7 @@ function addWoundsChit(characternode, draginfo)
 			local msg = {};
 			msg.font = "msgfont";
 			if damage > 0 then
-				msg.text = getCharacterName(characternode) .. " has gained " .. damage .." wound/s" .. NpcManager.extraIdentityText();
+				msg.text = getCharacterName(characternode) .. " has gained " .. damage .." wound/s" .. NPCManagerGenesys.extraIdentityText();
 			else
 				msg.text = getCharacterName(characternode) .. " has not taken any wounds"
 			end
@@ -738,7 +757,7 @@ function addWounds(characternode, wounds)
 				local msg = {};
 				msg.font = "msgfont";
 				if damage > 0 then
-					msg.text = getCharacterName(characternode) .. " has gained " .. damage .." wound/s" .. NpcManager.extraIdentityText();
+					msg.text = getCharacterName(characternode) .. " has gained " .. damage .." wound/s" .. NPCManagerGenesys.extraIdentityText();
 				else
 					msg.text = getCharacterName(characternode) .. " has not taken any damage"
 				end
@@ -792,7 +811,7 @@ function addStrainChit(characternode, draginfo)
 			local msg = {};
 			msg.font = "msgfont";
 			if damage > 0 then
-				msg.text = getCharacterName(characternode) .. " has gained " .. damage .." strain" .. NpcManager.extraIdentityText();
+				msg.text = getCharacterName(characternode) .. " has gained " .. damage .." strain" .. NPCManagerGenesys.extraIdentityText();
 			else
 				msg.text = getCharacterName(characternode) .. " has not taken any strain"
 			end
@@ -838,7 +857,7 @@ function addStrainWithSoak(characternode, strain)
 				local msg = {};
 				msg.font = "msgfont";
 				if damage > 0 then
-					msg.text = getCharacterName(characternode) .. " has gained " .. damage .." strain" .. NpcManager.extraIdentityText();
+					msg.text = getCharacterName(characternode) .. " has gained " .. damage .." strain" .. NPCManagerGenesys.extraIdentityText();
 				else
 					msg.text = getCharacterName(characternode) .. " has not taken any strain"
 				end

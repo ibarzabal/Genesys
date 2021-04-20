@@ -178,6 +178,56 @@
 								</maximum>-->
 							</sizelimits>
 							<sheetdata>
+								<genericcontrol name="rightanchor">
+									<anchored width="0" height="0">
+										<top />
+										<right />
+									</anchored>
+									<invisible />
+								</genericcontrol>
+
+								<weapondicepool>
+									<anchored width="20" height="20">
+										<top offset="2" />
+										<right parent="rightanchor" anchor="left" relation="relative" offset="-1" />
+									</anchored>
+								</weapondicepool>
+
+								<stringfield name="range">
+									<sourcename>range</sourcename>
+									<anchored width="20" height="20">
+										<top offset="2" />
+										<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+									</anchored>
+									<disabled />
+								</stringfield>
+
+								<number name="critical" source="critical">
+									<anchored width="20" height="20">
+										<top offset="2" />
+										<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+									</anchored>
+									<disabled />
+								</number>
+
+								<stringfield name="damage">
+									<anchored width="20" height="20">
+										<top offset="2" />
+										<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+									</anchored>
+									<disabled />
+								</stringfield>
+
+								<stringfield name="skill">
+									<anchored width="20" height="20">
+										<top offset="2" />
+										<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+									</anchored>
+									<disabled />
+									<invisible />
+								</stringfield>
+
+
 								<windowbutton name="open">
 									<bounds>0,0,20,20</bounds>
 									<class>item</class>
@@ -203,15 +253,6 @@
 								</basestringfield>
 
 								<baseformattedtextfield name="description">
-									<!--<bounds>21,24,231,34</bounds>-->
-									<!--<anchored>
-										<to>charsheet_combat_weapon</to>
-										<position>insidetopleft</position>
-										<offset>60,38</offset>
-										<size>
-											<width>90</width>
-										</size>
-									</anchored>-->
 									<anchored>
 										<left>
 											<anchor>left</anchor>
@@ -225,70 +266,7 @@
 											<width>200</width>
 										</size>
 									</anchored>
-									<!--<anchored>
-										<to>charsheet_combat_weapon</to>
-										<offset>42,24</offset>
-									</anchored>-->
-									<!--<disabled />-->
 								</baseformattedtextfield>
-
-								<weaponskillcontrol name="skill">
-									<sourcename>weapon.skill</sourcename>
-									<anchored>
-										<left>
-											<anchor>left</anchor>
-											<offset>123</offset>
-										</left>
-										<top>
-											<anchor>top</anchor>
-											<offset>2</offset>
-										</top>
-									</anchored>
-									<disabled />
-								</weaponskillcontrol>
-
-								<sheetnumberfield name="damage" source="weapon.damage">
-									<anchored>
-										<offset>152,2</offset>
-										<size>
-											<width>25</width>
-										</size>
-									</anchored>
-									<disabled />
-								</sheetnumberfield>
-
-								<sheetnumberfield name="critical" source="weapon.critical">
-									<anchored>
-										<offset>181,2</offset>
-										<size>
-											<width>25</width>
-										</size>
-									</anchored>
-									<disabled />
-								</sheetnumberfield>
-
-								<rangecontrol name="range">
-									<sourcename>weapon.range</sourcename>
-									<anchored>
-										<left>
-											<anchor>left</anchor>
-											<offset>210</offset>
-										</left>
-										<top>
-											<anchor>top</anchor>
-											<offset>2</offset>
-										</top>
-									</anchored>
-									<disabled />
-								</rangecontrol>
-
-								<weapondicepool>
-									<bounds>-18,0,20,20</bounds>
-								</weapondicepool>
-
 							</sheetdata>
 						</windowclass>
-
-
-
 </root>

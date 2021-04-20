@@ -1,4 +1,4 @@
-SPECIAL_MSGTYPE_DICE = "diegen";
+SPECIAL_MSGTYPE_DICE = "dice";
 SPECIAL_MSGTYPE_ACTION = "action";
 SPECIAL_MSGTYPE_CHARACTERISTIC = "characteristic";
 SPECIAL_MSGTYPE_SKILL = "skill";
@@ -16,7 +16,7 @@ SPECIAL_MSGTYPE_UPDATEACTORINIT = "updateactorinit";
 function onInit()
 	-- register the comm handlers
 	Comm.onReceiveOOBMessage = processSpecialMessage;
-	registerSlashHandler("diegen", processDie);
+
 	registerAutocompleteHandler(autocompleteIdentityName);
 -- JOHN
 -- JOHN	-- register dice handlers
@@ -25,7 +25,7 @@ function onInit()
 -- JOHN	registerDiceHandler(SPECIAL_MSGTYPE_CHARACTERISTIC, processDiceLanded);
 -- JOHN	registerDiceHandler(SPECIAL_MSGTYPE_SKILL, processDiceLanded);
 -- JOHN	registerDiceHandler(SPECIAL_MSGTYPE_SPECIALISATION, processDiceLanded);
-ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEACTORINIT, handleUpdateActorInit);
+-- ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEACTORINIT, handleUpdateActorInit);
 
 end
 
@@ -41,9 +41,10 @@ function addMessage(msg)
 	Comm.addChatMessage(msg);
 end
 
-function throwDice(dragtype, dice, modifier, description, customdata)
-	Comm.throwDice("diegen", dice, modifier, description, customdata);
-end
+--function throwDice(dragtype, dice, modifier, description, customdata)
+--	Debug.chat("critical came here",customdata)
+--	Comm.throwDice(dragtype, dice, modifier, description, customdata);
+--end
 
 --
 --
@@ -67,7 +68,7 @@ SPECIAL_MSG_SEP = "|||";
 specialmessagehandlers = {};
 
 function registerSpecialMessageHandler(msgtype, callback)
-	--Debug.chat("registerSpecialMessageHandler_msgtype",msgtype);
+
 	if not specialmessagehandlers[msgtype] then
 		specialmessagehandlers[msgtype] = {};
 	end
@@ -375,101 +376,14 @@ function gmRevealDieRolls(reveal)
 	revealalldice = reveal;
 end
 
-function processDie(command, params)
-	if User.isHost() then
-		if params == "reveal" then
-			revealalldice = true;
-
-			local msg = {};
-			msg.font = "systemfont";
-			msg.text = "Revealing all die rolls";
-			addMessage(msg);
-
-			return;
-		end
-		if params == "hide" then
-			revealalldice = false;
-
-			local msg = {};
-			msg.font = "systemfont";
-			msg.text = "Hiding all die rolls";
-			addMessage(msg);
-
-			return;
-		end
-	end
-
-	local diestring, descriptionstring = string.match(params, "%s*(%S+)%s*(.*)");
-
-	if not diestring then
-		local msg = {};
-		msg.font = "systemfont";
-		msg.text = "Usage: /diegen [dice] [description]";
-		msg.text = msg.text .. "\n\nAvailable dice: dAbility, dProficiency, dDifficulty, dChallenge, dBoost, dSetback";
-		msg.text = msg.text .. "\n\nYor can abbreviate dice to: da, dp, dd, dc, db, ds, respectively";
-		msg.text = msg.text .. "\n\nExamples of die roll:";
-		msg.text = msg.text .. "\n\n/diegen 3dAbility+dProficiency+2dDifficulty+1dBoost";
-		msg.text = msg.text .. "\n\n/diegen 3da+dp+2dd+1db";
-		addMessage(msg);
-		return;
-	end
-
-	local dice = {};
-	local modifier = 0;
-
-	for s, m, d in string.gmatch(diestring, "([%+%-]?)(%d*)(%w*)") do
-		if m == "" and d == "" then
-			break;
-		end
-
-		if d ~= "" then
-			for i = 1, tonumber(m) or 1 do
-				table.insert(dice, d);
-				if d == "da" then table.insert(dice, "dAbility")
-				elseif d == "dp" then	table.insert(dice, "dProficiency")
-				elseif d == "dd" then	table.insert(dice, "dDifficulty")
-				elseif d == "dc" then	table.insert(dice, "dChallenge")
-				elseif d == "db" then	table.insert(dice, "dBoost")
-				elseif d == "ds" then	table.insert(dice, "dSetback")
-				end
-			end
-		else
-			if s == "-" then
-				modifier = modifier - m;
-			else
-				modifier = modifier + m;
-			end
-		end
-	end
-
-	if #dice == 0 then
-		local msg = {};
-
-		msg.font = "systemfont";
-		msg.text = descriptionstring;
-		msg.dice = {};
-		msg.diemodifier = modifier;
-		msg.dicesecret = false;
-
-		if User.isHost() then
-			msg.sender = GmIdentityManager.getCurrent();
-		else
-			msg.sender = User.getIdentityLabel();
-		end
-
-		deliverMessage(msg);
-	else
-		throwDice("diegen", dice, modifier, descriptionstring);
-	end
-end
-
 function processDiceLanded(draginfo)
 	ModifierStack.applyModifierStackToRoll(draginfo);
 	return processDice(draginfo);
 end
 
+--[[
 function processDice(draginfo)
-
+--Debug.chat("manager_chat2.processDice");
 	-- get the message details
 	local type = draginfo.getType();
 	local description = draginfo.getDescription();
@@ -477,7 +391,7 @@ function processDice(draginfo)
 	local sourcenode = draginfo.getDatabaseNode();
 	local gmonly = false;
 
-	Debug.console("processDice - draginfo = ", draginfo);
+	--Debug.chat("processDice - draginfo = ", draginfo);
 
 	-- Used to track success and advantages for initiative in the form of <successes>.<advantages>
 	local initiativecount = 0;
@@ -760,7 +674,7 @@ function processDice(draginfo)
 	-- Handle critical roll here - indicated by CRITICAL in roll description
 	if string.find(description, "CRITICAL") then
 		Debug.console("Critical result handler.")
-		Debug.console("Target node for critical = ", sourcenode);
+		--Debug.chat("Target node for critical = ", sourcenode);
 
 		--resultMsg.dice = resultdice;
 		local critModifier = resultMsg.diemodifier;
@@ -795,9 +709,9 @@ function processDice(draginfo)
 		if sourcenode.getNodeName() ~= "" then
 			PlayerDBManager.createCriticalNonOwnedDB(sourcenode, critDetails.name, critDetails.description, critDetails.severity);
 			if critDetails.severity == 999 then
-				msg.text = NpcManager.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NpcManager.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NpcManager.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NpcManager.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then
@@ -847,9 +761,9 @@ function processDice(draginfo)
 		if sourcenode.getNodeName() ~= "" then
 			PlayerDBManager.createCriticalNonOwnedDB(sourcenode.createChild("vehicle"), critDetails.name, critDetails.description, critDetails.severity);
 			if critDetails.severity == 999 then
-				msg.text = NpcManager.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NpcManager.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. NPCManagerGenesys.extraIdentityText();
 			else
-				msg.text = NpcManager.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NpcManager.extraIdentityText();
+				msg.text = NPCManagerGenesys.getNpcName(sourcenode) .. " has gained the critical:  " .. critDetails.name .. ".  Severity = " .. critDetails.severity .. ", " .. NPCManagerGenesys.extraIdentityText();
 			end
 		else
 			if critDetails.severity == 999 then
@@ -1238,3 +1152,4 @@ end
 -- 	local initiativecount = msgparams[2];
 -- 	InitiativeManager.updateActorInitiative(characternode, initiativecount);
 -- end
+]]

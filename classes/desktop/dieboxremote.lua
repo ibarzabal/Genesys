@@ -1,6 +1,6 @@
 local iconwidth = 25;
 local dragging = false;
-local typename = "diegen";
+local typename = "dice";
 local sourcenode = nil;
 local entries = {};
 local descriptionwidget = nil;
@@ -50,7 +50,7 @@ function XXX_Old_onDrop(x, y, draginfo)
 	if not dragging then
 
 		-- Dice
-		if draginfo.isType("diegen") then
+		if draginfo.isType("dice") then
 			local dielist = draginfo.getDieList();
 			if dielist then
 				setDescription(draginfo.getDescription());
@@ -347,7 +347,7 @@ function setType(type)
 end
 
 function resetType()
-	typename = "diegen";
+	typename = "dice";
 end
 
 function setSourcenode(node)
@@ -369,7 +369,7 @@ end
 function onDieboxButtonPress()
 		local sourcenodename = "";
 		-- type
-		--local type = "diegen";
+		--local type = "dice";
 		local type = typename;
 		-- description
 		local description = getDescription();
@@ -390,9 +390,9 @@ function onDieboxButtonPress()
 			msgidentity = msguser;
 		end
 		-- throw the dice
-		ChatManagerGenesys.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
+		Comm.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
 
-		
+
 		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
 			resetAll();
 		end

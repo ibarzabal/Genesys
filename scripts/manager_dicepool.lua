@@ -97,6 +97,7 @@ function addSkillDice(skillnode, dice)
 		local characteristictypenode = skillnode.getChild("characteristic");
 		if characteristictypenode then
 			characteristictype = string.upper(characteristictypenode.getValue());
+
 		end
 
 		-- if we have a characteristic type then locate the characteristic node
@@ -123,7 +124,6 @@ function addSkillDice(skillnode, dice)
 			--get the total characteristic score
 			local characteresticscore = 0;
 			characteresticscore = characteristicnode.getValue();
-
 			-- get the advances for this skill
 			local advances = 0;
 			local advancesnode = skillnode.getChild("advances");
@@ -149,8 +149,6 @@ function addSkillDice(skillnode, dice)
 					table.insert(dice, "dAbility");
 				end
 			end
-
-
 			-- add the characteristic dice
 			--addCharacteristicDice(characteristicnode, dice);
 

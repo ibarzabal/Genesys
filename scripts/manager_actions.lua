@@ -1,11 +1,47 @@
 -- Genesys ruleset: for the time being, I am overriding this whole lua file
--- only because I need to add a workaround in createActionMessage() so that
--- dice result in the chat window display correctly with their dice icons
+-- only because I need to add a workaround in some scripts:
+
+--createActionMessage() so dice result in the chat window display correctly with their dice icons
 --  and values inside.
+-- actionDrop: so it identifies critical chits dropping.
+
 -- If FG updates this in CoreRPG, i need to also update here.
 
 
+function addCritical()
+		-- Genesys
+		Debug.console("Running addCritical dropped in chat window");
+		local modifier = 0;
+		-- Set the description
+		local description = "[CRITICAL]"
+		-- build the dice table
+		local dice = {};
+		table.insert(dice, "d10");
+		table.insert(dice, "d10");
 
+		-- throw the dice - need to handle the result in the chatmanager handler.
+    --Comm.throwDice("dice" , dice, modifier, description, {"", msgidentity, gmonly});
+		Comm.throwDice("critical", dice, modifier,"");
+
+	-- and return
+	return true;
+end
+
+function addCriticalVehicle()
+	-- Genesys
+	Debug.console("Running addCriticalVehicle dropped in chat window.");
+	local modifier = 0;
+	-- Set the description
+	local description = "[CRITVEHICLE]"
+	-- build the dice table
+	local dice = {};
+	table.insert(dice, "d100");
+	table.insert(dice, "d10");
+ 	-- throw the dice - need to handle the result in the chatmanager handler.
+  Comm.throwDice("dice" , dice, modifier, description, {"", msgidentity, gmonly});
+	-- and return
+	return true;
+end
 
 
 
@@ -184,6 +220,18 @@ function actionHotkey(draginfo)
 end
 
 function actionDrop(draginfo, rTarget)
+-- Genesys updates:
+	if draginfo.isType("chit") then
+		Debug.console("Customdata = " .. draginfo.getCustomData());
+
+		if draginfo.getCustomData() == "critical" then
+			return addCritical();
+		elseif draginfo.getCustomData() == "criticalvehicle" then
+			return addCriticalVehicle();
+		end
+		return true;
+	end
+
 	local sDragType = draginfo.getType();
 	if not GameSystem.actions[sDragType] then
 		return false;
@@ -632,6 +680,7 @@ function resolveAction(rSource, rTarget, rRoll)
 end
 
 function createActionMessage(rSource, rRoll)
+	-- Genesys: modified
 	local sDesc = rRoll.sDesc;
 
 	-- Build the basic message to deliver

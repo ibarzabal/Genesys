@@ -130,7 +130,7 @@ end
 
 
 function onClickDown(button, x, y)
-	if not disabled then
+	if not disabled and not isReadOnly() then
 		if sourcenode then
 			local value = sourcenode.getValue();
 			if value == "" then

@@ -57,6 +57,11 @@
 
 		<icon name="indicator_wound" file="graphics/icons/indicator_wound.png" />
 		<icon name="indicator_strain" file="graphics/icons/indicator_strain.png" />
+		<icon name="indicator_stress" file="graphics/icons/indicator_stress.png" />
 		<icon name="button_emptytarget" file="graphics/icons/button_emptytarget.png" />
+		<icon name="indicator_shield" file="graphics/icons/indicator_shield.png" />
+		<icon name="indicator_shielddown" file="graphics/icons/indicator_shielddown.png" />
+		<icon name="indicator_shield_disable" file="graphics/icons/indicator_shield_disable.png" />
+		<icon name="icon_enable_soak" file="graphics/icons/icon_enable_soak.png" />
 
 </root>

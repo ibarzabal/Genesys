@@ -363,5 +363,13 @@
   </chitnumberfield>
 </template>
 
+<template name="skilldicepool">
+  <buttoncontrol>
+    <icon>
+      <normal>textentry_die</normal>
+    </icon>
+    <script file="common/scripts/skilldicepool.lua" />
+  </buttoncontrol>
+</template>
 
 </root>

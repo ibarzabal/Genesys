@@ -85,6 +85,8 @@
 	<string name="tooltip_weapon_range">[S]hort, [M]edium, [L]ong, [E]xtreme, [-]Engaged</string>
 	<string name="item_label_soak">Soak</string>
 	<string name="item_label_defense">Defense</string>
+	<string name="item_label_skill">Skill</string>
+
 
 	<!-- Desktop decal options -->
 	<string name="option_val_DDCL_genesys_core">Genesys Core</string>

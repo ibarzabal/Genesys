@@ -69,6 +69,9 @@
 <!-- Warhammer/SW had something called DatabaseManager. I need to be careful
 		and only bring code that is needed and does not clash with CoreRPG -->
 		<script name="DBManagerGenesys" file="scripts/manager_databasegenesys.lua" />
+		<script name="PlayerDBManager" file="scripts/manager_playerdbgenesys.lua" />
+		<script name="MinionManager" file="scripts/manager_miniongenesys.lua" />
+		<script name="NPCManagerGenesys" file="scripts/manager_npcgenesys.lua" />
 
 <!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
 			<!--Overriding the original manager_actions.lua from CoreRPG

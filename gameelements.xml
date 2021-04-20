@@ -17,19 +17,19 @@
 	<!-- d4 -->
 	<die name="d4">
 		<icon>d4icon</icon>
-		<position>-260,-160</position>
+		<position>-435,-60</position>
 	</die>
 
 	<!-- d6 -->
 	<die name="d6">
 		<icon>d6icon</icon>
-		<position>-285,-112</position>
+		<position>-385,-60</position>
 	</die>
 
 	<!-- d8 -->
 	<die name="d8">
 		<icon>d8icon</icon>
-		<position>-235,-112</position>
+		<position>-335,-60</position>
 	</die>
 
 	<!-- d12 -->

@@ -396,6 +396,14 @@
 			<invisible />
 		</genericcontrol>
 		<!-- FIELDS START HERE -->
+		<skilldicepool>
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+
+		</skilldicepool>
+
 		<number_charskilltotal name="advances">
 			<anchored width="30" height="20">
 				<top offset="2" />
