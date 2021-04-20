@@ -94,7 +94,7 @@
 				<static>Silhouette</static>
 			</title_statblock>
 			<!-- Speed -->
-			<vehicle_stat name="main_statblock1_speed" source="speed">
+			<vehicle_stat name="main_statblock1_speed" source="speed.max">
 				<anchored>
 					<to>main_statblock1</to>
 					<offset>105,7</offset>
@@ -238,6 +238,14 @@
 				<static textres="vehicle_label_consumables" />
 			</label_column>
 			<string_columnh name="consumables" />
+
+			<!-- Attachments -->
+			<label_column name="hard_points_label">
+				<static textres="item_label_hard_points" />
+			</label_column>
+			<number_columnh name="hard_points">
+				<delaykeyupdate />
+			</number_columnh>
 
 
 			<!-- weapons -->

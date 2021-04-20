@@ -40,6 +40,7 @@ function update()
 	updateControl("rarity", bReadOnly, bID);
 	updateControl("encumbrance_capacity", bReadOnly, bID);
 	updateControl("consumables", bReadOnly, bID);
+	updateControl("hard_points", bReadOnly, bID);
 	updateControl("notes", bReadOnly, bID);
 	updateControl("setting", bReadOnly, bID);
   main_statblock1_silhouette.setReadOnly(bReadOnly);

@@ -366,7 +366,7 @@ aListViews = {
 
 
 				{ sName = "silhouette", sType = "number", sHeadingRes = "vehicle_grouped_label_silhouette", nWidth=60, bCentered=true },
-				{ sName = "speed", sType = "number", sHeadingRes = "vehicle_grouped_label_max_speed", bCentered=true },
+				{ sName = "speed.max", sType = "number", sHeadingRes = "vehicle_grouped_label_max_speed", bCentered=true },
 				{ sName = "handling", sType = "number", sHeadingRes = "vehicle_grouped_label_handling", bCentered=true },
 				{ sName = "defense", sType = "number", sHeadingRes = "vehicle_grouped_label_defense", bCentered=true },
 				{ sName = "armor", sType = "number", sHeadingRes = "vehicle_grouped_label_armor", bCentered=true },
