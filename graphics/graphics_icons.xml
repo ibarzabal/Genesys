@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+<!-- 	<icon name="desktopdecal_sw" file="graphics/decals/genesys_logo.png" /> -->
+
+	<icon name="rulesetlogo_GenesysRPG" file="graphics/icons/rulesetlogo_GenesysRPG.png" />
+  <!-- Desktop decals Genesys -->
+	<icon name="desktopdecal_genesys_core" file="graphics/decals/desktopdecal_genesys_core.png" />
+	<icon name="desktopdecal_genesys_android" file="graphics/decals/desktopdecal_genesys_android.png" />
+	<icon name="desktopdecal_genesys_terrinoth" file="graphics/decals/desktopdecal_genesys_terrinoth.png" />
+
+
+	<!-- Custom dice panels -->
+	<icon name="dBoost" file="graphics/icons/dBoost.png" />
+	<icon name="dSetback" file="graphics/icons/dSetback.png" />
+	<icon name="dAbility" file="graphics/icons/dAbility.png" />
+	<icon name="dDifficulty" file="graphics/icons/dDifficulty.png" />
+	<icon name="dProficiency" file="graphics/icons/dProficiency.png" />
+	<icon name="dChallenge" file="graphics/icons/dChallenge.png" />
+	<icon name="dForce" file="graphics/icons/dForce.png" />
+	<icon name="textentry_die" file="graphics/icons/textentry_die.png" />
+
+	<icon name="button_species_archetypes" file="graphics/sidebar/button_races.png" />
+	<icon name="button_species_archetypes_down" file="graphics/sidebar/button_races_down.png" />
+	<icon name="button_skills" file="graphics/sidebar/button_skills.png" />
+	<icon name="button_skills_down" file="graphics/sidebar/button_skills_down.png" />
+
+
+	<!--LOBOSOLO adding black tab_base6 and 6s - BEGIN -->
+		<icon name="tab_base1" file="graphics/icons/tab_base1.png" />
+		<icon name="tab_base2" file="graphics/icons/tab_base2.png" />
+		<icon name="tab_base3" file="graphics/icons/tab_base3.png" />
+		<icon name="tab_base4" file="graphics/icons/tab_base4.png" />
+		<icon name="tab_base5" file="graphics/icons/tab_base5.png" />
+		<icon name="tab_base6" file="graphics/icons/tab_base6.png" />
+		<icon name="tab_base1s" file="graphics/icons/tab_base1s.png" />
+		<icon name="tab_base2s" file="graphics/icons/tab_base2s.png" />
+		<icon name="tab_base3s" file="graphics/icons/tab_base3s.png" />
+		<icon name="tab_base4s" file="graphics/icons/tab_base4s.png" />
+		<icon name="tab_base5s" file="graphics/icons/tab_base5s.png" />
+		<icon name="tab_base6s" file="graphics/icons/tab_base6s.png" />
+	<!--LOBOSOLO adding black tab_base6 and 6s - END -->
+		<icon name="tab_icon1" file="graphics/icons/tab_icon1.png" />
+		<icon name="tab_icon2" file="graphics/icons/tab_icon2.png" />
+		<icon name="tab_icon3" file="graphics/icons/tab_icon3.png" />
+		<icon name="tab_icon4" file="graphics/icons/tab_icon4.png" />
+		<icon name="tab_icon5" file="graphics/icons/tab_icon5.png" />
+		<icon name="tab_icon6" file="graphics/icons/tab_icon6.png" />
+		<icon name="tab_icon7" file="graphics/icons/tab_icon7.png" />
+		<icon name="tab_icon8" file="graphics/icons/tab_icon8.png" />
+	<!--LOBOSOLO adding 5 more tab_icons - BEGIN -->
+		<icon name="tab_icon9" file="graphics/icons/tab_icon9.png" />
+		<icon name="tab_icon10" file="graphics/icons/tab_icon10.png" />
+		<icon name="tab_icon11" file="graphics/icons/tab_icon11.png" />
+		<icon name="tab_icon12" file="graphics/icons/tab_icon12.png" />
+		<icon name="tab_icon13" file="graphics/icons/tab_icon13.png" />
+	<!--LOBOSOLO adding 5 more tab_icons - END -->
+
+		<icon name="button_combat" file="graphics/icons/button_combat.png" />
+
+		<!-- Dice Box Controls -->
+		<icon name="button_upgrade_ability" file="graphics/icons/button_upgrade_ability.png" />
+		<icon name="button_upgrade_ability_down" file="graphics/icons/button_upgrade_ability_down.png" />
+		<icon name="button_downgrade_proficiency" file="graphics/icons/button_downgrade_proficiency.png" />
+		<icon name="button_downgrade_proficiency_down" file="graphics/icons/button_downgrade_proficiency_down.png" />
+		<icon name="button_upgrade_difficulty" file="graphics/icons/button_upgrade_difficulty.png" />
+		<icon name="button_upgrade_difficulty_down" file="graphics/icons/button_upgrade_difficulty_down.png" />
+		<icon name="button_downgrade_challenge" file="graphics/icons/button_downgrade_challenge.png" />
+		<icon name="button_downgrade_challenge_down" file="graphics/icons/button_downgrade_challenge_down.png" />
+	<!--LOBOSOLO updaing visibitily icons - BEGIN -->
+		<icon name="visibilityoff" file="graphics/icons/visibilityoff.png" />
+		<icon name="visibilityon" file="graphics/icons/visibilityon.png" />
+		<icon name="button_submit" file="graphics/icons/button_submit.png" />
+		<icon name="button_submit_down" file="graphics/icons/button_submit_down.png" />
+
+		<icon name="modcollector" file="graphics/icons/modcollector.png" />
+		<icon name="modcollector_counter" file="graphics/icons/modcollector_counter.png" />
+
+
+
+</root>

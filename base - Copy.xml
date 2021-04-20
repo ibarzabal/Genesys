@@ -6,11 +6,7 @@
 -->
 
 <root version="3.0" release="4" logo="logo.png">
-
-
-	<announcement text="Genesys RPG community ruleset V0.8 (FG 3.3.9+) by John Ibarzabal (a.k.a. Mestre dos Magos).\r\rNarrative dice code based on work by Neil G. Foster, Trenlo and Lobosolo\rGenesys and all associated elements are (c) by Fantasy Flight Games. All rights reserved.\r\rThis ruleset is a community project developed for no monetary gain and with the understanding that game mechanics are not protected by US Copyright laws.\rAs such, no literary work (which is covered by US Copyright) has been included in this ruleset. Genesys, Terrinoth, Android Shadow of the Beanstalk are (tm) owned by Fantasy Flight Games.  Reference to other copyrighted material in no way constitutes a challenge to the respective copyright holders of that material."  font="emotefont" icon="rulesetlogo_GenesysRPG" />
-
-
+	<announcement text="Genesys RPG ruleset v1.0 for Fantasy Grounds\rCopyright 2019 Smiteworks USA, LLC" font="emotefont" icon="rulesetlogo" />
 
 	<!-- Attributes -->
 	<description>
@@ -49,7 +45,6 @@
 		<!-- includes: need cleanup -->
 		<includefile source="classes/base.xml" />
 		<includefile source="definitions/base.xml" />
-		<includefile source="campaign/record_talent.xml" />
 
 
 		<!-- High-level scripts -->
@@ -59,11 +54,9 @@
 		<script name="ChatManagerGenesys" file="scripts/manager_chat2.lua" />
 		<script name="DieBoxManager" file="scripts/manager_diebox.lua" />
 		<script name="DicePoolManager" file="scripts/manager_dicepool.lua" />
-<!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
 			<!--Overriding the original manager_actions.lua from CoreRPG
-		  	this is a workaround for the moment.... -->
+		  	this is a workaround for the moment so that /die works .... -->
 		<script name="ActionsManager" file="scripts/manager_actions.lua" />
-
 
 		<!-- initialization -->
 		<script name="Base" file="base.lua" />
@@ -85,9 +78,6 @@
  		<includefile source="campaign/record_char_combat.xml" />
 		<includefile source="campaign/record_char_inventory.xml" />
 		<includefile source="campaign/record_char_notes.xml" />
-		<includefile source="campaign/record_char_abilities.xml" />
-<!--		<includefile source="campaign/record_ability.xml" /> -->
-<!-- 		<includefile source="campaign/record_charmini_abilities.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_main.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_abilities.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_inventory.xml" /> -->

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+<!--	<icon name="corruptionchit" file="graphics/chits/corruption.png" /> -->
+<!--	<icon name="crownchit" file="graphics/chits/crown.png" /> -->
+<!--	<icon name="fatiguechit" file="graphics/chits/fatigue.png" /> -->
+<!--	<icon name="favourchit" file="graphics/chits/favour.png" /> -->
+<!--	<icon name="fortunechit" file="graphics/chits/fortune.png" /> -->
+<!--	<icon name="pennychit" file="graphics/chits/penny.png" /> -->
+<!--	<icon name="powerchit" file="graphics/chits/power.png" /> -->
+<!--	<icon name="rechargechit" file="graphics/chits/recharge.png" /> -->
+<!--	<icon name="shillingchit" file="graphics/chits/shilling.png" /> -->
+<!--	<icon name="stresschit" file="graphics/chits/stress.png" /> -->
+	<icon name="strainchit" file="graphics/chits/strain.png" />
+	<icon name="woundchit" file="graphics/chits/wound.png" />
+	<icon name="StoryPointPCchit" file="graphics/chits/StoryPointPC.png" />
+	<icon name="StoryPointPCchit1" file="graphics/chits/StoryPointPC1.png" />
+	<icon name="StoryPointPCchit2" file="graphics/chits/StoryPointPC2.png" />
+	<icon name="StoryPointPCchit3" file="graphics/chits/StoryPointPC3.png" />
+	<icon name="StoryPointPCchit4" file="graphics/chits/StoryPointPC4.png" />
+	<icon name="StoryPointPCchit5" file="graphics/chits/StoryPointPC5.png" />
+	<icon name="StoryPointPCchit6" file="graphics/chits/StoryPointPC6.png" />
+	<icon name="StoryPointPCchit7" file="graphics/chits/StoryPointPC7.png" />
+	<icon name="StoryPointPCchit8more" file="graphics/chits/StoryPointPC8more.png" />
+	<icon name="StoryPointPCchit0" file="graphics/chits/StoryPointPC0.png" />
+	<icon name="StoryPointGMchit" file="graphics/chits/StoryPointGM.png" />
+	<icon name="StoryPointGMchit1" file="graphics/chits/StoryPointGM1.png" />
+	<icon name="StoryPointGMchit2" file="graphics/chits/StoryPointGM2.png" />
+	<icon name="StoryPointGMchit3" file="graphics/chits/StoryPointGM3.png" />
+	<icon name="StoryPointGMchit4" file="graphics/chits/StoryPointGM4.png" />
+	<icon name="StoryPointGMchit5" file="graphics/chits/StoryPointGM5.png" />
+	<icon name="StoryPointGMchit6" file="graphics/chits/StoryPointGM6.png" />
+	<icon name="StoryPointGMchit7" file="graphics/chits/StoryPointGM7.png" />
+	<icon name="StoryPointGMchit8more" file="graphics/chits/StoryPointGM8more.png" />
+	<icon name="StoryPointGMchit0" file="graphics/chits/StoryPointGM0.png" />
+
+	<icon name="criticalchit" file="graphics/chits/critical_personal.png" />
+	<icon name="criticalvehiclechit" file="graphics/chits/critical_vehicle.png" />
+
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+
+	<font name="dieresult">
+<!--		<fgffile name="graphics/fonts/dieresult.fgf" /> -->
+		<ttf file="graphics/fonts/dieresult.ttf" size="0"/>
+		<color value="#ffffff" />
+	</font>
+
+
+	<!-- Chit Numbering-->
+	<font name="chitnumbers">
+		<ttf file="graphics/fonts/AlegreyaSansSC-Bold.ttf" name="Alegreya Sans SC" size="40" />
+		<color value="#000000" />
+		<shadow offset="1,1" color="#808080" />
+	</font>
+
+</root>

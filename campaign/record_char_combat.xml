@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_combat">
+		<script file="campaign/scripts/char_main.lua" />
+		<sheetdata>
+
+			<!-- Characteristics -->
+			<frame_char name="characteristicsframe">
+				<bounds>15,35,363,87</bounds>
+			</frame_char>
+
+			<string_labeled name="characteristics_label">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="140,-2">
+					<right parent="characteristicsframe" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>characteristics</labelres>
+			</string_labeled>
+			<number_charabilityscore name="brawn" source="brawn.current">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="17,24" />
+				<description textres="char_tooltip_str" />
+			</number_charabilityscore>
+
+			<string_labeled name="brawn_label">
+				<anchored to="brawn" position="insidetopleft" offset="-1,24">
+					<right parent="brawn" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>brawn</labelres>
+			</string_labeled>
+
+			<number_charabilityscore name="agility" source="agility.current">
+				<anchored to="brawn" position="right" offset="27" />
+				<description textres="char_tooltip_dex" />
+			</number_charabilityscore>
+			<string_labeled name="agility_label">
+				<anchored to="agility" position="insidetopleft" offset="-4,25">
+					<right parent="agility" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>agility</labelres>
+			</string_labeled>
+
+			<number_charabilityscore name="intellect" source="intellect.current">
+				<anchored to="agility" position="right" offset="27" />
+				<description textres="char_tooltip_con" />
+			</number_charabilityscore>
+			<string_labeled name="intellect_label">
+				<anchored to="intellect" position="insidetopleft" offset="-8,25">
+					<right parent="intellect" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>intellect</labelres>
+			</string_labeled>
+
+			<number_charabilityscore name="cunning" source="cunning.current">
+				<anchored to="intellect" position="right" offset="27" />
+				<description textres="char_tooltip_int" />
+			</number_charabilityscore>
+			<string_labeled name="cunning_label">
+				<anchored to="cunning" position="insidetopleft" offset="-6,25">
+					<right parent="cunning" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>cunning</labelres>
+			</string_labeled>
+
+			<number_charabilityscore name="willpower" source="willpower.current">
+				<anchored to="cunning" position="right" offset="27" />
+				<description textres="char_tooltip_wis" />
+			</number_charabilityscore>
+			<string_labeled name="willpower_label">
+				<anchored to="willpower" position="insidetopleft" offset="-14,25">
+					<right parent="willpower" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>willpower</labelres>
+			</string_labeled>
+
+			<number_charabilityscore name="presence" source="presence.current">
+				<anchored to="willpower" position="right" offset="27" />
+				<description textres="char_tooltip_cha" />
+			</number_charabilityscore>
+			<string_labeled name="presence_label">
+				<anchored to="presence" position="insidetopleft" offset="-9,25">
+					<right parent="presence" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>presence</labelres>
+			</string_labeled>
+
+			<!-- INITIATIVE -->
+			<frame_char name="combat_init">
+				<bounds>375,35,120,87</bounds>
+			</frame_char>
+			<string_labeled name="combat_init_label">
+				<anchored to="combat_init" position="insidetopleft" offset="35,-3">
+					<right parent="combat_init" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>initiative</labelres>
+			</string_labeled>
+
+			<!-- Cool -->
+			<label name="combat_init_label">
+				<anchored to="combat_init" position="insidetopleft" offset="30,25"/>
+				<center />
+				<static>Cool</static>
+			</label>
+
+			<initdicepool name="combat_init_cool_btn">
+				<anchored>
+					<to>combat_init</to>
+					<offset>85,27</offset>
+					<position>insidetopleft</position>
+					<size>
+						<width>18</width>
+						<height>14</height>
+					</size>
+				</anchored>
+				<!--<bounds>118,26,10,10</bounds>-->
+			</initdicepool>
+
+			<!-- Vigilance -->
+			<label name="combat_init_vigilance">
+				<anchored to="combat_init" position="insidetopleft" offset="30,50"/>
+				<center />
+				<static>Vigilance</static>
+			</label>
+
+			<initdicepool name="combat_init_vigilance_btn">
+				<anchored>
+					<to>combat_init</to>
+					<offset>85,54</offset>
+					<position>insidetopleft</position>
+					<size>
+						<width>18</width>
+						<height>14</height>
+					</size>
+				</anchored>
+				<!--<bounds>118,26,10,10</bounds>-->
+			</initdicepool>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<!-- SOAK -->
+			<frame_char name="combat_soak">
+				<bounds>15,121,118,70</bounds>
+			</frame_char>
+			<string_labeled name="combat_soak_label">
+				<anchored to="combat_soak" position="insidetopleft" offset="45,-1">
+					<right parent="combat_soak" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>soak</labelres>
+			</string_labeled>
+
+			<derived_attribute name="combat_armour_soak" source="armor.soak">
+				<anchored to="combat_soak" position="insidetopleft" offset="48,27" width="20" height="15" />
+				<description textres="soak" />
+			</derived_attribute>
+
+
+
+
+			<!-- WOUNDS -->
+			<frame_char name="combat_wounds">
+				<anchored to="combat_soak" position="right" offset="0" width="121" height="70" />
+			</frame_char>
+			<string_labeled name="combat_wounds_label">
+				<anchored to="combat_wounds" position="insidetopleft" offset="45,-1">
+					<right parent="combat_wounds" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>wounds</labelres>
+			</string_labeled>
+
+			<!-- THRESHOLD -->
+			<derived_attribute name="combat_wounds_threshold" source="wounds.threshold">
+				<anchored to="combat_wounds" position="insidetopright" offset="14,22" width="20" height="15" />
+				<description textres="combat_wounds_threshold" />
+			</derived_attribute>
+			<label name="combat_wounds_threshold_label">
+				<anchored to="combat_wounds_threshold" position="left" offset="10"/>
+				<center />
+				<static>Threshold</static>
+			</label>
+
+			<!-- CURRENT -->
+			<derived_attribute name="combat_wounds_current" source="wounds.current">
+				<anchored to="combat_wounds" position="insidetopright" offset="14,42" width="20" height="15" />
+				<description textres="combat_wounds_current" />
+			</derived_attribute>
+			<label name="combat_wounds_current_label">
+				<anchored to="combat_wounds_current" position="left" offset="10"/>
+				<center />
+				<static>Current</static>
+			</label>
+
+			<!-- STRAIN -->
+			<frame_char name="combat_strain">
+				<anchored to="combat_wounds" position="right" offset="0" width="121" height="70" />
+			</frame_char>
+			<string_labeled name="combat_strain_label">
+				<anchored to="combat_strain" position="insidetopleft" offset="45,-1">
+					<right parent="combat_strain" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>strain</labelres>
+			</string_labeled>
+			<!-- THRESHOLD -->
+			<derived_attribute name="combat_strain_threshold" source="strain.threshold">
+				<anchored to="combat_strain" position="insidetopright" offset="14,22" width="20" height="15" />
+				<description textres="combat_strain_threshold" />
+			</derived_attribute>
+			<label name="combat_strain_threshold_label">
+				<anchored to="combat_strain_threshold" position="left" offset="10"/>
+				<center />
+				<static>Threshold</static>
+			</label>
+			<!-- CURRENT -->
+			<derived_attribute name="combat_strain_current" source="strain.current">
+				<anchored to="combat_strain" position="insidetopright" offset="14,42" width="20" height="15" />
+				<description textres="combat_strain_current" />
+			</derived_attribute>
+			<label name="combat_strain_current_label">
+				<anchored to="combat_strain_current" position="left" offset="10"/>
+				<center />
+				<static>Current</static>
+			</label>
+
+			<!-- DEFENSE -->
+			<frame_char name="defense">
+				<anchored to="combat_strain" position="right" offset="0" width="121" height="70" />
+			</frame_char>
+			<string_labeled name="defense_label">
+				<anchored to="defense" position="insidetopleft" offset="45,-1">
+					<right parent="defense" anchor="left" offset="-5" />
+				</anchored>
+				<labelres>defense</labelres>
+			</string_labeled>
+			<!-- DEFENSE MELEE -->
+			<derived_attribute name="defense_melee" source="armour.meleedefence">
+				<anchored to="defense" position="insidetopright" offset="74,42" width="20" height="15" />
+				<description textres="defense_melee" />
+			</derived_attribute>
+			<label name="defense_threshold_melee">
+				<anchored to="defense_melee" position="insidetopleft" offset="-8,-20"/>
+				<center />
+				<static>Melee</static>
+			</label>
+			<!-- DEFENSE RANGED -->
+			<derived_attribute name="defense_ranged" source="armour.rangeddefence">
+				<anchored to="defense" position="insidetopright" offset="30,42" width="20" height="15" />
+				<description textres="defense_ranged" />
+			</derived_attribute>
+			<label name="defense_current_ranged">
+				<anchored to="defense_ranged" position="insidetopleft" offset="-8,-20"/>
+				<center />
+				<static>Ranged</static>
+			</label>
+
+
+
+
+
+
+
+
+
+
+		</sheetdata>
+	</windowclass>
+
+
+
+
+
+
+
+</root>

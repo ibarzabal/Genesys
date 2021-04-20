@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	<windowclass name="modifierstack" merge="join">
+		<sheetdata>
+			<genericcontrol name="base">
+				<bounds>0,5,64,52</bounds>
+				<icon>modcollector</icon>
+				<counters>
+					<icon>modcollector_counter</icon>
+					<offset>
+						<x>11</x>
+						<y>47</y>
+					</offset>
+					<spacing>9</spacing>
+					<hoversize>4</hoversize>
+				</counters>
+			</genericcontrol>
+			<numbercontrol name="modifier">
+				<bounds>5,0,54,42</bounds>
+				<font>modcollector</font>
+<!--LOBOSOLO changing the font color - BEGIN -->
+				<color>#ffffff</color>
+<!--LOBOSOLO changing the font color - END -->
+				<displaysign />
+				<keyeditframe>
+					<name>modstackfocus</name>
+					<offset>-1,-11,-1,-8</offset>
+				</keyeditframe>
+				<droptypes>
+					<type>number</type>
+				</droptypes>
+				<stateframe>
+					<drophilight>
+						<name>modstackfocus</name>
+						<offset>0,-11,0,3</offset>
+					</drophilight>
+				</stateframe>
+			</numbercontrol>
+			<basestringcontrol name="label">
+				<bounds>5,34,54,12</bounds>
+				<font>modcollectorlabel</font>
+<!--LOBOSOLO changing the font color - BEGIN -->
+				<color>#ffffff</color>
+<!--LOBOSOLO changing the font color - END -->
+				<static>Modifier</static>
+				<center />
+			</basestringcontrol>
+		</sheetdata>
+	</windowclass>
+
+</root>

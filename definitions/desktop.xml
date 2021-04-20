@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	<!-- Chat Window -->
+	<panel name="chat" merge="join">
+		<class>chat</class>
+		<bounds>
+			<rect>15,122,390,-245</rect>
+		</bounds>
+	</panel>
+
+	<!-- Shortcuts -->
+	<!-- Party Identity - now Starship-->
+	<!-- Character List -->
+
+	<!-- Identity List -->
+	<panel name="identitylist" modes="host">
+		<class>identitylist</class>
+		<bounds>
+			<anchored>
+				<bottom>
+					<anchor>bottom</anchor>
+					<offset>-45</offset>
+				</bottom>
+				<right>
+					<parent>shortcuts</parent>
+					<anchor>left</anchor>
+				</right>
+				<left>
+					<anchor>left</anchor>
+					<offset>8</offset>
+				</left>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+
+	<!-- Modified Stack -->
+	<panel name="modifierstack" merge="join">
+		<class>modifierstack</class>
+		<bounds>
+			<anchored>
+				<top>
+					<anchor>bottom</anchor>
+					<offset>-128</offset>
+				</top>
+				<left>
+					<anchor>left</anchor>
+					<offset>15</offset>
+				</left>
+				<size>
+					<width>64</width>
+					<height>57</height>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+
+	<!-- Die Box -->
+	<panel name="diebox">
+		<class>diebox</class>
+		<bounds>
+			<!--<rect>14,-237,387,40</rect>-->
+			<rect>14,-237,387,40</rect>
+		</bounds>
+	</panel>
+
+	<!-- Custom Dice -->
+	<panel name="dAbility">
+		<class>dAbility</class>
+		<bounds>
+			<rect>19,-187,55,55</rect>
+		</bounds>
+	</panel>
+	<panel name="dProficiency">
+		<class>dProficiency</class>
+		<bounds>
+			<rect>77,-187,55,55</rect>
+		</bounds>
+	</panel>
+	<panel name="dDifficulty">
+		<class>dDifficulty</class>
+		<bounds>
+			<rect>135,-187,55,55</rect>
+		</bounds>
+	</panel>
+	<panel name="dChallenge">
+		<class>dChallenge</class>
+		<bounds>
+			<rect>193,-187,55,55</rect>
+		</bounds>
+	</panel>
+	<panel name="dBoost">
+		<class>dBoost</class>
+		<bounds>
+			<rect>251,-187,55,55</rect>
+		</bounds>
+	</panel>
+	<panel name="dSetback">
+		<class>dSetback</class>
+		<bounds>
+			<rect>309,-187,55,55</rect>
+		</bounds>
+	</panel>
+<!--	<panel name="dForce">
+		<class>dForce</class>
+		<bounds>
+			<rect>367,-187,55,55</rect>
+		</bounds>
+	</panel>
+-->
+	<!-- Chits -->
+
+<!--
+	<panel name="criticalvehiclechit" modes="host,client">
+		<class>criticalvehiclechit</class>
+		<bounds>
+			<rect>136,-122,56,56</rect>
+		</bounds>
+	</panel>
+	<panel name="criticalchit" modes="host,client">
+		<class>criticalchit</class>
+		<bounds>
+			<rect>193,-122,56,56</rect>
+		</bounds>
+	</panel>
+	<panel name="woundchit" modes="host,client">
+		<class>woundchit</class>
+		<bounds>
+			<rect>249,-128,56,56</rect>
+		</bounds>
+	</panel>
+	<panel name="strainchit" modes="host,client">
+		<class>strainchit</class>
+		<bounds>
+			<rect>297,-128,56,56</rect>
+		</bounds>
+	</panel>
+-->
+	<panel name="StoryPointPCchit" modes="host,client">
+		<class>StoryPointPCchit</class>
+		<bounds>
+			<rect>352,-128,56,56</rect>
+		</bounds>
+	</panel>
+	<panel name="StoryPointGMchit" modes="host,client">
+		<class>StoryPointGMchit</class>
+		<bounds>
+			<rect>412,-128,56,56</rect>
+		</bounds>
+	</panel>
+
+
+	<!-- Dice Tower -->
+<!--	<panel name="dicetower" modes="host,client">
+		<class>dicetower</class>
+		<dynamic />
+		<bounds>
+			<rect>-181,10,72,72</rect>
+		</bounds>
+	</panel>
+-->
+</root>

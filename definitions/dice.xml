@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--MODS: Moved the non custom dice to the bottom right of the desktop.  These dice aren't needed in normal play of Genesys,
+ but it is nice to have them available just in case - d10 left in normal place so that % can be rolled.
+-->
+<root>
+
+
+<!-- d10 -->
+<die name="d10">
+	<icon>d10icon</icon>
+	<position>110,-103</position>
+</die>
+
+ <!-- Genesys Dice definitions
+      These are used in the narrative dice rolling system
+ -->
+
+	<!-- dBoost -->
+	<customdie name="dBoost">
+		<model>d6</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dBoost.1"><icon>dBoosticon.1</icon></die>
+	<die name="dBoost.2"><icon>dBoosticon.2</icon></die>
+	<die name="dBoost.3"><icon>dBoosticon.3</icon></die>
+	<die name="dBoost.4"><icon>dBoosticon.4</icon></die>
+	<die name="dBoost.5"><icon>dBoosticon.5</icon></die>
+	<die name="dBoost.6"><icon>dBoosticon.6</icon></die>
+
+	<!-- dSetback -->
+	<customdie name="dSetback">
+		<model>d6</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dSetback.1"><icon>dSetbackicon.1</icon></die>
+	<die name="dSetback.2"><icon>dSetbackicon.2</icon></die>
+	<die name="dSetback.3"><icon>dSetbackicon.3</icon></die>
+	<die name="dSetback.4"><icon>dSetbackicon.4</icon></die>
+	<die name="dSetback.5"><icon>dSetbackicon.5</icon></die>
+	<die name="dSetback.6"><icon>dSetbackicon.6</icon></die>
+
+	<!-- dAbility -->
+	<customdie name="dAbility">
+		<model>d8</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dAbility.1"><icon>dAbilityicon.1</icon></die>
+	<die name="dAbility.2"><icon>dAbilityicon.2</icon></die>
+	<die name="dAbility.3"><icon>dAbilityicon.3</icon></die>
+	<die name="dAbility.4"><icon>dAbilityicon.4</icon></die>
+	<die name="dAbility.5"><icon>dAbilityicon.5</icon></die>
+	<die name="dAbility.6"><icon>dAbilityicon.6</icon></die>
+	<die name="dAbility.7"><icon>dAbilityicon.7</icon></die>
+	<die name="dAbility.8"><icon>dAbilityicon.8</icon></die>
+
+	<!-- dDifficulty -->
+	<customdie name="dDifficulty">
+		<model>d8</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dDifficulty.1"><icon>dDifficultyicon.1</icon></die>
+	<die name="dDifficulty.2"><icon>dDifficultyicon.2</icon></die>
+	<die name="dDifficulty.3"><icon>dDifficultyicon.3</icon></die>
+	<die name="dDifficulty.4"><icon>dDifficultyicon.4</icon></die>
+	<die name="dDifficulty.5"><icon>dDifficultyicon.5</icon></die>
+	<die name="dDifficulty.6"><icon>dDifficultyicon.6</icon></die>
+	<die name="dDifficulty.7"><icon>dDifficultyicon.7</icon></die>
+	<die name="dDifficulty.8"><icon>dDifficultyicon.8</icon></die>
+
+	<!-- dProficiency -->
+	<customdie name="dProficiency">
+		<model>d12</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dProficiency.1"><icon>dProficiencyicon.1</icon></die>
+	<die name="dProficiency.2"><icon>dProficiencyicon.2</icon></die>
+	<die name="dProficiency.3"><icon>dProficiencyicon.3</icon></die>
+	<die name="dProficiency.4"><icon>dProficiencyicon.4</icon></die>
+	<die name="dProficiency.5"><icon>dProficiencyicon.5</icon></die>
+	<die name="dProficiency.6"><icon>dProficiencyicon.6</icon></die>
+	<die name="dProficiency.7"><icon>dProficiencyicon.7</icon></die>
+	<die name="dProficiency.8"><icon>dProficiencyicon.8</icon></die>
+	<die name="dProficiency.9"><icon>dProficiencyicon.9</icon></die>
+	<die name="dProficiency.10"><icon>dProficiencyicon.10</icon></die>
+	<die name="dProficiency.11"><icon>dProficiencyicon.11</icon></die>
+	<die name="dProficiency.12"><icon>dProficiencyicon.12</icon></die>
+
+	<!-- dChallenge -->
+	<customdie name="dChallenge">
+		<model>d12</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dChallenge.1"><icon>dChallengeicon.1</icon></die>
+	<die name="dChallenge.2"><icon>dChallengeicon.2</icon></die>
+	<die name="dChallenge.3"><icon>dChallengeicon.3</icon></die>
+	<die name="dChallenge.4"><icon>dChallengeicon.4</icon></die>
+	<die name="dChallenge.5"><icon>dChallengeicon.5</icon></die>
+	<die name="dChallenge.6"><icon>dChallengeicon.6</icon></die>
+	<die name="dChallenge.7"><icon>dChallengeicon.7</icon></die>
+	<die name="dChallenge.8"><icon>dChallengeicon.8</icon></die>
+	<die name="dChallenge.9"><icon>dChallengeicon.9</icon></die>
+	<die name="dChallenge.10"><icon>dChallengeicon.10</icon></die>
+	<die name="dChallenge.11"><icon>dChallengeicon.11</icon></die>
+	<die name="dChallenge.12"><icon>dChallengeicon.12</icon></die>
+
+	<!-- dForce -->
+	<customdie name="dForce">
+		<model>d12</model>
+		<menuicon>customdice</menuicon>
+	</customdie>
+	<die name="dForce.1"><icon>dForceicon.1</icon></die>
+	<die name="dForce.2"><icon>dForceicon.2</icon></die>
+	<die name="dForce.3"><icon>dForceicon.3</icon></die>
+	<die name="dForce.4"><icon>dForceicon.4</icon></die>
+	<die name="dForce.5"><icon>dForceicon.5</icon></die>
+	<die name="dForce.6"><icon>dForceicon.6</icon></die>
+	<die name="dForce.7"><icon>dForceicon.7</icon></die>
+	<die name="dForce.8"><icon>dForceicon.8</icon></die>
+	<die name="dForce.9"><icon>dForceicon.9</icon></die>
+	<die name="dForce.10"><icon>dForceicon.10</icon></die>
+	<die name="dForce.11"><icon>dForceicon.11</icon></die>
+	<die name="dForce.12"><icon>dForceicon.12</icon></die>
+
+	<!-- dSummary -->
+	<customdie name="dSummary">
+		<model>d8</model>
+	</customdie>
+	<die name="dSummary.1"><icon>dSummaryicon.1</icon></die>
+	<die name="dSummary.2"><icon>dSummaryicon.2</icon></die>
+	<die name="dSummary.3"><icon>dSummaryicon.3</icon></die>
+	<die name="dSummary.4"><icon>dSummaryicon.4</icon></die>
+	<die name="dSummary.5"><icon>dSummaryicon.5</icon></die>
+	<die name="dSummary.6"><icon>dSummaryicon.6</icon></die>
+	<die name="dSummary.7"><icon>dSummaryicon.7</icon></die>
+	<die name="dSummary.8"><icon>dSummaryicon.8</icon></die>
+
+	<!-- Altough not typically used, we define dice faces for default dice here.
+			 Notice we are only defining dice faces, not the dice themselves. (we use CoreRPG dice for those)
+			 These definitions are still used by the Genesys die rolling script, though.
+  -->
+
+
+			<die name="d4.1"><icon>d4icon.1</icon></die>
+		 	<die name="d4.2"><icon>d4icon.2</icon></die>
+		 	<die name="d4.3"><icon>d4icon.3</icon></die>
+		 	<die name="d4.4"><icon>d4icon.4</icon></die>
+
+		 	<die name="d2.1"><icon>d2icon.1</icon></die>
+		 	<die name="d2.2"><icon>d2icon.2</icon></die>
+
+		 	<die name="d6.1"><icon>d6icon.1</icon></die>
+		 	<die name="d6.2"><icon>d6icon.2</icon></die>
+		 	<die name="d6.3"><icon>d6icon.3</icon></die>
+		 	<die name="d6.4"><icon>d6icon.4</icon></die>
+		 	<die name="d6.5"><icon>d6icon.5</icon></die>
+		 	<die name="d6.6"><icon>d6icon.6</icon></die>
+
+		 	<die name="d3.1"><icon>d3icon.1</icon></die>
+		 	<die name="d3.2"><icon>d3icon.2</icon></die>
+		 	<die name="d3.3"><icon>d3icon.3</icon></die>
+
+		 	<die name="d8.1"><icon>d8icon.1</icon></die>
+		 	<die name="d8.2"><icon>d8icon.2</icon></die>
+		 	<die name="d8.3"><icon>d8icon.3</icon></die>
+		 	<die name="d8.4"><icon>d8icon.4</icon></die>
+		 	<die name="d8.5"><icon>d8icon.5</icon></die>
+		 	<die name="d8.6"><icon>d8icon.6</icon></die>
+		 	<die name="d8.7"><icon>d8icon.7</icon></die>
+		 	<die name="d8.8"><icon>d8icon.8</icon></die>
+
+		 	<die name="d10.1"><icon>d10icon.1</icon></die>
+		 	<die name="d10.2"><icon>d10icon.2</icon></die>
+		 	<die name="d10.3"><icon>d10icon.3</icon></die>
+		 	<die name="d10.4"><icon>d10icon.4</icon></die>
+		 	<die name="d10.5"><icon>d10icon.5</icon></die>
+		 	<die name="d10.6"><icon>d10icon.6</icon></die>
+		 	<die name="d10.7"><icon>d10icon.7</icon></die>
+		 	<die name="d10.8"><icon>d10icon.8</icon></die>
+		 	<die name="d10.9"><icon>d10icon.9</icon></die>
+		 	<die name="d10.10"><icon>d10icon.10</icon></die>
+
+		 	<die name="d12.1"><icon>d12icon.1</icon></die>
+		 	<die name="d12.2"><icon>d12icon.2</icon></die>
+		 	<die name="d12.3"><icon>d12icon.3</icon></die>
+		 	<die name="d12.4"><icon>d12icon.4</icon></die>
+		 	<die name="d12.5"><icon>d12icon.5</icon></die>
+		 	<die name="d12.6"><icon>d12icon.6</icon></die>
+		 	<die name="d12.7"><icon>d12icon.7</icon></die>
+		 	<die name="d12.8"><icon>d12icon.8</icon></die>
+		 	<die name="d12.9"><icon>d12icon.9</icon></die>
+		 	<die name="d12.10"><icon>d12icon.10</icon></die>
+		 	<die name="d12.11"><icon>d12icon.11</icon></die>
+		 	<die name="d12.12"><icon>d12icon.12</icon></die>
+
+		 	<die name="d20.1"><icon>d20icon.1</icon></die>
+		 	<die name="d20.2"><icon>d20icon.2</icon></die>
+		 	<die name="d20.3"><icon>d20icon.3</icon></die>
+		 	<die name="d20.4"><icon>d20icon.4</icon></die>
+		 	<die name="d20.5"><icon>d20icon.5</icon></die>
+		 	<die name="d20.6"><icon>d20icon.6</icon></die>
+		 	<die name="d20.7"><icon>d20icon.7</icon></die>
+		 	<die name="d20.8"><icon>d20icon.8</icon></die>
+		 	<die name="d20.9"><icon>d20icon.9</icon></die>
+		 	<die name="d20.10"><icon>d20icon.10</icon></die>
+		 	<die name="d20.11"><icon>d20icon.11</icon></die>
+		 	<die name="d20.12"><icon>d20icon.12</icon></die>
+		 	<die name="d20.13"><icon>d20icon.13</icon></die>
+		 	<die name="d20.14"><icon>d20icon.14</icon></die>
+		 	<die name="d20.15"><icon>d20icon.15</icon></die>
+		 	<die name="d20.16"><icon>d20icon.16</icon></die>
+		 	<die name="d20.17"><icon>d20icon.17</icon></die>
+		 	<die name="d20.18"><icon>d20icon.18</icon></die>
+		 	<die name="d20.19"><icon>d20icon.19</icon></die>
+		 	<die name="d20.20"><icon>d20icon.20</icon></die>
+
+		 	<die name="d100.0"><icon>d100icon.0</icon></die>
+		 	<die name="d100.10"><icon>d100icon.10</icon></die>
+		 	<die name="d100.20"><icon>d100icon.20</icon></die>
+		 	<die name="d100.30"><icon>d100icon.30</icon></die>
+		 	<die name="d100.40"><icon>d100icon.40</icon></die>
+		 	<die name="d100.50"><icon>d100icon.50</icon></die>
+		 	<die name="d100.60"><icon>d100icon.60</icon></die>
+		 	<die name="d100.70"><icon>d100icon.70</icon></die>
+		 	<die name="d100.80"><icon>d100icon.80</icon></die>
+		 	<die name="d100.90"><icon>d100icon.90</icon></die>
+
+		 	<die name="dmdie"><icon>dmdieicon</icon></die>
+
+<!-- TEMP DICE -->
+
+<!-- <!-- d4 -->  -->
+<!-- <die name="d4">  -->
+<!-- 	<icon>d4icon</icon>  -->
+<!-- 	<position>-260,-160</position>  -->
+<!-- </die>  -->
+<!--   -->
+<!-- <die name="d6">  -->
+<!-- 	<icon>d6icon</icon>  -->
+<!-- 	<position>-285,-112</position>  -->
+<!-- </die>  -->
+<!-- <die name="d8">  -->
+<!-- 	<icon>d8icon</icon>  -->
+<!-- 	<position>-235,-112</position>  -->
+<!-- </die>  -->
+<!--   -->
+<!-- <!-- d12 -->  -->
+<!-- <die name="d12">  -->
+<!-- 	<icon>d12icon</icon>  -->
+<!-- 	<position>-285,-60</position>  -->
+<!-- </die>  -->
+<!--   -->
+<!-- <!-- d20 -->  -->
+<!-- <die name="d20">  -->
+<!-- 	<icon>d20icon</icon>  -->
+<!-- 	<position>-235,-60</position>  -->
+<!-- </die>  -->
+<!--   -->
+<!--   -->
+
+</root>

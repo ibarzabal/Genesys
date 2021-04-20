@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	<template name="closebuttonlist">
+		<closebutton>
+			<!--LOBOSOLO changing anchor or Close Button for new art - BEGIN-->
+			<anchored>
+				<top>
+					<offset>0</offset>
+				</top>
+				<right>
+					<offset>-18</offset>
+				</right>
+			</anchored>
+		<!--LOBOSOLO changing anchor or Close Button for new art - END-->
+		</closebutton>
+	</template>
+	
+</root>

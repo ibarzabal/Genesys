@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+
+	<icon name="dAbilityicon" file="graphics/dice_genesys/dAbility/dAbility.png" />
+	<icon name="dAbilityicon.1" file="graphics/dice_genesys/dAbility/dAbility.1.png" />
+	<icon name="dAbilityicon.2" file="graphics/dice_genesys/dAbility/dAbility.2.png" />
+	<icon name="dAbilityicon.3" file="graphics/dice_genesys/dAbility/dAbility.3.png" />
+	<icon name="dAbilityicon.4" file="graphics/dice_genesys/dAbility/dAbility.4.png" />
+	<icon name="dAbilityicon.5" file="graphics/dice_genesys/dAbility/dAbility.5.png" />
+	<icon name="dAbilityicon.6" file="graphics/dice_genesys/dAbility/dAbility.6.png" />
+	<icon name="dAbilityicon.7" file="graphics/dice_genesys/dAbility/dAbility.7.png" />
+	<icon name="dAbilityicon.8" file="graphics/dice_genesys/dAbility/dAbility.8.png" />
+
+	<icon name="dBoosticon" file="graphics/dice_genesys/dBoost/dBoost.png" />
+	<icon name="dBoosticon.1" file="graphics/dice_genesys/dBoost/dBoost.1.png" />
+	<icon name="dBoosticon.2" file="graphics/dice_genesys/dBoost/dBoost.2.png" />
+	<icon name="dBoosticon.3" file="graphics/dice_genesys/dBoost/dBoost.3.png" />
+	<icon name="dBoosticon.4" file="graphics/dice_genesys/dBoost/dBoost.4.png" />
+	<icon name="dBoosticon.5" file="graphics/dice_genesys/dBoost/dBoost.5.png" />
+	<icon name="dBoosticon.6" file="graphics/dice_genesys/dBoost/dBoost.6.png" />
+
+	<icon name="dChallengeicon" file="graphics/dice_genesys/dChallenge/dChallenge.png" />
+	<icon name="dChallengeicon.1" file="graphics/dice_genesys/dChallenge/dChallenge.1.png" />
+	<icon name="dChallengeicon.2" file="graphics/dice_genesys/dChallenge/dChallenge.2.png" />
+	<icon name="dChallengeicon.3" file="graphics/dice_genesys/dChallenge/dChallenge.3.png" />
+	<icon name="dChallengeicon.4" file="graphics/dice_genesys/dChallenge/dChallenge.4.png" />
+	<icon name="dChallengeicon.5" file="graphics/dice_genesys/dChallenge/dChallenge.5.png" />
+	<icon name="dChallengeicon.6" file="graphics/dice_genesys/dChallenge/dChallenge.6.png" />
+	<icon name="dChallengeicon.7" file="graphics/dice_genesys/dChallenge/dChallenge.7.png" />
+	<icon name="dChallengeicon.8" file="graphics/dice_genesys/dChallenge/dChallenge.8.png" />
+	<icon name="dChallengeicon.9" file="graphics/dice_genesys/dChallenge/dChallenge.9.png" />
+	<icon name="dChallengeicon.10" file="graphics/dice_genesys/dChallenge/dChallenge.10.png" />
+	<icon name="dChallengeicon.11" file="graphics/dice_genesys/dChallenge/dChallenge.11.png" />
+	<icon name="dChallengeicon.12" file="graphics/dice_genesys/dChallenge/dChallenge.12.png" />
+
+	<icon name="dDifficultyicon" file="graphics/dice_genesys/dDifficulty/dDifficulty.png" />
+	<icon name="dDifficultyicon.1" file="graphics/dice_genesys/dDifficulty/dDifficulty.1.png" />
+	<icon name="dDifficultyicon.2" file="graphics/dice_genesys/dDifficulty/dDifficulty.2.png" />
+	<icon name="dDifficultyicon.3" file="graphics/dice_genesys/dDifficulty/dDifficulty.3.png" />
+	<icon name="dDifficultyicon.4" file="graphics/dice_genesys/dDifficulty/dDifficulty.4.png" />
+	<icon name="dDifficultyicon.5" file="graphics/dice_genesys/dDifficulty/dDifficulty.5.png" />
+	<icon name="dDifficultyicon.6" file="graphics/dice_genesys/dDifficulty/dDifficulty.6.png" />
+	<icon name="dDifficultyicon.7" file="graphics/dice_genesys/dDifficulty/dDifficulty.7.png" />
+	<icon name="dDifficultyicon.8" file="graphics/dice_genesys/dDifficulty/dDifficulty.8.png" />
+
+	<icon name="dEmptyicon" file="graphics/dice_genesys/dEmpty/dEmpty.png" />
+
+	<icon name="dForceicon" file="graphics/dice_genesys/dForce/dForce.png" />
+	<icon name="dForceicon.1" file="graphics/dice_genesys/dForce/dForce.1.png" />
+	<icon name="dForceicon.2" file="graphics/dice_genesys/dForce/dForce.2.png" />
+	<icon name="dForceicon.3" file="graphics/dice_genesys/dForce/dForce.3.png" />
+	<icon name="dForceicon.4" file="graphics/dice_genesys/dForce/dForce.4.png" />
+	<icon name="dForceicon.5" file="graphics/dice_genesys/dForce/dForce.5.png" />
+	<icon name="dForceicon.6" file="graphics/dice_genesys/dForce/dForce.6.png" />
+	<icon name="dForceicon.7" file="graphics/dice_genesys/dForce/dForce.7.png" />
+	<icon name="dForceicon.8" file="graphics/dice_genesys/dForce/dForce.8.png" />
+	<icon name="dForceicon.9" file="graphics/dice_genesys/dForce/dForce.9.png" />
+	<icon name="dForceicon.10" file="graphics/dice_genesys/dForce/dForce.10.png" />
+	<icon name="dForceicon.11" file="graphics/dice_genesys/dForce/dForce.11.png" />
+	<icon name="dForceicon.12" file="graphics/dice_genesys/dForce/dForce.12.png" />
+
+	<icon name="dProficiencyicon" file="graphics/dice_genesys/dProficiency/dProficiency.png" />
+	<icon name="dProficiencyicon.1" file="graphics/dice_genesys/dProficiency/dProficiency.1.png" />
+	<icon name="dProficiencyicon.2" file="graphics/dice_genesys/dProficiency/dProficiency.2.png" />
+	<icon name="dProficiencyicon.3" file="graphics/dice_genesys/dProficiency/dProficiency.3.png" />
+	<icon name="dProficiencyicon.4" file="graphics/dice_genesys/dProficiency/dProficiency.4.png" />
+	<icon name="dProficiencyicon.5" file="graphics/dice_genesys/dProficiency/dProficiency.5.png" />
+	<icon name="dProficiencyicon.6" file="graphics/dice_genesys/dProficiency/dProficiency.6.png" />
+	<icon name="dProficiencyicon.7" file="graphics/dice_genesys/dProficiency/dProficiency.7.png" />
+	<icon name="dProficiencyicon.8" file="graphics/dice_genesys/dProficiency/dProficiency.8.png" />
+	<icon name="dProficiencyicon.9" file="graphics/dice_genesys/dProficiency/dProficiency.9.png" />
+	<icon name="dProficiencyicon.10" file="graphics/dice_genesys/dProficiency/dProficiency.10.png" />
+	<icon name="dProficiencyicon.11" file="graphics/dice_genesys/dProficiency/dProficiency.11.png" />
+	<icon name="dProficiencyicon.12" file="graphics/dice_genesys/dProficiency/dProficiency.12.png" />
+
+	<icon name="dSetbackicon" file="graphics/dice_genesys/dSetback/dSetback.png" />
+	<icon name="dSetbackicon.1" file="graphics/dice_genesys/dSetback/dSetback.1.png" />
+	<icon name="dSetbackicon.2" file="graphics/dice_genesys/dSetback/dSetback.2.png" />
+	<icon name="dSetbackicon.3" file="graphics/dice_genesys/dSetback/dSetback.3.png" />
+	<icon name="dSetbackicon.4" file="graphics/dice_genesys/dSetback/dSetback.4.png" />
+	<icon name="dSetbackicon.5" file="graphics/dice_genesys/dSetback/dSetback.5.png" />
+	<icon name="dSetbackicon.6" file="graphics/dice_genesys/dSetback/dSetback.6.png" />
+
+	<icon name="dSummaryicon" file="graphics/dice_genesys/dSummary/dSummary.png" />
+	<icon name="dSummaryicon.1" file="graphics/dice_genesys/dSummary/dSummary.1.png" />
+	<icon name="dSummaryicon.2" file="graphics/dice_genesys/dSummary/dSummary.2.png" />
+	<icon name="dSummaryicon.3" file="graphics/dice_genesys/dSummary/dSummary.3.png" />
+	<icon name="dSummaryicon.4" file="graphics/dice_genesys/dSummary/dSummary.4.png" />
+	<icon name="dSummaryicon.5" file="graphics/dice_genesys/dSummary/dSummary.5.png" />
+	<icon name="dSummaryicon.6" file="graphics/dice_genesys/dSummary/dSummary.6.png" />
+	<icon name="dSummaryicon.7" file="graphics/dice_genesys/dSummary/dSummary.7.png" />
+	<icon name="dSummaryicon.8" file="graphics/dice_genesys/dSummary/dSummary.8.png" />
+
+	<!-- Custom dice panels -->
+	<icon name="dBoost" file="graphics/icons/dBoost.png" />
+	<icon name="dSetback" file="graphics/icons/dSetback.png" />
+	<icon name="dAbility" file="graphics/icons/dAbility.png" />
+	<icon name="dDifficulty" file="graphics/icons/dDifficulty.png" />
+	<icon name="dProficiency" file="graphics/icons/dProficiency.png" />
+	<icon name="dChallenge" file="graphics/icons/dChallenge.png" />
+	<icon name="dForce" file="graphics/icons/dForce.png" />
+
+	<!-- Icon used to indicate a secret GM die roll -->
+	<icon name="dmdieicon" file="graphics/icons/dmdie_icon.png" />
+
+	<!-- These are used to display dice result in chat
+			 We are only defining dice face, we are not overwritting
+			 default dice definition (we use CoreRPG for that)
+ -->
+
+
+
+	<icon name="d10icon" file="graphics/dice/d10/d10.png" />
+	<icon name="d10icon.1" file="graphics/dice/d10/d10.1.png" />
+	<icon name="d10icon.2" file="graphics/dice/d10/d10.2.png" />
+	<icon name="d10icon.3" file="graphics/dice/d10/d10.3.png" />
+	<icon name="d10icon.4" file="graphics/dice/d10/d10.4.png" />
+	<icon name="d10icon.5" file="graphics/dice/d10/d10.5.png" />
+	<icon name="d10icon.6" file="graphics/dice/d10/d10.6.png" />
+	<icon name="d10icon.7" file="graphics/dice/d10/d10.7.png" />
+	<icon name="d10icon.8" file="graphics/dice/d10/d10.8.png" />
+	<icon name="d10icon.9" file="graphics/dice/d10/d10.9.png" />
+	<icon name="d10icon.10" file="graphics/dice/d10/d10.10.png" />
+	<icon name="d12icon" file="graphics/dice/d12/d12.png" />
+	<icon name="d12icon.1" file="graphics/dice/d12/d12.1.png" />
+	<icon name="d12icon.2" file="graphics/dice/d12/d12.2.png" />
+	<icon name="d12icon.3" file="graphics/dice/d12/d12.3.png" />
+	<icon name="d12icon.4" file="graphics/dice/d12/d12.4.png" />
+	<icon name="d12icon.5" file="graphics/dice/d12/d12.5.png" />
+	<icon name="d12icon.6" file="graphics/dice/d12/d12.6.png" />
+	<icon name="d12icon.7" file="graphics/dice/d12/d12.7.png" />
+	<icon name="d12icon.8" file="graphics/dice/d12/d12.8.png" />
+	<icon name="d12icon.9" file="graphics/dice/d12/d12.9.png" />
+	<icon name="d12icon.10" file="graphics/dice/d12/d12.10.png" />
+	<icon name="d12icon.11" file="graphics/dice/d12/d12.11.png" />
+	<icon name="d12icon.12" file="graphics/dice/d12/d12.12.png" />
+	<icon name="d2icon" file="graphics/dice/d2/d2.png" />
+	<icon name="d2icon.1" file="graphics/dice/d2/d2.1.png" />
+	<icon name="d2icon.2" file="graphics/dice/d2/d2.2.png" />
+	<icon name="d20icon" file="graphics/dice/d20/d20.png" />
+	<icon name="d20icon.1" file="graphics/dice/d20/d20.1.png" />
+	<icon name="d20icon.2" file="graphics/dice/d20/d20.2.png" />
+	<icon name="d20icon.3" file="graphics/dice/d20/d20.3.png" />
+	<icon name="d20icon.4" file="graphics/dice/d20/d20.4.png" />
+	<icon name="d20icon.5" file="graphics/dice/d20/d20.5.png" />
+	<icon name="d20icon.6" file="graphics/dice/d20/d20.6.png" />
+	<icon name="d20icon.7" file="graphics/dice/d20/d20.7.png" />
+	<icon name="d20icon.8" file="graphics/dice/d20/d20.8.png" />
+	<icon name="d20icon.9" file="graphics/dice/d20/d20.9.png" />
+	<icon name="d20icon.10" file="graphics/dice/d20/d20.10.png" />
+	<icon name="d20icon.11" file="graphics/dice/d20/d20.11.png" />
+	<icon name="d20icon.12" file="graphics/dice/d20/d20.12.png" />
+	<icon name="d20icon.13" file="graphics/dice/d20/d20.13.png" />
+	<icon name="d20icon.14" file="graphics/dice/d20/d20.14.png" />
+	<icon name="d20icon.15" file="graphics/dice/d20/d20.15.png" />
+	<icon name="d20icon.16" file="graphics/dice/d20/d20.16.png" />
+	<icon name="d20icon.17" file="graphics/dice/d20/d20.17.png" />
+	<icon name="d20icon.18" file="graphics/dice/d20/d20.18.png" />
+	<icon name="d20icon.19" file="graphics/dice/d20/d20.19.png" />
+	<icon name="d20icon.20" file="graphics/dice/d20/d20.20.png" />
+	<icon name="d3icon" file="graphics/dice/d3/d3.png" />
+	<icon name="d3icon.1" file="graphics/dice/d3/d3.1.png" />
+	<icon name="d3icon.2" file="graphics/dice/d3/d3.2.png" />
+	<icon name="d3icon.3" file="graphics/dice/d3/d3.3.png" />
+	<icon name="d4icon" file="graphics/dice/d4/d4.png" />
+	<icon name="d4icon.1" file="graphics/dice/d4/d4.1.png" />
+	<icon name="d4icon.2" file="graphics/dice/d4/d4.2.png" />
+	<icon name="d4icon.3" file="graphics/dice/d4/d4.3.png" />
+	<icon name="d4icon.4" file="graphics/dice/d4/d4.4.png" />
+	<icon name="d6icon" file="graphics/dice/d6/d6.png" />
+	<icon name="d6icon.1" file="graphics/dice/d6/d6.1.png" />
+	<icon name="d6icon.2" file="graphics/dice/d6/d6.2.png" />
+	<icon name="d6icon.3" file="graphics/dice/d6/d6.3.png" />
+	<icon name="d6icon.4" file="graphics/dice/d6/d6.4.png" />
+	<icon name="d6icon.5" file="graphics/dice/d6/d6.5.png" />
+	<icon name="d6icon.6" file="graphics/dice/d6/d6.6.png" />
+	<icon name="d8icon" file="graphics/dice/d8/d8.png" />
+	<icon name="d8icon.1" file="graphics/dice/d8/d8.1.png" />
+	<icon name="d8icon.2" file="graphics/dice/d8/d8.2.png" />
+	<icon name="d8icon.3" file="graphics/dice/d8/d8.3.png" />
+	<icon name="d8icon.4" file="graphics/dice/d8/d8.4.png" />
+	<icon name="d8icon.5" file="graphics/dice/d8/d8.5.png" />
+	<icon name="d8icon.6" file="graphics/dice/d8/d8.6.png" />
+	<icon name="d8icon.7" file="graphics/dice/d8/d8.7.png" />
+	<icon name="d8icon.8" file="graphics/dice/d8/d8.8.png" />
+	<icon name="d100icon" file="graphics/dice/d100/d100.png" />
+	<icon name="d100icon.0" file="graphics/dice/d100/d100.0.png" />
+	<icon name="d100icon.10" file="graphics/dice/d100/d100.10.png" />
+	<icon name="d100icon.20" file="graphics/dice/d100/d100.20.png" />
+	<icon name="d100icon.30" file="graphics/dice/d100/d100.30.png" />
+	<icon name="d100icon.40" file="graphics/dice/d100/d100.40.png" />
+	<icon name="d100icon.50" file="graphics/dice/d100/d100.50.png" />
+	<icon name="d100icon.60" file="graphics/dice/d100/d100.60.png" />
+	<icon name="d100icon.70" file="graphics/dice/d100/d100.70.png" />
+	<icon name="d100icon.80" file="graphics/dice/d100/d100.80.png" />
+	<icon name="d100icon.90" file="graphics/dice/d100/d100.90.png" />
+
+
+
+</root>
