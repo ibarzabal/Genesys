@@ -64,7 +64,6 @@
 							function onInit()
 								registerMenuItem("Create Item", "insert", 5);
 							end
-
 							function onMenuSelection(selection)
 								window.list.createWindow();
 							end
@@ -80,10 +79,6 @@
 						<class>talentsmall</class>
 						<datasource>.talents</datasource>
 						<allowdelete />
-<!-- 						<acceptdrop> -->
-<!-- 							<class>referencetalent</class> -->
-<!-- 							<field>*</field> -->
-<!-- 						</acceptdrop> -->
 					</socketedlist>
 				</sheetdata>
 			</windowclass>

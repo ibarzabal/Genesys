@@ -10,6 +10,7 @@ local dieboxidentity = nil;
 function onInit()
 	DieBoxManager.registerControl(self);
 	registerMenuItem("Clear dice", "erase", 4);
+	Comm.registerSlashHandler("rolldicepool", onDieboxButtonPress);
 end
 
 function onDragStart(button, x, y, draginfo)

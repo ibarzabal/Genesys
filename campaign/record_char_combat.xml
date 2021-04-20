@@ -676,13 +676,14 @@
 						</anchored>
 						<script>
 							function onInit()
-								createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
-								createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
 								createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
 								createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
 							end
 						</script>
-
+<!-- removed:
+createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
+createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
+-->
 					</basewindowlist>
 					<scrollbar>
 						<anchored>
