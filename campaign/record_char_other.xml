@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_other">
+		<sheetdata>
+<!--
+			<frame_char name="motivationsframe">
+				<bounds>15,45,-29,190</bounds>
+			</frame_char>
+			<label_frametop>
+				<anchored to="motivationsframe" />
+				<static textres="char_label_motivations" />
+			</label_frametop>
+			<formattedtextfield name="motivations">
+				<anchored to="motivationsframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<nodrag />
+			</formattedtextfield>
+			<scrollbar_list>
+				<anchored to="motivations" />
+				<target>motivations</target>
+			</scrollbar_list>
+-->
+
+<!-- NOTES -->
+<sheetframe name="notes_notes">
+	<bounds>0,0,-1,-63</bounds>
+</sheetframe>
+<sheetframetitle name="notes_notes_title">
+	<anchored>
+		<to>notes_notes</to>
+	</anchored>
+	<static>Notes</static>
+</sheetframetitle>
+
+
+<sheetformattedtextfield name="notes_notes_notes" source="char_notes">
+	<anchored>
+		<left>
+			<parent>notes_notes</parent>
+			<anchor>left</anchor>
+			<offset>8</offset>
+		</left>
+		<right>
+			<parent>notes_notes</parent>
+			<anchor>right</anchor>
+			<offset>-10</offset>
+		</right>
+		<top>
+			<parent>notes_notes</parent>
+			<anchor>top</anchor>
+			<offset>20</offset>
+		</top>
+		<bottom>
+			<parent>notes_notes</parent>
+			<anchor>bottom</anchor>
+			<offset>-20</offset>
+		</bottom>
+	</anchored>
+	<!--Custom onDrop function for this control.  return nil so that formatted text control allows dropping of links
+	This means that the overiding manager drop code does not execute for this control.-->
+	<script>
+		function onDrop(x, y, draginfo)
+			return;
+		end
+	</script>
+</sheetformattedtextfield>
+<scrollbar>
+	<anchored>
+		<to>notes_notes_notes</to>
+		<offset>-6,0</offset>
+	</anchored>
+	<target>notes_notes_notes</target>
+</scrollbar>
+
+			<!-- EXPERIENCE -->
+						<sheetframe name="main_experience">
+<!--							<bounds>363,397,121,94</bounds> -->
+							<bounds>0,-60,-1,-5</bounds>
+
+						</sheetframe>
+						<sheetframetitle name="main_experience_title">
+							<anchored>
+								<to>main_experience</to>
+							</anchored>
+							<static>Experience</static>
+						</sheetframetitle>
+
+						<!-- TOTAL -->
+						<sheetlabel>
+							<anchored>
+								<to>main_experience</to>
+								<offset>13,22</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Total</static>
+						</sheetlabel>
+						<sheetnumberfield name="main_experience_total" source="experience.total">
+							<anchored>
+								<to>main_experience</to>
+								<offset>83,21</offset>
+								<size>
+									<width>30</width>
+								</size>
+							</anchored>
+							<tabtarget>
+								<next>main_experience_spent</next>
+							</tabtarget>
+						</sheetnumberfield>
+
+						<!-- SPENT -->
+						<sheetlabel>
+							<anchored>
+								<to>main_experience</to>
+								<offset>203,22</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Spent</static>
+						</sheetlabel>
+						<sheetnumberfield name="main_experience_spent" source="experience.spent">
+							<anchored>
+								<to>main_experience</to>
+								<offset>273,21</offset>
+								<size>
+									<width>30</width>
+								</size>
+							</anchored>
+							<tabtarget>
+								<next>main_fortune_maximum</next>
+								<prev>main_experience_total</prev>
+							</tabtarget>
+							<script>
+								local totalnode = nil;
+
+								function onValueChanged()
+									local totalvalue = totalnode.getValue();
+									local value = getValue();
+									if value == 0 then
+										setColor(zerocolor[1]);
+									else
+										setColor(color[1]);
+									end
+									if 0 > value then
+										setValue(0);
+									end
+									if value > totalvalue then
+										setValue(totalvalue);
+									end
+								end
+
+								function onInit()
+									local windownode = window.getDatabaseNode();
+									totalnode = windownode.getChild("experience.total");
+									onValueChanged();
+								end
+							</script>
+						</sheetnumberfield>
+
+						<!-- REMAINING -->
+						<sheetlabel>
+							<anchored>
+								<to>main_experience</to>
+								<offset>360,22</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Remaining</static>
+						</sheetlabel>
+						<sheetnumbercontrol>
+							<anchored>
+								<to>main_experience</to>
+								<offset>430,21</offset>
+								<size>
+									<width>30</width>
+								</size>
+							</anchored>
+							<disabled />
+							<script>
+								local totalnode = nil;
+								local spentnode = nil;
+
+								function onUpdate(source)
+									local totalvalue = totalnode.getValue();
+									local spentvalue = spentnode.getValue();
+									setValue(totalvalue - spentvalue);
+									onValueChanged();
+								end
+
+								function onInit()
+									local windownode = window.getDatabaseNode();
+									totalnode = windownode.getChild("experience.total");
+									totalnode.onUpdate = onUpdate;
+									spentnode = windownode.getChild("experience.spent");
+									spentnode.onUpdate = onUpdate;
+									onUpdate(nil);
+									onValueChanged();
+								end
+							</script>
+						</sheetnumbercontrol>
+
+		</sheetdata>
+	</windowclass>
+</root>

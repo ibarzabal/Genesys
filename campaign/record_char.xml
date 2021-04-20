@@ -97,6 +97,12 @@
 	<sub_charsheet name="inventory">
 		<class>charsheet_inventory</class>
 	</sub_charsheet>
+<!--
+	<sub_charsheet name="other">
+		<class>charsheet_other</class>
+	</sub_charsheet>
+-->
+
 
 	<sub_charsheet name="notes">
 		<class>charsheet_notes</class>
@@ -133,7 +139,12 @@
 					<icon>tab_inventory</icon>
 					<subwindow>inventory</subwindow>
 				</tab>
-
+<!--
+				<tab>
+					<icon>tab_other</icon>
+					<subwindow>other</subwindow>
+				</tab>
+-->
 				<tab>
 					<icon>tab_notes</icon>
 					<subwindow>notes</subwindow>

@@ -31,7 +31,7 @@
 <!--	<includefile source="classes/desktop/librarygenerator.xml" /> -->
 <!--	<includefile source="classes/desktop/miscastgenerator.xml" />	 -->
 <!--	<includefile source="classes/desktop/mutationgenerator.xml" /> -->
-	<includefile source="classes/desktop/modifierstack.xml" />
+<!--	<includefile source="classes/desktop/modifierstack.xml" /> -->
 <!--	<includefile source="classes/desktop/partyidentity.xml" /> -->
 <!--	<includefile source="classes/desktop/pennychit.xml" /> -->
 <!--	<includefile source="classes/desktop/powerchit.xml" /> -->

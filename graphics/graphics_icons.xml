@@ -71,7 +71,7 @@
 
 
 		<icon name="modcollector" file="graphics/icons/modcollector.png" />
-		<icon name="modcollector_counter" file="graphics/icons/modcollector_counter.png" />
+<!--		<icon name="modcollector_counter" file="graphics/icons/modcollector_counter.png" /> -->
 
 		<icon name="indicator_wound" file="graphics/icons/indicator_wound.png" />
 		<icon name="indicator_strain" file="graphics/icons/indicator_strain.png" />
