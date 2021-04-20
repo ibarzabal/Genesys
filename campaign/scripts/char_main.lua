@@ -54,7 +54,7 @@
 function onDrop(x, y, draginfo)
 	if draginfo.isType("shortcut") then
 		local sClass, sRecord = draginfo.getShortcutData();
-		if StringManager.contains({"referencecareer", "referencespecies_archetype"}, sClass) then
+		if StringManager.contains({"referencecareer", "referencespecies_archetype", "referencesetting"}, sClass) then
 			CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
 			return true;
 		end

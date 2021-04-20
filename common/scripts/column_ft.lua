@@ -24,7 +24,7 @@ function onLoseFocus()
 	update();
 end
 
-function onGainFocus()
+function onDoubleClick()
 	update(false,false,true);
 end
 

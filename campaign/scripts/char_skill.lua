@@ -15,7 +15,7 @@ end
 
 function updateWindow()
 	local sLabel = name.getValue();
-	local t = DataCommon.skilldata[sLabel];
+	local t = DataCommon.skilldata_default[sLabel];
 
 	if t then
 		setCustom(false);
@@ -91,7 +91,7 @@ function updateMenu()
 		registerMenuItem(Interface.getString("list_menu_deleteconfirm"), "delete", 6, 7);
 	else
 		local sLabel = name.getValue();
-		local rSkill = DataCommon.skilldata[sLabel];
+		local rSkill = DataCommon.skilldata_default[sLabel];
 		if rSkill and rSkill.sublabeling then
 			registerMenuItem(Interface.getString("list_menu_deleteitem"), "delete", 6);
 			registerMenuItem(Interface.getString("list_menu_deleteconfirm"), "delete", 6, 7);

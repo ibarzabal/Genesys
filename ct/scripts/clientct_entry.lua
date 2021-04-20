@@ -1,5 +1,5 @@
--- 
--- Please see the license.html file included with this distribution for 
+--
+-- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
 
@@ -12,15 +12,29 @@ function updateDisplay()
 
 	local sOptCTSI = OptionsManager.getOption("CTSI");
 	local bShowInit = ((sOptCTSI == "friend") and (sFaction == "friend")) or (sOptCTSI == "on");
+
+
+	-- Hide Info from NPCs
+	local nodeRecord = getDatabaseNode();
+	local sClass = DB.getValue(nodeRecord, "link", "", "");
+	local v = (DB.getValue(nodeRecord, "link", "", "") == "charsheet");
+	wounds_threshold.setVisible(v);
+	wounds_current.setVisible(v);
+	strain_threshold.setVisible(v);
+	strain_current.setVisible(v);
+	meleedefence.setVisible(v);
+	rangeddefence.setVisible(v);
+	soak.setVisible(v);
+
 	initresult.setVisible(bShowInit);
-	
+
 	if active.getValue() == 1 then
 		name.setFont("sheetlabel");
 		nonid_name.setFont("sheetlabel");
 
 		active_spacer_top.setVisible(true);
 		active_spacer_bottom.setVisible(true);
-		
+
 		if sFaction == "friend" then
 			setFrame("ctentrybox_friend_active");
 		elseif sFaction == "neutral" then
@@ -30,7 +44,7 @@ function updateDisplay()
 		else
 			setFrame("ctentrybox_active");
 		end
-		
+
 		windowlist.scrollToWindow(self);
 	else
 		name.setFont("sheettext");
@@ -38,7 +52,7 @@ function updateDisplay()
 
 		active_spacer_top.setVisible(false);
 		active_spacer_bottom.setVisible(false);
-		
+
 		if sFaction == "friend" then
 			setFrame("ctentrybox_friend");
 		elseif sFaction == "neutral" then

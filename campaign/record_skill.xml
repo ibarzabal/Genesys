@@ -66,7 +66,7 @@
 		</script>
 		<sheetdata>
 			<link_record_header_id name="link">
-				<class>skill</class>
+				<class>referenceskill</class>
 			</link_record_header_id>
 			<anchor_record_header_right name="rightanchor" />
 			<icon_record_locked />

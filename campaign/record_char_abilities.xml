@@ -60,9 +60,14 @@
 			<label_charframetopg name="featstitle">
 				<bounds>15,10,-10,20</bounds>
 				<static textres="char_abilities_label_racial_traits" />
-				<icons>open_database</icons>
-				<target>special_ability</target>
+<!--				<icons>open_database</icons>
+				<target>special_ability</target>  -->
 			</label_charframetopg>
+			<button_dblink>
+				<anchored to="featstitle" position="insidetopleft" offset="-8,0" />
+				<target>special_ability</target>
+			</button_dblink>
+
 			<list_abilities name="feats">
 				<anchored to="featstitle">
 					<top anchor="bottom" relation="relative" offset="5" />
@@ -85,9 +90,14 @@
 					<right />
 				</anchored>
 				<static textres="char_abilities_label_talents" />
-				<icons>open_database</icons>
-				<target>talent</target>
+<!--				<icons>open_database</icons>
+				<target>talent</target> -->
 			</label_charframetopg>
+			<button_dblink name="button_talent">
+				<anchored to="featurestitle" position="insidetopleft" offset="-8,0" />
+				<target>talent</target>
+			</button_dblink>
+
 			<list_abilities name="features">
 				<anchored to="featurestitle">
 					<top anchor="bottom" relation="relative" offset="5" />

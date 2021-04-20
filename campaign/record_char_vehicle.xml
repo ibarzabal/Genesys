@@ -14,10 +14,7 @@
 				<static textres="char_label_vehicle" />
 			</label_charframetopg>
 			<button_vehicle_exit name="leave_vehicle">
-				<anchored to="vehicletitle">
-					<top />
-					<right anchor="insideright" relation="relative" offset="-5" />
-				</anchored>
+				<bounds>-30,7,-10,27</bounds>
 			</button_vehicle_exit>
 
 

@@ -201,7 +201,9 @@
 			<label_column name="cost_label">
 				<static textres="vehicle_label_cost" />
 			</label_column>
-			<string_columnh name="cost" />
+			<string_columnh name="cost">
+				<no_symbol_convertion />
+			</string_columnh>
 
 			<label_column name="rarity_label">
 				<static textres="item_label_rarity" />
@@ -575,7 +577,9 @@
 			<label_column name="cost_label">
 				<static textres="vehicle_label_cost" />
 			</label_column>
-			<string_columnh name="cost" />
+			<string_columnh name="cost">
+				<no_symbol_convertion />
+			</string_columnh>
 
 			<label_column name="rarity_label">
 				<static textres="item_label_rarity" />

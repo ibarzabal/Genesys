@@ -20,6 +20,44 @@
   </stringfield>
 </template>
 -->
+<template name="button_dblink">
+  <buttoncontrol>
+    <anchored width="20" height="20" />
+    <state icon="open_database" pressed="open_database" />
+    <script>
+      function onButtonPress()
+        if target and target[1] then
+          Interface.openWindow("masterindex",target[1]);
+        end
+      end
+    </script>
+  </buttoncontrol>
+</template>
+
+<template name="button_iadd_dblink">
+  <buttoncontrol>
+    <anchored width="20" height="20" />
+    <icon normal="button_add" pressed="button_add_down" />
+    <tooltip textres="button_add" />
+    <script>
+      function onInit()
+        if visible then
+          return;
+        end
+        local node = window.getDatabaseNode();
+        if node and node.isReadOnly() then
+          setVisible(false);
+        end
+      end
+      function onButtonPress()
+        if target and target[1] then
+          Interface.openWindow("masterindex",target[1]);
+        end
+      end
+    </script>
+  </buttoncontrol>
+</template>
+
 
 <template name="string_columnh">
   <string_column>

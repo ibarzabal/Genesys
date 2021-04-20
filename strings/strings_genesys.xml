@@ -28,8 +28,10 @@
 	<string name="export_label_descriptions">Descriptions?</string>
 
 	<!-- Character Main -->
+	<string name="char_label_name">Name</string>
 	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
-  <string name="char_message_careeradd">Career '%s' added to '%s'.</string>
+	<string name="char_message_settingadd">Added skills from Setting: '%s' to '%s'.</string>
+	<string name="char_message_careeradd">Career '%s' added to '%s'.</string>
 	<string name="char_label_motivation">Motivation</string>
 	<string name="char_label_weapon">Weapons</string>
 	<string name="char_label_initiative">Initiative</string>
@@ -41,9 +43,19 @@
 	<string name="char_label_encthreshold">Threshold</string>
 	<string name="button_enter_vehicle">Enter Vehicle</string>
 	<string name="button_exit_vehicle">Exit Vehicle</string>
-	<string name="button_vehicle_enter_message">Entered vehicle</string>
-	<string name="button_vehicle_exit_message">Exited vehicle</string>
+
+	<string name="button_vehicle_enter_message">Entered %s.</string>
+	<string name="button_vehicle_exit_message">Exited %s.</string>
 	<string name="vehicle_error_not_in_vehicle_message">Target not in a vehicle</string>
+
+	<!-- Characteristics -->
+	<string name="BR">BR</string>
+	<string name="AG">AG</string>
+	<string name="IN">IN</string>
+	<string name="CU">CU</string>
+	<string name="WI">WI</string>
+	<string name="PR">PR</string>
+
 
 	<!-- Character Notes -->
 	<string name="char_label_gender">Gender</string>
@@ -57,7 +69,11 @@
 	<string name="char_label_notable_features">Notable Features</string>
 	<string name="char_label_xp">Experience</string>
 
-
+	<!-- Character Skills -->
+	<string name="char_build_title_selectsetting_title">Select Setting</string>
+	<string name="char_build_title_selectsetting_msg">Selecting one Setting below will add all skills from the Setting into the Character Sheet</string>
+	<string name="build_setting_selectsetting_default">Default Skills</string>
+	<string name="char_error_addsetting">Error: no Setting selected</string>
 
 
 	<string name="char_label_powers">Powers</string>
@@ -75,6 +91,16 @@
 	<string name="ct_label_ranged_defense">RDef</string>
 	<string name="ct_label_soak">Soak</string>
 	<string name="ct_label_npc_category">Category</string>
+
+	<!-- Combat Tracker: Vehicle -->
+	<string name="ct_tooltip_vehicle">Vehicle</string>
+	<string name="ct_vehicle_name_tip">Click to open Vehicle Sheet</string>
+	<string name="ct_label_vehicle_hull_trauma">Hull Trauma</string>
+	<string name="ct_label_vehicle_system_strain">System Strain</string>
+	<string name="ct_label_vehicle_defense">DEF</string>
+	<string name="ct_label_vehicle_armor">AR</string>
+
+
 
 	<!-- NPC Sheet -->
 	<string name="char_label_name_npc">NPC Name</string>

@@ -21,16 +21,23 @@
 
 				function onButtonPress()
 					local actornode = DB.getParent(DB.getParent(window.getDatabaseNode()));
-					local vehiclenode;
+					local actorName = DB.getValue(DB.getParent(DB.getParent(window.getDatabaseNode())),"name","");
+					local VehicleNodeName;
+					local VehicleNode = window.getDatabaseNode();
+
+					local sFormat = Interface.getString("button_vehicle_enter_message");
+					local sOwner = DB.getValue(VehicleNode,"owner","");
+					local sName = DB.getValue(VehicleNode,"name","");
+					local sMsg = string.format(sFormat, sName);
+
 					if ActorManager.isPC(actornode) then
-						vehiclenode = window.getDatabaseNode().getNodeName();
+						VehicleNodeName = window.getDatabaseNode().getNodeName();
+						ChatManager.Message(sMsg, true, ActorManager.getActor("pc", actornode));
 					else
-						vehiclenode = window.getDatabaseNode().getName();
+						VehicleNodeName = window.getDatabaseNode().getName();
+						ChatManager.SystemMessage(actorName .. ": " .. sMsg);
 					end
-					actornode.createChild("vehicle_current","string").setValue(vehiclenode);
-					local msg = {font = "systemfont"};
-					msg.text = Interface.getString("button_vehicle_enter_message");
-					Comm.addChatMessage(msg);
+					actornode.createChild("vehicle_current","string").setValue(VehicleNodeName);
 				end
 			</script>
 		</buttoncontrol>
@@ -46,11 +53,24 @@
 			<script>
 				function onButtonPress()
 					local node = window.getDatabaseNode();
-					DB.setValue(node, "vehicle_current", "string","");
 					local current_vehicle, current_vehicle_node = DBManagerGenesys.ActorVehicle(node);
-					local msg = {font = "systemfont"};
-					msg.text = Interface.getString("button_vehicle_exit_message");
-					Comm.addChatMessage(msg);
+					DB.setValue(node, "vehicle_current", "string","");
+
+					local actorName = DB.getValue(node,"name","");
+					local sFormat = Interface.getString("button_vehicle_exit_message");
+					local sOwner = DB.getValue(current_vehicle_node,"owner","");
+					local sName = DB.getValue(current_vehicle_node,"name","");
+					local sMsg = string.format(sFormat, sName);
+					local VehicleNodeName;
+					if current_vehicle_node then
+						if ActorManager.isPC(node) then
+							VehicleNodeName = window.getDatabaseNode().getNodeName();
+							ChatManager.Message(sMsg, true, ActorManager.getActor("pc", node));
+						else
+							VehicleNodeName = window.getDatabaseNode().getName();
+							ChatManager.SystemMessage(actorName .. ": " .. sMsg);
+						end
+					end
 				end
 			</script>
 		</buttoncontrol>

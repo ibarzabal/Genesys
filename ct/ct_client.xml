@@ -9,10 +9,10 @@
 	<windowclass name="combattracker_client">
 		<frame>ctbox</frame>
 		<placement>
-			<size width="500" height="500" />
+			<size width="930" height="400" />
 		</placement>
 		<sizelimits>
-			<minimum width="400" height="400" />
+			<minimum width="930" height="400" />
 			<dynamic />
 		</sizelimits>
 		<softclose />
@@ -40,8 +40,53 @@
 
 			<anchor_ctbox_client_header />
 			<anchor_ct_label_right />
+
+			<frame_ctbox_client_header_labels />
+
+			<label_ct name="label_name">
+				<anchored to="header_labels" position="insidetopleft" offset="5,3">
+					<left offset="50" />
+				</anchored>
+				<static textres="ct_label_name" />
+				<center />
+			</label_ct>
+			<label_ct name="label_wounds_threshold">
+				<anchored to="header_labels" position="insidetopright" offset="340,0" width="40" />
+				<static textres="ct_label_wounds_threshold" />
+				<center />
+			</label_ct>
+			<label_ct name="label_wounds_current">
+				<anchored to="header_labels" position="insidetopright" offset="300,0" width="40" />
+				<static textres="ct_label_wounds_current" />
+				<center />
+			</label_ct>
+			<label_ct name="label_strain_threshold">
+				<anchored to="header_labels" position="insidetopright" offset="260,0" width="40" />
+				<static textres="ct_label_strain_threshold" />
+				<center />
+			</label_ct>
+			<label_ct name="label_strain_current">
+				<anchored to="header_labels" position="insidetopright" offset="217,0" width="40" />
+				<static textres="ct_label_strain_current" />
+				<center />
+			</label_ct>
+			<label_ct name="label_melee_defense">
+				<anchored to="header_labels" position="insidetopright" offset="168,0" width="40" />
+				<static textres="ct_label_melee_defense" />
+				<center />
+			</label_ct>
+			<label_ct name="label_ranged_defense">
+				<anchored to="header_labels" position="insidetopright" offset="127,0" width="40" />
+				<static textres="ct_label_ranged_defense" />
+				<center />
+			</label_ct>
+			<label_ct name="label_soak">
+				<anchored to="header_labels" position="insidetopright" offset="87,0" width="40" />
+				<static textres="ct_label_soak" />
+				<center />
+			</label_ct>
+
 			<label_ct_init name="label_init" />
-			<label_ct_name name="label_name" />
 
 			<list_ctbox_client />
 			<scrollbar_list />
@@ -83,11 +128,82 @@
 			<button_ctentry_friendfoe name="friendfoe" />
 			<number_clientct_init name="initresult" />
 
-			<string_clientct_name name="name" />
-			<string_clientct_name name="nonid_name">
-				<empty textres="library_recordtype_empty_nonid_npc" />
-				<invisible />
-			</string_clientct_name>
+			<number_ct_crosslink name="soak" source="armour.soak">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="rangeddefence" source="armour.rangeddefence">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="meleedefence" source="armour.meleedefence">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="strain_current" source="strain.current">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-20" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+			<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="strain_threshold" source="strain.threshold">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+
+
+			<number_ct_crosslink name="wounds_current" source="wounds.current">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+			<number_ct_crosslink name="wounds_threshold" source="wounds.threshold">
+				<anchored to="rightanchor" width="30" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<min value="0" />
+				<hideonvalue value="0" />
+<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			</number_ct_crosslink>
+
+
+			<string_ctname name="name" />
+			<string_ctname_nonid name="nonid_name" />
+
 
 			<icon_clientctsection_effect name="effecticon" />
 			<spacer_clientctsection_effect name="effectspacer" />

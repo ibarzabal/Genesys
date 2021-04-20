@@ -24,19 +24,22 @@ end
 
 function onButtonPress()
 	local v = getSkillDescNode();
+	local node = window.getDatabaseNode();
 	if v then
 		Interface.openWindow("referenceskill", v);
 	end
 end
 
-function onDragStart(draginfo)
-	local v = getSkillDescNode();
-	if v then
-		draginfo.setType("shortcut");
-		draginfo.setIcon("button_link");
-		draginfo.setShortcutData("referenceskill", v);
-		draginfo.setDescription(window.label.getValue());
-		return true;
-	end
-	return false;
-end
+--function onDragStart(draginfo)
+--
+--	local v = getSkillDescNode();
+--	if v then
+--		Debug.chat("drag v", v);
+--		draginfo.setType("shortcut");
+--		draginfo.setIcon("button_link");
+--		draginfo.setShortcutData("referenceskill", v);
+--		draginfo.setDescription(window.label.getValue());
+--		return true;
+--	end
+--	return false;
+--end

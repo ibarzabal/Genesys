@@ -7,9 +7,9 @@ local enableglobaltoggle = true;
 local enablevisibilitytoggle = true;
 
 function onInit()
-	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
-
 	Interface.onHotkeyActivated = onHotkey;
+
+	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
 
 	onVisibilityToggle();
 	onEntrySectionToggle();
@@ -29,7 +29,13 @@ function onClose()
 	DB.removeHandler(DB.getPath(node, "*.token"), "onUpdate", onNameOrTokenUpdated);
 end
 
-function onNameOrTokenUpdated()
+function onOptionWNDCChanged()
+	for _,v in pairs(getWindows()) do
+		v.onHealthChanged();
+	end
+end
+
+function onNameOrTokenUpdated(vNode)
 	for _,w in pairs(getWindows()) do
 		w.target_summary.onTargetsChanged();
 
@@ -81,10 +87,8 @@ function toggleVisibility()
 
 	local visibilityon = window.button_global_visibility.getValue();
 	for _,v in pairs(getWindows()) do
-		if v.friendfoe.getStringValue() ~= "friend" then
-			if visibilityon ~= v.tokenvis.getValue() then
-				v.tokenvis.setValue(visibilityon);
-			end
+		if visibilityon ~= v.tokenvis.getValue() then
+			v.tokenvis.setValue(visibilityon);
 		end
 	end
 end
@@ -100,6 +104,31 @@ function toggleTargeting()
 	end
 end
 
+function toggleCharacteristics()
+	if not enableglobaltoggle then
+		return;
+	end
+
+	local attributeson = window.button_global_characteristic.getValue();
+	for _,v in pairs(getWindows()) do
+		if attributeson ~= v.activatecharacteristics.getValue() then
+			v.activatecharacteristics.setValue(attributeson);
+		end
+	end
+end
+
+function toggleActive()
+	if not enableglobaltoggle then
+		return;
+	end
+
+	local activeon = window.button_global_active.getValue();
+	for _,v in pairs(getWindows()) do
+		if activeon ~= v.activateactive.getValue() then
+			v.activateactive.setValue(activeon);
+		end
+	end
+end
 function toggleSpacing()
 	if not enableglobaltoggle then
 		return;
@@ -107,9 +136,43 @@ function toggleSpacing()
 
 	local spacingon = window.button_global_spacing.getValue();
 	for _,v in pairs(getWindows()) do
-		v.activatespacing.setValue(spacingon);
+		if spacingon ~= v.activatespacing.getValue() then
+			v.activatespacing.setValue(spacingon);
+		end
 	end
 end
+
+function toggleVehicle()
+	if not enableglobaltoggle then
+		return;
+	end
+
+	local activeon = window.button_global_vehicle.getValue();
+	for _,v in pairs(getWindows()) do
+		if activeon ~= v.activatevehicle.getValue() then
+			if v.vehicle_current_node.getValue() == "" then
+				v.activatevehicle.setValue(0);
+			else
+				v.activatevehicle.setValue(activeon);
+			end
+		end
+	end
+end
+
+function toggleSpacing()
+	if not enableglobaltoggle then
+		return;
+	end
+
+	local spacingon = window.button_global_spacing.getValue();
+	for _,v in pairs(getWindows()) do
+		if spacingon ~= v.activatespacing.getValue() then
+			v.activatespacing.setValue(spacingon);
+		end
+	end
+end
+
+
 
 function toggleEffects()
 	if not enableglobaltoggle then
@@ -118,7 +181,9 @@ function toggleEffects()
 
 	local effectson = window.button_global_effects.getValue();
 	for _,v in pairs(getWindows()) do
-		v.activateeffects.setValue(effectson);
+		if effectson ~= v.activateeffects.getValue() then
+			v.activateeffects.setValue(effectson);
+		end
 	end
 end
 
@@ -137,12 +202,20 @@ end
 
 function onEntrySectionToggle()
 	local anyTargeting = 0;
+	local anyCharacteristics = 0;
+	local anyActive = 0;
 	local anySpacing = 0;
 	local anyEffects = 0;
 
 	for _,v in pairs(getWindows()) do
 		if v.activatetargeting.getValue() == 1 then
 			anyTargeting = 1;
+		end
+		if v.activatecharacteristics.getValue() == 1 then
+			anyCharacteristics = 1;
+		end
+		if v.activateactive.getValue() == 1 then
+			anyActive = 1;
 		end
 		if v.activatespacing.getValue() == 1 then
 			anySpacing = 1;
@@ -154,6 +227,8 @@ function onEntrySectionToggle()
 
 	enableglobaltoggle = false;
 	window.button_global_targeting.setValue(anyTargeting);
+	window.button_global_characteristic.setValue(anyCharacteristics);
+	window.button_global_active.setValue(anyActive);
 	window.button_global_spacing.setValue(anySpacing);
 	window.button_global_effects.setValue(anyEffects);
 	enableglobaltoggle = true;

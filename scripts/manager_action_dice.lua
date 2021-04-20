@@ -547,7 +547,7 @@ function processDice(rSource, rTarget, rRoll)
 
 		local critDetails = {};
 
-		for k,v in pairs(DataCommon.critical_injury_result_data) do
+		for k,v in pairs(DataCommon.critical_injury_result_data_default) do
 			if critResult >= v.d100_start and critResult <= v.d100_end then
 				Debug.console("Found crit of " .. v.name);
 				critDetails = v;
@@ -599,7 +599,7 @@ function processDice(rSource, rTarget, rRoll)
 
 		local critDetails = {};
 
-		for k,v in pairs(DataCommon.critical_vehicle_result_data) do
+		for k,v in pairs(DataCommon.critical_vehicle_result_data_default) do
 			if critResult >= v.d100_start and critResult <= v.d100_end then
 				Debug.console("Found crit of " .. v.name);
 				critDetails = v;
@@ -1293,7 +1293,7 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
 
 		local critDetails = {};
 
-		for k,v in pairs(DataCommon.critical_injury_result_data) do
+		for k,v in pairs(DataCommon.critical_injury_result_data_default) do
 			if critResult >= v.d100_start and critResult <= v.d100_end then
 				Debug.console("Found crit of " .. v.name);
 				critDetails = v;
@@ -1350,7 +1350,7 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
 
 		local critDetails = {};
 
-		for k,v in pairs(DataCommon.critical_vehicle_result_data) do
+		for k,v in pairs(DataCommon.critical_vehicle_result_data_default) do
 			if critResult >= v.d100_start and critResult <= v.d100_end then
 				Debug.console("Found crit of " .. v.name);
 				critDetails = v;

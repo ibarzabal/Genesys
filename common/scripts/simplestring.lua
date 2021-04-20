@@ -12,7 +12,7 @@ function onLoseFocus()
 	update();
 end
 
-function onGainFocus()
+function onDoubleClick()
 	update(true);
 end
 

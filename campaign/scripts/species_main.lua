@@ -45,19 +45,19 @@ function update()
 	end
 	updateControl("source", bReadOnly, bID);
 	updateControl("source_page", bReadOnly, bID);
-  main_statblock1_brawn_current.setReadOnly(bReadOnly);
-  main_statblock1_agility_current.setReadOnly(bReadOnly);
-  main_statblock1_intellect_current.setReadOnly(bReadOnly);
-  main_statblock1_cunning_current.setReadOnly(bReadOnly);
-  main_statblock1_willpower_current.setReadOnly(bReadOnly);
-  main_statblock1_presence_current.setReadOnly(bReadOnly);
+  main_statblock1_brawn.setReadOnly(bReadOnly);
+  main_statblock1_agility.setReadOnly(bReadOnly);
+  main_statblock1_intellect.setReadOnly(bReadOnly);
+  main_statblock1_cunning.setReadOnly(bReadOnly);
+  main_statblock1_willpower.setReadOnly(bReadOnly);
+  main_statblock1_presence.setReadOnly(bReadOnly);
 
 	if bReadOnly then
 		abilities_iedit.setVisible(false);
 		abilities_iadd.setVisible(false);
 	else
 		abilities_iedit.setVisible(true);
-		abilities_iadd.setVisible(false);
+		abilities_iadd.setVisible(true);
 	end
 
 

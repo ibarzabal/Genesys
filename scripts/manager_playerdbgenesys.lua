@@ -170,6 +170,7 @@ function handleCreateCriticalNonOwnedDB(msguser, msgidentity, msgparams)
 					critnode.createChild("name","string").setValue(name);
 					critnode.createChild("description","formattedtext").setValue(description);
 					critnode.createChild("severity","number").setValue(severity);
+					critnode.createChild("locked","number").setValue(1);
 			end
 		end
 	end

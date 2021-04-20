@@ -35,148 +35,66 @@
 			</sheetcharacteristicvalue>
 			<title_statblock>
 				<anchored>
-					<top>
-						<parent>main_statblock1_agility_current</parent>
-						<anchor>bottom</anchor>
-						<offset>6</offset>
-					</top>
-					<left>
-						<parent>main_statblock1_agility_current</parent>
-						<anchor>left</anchor>
-						<offset>-20</offset>
-					</left>
-					<right>
-						<parent>main_statblock1_agility_current</parent>
-						<anchor>right</anchor>
-						<offset>20</offset>
-					</right>
-					<size>
-						<height>20</height>
-					</size>
+					<top parent="main_statblock1_agility_current" anchor="bottom" offset="6"/>
+					<left parent="main_statblock1_agility_current" anchor="left" offset="-20"/>
+					<right parent="main_statblock1_agility_current" anchor="right" offset="20"/>
+					<size height="20" />
 				</anchored>
 				<center />
 				<static>Agility</static>
 			</title_statblock>
 			<!-- INTELLECT-->
 			<sheetcharacteristicvalue name="main_statblock1_intellect_current" source="intellect.current">
-				<anchored>
-					<to>main_statblock1</to>
-					<offset>185,7</offset>
-				</anchored>
+				<anchored to="main_statblock1" offset="185,7" />
 			</sheetcharacteristicvalue>
 			<title_statblock>
 				<anchored>
-					<top>
-						<parent>main_statblock1_intellect_current</parent>
-						<anchor>bottom</anchor>
-						<offset>6</offset>
-					</top>
-					<left>
-						<parent>main_statblock1_intellect_current</parent>
-						<anchor>left</anchor>
-						<offset>-20</offset>
-					</left>
-					<right>
-						<parent>main_statblock1_intellect_current</parent>
-						<anchor>right</anchor>
-						<offset>20</offset>
-					</right>
-					<size>
-						<height>20</height>
-					</size>
+					<top parent="main_statblock1_intellect_current" anchor="bottom" offset="6" />
+					<left parent="main_statblock1_intellect_current" anchor="left" offset="-20" />
+					<right parent="main_statblock1_intellect_current" anchor="right" offset="20" />
+					<size height="20" />
 				</anchored>
 				<center />
 				<static>Intellect</static>
 			</title_statblock>
 			<!-- CUNNING-->
 			<sheetcharacteristicvalue name="main_statblock1_cunning_current" source="cunning.current">
-				<anchored>
-					<to>main_statblock1</to>
-					<offset>262,7</offset>
-				</anchored>
+				<anchored to="main_statblock1" offset="262,7" />
 			</sheetcharacteristicvalue>
 			<title_statblock>
 				<anchored>
-					<top>
-						<parent>main_statblock1_cunning_current</parent>
-						<anchor>bottom</anchor>
-						<offset>6</offset>
-					</top>
-					<left>
-						<parent>main_statblock1_cunning_current</parent>
-						<anchor>left</anchor>
-						<offset>-20</offset>
-					</left>
-					<right>
-						<parent>main_statblock1_cunning_current</parent>
-						<anchor>right</anchor>
-						<offset>20</offset>
-					</right>
-					<size>
-						<height>20</height>
-					</size>
+					<top parent="main_statblock1_cunning_current" anchor="bottom" offset="6" />
+					<left parent="main_statblock1_cunning_current" anchor="left" offset="-20" />
+					<right parent="main_statblock1_cunning_current" anchor="right" offset="20" />
+					<size height="20" />
 				</anchored>
 				<center />
 				<static>Cunning</static>
 			</title_statblock>
 			<!-- WILLPOWER-->
 			<sheetcharacteristicvalue name="main_statblock1_willpower_current" source="willpower.current">
-				<anchored>
-					<to>main_statblock1</to>
-					<offset>341,7</offset>
-				</anchored>
+				<anchored to="main_statblock1" offset="341,7" />
 			</sheetcharacteristicvalue>
 			<title_statblock>
 				<anchored>
-					<top>
-						<parent>main_statblock1_willpower_current</parent>
-						<anchor>bottom</anchor>
-						<offset>6</offset>
-					</top>
-					<left>
-						<parent>main_statblock1_willpower_current</parent>
-						<anchor>left</anchor>
-						<offset>-20</offset>
-					</left>
-					<right>
-						<parent>main_statblock1_willpower_current</parent>
-						<anchor>right</anchor>
-						<offset>20</offset>
-					</right>
-					<size>
-						<height>20</height>
-					</size>
+					<top parent="main_statblock1_willpower_current" anchor="bottom" offset="6" />
+					<left parent="main_statblock1_willpower_current" anchor="left" offset="-20" />
+					<right parent="main_statblock1_willpower_current" anchor="right" offset="20" />
+					<size height="20" />
 				</anchored>
 				<center />
 				<static>Willpower</static>
 			</title_statblock>
 			<!-- PRESENCE-->
 			<sheetcharacteristicvalue name="main_statblock1_presence_current" source="presence.current">
-				<anchored>
-					<to>main_statblock1</to>
-					<offset>421,7</offset>
-				</anchored>
+				<anchored to="main_statblock1" offset="421,7" />
 			</sheetcharacteristicvalue>
 			<title_statblock>
 				<anchored>
-					<top>
-						<parent>main_statblock1_presence_current</parent>
-						<anchor>bottom</anchor>
-						<offset>6</offset>
-					</top>
-					<left>
-						<parent>main_statblock1_presence_current</parent>
-						<anchor>left</anchor>
-						<offset>-20</offset>
-					</left>
-					<right>
-						<parent>main_statblock1_presence_current</parent>
-						<anchor>right</anchor>
-						<offset>20</offset>
-					</right>
-					<size>
-						<height>20</height>
-					</size>
+					<top parent="main_statblock1_presence_current" anchor="bottom" offset="6" />
+					<left parent="main_statblock1_presence_current" anchor="left" offset="-20" />
+					<right parent="main_statblock1_presence_current" anchor="right" offset="20" />
+					<size height="20" />
 				</anchored>
 				<center />
 				<static>Presence</static>
@@ -187,10 +105,18 @@
 				<anchored to="main_statblock1" position="belowleft" offset="10,10" height="20">
 					<right offset="-1" />
 				</anchored>
+<!--
 				<icons>open_database</icons>
 				<target>skill</target>
+-->
 				<static textres="char_label_skills" />
 			</label_charframetopg>
+
+			<button_dblink name="button_skill">
+				<anchored to="skillstitle" position="insidetopleft" offset="-8,0" />
+				<target>skill</target>
+			</button_dblink>
+
 
 
 			<!-- GENERAL skilllist FRAME ......................................................................... -->

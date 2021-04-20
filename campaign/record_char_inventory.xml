@@ -47,10 +47,15 @@
 		<sheetdata>
 			<label_charframetopg name="invtitle">
 				<bounds>15,10,-10,20</bounds>
-				<icons>open_database</icons>
-				<target>item</target>
+<!--				<icons>open_database</icons>
+				<target>item</target> -->
 				<static textres="char_label_inventory" />
 			</label_charframetopg>
+			<button_dblink name="button_item">
+				<anchored to="invtitle" position="insidetopleft" offset="-8,0" />
+				<target>item</target>
+			</button_dblink>
+
 
 			<label name="count_label">
 				<anchored to="invtitle" width="20">
@@ -128,10 +133,15 @@
 					<left />
 					<right />
 				</anchored>
-				<icons>open_database</icons>
-				<target>vehicle</target>
+<!--				<icons>open_database</icons>
+				<target>vehicle</target> -->
 				<static textres="char_label_vehicles" />
 			</label_charframetopg>
+			<button_dblink name="button_vehicle">
+				<anchored to="vehiclestitle" position="insidetopleft" offset="-8,0" />
+				<target>vehicle</target>
+			</button_dblink>
+
 			<button_iadd name="vehicleslist_iadd">
 				<anchored to="vehiclestitle" position="insidetopright" offset="0,0" />
 				<target>vehicleslist</target>

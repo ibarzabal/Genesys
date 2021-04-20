@@ -11,21 +11,60 @@ function onInit()
 	--else
 	--	constructDefaultskilllist("full");
 	--end
-
-
-	-- If Character has 0 skills, populate it with default skills
-	local CharSkillCount = DB.getChildCount(window.getDatabaseNode(), "skilllist");
-	CharManager.BuildCharSkills();
-	if CharSkillCount == 0 then
+	local isSW = (User.getRulesetName() == "StarWarsFFG");
+	if isSW then
 		constructDefaultskilllist();
+	else
+		-- If Character has 0 skills, populate it with default skills
+		local CharSkillCount = DB.getChildCount(window.getDatabaseNode(), "skilllist");
+		if CharSkillCount == 0 then
+	--	Debug.chat("Settings:", DB.getChildCount("reference","settings"));
+	--	Debug.chat("Skills:", DB.getChildCount("reference.skills",""));
+
+	--	Debug.chat (getDatabaseNode().getPath());
+		local nodeChar = window.getDatabaseNode();
+		local wSelect = Interface.openWindow("select_dialog", "");
+		local sTitle = Interface.getString("char_build_title_selectsetting_title");
+		local sMessage = Interface.getString("char_build_title_selectsetting_msg");
+		local rSettingAdd; --{ nodeChar = nodeChar, nodeSource = nodeSource, nLevel = nLevel, nodeClass = nodeClass, nCasterLevel = nCasterLevel, nPactMagicLevel = nPactMagicLevel };
+		local aSpecializationOptions = getSettingOptions(nodeSource);
+		wSelect.requestSelection (sTitle, sMessage, aSpecializationOptions, addSettingHelper, rSettingAdd, 1, 1, true);
+		end
 	end
+end
 
+function getSettingOptions(nodeClass)
+	local aOptions = {};
+		table.insert(aOptions, { text = Interface.getString("build_setting_selectsetting_default"), linkclass = "", linkrecord = "" });
+		for _,v in pairs(DB.getChildrenGlobal("setting")) do
+		table.insert(aOptions, { text = DB.getValue(v, "name", ""), linkclass = "referencesetting", linkrecord = v.getPath() });
+	end
+	return aOptions;
+end
 
-	-- CharManager.updateSkillPoints(window.getDatabaseNode());
-	-- local nodeChar = getDatabaseNode().getParent();
-	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildUpdate", onStatUpdate);
-	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildAdded", onSkillDataUpdate);
-	--	DB.addHandler(DB.getPath(nodeChar, "skilllist"), "onChildDeleted", onSkillDataUpdate);
+function addSettingHelper(aSelection, rClassAdd)
+	if aSelection then
+		if #aSelection ~= 1 then
+			outputUserMessage("char_error_addsetting");
+			return;
+		end
+
+		if aSelection[1] == Interface.getString("build_setting_selectsetting_default") then
+			constructDefaultskilllist();
+			return;
+		end
+
+		local aSettingOptions = getSettingOptions();
+		for _,v in ipairs(aSettingOptions) do
+			if v.text == aSelection[1] then
+--				Debug.chat(v.linkrecord); --addClassFeatureDB(nodeChar, "reference_classability", v.linkrecord, rClassAdd.nodeClass);
+--				Debug.chat(DB.getChildrenGlobal(v.linkrecord,"skills"));
+				local sNode = v.linkrecord;
+				CharManager.addInfoDB(getDatabaseNode().getParent(), "referencesetting", sNode);
+				break;
+			end
+		end
+	end
 end
 
 function onClose()
@@ -51,7 +90,7 @@ function update()
 		local bAllowDelete = w.isCustom();
 		if not bAllowDelete then
 			local sLabel = w.name.getValue();
-			local rSkill = DataCommon.skilldata[sLabel];
+			local rSkill = DataCommon.skilldata_default[sLabel];
 			if rSkill and rSkill.sublabeling then
 				bAllowDelete = true;
 			end
@@ -121,7 +160,7 @@ function constructDefaultskilllist(sListType)
 --		return 1;
 --	end
 
-	local aSystemskilllist = DataCommon.skilldata;
+	local aSystemskilllist = DataCommon.skilldata_default;
 	-- Create missing entries for all known skilllist
 	local entrymap = {};
 	for _,w in pairs(getWindows()) do
@@ -137,7 +176,7 @@ function constructDefaultskilllist(sListType)
 	end
 
 	-- Set properties and create missing entries for all known skilllist
-	for k, t in pairs(DataCommon.skilldata) do
+	for k, t in pairs(DataCommon.skilldata_default) do
 		if not t.sublabeling then
 			local matches = entrymap[k];
 			if not matches then
@@ -171,7 +210,7 @@ function constructDefaultskilllist(sListType)
 end
 
 function addNewInstance(sLabel)
-	local rSkill = DataCommon.skilldata[sLabel];
+	local rSkill = DataCommon.skilldata_default[sLabel];
 	if rSkill and rSkill.sublabeling then
 		local w = createWindow();
 		w.name.setValue(sLabel);
@@ -180,4 +219,17 @@ function addNewInstance(sLabel)
 		w.sublabel.setFocus();
 		onListChanged();
 	end
+end
+
+
+function resolveRefNode(sRecord)
+	local nodeSource = DB.findNode(sRecord);
+	if not nodeSource then
+		local sRecordSansModule = StringManager.split(sRecord, "@")[1];
+		nodeSource = DB.findNode(sRecordSansModule .. "@*");
+		if not nodeSource then
+			ChatManager.SystemMessage(Interface.getString("char_error_missingrecord"));
+		end
+	end
+	return nodeSource;
 end

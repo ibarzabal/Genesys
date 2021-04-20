@@ -35,7 +35,10 @@ function update()
   updateControl("description", bReadOnly, bID);
 	updateControl("source", bReadOnly, bID);
 	updateControl("source_page", bReadOnly, bID);
-
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
+	skills_iadd.setVisible(not bReadOnly);
+	skills_iedit.setVisible(not bReadOnly);
 end
 
 

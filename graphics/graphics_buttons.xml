@@ -136,6 +136,8 @@
 
 
 	<!-- Combat Tracker -->
+	<icon name="button_vehicle" file="graphics/buttons/button_vehicle.png" />
+	<icon name="button_vehicle_down" file="graphics/buttons/button_vehicle_down.png" />
 	<icon name="button_fist" file="graphics/buttons/button_fist.png" />
 	<icon name="button_fist_down" file="graphics/buttons/button_fist_down.png" />
 	<icon name="button_sword" file="graphics/buttons/button_sword.png" />

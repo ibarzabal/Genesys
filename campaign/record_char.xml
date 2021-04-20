@@ -101,6 +101,7 @@
 
 	<sub_charsheet name="vehicle">
 		<class>charsheet_vehicle</class>
+		<fastinit />
 	</sub_charsheet>
 
 

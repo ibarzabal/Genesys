@@ -33,10 +33,14 @@
 						<left offset="15" />
 						<right anchor="center" offset="-15" />
 					</anchored>
-					<icons>open_database</icons>
-					<target>species_archetype</target>
+<!--					<icons>open_database</icons>
+					<target>species_archetype</target> -->
 					<static textres="char_label_species_archetype" />
 				</label_charframetopg>
+				<button_dblink name="button_species">
+					<anchored to="label_species_archetype" position="insidetopleft" offset="-8,0" />
+					<target>species_archetype</target>
+				</button_dblink>
 
 				<linkfield name="species_archetypelink">
 					<anchored to="label_species_archetype" position="belowright" offset="-10,5" width="20" height="20" />
@@ -79,10 +83,15 @@
 						<left anchor="center" offset="15" />
 						<right offset="-15" />
 					</anchored>
-					<icons>open_database</icons>
-					<target>career</target>
+<!--					<icons>open_database</icons>
+					<target>career</target> -->
 					<static textres="char_label_career" />
 				</label_charframetopg>
+				<button_dblink name="button_career">
+					<anchored to="label_char_label_career" position="insidetopleft" offset="-8,0" />
+					<target>career</target>
+				</button_dblink>
+
 				<linkfield name="careerlink">
 					<anchored to="label_char_label_career" position="belowright" offset="-10,5" width="20" height="20" />
 					<description field="career" />

@@ -9,10 +9,10 @@
 	<windowclass name="combattracker_host">
 		<frame>ctbox</frame>
 		<placement>
-			<size width="700" height="500" />
+			<size width="930" height="400" />
 		</placement>
 		<sizelimits>
-			<minimum width="700" height="400" />
+			<minimum width="930" height="400" />
 			<dynamic />
 		</sizelimits>
 		<softclose />
@@ -26,7 +26,7 @@
 			<anchor_ctbox_host_header />
 			<frame_ctbox_host_header_visibility />
 			<buttoncontrol name="button_global_visibility">
-				<anchored to="header_vis" position="insidetopleft" offset="10,8" width="20" height="20" />
+				<anchored to="header_vis" position="insidetopleft" offset="-5,2" width="22" height="22" />
 				<state icon="visibilityoff" tooltipres="ct_tooltip_shownpcallon" />
 				<state icon="visibilityon" tooltipres="ct_tooltip_shownpcalloff" />
 				<script>
@@ -35,64 +35,57 @@
 					end
 				</script>
 			</buttoncontrol>
+			<frame_ctbox_host_header_labels />
 
 			<label_ct name="label_name">
-				<anchored to="headeranchor" position="insidetopleft" offset="33,0">
+				<anchored to="header_labels" position="insidetopleft" offset="5,3">
 					<left offset="50" />
 				</anchored>
 				<static textres="ct_label_name" />
 				<center />
 			</label_ct>
 			<label_ct name="label_init">
-				<anchored to="headeranchor" position="insidetopright" offset="480,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="375,0" width="40" />
 				<static textres="ct_label_init" />
 				<center />
 			</label_ct>
-
 			<label_ct name="label_wounds_threshold">
-				<anchored to="headeranchor" position="insidetopright" offset="435,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="330,0" width="40" />
 				<static textres="ct_label_wounds_threshold" />
 				<center />
 			</label_ct>
 			<label_ct name="label_wounds_current">
-				<anchored to="headeranchor" position="insidetopright" offset="395,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="290,0" width="40" />
 				<static textres="ct_label_wounds_current" />
 				<center />
 			</label_ct>
 			<label_ct name="label_strain_threshold">
-				<anchored to="headeranchor" position="insidetopright" offset="355,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="250,0" width="40" />
 				<static textres="ct_label_strain_threshold" />
 				<center />
 			</label_ct>
 			<label_ct name="label_strain_current">
-				<anchored to="headeranchor" position="insidetopright" offset="312,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="207,0" width="40" />
 				<static textres="ct_label_strain_current" />
 				<center />
 			</label_ct>
-
-
-
-
-
-
 			<label_ct name="label_melee_defense">
-				<anchored to="headeranchor" position="insidetopright" offset="263,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="158,0" width="40" />
 				<static textres="ct_label_melee_defense" />
 				<center />
 			</label_ct>
 			<label_ct name="label_ranged_defense">
-				<anchored to="headeranchor" position="insidetopright" offset="222,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="117,0" width="40" />
 				<static textres="ct_label_ranged_defense" />
 				<center />
 			</label_ct>
 			<label_ct name="label_soak">
-				<anchored to="headeranchor" position="insidetopright" offset="182,0" width="40" />
+				<anchored to="header_labels" position="insidetopright" offset="77,0" width="40" />
 				<static textres="ct_label_soak" />
 				<center />
 			</label_ct>
-
 			<label_ct name="label_npc_category">
-				<anchored to="headeranchor" position="insidetopright" offset="112,0" width="80" />
+				<anchored to="header_labels" position="insidetopright" offset="7,0" width="80" />
 				<static textres="ct_label_npc_category" />
 				<center />
 			</label_ct>
@@ -100,7 +93,7 @@
 
 			<frame_ctbox_host_header_toggles />
 			<buttoncontrol name="button_global_targeting">
-				<anchored to="header_toggles" position="insidetopleft" offset="10,8" width="20" height="20" />
+				<anchored to="header_toggles" position="insidetopleft" offset="7,-3" width="35" height="32" />
 				<state icon="button_section_targeting" />
 				<state icon="button_section_targeting_down" />
 				<script>
@@ -109,8 +102,42 @@
 					end
 				</script>
 			</buttoncontrol>
+			<buttoncontrol name="button_global_characteristic">
+				<anchored to="header_toggles" position="insidetopleft" offset="32,-3" width="35" height="32" />
+				<state icon="button_fist" />
+				<state icon="button_fist_down" />
+				<script>
+					function onValueChanged()
+						window.list.toggleCharacteristics();
+					end
+				</script>
+			</buttoncontrol>
+
+			<buttoncontrol name="button_global_active">
+				<anchored to="header_toggles" position="insidetopleft" offset="57,-3" width="35" height="32" />
+				<state icon="button_sword" />
+				<state icon="button_sword_down" />
+				<script>
+					function onValueChanged()
+						window.list.toggleActive();
+					end
+				</script>
+				<invisible />
+			</buttoncontrol>
+
+			<buttoncontrol name="button_global_vehicle">
+				<anchored to="header_toggles" position="insidetopleft" offset="57,-3" width="35" height="32" />
+				<state icon="button_vehicle" />
+				<state icon="button_vehicle_down" />
+				<script>
+					function onValueChanged()
+						window.list.toggleVehicle();
+					end
+				</script>
+			</buttoncontrol>
+
 			<buttoncontrol name="button_global_spacing">
-				<anchored to="header_toggles" position="insidetopleft" offset="30,8" width="20" height="20" />
+				<anchored to="header_toggles" position="insidetopleft" offset="84,-3" width="35" height="32" />
 				<state icon="button_space" />
 				<state icon="button_space_down" />
 				<script>
@@ -120,7 +147,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="button_global_effects">
-				<anchored to="header_toggles" position="insidetopleft" offset="50,8" width="20" height="20" />
+				<anchored to="header_toggles" position="insidetopleft" offset="115,-3" width="35" height="32" />
 				<state icon="button_effect" />
 				<state icon="button_effect_down" />
 				<script>
@@ -157,34 +184,86 @@
 	</windowclass>
 
 	<windowclass name="ct_entry">
-		<margins control="0,0,0,2" />
+		<margins control="0,0,0,5" />
 		<frame>ctentrybox</frame>
 		<sizelimits>
-			<minimum height="40" />
+			<minimum height="50" />
 		</sizelimits>
 		<script file="ct/scripts/ct_entry.lua" />
 		<sheetdata>
 			<hs name="tokenrefid" />
 			<hs name="tokenrefnode" />
+<!--			<hs name="status" />
 
+			<hsx name="senses" />
+			<hsx name="type" />
+			<hsx name="size" />
+			<hsx name="alignment" />
+			<hnx name="deathsavesuccess" />
+			<hnx name="deathsavefail">
+				<script>
+					function update() window.onHealthChanged(); end
+				</script>
+			</hnx>
+-->
 			<spacer_ctentry_active_top name="active_spacer_top" />
 
 			<button_ctentry_active name="active" />
 			<button_ctentry_choose_next name="ctentry_choose_next" />
-
-
 			<token_ctentry name="token" />
 			<button_ctentry_tokenvis name="tokenvis" />
 			<button_ctentry_isidentified name="isidentified" />
 
 			<anchor_ctentry_right name="rightanchor" />
 			<button_ctentry_idelete name="idelete" />
-			<link_ctentry name="link" />
-			<button_ctentry_activateeffects name="activateeffects" />
-			<button_ctentry_activatespacing name="activatespacing" />
-			<button_ctentry_activatetargeting name="activatetargeting" />
-			<button_ctentry_friendfoe name="friendfoe" />
+			<link_ctentry name="link">
+				<anchored merge="replace" to="rightanchor" width="35" height="35">
+					<top relation="relative" offset="-8" />
+					<right anchor="left" relation="relative" offset="-8" />
+				</anchored>
+			</link_ctentry>
 
+			<button_ctentry_activateeffects name="activateeffects">
+				<anchored merge="replace" to="rightanchor" width="35" height="32">
+					<top relation="relative" />
+					<right anchor="left" relation="relative" offset="0" />
+				</anchored>
+			</button_ctentry_activateeffects>
+			<button_ctentry_activatespacing name="activatespacing">
+				<anchored merge="replace" to="rightanchor" width="35" height="32">
+					<top relation="relative" offset="2"/>
+					<right anchor="left" relation="relative" offset="3"/>
+				</anchored>
+			</button_ctentry_activatespacing>
+
+			<button_ctentry_activateactive name="activateactive">
+				<anchored merge="replace" to="rightanchor" width="35" height="32">
+					<top relation="relative" />
+					<right anchor="left" relation="relative" offset="10"/>
+				</anchored>
+				<invisible />
+			</button_ctentry_activateactive>
+
+			<button_ctentry_activatevehicle name="activatevehicle">
+				<anchored merge="replace" to="rightanchor" width="35" height="32">
+					<top relation="relative" />
+					<right anchor="left" relation="relative" offset="10"/>
+				</anchored>
+			</button_ctentry_activatevehicle>
+
+			<button_ctentry_activatecharacteristics name="activatecharacteristics" />
+			<button_ctentry_activatetargeting name="activatetargeting">
+				<anchored merge="replace" to="rightanchor" width="35" height="32">
+					<top relation="relative"/>
+					<right anchor="left" relation="relative" offset="10" />
+				</anchored>
+			</button_ctentry_activatetargeting>
+			<button_ctentry_friendfoe name="friendfoe">
+				<anchored merge="replace" to="rightanchor" width="35" height="32">
+					<top relation="relative"/>
+					<right anchor="left" relation="relative" offset="2" />
+				</anchored>
+			</button_ctentry_friendfoe>
 
 			<string_ct name="npc_category" source="npc_category">
 				<anchored to="rightanchor" width="60" height="20">
@@ -194,6 +273,7 @@
 				<min value="0" />
 				<hideonvalue value="" />
 				<lineoffset default="off" mergerule="replace">0</lineoffset>
+				<readonly />
 				<!--				<tabtarget prev="hptemp" next="strength" /> -->
 			</string_ct>
 
@@ -228,10 +308,6 @@
 <!--				<tabtarget prev="hptemp" next="strength" /> -->
 			</number_ct_crosslink>
 
-
-
-
-
 			<number_ct_crosslink name="strain_current" source="strain.current">
 				<anchored to="rightanchor" width="30" height="20">
 					<top />
@@ -239,7 +315,7 @@
 				</anchored>
 				<min value="0" />
 				<hideonvalue value="0" />
-<!--				<tabtarget prev="hptemp" next="strength" /> -->
+			<!--				<tabtarget prev="hptemp" next="strength" /> -->
 			</number_ct_crosslink>
 
 			<number_ct_crosslink name="strain_threshold" source="strain.threshold">
@@ -278,20 +354,6 @@
 				<anchored><right offset="-15" /></anchored>
 			</number_ctentry_initresult>
 
-
-<!--
-wounds_current.setLink(nodeChar.createChild("wounds.current", "number"));
-strain_threshold.setLink(nodeChar.createChild("strain.threshold", "number"));
-strain_current.setLink(nodeChar.createChild("strain.current", "number"));
-
-meleedefence.setLink(nodeChar.createChild("armour.meleedefence", "number"));
-rangeddefence.setLink(nodeChar.createChild("armour.rangeddefence", "number"));
-soak.setLink(nodeChar.createChild("armour.soak", "number"));
-
-npc_category.setLink(nodeChar.createChild("npc_category", "string"), true);
--->
-
-
 			<string_ctname name="name" />
 			<string_ctname_nonid name="nonid_name" />
 
@@ -300,13 +362,420 @@ npc_category.setLink(nodeChar.createChild("npc_category", "string"), true);
 			<sub_ctsection_targeting name="sub_targeting" />
 			<frame_ctsection_targeting name="frame_targeting" />
 
-			<!-- Spacing subsection -->
+			<!-- Attributes subsection -->
+			<icon_ctsection name="characteristic_icon">
+				<icon>button_fist_down</icon>
+			</icon_ctsection>
+
+			<number_ct_characteristic name="brawn" source="brawn.current">
+				<anchored >
+					<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="12" />
+					<left parent="characteristic_icon" anchor="right" offset="40" />
+				</anchored>
+				<target>brawn</target>
+			</number_ct_characteristic>
+			<label name="brawn_label">
+				<anchored to="brawn" position="lefthigh" offset="7,0" />
+				<static textres="BR" />
+			</label>
+
+			<number_ct_characteristic name="agility" source="agility.current">
+				<anchored to="brawn" position="righthigh" offset="40,0" />
+				<target>agility</target>
+			</number_ct_characteristic>
+			<label name="agility_label">
+				<anchored to="agility" position="lefthigh" offset="7,0" />
+				<static textres="AG" />
+			</label>
+
+			<number_ct_characteristic name="intellect" source="intellect.current">
+				<anchored to="agility" position="righthigh" offset="40,0" />
+				<target>intellect</target>
+			</number_ct_characteristic>
+			<label name="intellect_label">
+				<anchored to="intellect" position="lefthigh" offset="7,0" />
+				<static textres="IN" />
+			</label>
+
+			<number_ct_characteristic name="cunning" source="cunning.current">
+				<anchored to="intellect" position="righthigh" offset="40,0" />
+				<target>cunning</target>
+			</number_ct_characteristic>
+			<label name="cunning_label">
+				<anchored to="cunning" position="lefthigh" offset="7,0" />
+				<static textres="CU" />
+			</label>
+
+			<number_ct_characteristic name="willpower" source="willpower.current">
+				<anchored to="cunning" position="righthigh" offset="40,0" />
+				<target>willpower</target>
+			</number_ct_characteristic>
+			<label name="willpower_label">
+				<anchored to="willpower" position="lefthigh" offset="7,0" />
+				<static textres="WI" />
+			</label>
+
+			<number_ct_characteristic name="presence" source="presence.current">
+				<anchored to="willpower" position="righthigh" offset="40,0" />
+				<target>presence</target>
+			</number_ct_characteristic>
+			<label name="presence_label">
+				<anchored to="presence" position="lefthigh" offset="7,0" />
+				<static textres="PR" />
+			</label>
+
+			<genericcontrol name="spacer_characteristic">
+				<anchored height="0">
+					<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="5" />
+					<left parent="characteristic_icon" anchor="right" offset="55" />
+					<right offset="-17" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+
+			<frame_ctsub name="frame_characteristics">
+				<anchored>
+					<top parent="characteristic_icon" offset="-4"/>
+					<bottom parent="brawn" offset="10" />
+				</anchored>
+			</frame_ctsub>
+
+		<!-- Vehicle subsection -->
+		<icon_ctsection_vehicle name="vehicle_icon" />
+
+
+		<string_ct name="vehicle_name" source="temp_vehicle.name" >
+			<anchored >
+				<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="12" />
+				<left parent="vehicle_icon" anchor="right" offset="60" />
+			</anchored>
+			 <hideonvalue value="" />
+			 <nolinkwidget />
+			 <readonly />
+		</string_ct>
+
+		<label name="vehicle_name_label">
+			<anchored to="vehicle_name" position="lefthigh" offset="7,0" />
+			<static textres="char_label_vehicle" />
+		</label>
+
+		<string_ct name="vehicle_current_node" source="vehicle_current">
+			<script>
+				function onInit()
+					if self.getValue() =="" then
+						window.activatevehicle.setValue(0);
+					end
+				end
+				function onValueChanged()
+					if self.getValue() =="" then
+						window.activatevehicle.setValue(0);
+					else
+						window.activatevehicle.setValue(1);
+					end
+				end
+			</script>
+			<anchored to="vehicle_name" position="righthigh" offset="20,0" />
+			<readonly />
+			<invisible />
+		</string_ct>
+
+		<label name="v_hull_trauma_label">
+			<anchored to="vehicle_icon" position="righthigh" offset="280,5" />
+			<static textres="ct_label_vehicle_hull_trauma" />
+		</label>
+		<number_ct_vehicle name="v_hull_trauma_threshold" source="temp_vehicle.hull_trauma.threshold">
+			<anchored to="v_hull_trauma_label" position="righthigh" offset="7,0" />
+			<target>temp_vehicle.hull_trauma.threshold</target>
+			<readonly />
+		</number_ct_vehicle>
+		<number_ct_vehicle name="v_hull_trauma_current" source="temp_vehicle.hull_trauma.current">
+			<anchored to="v_hull_trauma_threshold" position="righthigh" offset="10,0" />
+			<target>temp_vehicle.hull_trauma.current</target>
+		</number_ct_vehicle>
+
+		<label name="v_system_strain_label">
+			<anchored to="v_hull_trauma_current" position="righthigh" offset="20,0" />
+			<static textres="ct_label_vehicle_system_strain" />
+		</label>
+		<number_ct_vehicle name="v_system_strain_threshold" source="temp_vehicle.system_strain.threshold">
+			<anchored to="v_system_strain_label" position="righthigh" offset="7,0" />
+			<target>temp_vehicle.system_strain.threshold</target>
+			<readonly />
+		</number_ct_vehicle>
+		<number_ct_vehicle name="v_system_strain_current" source="temp_vehicle.system_strain.current">
+			<anchored to="v_system_strain_threshold" position="righthigh" offset="10,0" />
+			<target>temp_vehicle.system_strain.current</target>
+		</number_ct_vehicle>
+
+		<label name="v_armor_label">
+			<anchored to="v_system_strain_current" position="righthigh" offset="20,0" />
+			<static textres="ct_label_vehicle_armor" />
+		</label>
+		<number_ct_vehicle name="v_armor" source="temp_vehicle.armor">
+			<anchored to="v_armor_label" position="righthigh" offset="7,0" />
+			<target>temp_vehicle.armor</target>
+			<readonly />
+		</number_ct_vehicle>
+
+
+		<label name="v_defense_label">
+			<anchored to="v_armor" position="righthigh" offset="20,0" />
+			<static textres="ct_label_vehicle_defense" />
+		</label>
+		<!-- Genesys Vehicle Defense -->
+		<number_ct_vehicle name="v_defense" source="temp_vehicle.defense">
+			<anchored to="v_defense_label" position="righthigh" offset="7,0" />
+			<target>temp_vehicle.defense</target>
+			<readonly />
+		</number_ct_vehicle>
+
+		<!-- Star Wars Vehicle Defense -->
+<!--
+		<number_ct_vehicle name="v_defense_fore" source="temp_vehicle.defense.fore">
+			<anchored to="v_defense_label" position="righthigh" offset="20,0" />
+			<target>temp_vehicle.defense.fore</target>
+			<readonly />
+		</number_ct_vehicle>
+		<number_ct_vehicle name="v_defense_port" source="temp_vehicle.defense.port">
+			<anchored to="v_defense_label" position="righthigh" offset="5,25" />
+			<target>temp_vehicle.defense.port</target>
+			<readonly />
+		</number_ct_vehicle>
+		<number_ct_vehicle name="v_defense_starboard" source="temp_vehicle.defense.starboard">
+			<anchored to="v_defense_label" position="righthigh" offset="35,25" />
+			<target>temp_vehicle.defense.starboard</target>
+			<readonly />
+		</number_ct_vehicle>
+		<number_ct_vehicle name="v_defense_aft" source="temp_vehicle.defense.aft">
+			<anchored to="v_defense_label" position="righthigh" offset="20,50" />
+			<target>temp_vehicle.defense.aft</target>
+			<readonly />
+		</number_ct_vehicle>
+-->
+
+
+		<string_ct name="vehicle_owner" source="temp_vehicle.owner" >
+			<anchored >
+				<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="2" />
+				<left parent="vehicle_icon" anchor="right" offset="60" />
+			</anchored>
+		  <nolinkwidget />
+			<readonly />
+		</string_ct>
+
+		<label name="vehicle_owner_label">
+			<anchored to="vehicle_owner" position="lefthigh" offset="7,0" />
+			<static textres="vehicle_label_owner" />
+		</label>
+
+		<label_column name="control_skill_label">
+			<anchored >
+				<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="12" />
+				<left parent="vehicle_icon" anchor="right" offset="60" />
+			</anchored>
+			<static textres="vehicle_label_control_skill" />
+		</label_column>
+
+		<skilldicepool name="control_skill">
+			<script file="common/scripts/vehicle_control_skilldicepool.lua" />
+			<anchored to="control_skill_label" width="20" height="20">
+				<top />
+				<left anchor="right" relation="relative" offset="5" />
+			</anchored>
+		</skilldicepool>
+
+		<!-- weapons -->
+		<label_column name="vehicle_weapons_header">
+			<anchored >
+				<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="2" />
+				<left parent="vehicle_icon" anchor="right" offset="60" />
+			</anchored>
+			<static textres="item_header_weapons" />
+		</label_column>
+
+		<list_column name="vehicle_weapons">
+			<anchored >
+				<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="2" />
+				<left parent="vehicle_icon" anchor="right" offset="60" />
+			</anchored>
+			<datasource>.temp_vehicle.weapons</datasource>
+			<class>ref_vehicle_weapon_char</class>
+		</list_column>
+		<!-- weapons END-->
+
+
+		<genericcontrol name="spacer_vehicle">
+			<anchored height="0">
+				<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="5" />
+				<left parent="vehicle_icon" anchor="right" offset="55" />
+				<right offset="-17" />
+			</anchored>
+			<disabled />
+		</genericcontrol>
+
+		<frame_ctsub name="frame_vehicle">
+			<anchored>
+				<top parent="characteristic_icon" offset="-4"/>
+				<bottom parent="vehicle_weapons" offset="10" />
+			</anchored>
+		</frame_ctsub>
+
+			<!-- Offense subsection -->
+			<icon_ctsection name="activeicon">
+				<icon>button_sword_down</icon>
+			</icon_ctsection>
+
+			<buttonfield name="reaction">
+				<anchored to="activeicon" position="righthigh" offset="55,5" width="12" height="20" />
+				<state icon="button_checkoff" tooltipres="ct_tooltip_reactionoff" />
+				<state icon="button_checkon" tooltipres="ct_tooltip_reactionon" />
+			</buttonfield>
+			<label name="reaction_label">
+				<anchored to="reaction" position="lefthigh" offset="5,0"/>
+				<static textres="ct_label_reaction" />
+			</label>
+			<number_ct_init name="init">
+				<anchored to="activeicon" position="righthigh" offset="110,5" />
+			</number_ct_init>
+			<label name="initlabel">
+				<anchored to="init" position="lefthigh" offset="10,0"/>
+				<static textres="init" />
+			</label>
+			<number_ct name="ac">
+				<anchored to="init" position="righthigh" offset="40,0" />
+				<description textres="armorclass" />
+			</number_ct>
+			<label name="aclabel">
+				<anchored to="ac" position="lefthigh" offset="10,0"/>
+				<static textres="ac" />
+			</label>
+			<string_ct name="speed">
+				<anchored to="ac" position="righthigh" offset="45,0" height="20">
+					<right parent="" offset="-17" />
+				</anchored>
+			</string_ct>
+			<label name="speedlabel">
+				<anchored to="speed" position="lefthigh" offset="5,0"/>
+				<static textres="ct_label_speed" />
+			</label>
+
+			<genericcontrol name="spacer_action">
+				<anchored height="0">
+					<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="32" />
+					<left parent="activeicon" anchor="right" offset="75" />
+					<right offset="-17" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+
+			<list_ct_actions name="traits">
+				<datasource>.traits</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="traits_label">
+				<anchored to="traits" />
+				<static textres="ct_label_traits" />
+			</label_ct_actions>
+
+			<list_ct_actions name="actions">
+				<datasource>.actions</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="actions_label">
+				<anchored to="actions" />
+				<static textres="ct_label_actions" />
+			</label_ct_actions>
+			<button_ct_actions_emptyadd name="actions_emptyadd">
+				<anchored to="actions" />
+				<target>actions</target>
+			</button_ct_actions_emptyadd>
+
+			<list_ct_actions name="reactions">
+				<datasource>.reactions</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="reactions_label">
+				<anchored to="reactions" />
+				<static textres="ct_label_reactions" />
+			</label_ct_actions>
+
+			<list_ct_actions name="legendaryactions">
+				<datasource>.legendaryactions</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="legendaryactions_label">
+				<anchored to="legendaryactions" />
+				<static textres="ct_label_legendaryactions" />
+			</label_ct_actions>
+
+			<list_ct_actions name="lairactions">
+				<datasource>.lairactions</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="lairactions_label">
+				<anchored to="lairactions" />
+				<static textres="ct_label_lairactions" />
+			</label_ct_actions>
+
+			<list_ct_actions name="innatespells">
+				<datasource>.innatespells</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="innatespells_label">
+				<anchored to="innatespells" />
+				<static textres="ct_label_innatespells" />
+			</label_ct_actions>
+<!--
+			<subwindow name="spellslots">
+				<anchored height="24">
+					<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="3" />
+					<left parent="activeicon" anchor="right" offset="75" />
+					<right offset="-17" />
+				</anchored>
+				<class>npc_spellslots</class>
+			</subwindow>
+			<list_ct_actions name="spells">
+				<datasource>.spells</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="spells_label">
+				<anchored to="spellslots" />
+				<static textres="ct_label_spells" />
+			</label_ct_actions>
+-->
+			<genericcontrol name="spacer_action2">
+				<anchored height="0">
+					<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="3" />
+					<left parent="activeicon" anchor="right" offset="75" />
+					<right offset="-17" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+
+			<frame_ctsub name="frame_active">
+				<anchored>
+					<top parent="activeicon" offset="-4"/>
+					<bottom parent="spacer_action2" offset="8" />
+				</anchored>
+			</frame_ctsub>
+
+			<!-- Space subsection -->
 			<icon_ctsection_spacing name="spacingicon" />
-			<number_ctentry_space name="space" />
+			<number_ctentry_space name="space">
+				<default>5</default>
+			</number_ctentry_space>
 			<label_ctentry_space name="spacelabel" />
-			<number_ctentry_reach name="reach" />
+			<number_ctentry_reach name="reach">
+				<default>5</default>
+			</number_ctentry_reach>
 			<label_ctentry_reach name="reachlabel" />
-			<frame_ctsection_spacing name="frame_spacing" />
+			<genericcontrol name="spacer_space">
+				<anchored height="0">
+					<top parent="active_spacer_top" anchor="bottom" relation="relative" offset="2" />
+					<left parent="activeicon" anchor="right" offset="75" />
+					<right offset="-17" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+			<frame_ctsection_spacing name="frame_spacing">
+				<anchored>
+					<top parent="spacingicon" offset="-4"/>
+					<bottom parent="spacer_space" offset="8"/>
+				</anchored>
+			</frame_ctsection_spacing>
 
 			<!-- Effect subsection -->
 			<icon_ctsection_effect name="effecticon" />
@@ -323,123 +792,66 @@ npc_category.setLink(nodeChar.createChild("npc_category", "string"), true);
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ct_effect">
-		<margins control="0,0,0,2" />
-		<script file="ct/scripts/ct_effect.lua" />
-		<sheetdata>
-			<base_ct_effect name="base" />
-
-			<anchor_ct_effect_left name="leftanchor" />
-			<button_ct_effect_isactive name="isactive" />
-			<button_ct_effect_isgmonly name="isgmonly" />
-
-			<anchor_ct_effect_right name="rightanchor" />
-			<button_ct_effect_idelete name="idelete" />
-			<button_ct_effect_targetadd name="targeting_add_button" />
-			<number_ct_effect_init name="init" />
-			<number_ct_effect_duration name="duration" />
-
-			<string_ct_effect name="label" />
-
-			<hs_ct_effect_source name="source_name" />
-			<string_ct_effect_source name="source" />
-			<string_ct_effect_targets name="target_summary" />
-		</sheetdata>
-	</windowclass>
-
-	<windowclass name="ct_targets">
+	<windowclass name="ct_power">
 		<margins control="0,0,0,2" />
 		<sheetdata>
-			<windowlist name="targets">
-				<anchored>
-					<top />
-					<left />
-					<right offset="-50" />
+			<linkcontrol name="shortcut">
+				<anchored position="insidetopleft" offset="5,2" width="20" height="20" />
+				<class>ct_power_detail</class>
+			</linkcontrol>
+			<string_textlistitem name="value">
+				<anchored position="insidetopleft" offset="30,2">
+					<right />
 				</anchored>
-				<datasource>.targets</datasource>
-				<class>ct_target</class>
-				<noscroll />
-				<columns>
-					<width>26</width>
-					<fillwidth />
-				</columns>
-			</windowlist>
-
-			<buttoncontrol name="targeting_add_button">
-				<bounds>-45,2,20,20</bounds>
-				<icon normal="button_targeting" pressed="button_targeting_down" />
-				<tooltip textres="ct_tooltip_dragtarget" />
-				<script>
-					function onInit()
-						registerMenuItem(Interface.getString("ct_menu_targeting"), "goto", 4);
-						registerMenuItem(Interface.getString("ct_menu_targetingfriend"), "turn", 4, 3);
-						registerMenuItem(Interface.getString("ct_menu_targetingnonfriend"), "mask", 4, 5);
-					end
-
-					function onDragStart(button, x, y, draginfo)
-						local nodeWin = window.getDatabaseNode();
-						if not nodeWin then
-							return false;
-						end
-						draginfo.setType("targeting");
-						draginfo.setIcon("drag_targeting");
-						draginfo.setShortcutData(window.getClass(), nodeWin.getNodeName());
-						return true;
-					end
-
-					function onMenuSelection(selection, subselection)
-						if selection == 4 then
-							if subselection == 3 then
-								TargetingManager.setCTFactionTargets(window.getDatabaseNode());
-							elseif subselection == 5 then
-								TargetingManager.setCTFactionTargets(window.getDatabaseNode(), true);
-							end
-						end
-					end
-				</script>
-			</buttoncontrol>
-
-			<buttoncontrol name="targeting_clear_button">
-				<bounds>-20,2,20,20</bounds>
-				<icon normal="button_clear" pressed="button_clear_down" />
-				<tooltip textres="ct_tooltip_cleartarget" />
-				<script>
-					function onButtonPress()
-						TargetingManager.clearCTTargets(window.getDatabaseNode());
-					end
-				</script>
-			</buttoncontrol>
+				<multilinespacing>20</multilinespacing>
+				<lineoffset default="on">1</lineoffset>
+				<nohighlight />
+				<actorpath>....</actorpath>
+				<script file="ct/scripts/ct_power.lua" />
+			</string_textlistitem>
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ct_target">
-		<margins control="0,0,3,2" />
-		<script file="ct/scripts/ct_target.lua" />
+	<windowclass name="ct_power_detail">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="300" height="300" />
+		</placement>
+		<sizelimits>
+			<dynamic />
+		</sizelimits>
 		<sheetdata>
-			<hs name="noderef">
-				<script>
-					function onValueChanged()
-						window.onRefChanged();
-					end
-				</script>
-			</hs>
+			<stringfield name="name">
+				<anchored position="insidetop" offset="-10,10" />
+				<frame name="headergray" offset="5,5,5,5" />
+				<font>sheetlabel</font>
+				<multilinespacing>20</multilinespacing>
+				<readonly />
+			</stringfield>
 
-			<tokencontrol name="token">
-				<bounds>3,2,20,20</bounds>
-				<empty>token_empty</empty>
-				<disable />
-				<tooltip nodelay="true" />
-				<script>
-					function onClickDown(button, x, y)
-						return true;
-					end
+			<basicstring name="desc">
+				<anchored>
+					<top parent="name" anchor="bottom" offset="7" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-25" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<readonly />
+			</basicstring>
+			<scrollbar>
+				<anchored to="desc" />
+				<target>desc</target>
+			</scrollbar>
 
-					function onClickRelease(button, x, y)
-						window.removeTarget();
-						return true;
-					end
-				</script>
-			</tokencontrol>
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ct_effect" merge="join">
+		<sheetdata>
+			<button_ct_effect_apply name="apply" insertbefore="rightanchor" />
 		</sheetdata>
 	</windowclass>
 </root>

@@ -106,15 +106,21 @@
 				<anchored to="skills_header" position="righthigh" offset="-20,0" />
 				<target>skills</target>
 			</button_iedit>
-			<button_iadd name="skills_iadd">
+			<button_iadd_dblink name="skills_iadd">
 				<anchored to="skills_iedit" position="lefthigh" offset="5,0" />
-				<target>skills</target>
-			</button_iadd>
+				<target>skill</target>
+			</button_iadd_dblink>
+
+
+
 
 			<list_column name="skills">
 				<datasource>.skills</datasource>
 				<class>ref_setting_skill</class>
-				<sortby><control>name</control></sortby>
+				<sortby>
+					<control>category</control>
+					<control>name</control>
+				</sortby>
 				<empty mergerule="replace" font="list-empty" textres="empty_skills_label" />
 			</list_column>
 		</sheetdata>

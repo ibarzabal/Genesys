@@ -271,6 +271,7 @@
 			<subwindow name="vehicle">
 				<bounds>20,90,-20,-10</bounds>
 				<class>charsheet_vehicle</class>
+				<fastinit />
 			</subwindow>
 
 
