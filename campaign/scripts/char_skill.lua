@@ -46,9 +46,10 @@ end
 -- 	end
 -- end
 
-function onStatUpdate()
-	stat.update(characteristic.getStringValue());
-end
+--function onStatUpdate()
+--	Debug.chat("char_skill.onStatUpdate executed");
+----	stat.update(characteristic.getStringValue());
+--end
 
 -- This function is called to set the entry to non-custom or custom.
 -- Custom entries have configurable stats and editable labels.

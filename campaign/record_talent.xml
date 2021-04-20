@@ -29,6 +29,8 @@
 				end
 			end
 		</script>
+
+
 		<sheetdata>
 			<sub_ref_header name="header">
 				<class>ref_talent_header</class>
@@ -147,4 +149,51 @@
 
 		</sheetdata>
 	</windowclass>
+
+
+	<windowclass name="talentsmall">
+		<sizelimits>
+			<maximum>
+				<height>20</height>
+			</maximum>
+		</sizelimits>
+		<sheetdata>
+			<windowbutton name="open">
+				<bounds>0,1,20,20</bounds>
+				<class>referencetalent</class>
+			</windowbutton>
+			<basestringfield name="name">
+				<bounds>21,4,-1,17</bounds>
+				<empty>&#171; New Talent &#187;</empty>
+				<disabled />
+			</basestringfield>
+			<basestringfield name="ranked">
+				<bounds>21,4,-1,17</bounds>
+				<disabled />
+				<invisible />
+					<script>
+					function onInit()
+						if super.onInit then super.onInit() end
+
+						onValueChanged();
+					end
+
+					function onValueChanged()
+						if getValue() == "ranked" or getValue() == "Yes" then
+							window.ranks.setVisible(true);
+						else
+							window.ranks.setVisible(false);
+						end
+					end
+				</script>
+			</basestringfield>
+			<basenumberfield name="ranks">
+				<bounds>-20,4,-1,17</bounds>
+				<disabled />
+			</basenumberfield>
+		</sheetdata>
+	</windowclass>
+
+
+
 </root>

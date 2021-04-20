@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
 
-	<windowclass name="abilitysmall">
+	<windowclass name="criticalsmall">
 		<sizelimits>
 			<maximum>
 				<height>20</height>
@@ -10,18 +10,18 @@
 		<sheetdata>
 			<windowbutton name="open">
 				<bounds>0,1,20,20</bounds>
-				<class>referenceracialtrait</class>
+				<class>critical</class>
 			</windowbutton>
 			<basestringfield name="name">
 				<bounds>21,4,-1,17</bounds>
-				<empty>&#171; New Ability &#187;</empty>
+				<empty>&#171; New Critical &#187;</empty>
 				<disabled />
 			</basestringfield>
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ability">
-		<frame>abilitysheet</frame>
+	<windowclass name="critical">
+		<frame>referencepage</frame>
 		<placement>
 			<size>
 				<width>300</width>
@@ -31,17 +31,6 @@
 		<minimize>minimized_reference</minimize>
 		<playercontrol />
 		<sharable />
-		<script>
-			function onLockChanged()
-				if header.subwindow then
-					header.subwindow.update();
-				end
-				if content.subwindow then
-					content.subwindow.update();
-				end
-			end
-		</script>
-
 		<tooltip>
 			<field>name</field>
 		</tooltip>
@@ -55,7 +44,7 @@
 				<anchored>
 					<to>main_name</to>
 				</anchored>
-				<static>Species and Special Ability</static>
+				<static>Critical</static>
 			</sheetframetitle>
 
 			<windowshortcut name="main_name_shortcut">
@@ -68,7 +57,7 @@
 						<width>20</width>
 					</size>
 				</anchored>
-				<class>ability</class>
+				<class>critical</class>
 			</windowshortcut>
 			<basestringfield name="main_name_name" source="name">
 				<anchored>
@@ -80,12 +69,52 @@
 						<width>200</width>
 					</size>
 				</anchored>
-				<empty>&#171; New Ability &#187;</empty>
+				<empty>&#171; New Critical &#187;</empty>
+				<tabtarget>
+					<next>main_details_severity</next>
+					<prev>main_details_severity</prev>
+				</tabtarget>
 			</basestringfield>
+
+<!-- DETAILS -->
+			<sheetframe name="main_details">
+				<bounds>14,61,275,52</bounds>
+			</sheetframe>
+			<sheetframetitle name="main_main_title">
+				<anchored>
+					<to>main_details</to>
+				</anchored>
+				<static>Details</static>
+			</sheetframetitle>
+
+			<!-- SEVERITY -->
+			<sheetlabel>
+				<anchored>
+					<to>main_details</to>
+					<offset>17,19</offset>
+					<size>
+						<width>209</width>
+					</size>
+				</anchored>
+				<static>Severity</static>
+			</sheetlabel>
+			<sheetnumberfield name="main_details_severity" source="severity">
+				<anchored>
+					<to>main_details</to>
+					<offset>226,19</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>main_name_name</next>
+					<prev>main_name_name</prev>
+				</tabtarget>
+			</sheetnumberfield>
 
 <!-- DESCRIPTION -->
 			<sheetframe name="main_description">
-				<bounds>14,61,275,260</bounds>
+				<bounds>14,110,275,211</bounds>
 			</sheetframe>
 			<sheetframetitle name="main_description_title">
 				<anchored>
@@ -126,7 +155,7 @@
 				<target>main_description_description</target>
 			</scrollbar>
 
-			<closebutton />
+			<close_referencepage />
 		</sheetdata>
 	</windowclass>
 

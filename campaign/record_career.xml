@@ -168,6 +168,7 @@
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
 				text.setReadOnly(bReadOnly);
 			end
+
 		</script>
 		<sheetdata>
 			<sub_record_header name="header">

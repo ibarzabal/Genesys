@@ -103,17 +103,17 @@ function addSkillDice(skillnode, dice)
 		local characteristicnode = nil;
 		if characteristictype ~= "" then
 			if characteristictype == "AG" then
-				characteristicnode = skillnode.getChild("...characteristics.agility.score");
+				characteristicnode = skillnode.getChild("...agility.current");
 			elseif characteristictype == "BR" then
-				characteristicnode = skillnode.getChild("...characteristics.brawn.score");
+				characteristicnode = skillnode.getChild("...brawn.current");
 			elseif characteristictype == "IN" then
-				characteristicnode = skillnode.getChild("...characteristics.intellect.score");
+				characteristicnode = skillnode.getChild("...intellect.current");
 			elseif characteristictype == "CU" then
-				characteristicnode = skillnode.getChild("...characteristics.cunning.score");
+				characteristicnode = skillnode.getChild("...cunning.current");
 			elseif characteristictype == "WI" then
-				characteristicnode = skillnode.getChild("...characteristics.willpower.score");
+				characteristicnode = skillnode.getChild("...willpower.current");
 			elseif characteristictype == "PR" then
-				characteristicnode = skillnode.getChild("...characteristics.presence.score");
+				characteristicnode = skillnode.getChild("...presence.current");
 			end
 		end
 

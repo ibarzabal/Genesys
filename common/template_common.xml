@@ -5,15 +5,363 @@
   attribution and copyright information.
 -->
 
+
 <root>
 
-  <template name="metalplate">
-		<stringcontrol>
-			<frame name="metalplate" offset="10,2,10,2"/>
-			<font>subwindowtitle</font>
-			<nodrag />
-			<readonly />
-		</stringcontrol>
-	</template>
-  
+<!-- Genesys templates -->
+
+<template name="basestringcontrol">
+  <stringcontrol>
+    <font>sheetlabel</font>
+    <underlineoffset>-3</underlineoffset>
+    <nodrop />
+    <nodrag />
+<!--    <script file="common/scripts/basestringcontrol.lua" />  This is an old implementation of interface.string   -->
+  </stringcontrol>
+</template>
+
+<template name="socketedlist">
+  <basewindowlist>
+    <script file="common/scripts/socketedlist.lua" />
+  </basewindowlist>
+</template>
+
+
+<template name="sheetframe">
+  <frame_char />
+</template>
+
+<template name="rechargenumberfield">
+  <basicnumber/>
+<!--   <chitnumberfield> -->
+<!--     <chit>recharge</chit> -->
+<!--     <allowdrop>true</allowdrop> -->
+<!--     <script file="classes/common/rechargenumberfield.lua" /> -->
+<!--   </chitnumberfield> -->
+</template>
+
+
+<windowclass name="empty">
+  <sheetdata>
+  </sheetdata>
+</windowclass>
+
+
+
+<template name="sheetframelabel">
+  <basestringcontrol>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width>27</width>
+        <height>20</height>
+      </size>
+    </anchored>
+    <center />
+    <font>sheetlabelinline</font>
+  </basestringcontrol>
+</template>
+
+
+<template name="sheetframetitle">
+  <sheettitle>
+    <anchored>
+      <position>insidetop</position>
+      <offset>0,8</offset>
+    </anchored>
+    <center />
+  </sheettitle>
+</template>
+
+
+<template name="sheetlabel">
+  <basestringcontrol>
+    <font>sheetlabel</font>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <height>20</height>
+      </size>
+    </anchored>
+  </basestringcontrol>
+</template>
+
+
+<template name="sheetlist">
+  <basewindowlist>
+    <allowdelete />
+    <useallmodules merge="delete" />
+    <script file="common/scripts/sheetlist.lua" />
+  </basewindowlist>
+</template>
+
+
+<template name="sheetcharacteristicvalue">
+  <sheetnumberfield>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width>32</width>
+        <height>32</height>
+      </size>
+    </anchored>
+    <script file="campaign/scripts/sheetcharacteristicvalue.lua" />
+  </sheetnumberfield>
+</template>
+
+
+
+
+
+
+<!-- Placeholder templates  replace after done with conversion -->
+<template name="basewindowlist">
+  <windowlist>
+    <useallmodules />
+    <script file="common/scripts/basewindowlist.lua" />
+  </windowlist>
+</template>
+
+
+<!-- JOHN: use linkfield instead??? -->
+<template name="windowbutton">
+  <windowshortcut>
+    <icon>
+      <pressed>button_emptytarget</pressed>
+    </icon>
+    <script file="common/scripts/windowbutton.lua" />
+  </windowshortcut>
+</template>
+
+
+
+<template name="sheetnumberfield">
+  <basenumberfield>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width mergerule="replace">25</width>
+        <height mergerule="replace">17</height>
+      </size>
+    </anchored>
+    <frame mergerule="replace">
+      <name>fielddark</name>
+      <offset>4,5,4,3</offset>
+    </frame>
+    <script file="common/scripts/sheetnumberfield.lua" />
+  </basenumberfield>
+</template>
+
+<template name="sheettitle">
+  <basestringcontrol>
+    <font>sheetlabelinline</font>
+    <staticcase>upper</staticcase>
+  </basestringcontrol>
+</template>
+
+
+<template name="windowshortcut">
+  <buttoncontrol>
+    <icon>
+      <normal>button_link</normal>
+      <pressed>button_link_down</pressed>
+    </icon>
+    <script file="common/scripts/windowshortcut.lua" />
+  </buttoncontrol>
+</template>
+
+<template name="basestringfield">
+  <stringfield>
+    <font>sheetlabel</font>
+    <selectioncolor>#90ffffff</selectioncolor>
+    <underlineoffset>-3</underlineoffset>
+    <nodrop />
+    <nodrag />
+    <script file="common/scripts/basestringfield.lua" />
+  </stringfield>
+</template>
+
+<template name="baseformattedtextfield">
+  <formattedtextfield>
+    <font>
+      <normal>chatfont</normal>
+      <bold>narratorfont</bold>
+      <italic>reference-i</italic>
+      <bolditalic>reference-bi</bolditalic>
+      <title>sheetlabel</title>
+    </font>
+    <linkicon>
+      <link>button_link</link>
+      <emptylink>button_emptytarget</emptylink>
+    </linkicon>
+    <icon>
+      <chat>button_speak</chat>
+    </icon>
+    <!--<footer>footer_narrow</footer>-->
+    <selectioncolor>#FFD296</selectioncolor>
+    <empty>Click to enter text</empty>
+    <script file="common/scripts/baseformattedtextfield.lua" />
+  </formattedtextfield>
+</template>
+
+<template name="sheetformattedtextfield">
+  <baseformattedtextfield>
+    <script file="common/scripts/sheetformattedtextfield.lua" />
+  </baseformattedtextfield>
+</template>
+
+
+
+<template name="weaponskillcontrol">
+  <genericcontrol>
+    <frame>
+      <name>fielddark</name>
+      <offset>4,5,4,4</offset>
+    </frame>
+    <anchored>
+      <size>
+        <width>25</width>
+        <height>16</height>
+      </size>
+    </anchored>
+    <script file="common/scripts/weaponskillcontrol.lua" />
+  </genericcontrol>
+</template>
+
+
+<template name="basenumberfield">
+  <basicnumber>
+    <font>sheetlabel</font>
+    <color>ff000000</color>
+    <zerocolor>20000000</zerocolor>
+    <minvalue>0</minvalue>
+    <noreset />
+    <nodrop />
+    <nodrag />
+   <script file="common/scripts/basenumberfield.lua" />
+  </basicnumber>
+</template>
+
+
+<template name="rangecontrol">
+  <genericcontrol>
+    <frame>
+      <name>fielddark</name>
+      <offset>4,5,4,4</offset>
+    </frame>
+    <anchored>
+      <size>
+        <width>25</width>
+        <height>16</height>
+      </size>
+    </anchored>
+    <tooltip textres="tooltip_weapon_range"/>
+    <script file="common/scripts/rangecontrol.lua" />
+  </genericcontrol>
+</template>
+
+<template name="rangecontrolh">
+  <genericcontrol>
+    <frame>
+      <name>fielddark</name>
+      <offset>4,5,4,4</offset>
+    </frame>
+    <anchored>
+      <size>
+        <width>45</width>
+        <height>20</height>
+      </size>
+    </anchored>
+    <tooltip textres="tooltip_weapon_range"/>
+    <script file="common/scripts/rangecontrol.lua" />
+  </genericcontrol>
+</template>
+
+
+
+<template name="weapondicepool">
+  <buttoncontrol>
+    <icon>
+      <normal>textentry_die</normal>
+    </icon>
+    <script file="common/scripts/weapondicepool.lua" />
+  </buttoncontrol>
+</template>
+
+<template name="sheetnumbercontrol">
+  <basenumbercontrol>
+    <anchored>
+      <position>insidetopleft</position>
+      <size>
+        <width mergerule="replace">25</width>
+        <height mergerule="replace">17</height>
+      </size>
+    </anchored>
+    <frame mergerule="replace">
+      <name>fielddark</name>
+      <offset>4,5,4,3</offset>
+    </frame>
+    <script file="common/scripts/sheetnumbercontrol.lua" />
+  </basenumbercontrol>
+</template>
+
+<template name="basenumbercontrol">
+  <numbercontrol>
+    <font>sheetlabel</font>
+    <color>ff000000</color>
+    <zerocolor>20000000</zerocolor>
+    <noreset />
+    <nodrop />
+    <nodrag />
+    <keyeditframe>
+      <name>sheetfocus</name>
+      <offset>4,5,4,3</offset>
+    </keyeditframe>
+    <script file="common/scripts/basenumbercontrol.lua" />
+  </numbercontrol>
+</template>
+
+<!-- <template name="sheetstringfield"> -->
+<!--   <basestringfield> -->
+<!--     <frame> -->
+<!--       <name>textline</name> -->
+<!--     </frame> -->
+<!--     <anchored> -->
+<!--       <size> -->
+<!--         <height>20</height> -->
+<!--       </size> -->
+<!--     </anchored> -->
+<!--     <script file="common/scripts/sheetstringfield.lua" /> -->
+<!--   </basestringfield> -->
+<!-- </template> -->
+
+<template name="sheetstringfield">
+  <string_labeled>
+    <anchored>
+      <size>
+        <height>20</height>
+      </size>
+    </anchored>
+  </string_labeled>
+</template>
+
+<template name="woundnumberfield">
+  <chitnumberfield>
+    <script file="common/scripts/woundnumberfield.lua" />
+  </chitnumberfield>
+</template>
+
+<template name="chitnumberfield">
+  <sheetnumberfield>
+    <script file="common/scripts/chitnumberfield.lua" />
+  </sheetnumberfield>
+</template>
+
+<template name="strainnumberfield">
+  <chitnumberfield>
+    <script file="common/scripts/strainnumberfield.lua" />
+  </chitnumberfield>
+</template>
+
+
 </root>

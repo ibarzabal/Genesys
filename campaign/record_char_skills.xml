@@ -10,135 +10,278 @@
 		<script file="campaign/scripts/char_main.lua" />
 		<sheetdata>
 
-			<!-- Characteristics -->
-			<frame_char name="characteristicsframe">
-				<bounds>15,35,363,87</bounds>
-			</frame_char>
 
-			<string_labeled name="characteristics_label">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="140,-2">
-					<right parent="characteristicsframe" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>characteristics</labelres>
-			</string_labeled>
+			<!-- CHARACTERISTICS -->
+						<frame_char name="main_characteristics">
+							<bounds>14,15,351,87</bounds>
+						</frame_char>
+						<sheetframetitle name="main_characteristics_title">
+							<anchored>
+								<to>main_characteristics</to>
+							</anchored>
+							<static>Characteristics</static>
+						</sheetframetitle>
 
-			<number_charabilityscore name="brawn" source="characteristics.brawn.score">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="17,24" />
-				<description textres="char_tooltip_str" />
-			</number_charabilityscore>
-			<string_labeled name="brawn_label">
-				<anchored to="brawn" position="insidetopleft" offset="-1,24">
-					<right parent="brawn" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>brawn</labelres>
-			</string_labeled>
+						<!-- BRAWN -->
+						<sheetcharacteristicvalue name="main_characteristics_brawn_current" source="brawn.current">
+							<anchored>
+								<to>main_characteristics</to>
+								<offset>17,24</offset>
+							</anchored>
+						</sheetcharacteristicvalue>
+						<sheettitle>
+							<anchored>
+								<top>
+									<parent>main_characteristics_brawn_current</parent>
+									<anchor>bottom</anchor>
+									<offset>3</offset>
+								</top>
+								<left>
+									<parent>main_characteristics_brawn_current</parent>
+									<anchor>left</anchor>
+									<offset>-20</offset>
+								</left>
+								<right>
+									<parent>main_characteristics_brawn_current</parent>
+									<anchor>right</anchor>
+									<offset>20</offset>
+								</right>
+								<size>
+									<height>20</height>
+								</size>
+							</anchored>
+							<center />
+							<static>Brawn</static>
+						</sheettitle>
 
-			<number_charabilityscore name="agility" source="characteristics.agility.score">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="76,24" />
-				<description textres="char_tooltip_dex" />
-			</number_charabilityscore>
-			<string_labeled name="agility_label">
-				<anchored to="agility" position="insidetopleft" offset="-4,25">
-					<right parent="agility" anchor="left" offset="-5"/>
-				</anchored>
-				<labelres>agility</labelres>
-			</string_labeled>
+						<!-- AGILITY-->
+						<sheetcharacteristicvalue name="main_characteristics_agility_current" source="agility.current">
+							<anchored>
+								<to>main_characteristics</to>
+								<offset>73,24</offset>
+							</anchored>
+						</sheetcharacteristicvalue>
+						<sheettitle>
+							<anchored>
+								<top>
+									<parent>main_characteristics_agility_current</parent>
+									<anchor>bottom</anchor>
+									<offset>3</offset>
+								</top>
+								<left>
+									<parent>main_characteristics_agility_current</parent>
+									<anchor>left</anchor>
+									<offset>-20</offset>
+								</left>
+								<right>
+									<parent>main_characteristics_agility_current</parent>
+									<anchor>right</anchor>
+									<offset>20</offset>
+								</right>
+								<size>
+									<height>20</height>
+								</size>
+							</anchored>
+							<center />
+							<static>Agility</static>
+						</sheettitle>
 
-			<number_charabilityscore name="intellect" source="characteristics.intellect.score">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="135,24" />
-				<description textres="char_tooltip_con" />
-			</number_charabilityscore>
-			<string_labeled name="intellect_label">
-				<anchored to="intellect" position="insidetopleft" offset="-8,25">
-					<right parent="intellect" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>intellect</labelres>
-			</string_labeled>
+						<!-- INTELLECT-->
+						<sheetcharacteristicvalue name="main_characteristics_intellect_current" source="intellect.current">
+							<anchored>
+								<to>main_characteristics</to>
+								<offset>129,24</offset>
+							</anchored>
+						</sheetcharacteristicvalue>
+						<sheettitle>
+							<anchored>
+								<top>
+									<parent>main_characteristics_intellect_current</parent>
+									<anchor>bottom</anchor>
+									<offset>3</offset>
+								</top>
+								<left>
+									<parent>main_characteristics_intellect_current</parent>
+									<anchor>left</anchor>
+									<offset>-20</offset>
+								</left>
+								<right>
+									<parent>main_characteristics_intellect_current</parent>
+									<anchor>right</anchor>
+									<offset>20</offset>
+								</right>
+								<size>
+									<height>20</height>
+								</size>
+							</anchored>
+							<center />
+							<static>Intellect</static>
+						</sheettitle>
 
-			<number_charabilityscore name="cunning" source="characteristics.cunning.score">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="194,24" />
-				<description textres="char_tooltip_int" />
-			</number_charabilityscore>
-			<string_labeled name="cunning_label">
-				<anchored to="cunning" position="insidetopleft" offset="-6,25">
-					<right parent="cunning" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>cunning</labelres>
-			</string_labeled>
+						<!-- CUNNING-->
+						<sheetcharacteristicvalue name="main_characteristics_cunning_current" source="cunning.current">
+							<anchored>
+								<to>main_characteristics</to>
+								<offset>185,24</offset>
+							</anchored>
+						</sheetcharacteristicvalue>
+						<sheettitle>
+							<anchored>
+								<top>
+									<parent>main_characteristics_cunning_current</parent>
+									<anchor>bottom</anchor>
+									<offset>3</offset>
+								</top>
+								<left>
+									<parent>main_characteristics_cunning_current</parent>
+									<anchor>left</anchor>
+									<offset>-20</offset>
+								</left>
+								<right>
+									<parent>main_characteristics_cunning_current</parent>
+									<anchor>right</anchor>
+									<offset>20</offset>
+								</right>
+								<size>
+									<height>20</height>
+								</size>
+							</anchored>
+							<center />
+							<static>Cunning</static>
+						</sheettitle>
 
-			<number_charabilityscore name="willpower" source="characteristics.willpower.score">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="253,24" />
-				<description textres="char_tooltip_wis" />
-			</number_charabilityscore>
-			<string_labeled name="willpower_label">
-				<anchored to="willpower" position="insidetopleft" offset="-14,25">
-					<right parent="willpower" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>willpower</labelres>
-			</string_labeled>
+						<!-- WILLPOWER-->
+						<sheetcharacteristicvalue name="main_characteristics_willpower_current" source="willpower.current">
+							<anchored>
+								<to>main_characteristics</to>
+								<offset>241,24</offset>
+							</anchored>
+						</sheetcharacteristicvalue>
+						<sheettitle>
+							<anchored>
+								<top>
+									<parent>main_characteristics_willpower_current</parent>
+									<anchor>bottom</anchor>
+									<offset>3</offset>
+								</top>
+								<left>
+									<parent>main_characteristics_willpower_current</parent>
+									<anchor>left</anchor>
+									<offset>-20</offset>
+								</left>
+								<right>
+									<parent>main_characteristics_willpower_current</parent>
+									<anchor>right</anchor>
+									<offset>20</offset>
+								</right>
+								<size>
+									<height>20</height>
+								</size>
+							</anchored>
+							<center />
+							<static>Willpower</static>
+						</sheettitle>
 
-			<number_charabilityscore name="presence" source="characteristics.presence.score">
-				<anchored to="characteristicsframe" position="insidetopleft" offset="312,24" />
-				<description textres="char_tooltip_cha" />
-			</number_charabilityscore>
-			<string_labeled name="presence_label">
-				<anchored to="presence" position="insidetopleft" offset="-9,25">
-					<right parent="presence" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>presence</labelres>
-			</string_labeled>
+						<!-- PRESENCE-->
+						<sheetcharacteristicvalue name="main_characteristics_presence_current" source="presence.current">
+							<anchored>
+								<to>main_characteristics</to>
+								<offset>297,24</offset>
+							</anchored>
+						</sheetcharacteristicvalue>
+						<sheettitle>
+							<anchored>
+								<top>
+									<parent>main_characteristics_presence_current</parent>
+									<anchor>bottom</anchor>
+									<offset>3</offset>
+								</top>
+								<left>
+									<parent>main_characteristics_presence_current</parent>
+									<anchor>left</anchor>
+									<offset>-20</offset>
+								</left>
+								<right>
+									<parent>main_characteristics_presence_current</parent>
+									<anchor>right</anchor>
+									<offset>20</offset>
+								</right>
+								<size>
+									<height>20</height>
+								</size>
+							</anchored>
+							<center />
+							<static>Presence</static>
+						</sheettitle>
 
 
-			<!-- EXPERIENCE -->
-			<frame_char name="experience">
-				<bounds>375,35,120,87</bounds>
-			</frame_char>
-			<string_labeled name="experience_label">
-				<anchored to="experience" position="insidetopleft" offset="35,-3">
-					<right parent="experience" anchor="left" offset="-5" />
-				</anchored>
-				<labelres>experience</labelres>
-			</string_labeled>
 
+			<!-- INITIATIVE -->
+						<sheetframe name="combat_init">
+						<!--<bounds>355,2,128,86</bounds>-->
+						<bounds>363,15,120,87</bounds>
+						</sheetframe>
+						<sheetframetitle name="combat_init_title">
+							<anchored>
+								<to>combat_init</to>
+							</anchored>
+							<static>Initiative</static>
+						</sheetframetitle>
 
-			<!-- EXPERIENCE TOTAL -->
-			<derived_attribute name="experience_total" source="experience.total">
-				<anchored to="experience" position="insidetopright" offset="14,21" width="20" height="15" />
-				<description textres="experience_total" />
-			</derived_attribute>
-			<label name="experience_total_label">
-				<anchored to="experience" position="insidetopright" offset="43,21" width="30" height="15" />
-				<center />
-				<static>Total</static>
-			</label>
+						<!-- Cool -->
+						<sheetlabel name="combat_init_cool">
+							<anchored>
+								<to>combat_init</to>
+								<offset>34,27</offset>
+								<size>
+									<width>50</width>
+								</size>
+							</anchored>
+							<static>Cool</static>
+						</sheetlabel>
 
-			<!-- EXPERIENCE SPENT -->
-			<derived_attribute name="experience_spent" source="experience.spent">
-				<anchored to="experience" position="insidetopright" offset="14,41" width="20" height="15" />
-				<description textres="experience_spent" />
-			</derived_attribute>
-			<label name="experience_spent_label">
-				<anchored to="experience" position="insidetopright" offset="43,41" width="35" height="15" />
-				<center />
-				<static>Spent</static>
-			</label>
+						<initdicepool name="combat_init_cool_btn">
+							<anchored>
+								<to>combat_init</to>
+								<offset>85,27</offset>
+								<position>insidetopleft</position>
+								<size>
+									<width>18</width>
+									<height>14</height>
+								</size>
+							</anchored>
+							<!--<bounds>118,26,10,10</bounds>-->
+						</initdicepool>
 
-			<!-- EXPERIENCE REMAINING -->
-			<derived_attribute name="experience_remaining" source="experience.remaining">
-				<anchored to="experience" position="insidetopright" offset="14,61" width="20" height="15" />
-				<description textres="experience_remaining" />
-			</derived_attribute>
-			<label name="experience_remaining_label">
-				<anchored to="experience" position="insidetopright" offset="41,61" width="65" height="15" />
-				<center />
-				<static>Remaining</static>
-			</label>
+						<!-- Vigilance -->
+						<sheetlabel name = "combat_init_vigilance">
+							<anchored>
+								<to>combat_init</to>
+								<offset>20,54</offset>
+								<size>
+									<width>64</width>
+								</size>
+							</anchored>
+							<static>Vigilance</static>
+						</sheetlabel>
 
+						<initdicepool name="combat_init_vigilance_btn">
+							<anchored>
+								<to>combat_init</to>
+								<offset>85,54</offset>
+								<position>insidetopleft</position>
+								<size>
+									<width>18</width>
+									<height>14</height>
+								</size>
+							</anchored>
+							<!--<bounds>118,26,10,10</bounds>-->
+						</initdicepool>
 
 
 			<!-- GENERAL skilllist FRAME ......................................................................... -->
 			<frame_char name="skillframe">
-				<bounds>15,120,-29,-1</bounds>
+				<bounds>15,100,-39,-1</bounds>
 			</frame_char>
 
 			<button_iedit name="skilllist_iedit">

@@ -9,7 +9,7 @@
 	<windowclass name="charsheet_inventory">
 		<sheetdata>
 			<frame_char name="inventoryframe">
-				<bounds>15,40,-29,-205</bounds>
+				<bounds>15,15,-29,-205</bounds>
 			</frame_char>
 
 			<label name="count_label">

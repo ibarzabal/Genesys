@@ -11,11 +11,11 @@ function onInit()
 --	end
 
 	if not minisheet and User.isLocal() then
+		speak.setVisible(false);
 		portrait.setVisible(false);
 		localportrait.setVisible(true);
 	end
 end
-
 
 function onDrop(x, y, draginfo)
 	if draginfo.isType("shortcut") then
@@ -25,7 +25,9 @@ function onDrop(x, y, draginfo)
 			return true;
 		end
 	end
+	return CharManager.onDrop(getDatabaseNode(), x, y, draginfo);
 end
+
 -- function onMenuSelection(selection, subselection)
 -- 	if selection == 8 then
 -- 		local nodeChar = getDatabaseNode();

@@ -247,35 +247,6 @@
 	</template>
 
 
-
-
-
-
-
-
-
-
-	<template name="sheetnumberfield">
-		<basenumberfield>
-			<anchored>
-				<position>insidetopleft</position>
-				<size>
-					<width mergerule="replace">25</width>
-					<height mergerule="replace">17</height>
-				</size>
-			</anchored>
-			<frame mergerule="replace">
-				<name>modifier</name>
-				<offset>4,5,4,3</offset>
-			</frame>
-			<script file="classes/common/sheetnumberfield.lua" />
-		</basenumberfield>
-	</template>
-
-
-
-
-
 	<template name="string_charabilitylabel">
 		<label>
 			<anchored position="lefthigh" width="120" height="24" />

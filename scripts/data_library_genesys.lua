@@ -187,12 +187,8 @@ aListViews = {
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
 				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
-				{ sName = "ac", sType = "number", sHeadingRes = "item_grouped_label_ac", sTooltipRes = "item_grouped_tooltip_ac", nWidth=40, bCentered=true, nSortOrder=1 },
-				{ sName = "maxstatbonus", sType = "number", sHeadingRes = "item_grouped_label_maxstatbonus", sTooltipRes = "item_grouped_tooltip_maxstatbonus", bCentered=true },
-				{ sName = "checkpenalty", sType = "number", sHeadingRes = "item_grouped_label_checkpenalty", sTooltipRes = "item_grouped_tooltip_checkpenalty", bCentered=true },
-				{ sName = "spellfailure", sType = "number", sHeadingRes = "item_grouped_label_spellfailure", sTooltipRes = "item_grouped_tooltip_spellfailure", bCentered=true },
-				{ sName = "speed30", sType = "number", sHeadingRes = "item_grouped_label_speed30", sTooltipRes = "item_grouped_tooltip_speed30", bCentered=true },
-				{ sName = "speed20", sType = "number", sHeadingRes = "item_grouped_label_speed20", sTooltipRes = "item_grouped_tooltip_speed20", bCentered=true },
+				{ sName = "defense", sType = "number", sHeadingRes = "item_grouped_label_ac", sTooltipRes = "item_grouped_tooltip_ac", nWidth=40, bCentered=true, nSortOrder=1 },
+				{ sName = "soak", sType = "number", sHeadingRes = "item_grouped_label_ac", sTooltipRes = "item_grouped_tooltip_maxstatbonus", bCentered=true },
 				{ sName = "weight", sType = "number", sHeadingRes = "item_grouped_label_weight", sTooltipRes = "item_grouped_tooltip_weight", nWidth=30, bCentered=true }
 			},
 			aFilters = {
@@ -208,11 +204,9 @@ aListViews = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
 				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
 				{ sName = "damage", sType = "string", sHeadingRes = "item_grouped_label_damage", nWidth=60, bCentered=true },
-				{ sName = "critical", sType = "string", sHeadingRes = "item_grouped_label_critical", bCentered=true },
-				{ sName = "range", sType = "number", sHeadingRes = "item_grouped_label_range", sTooltipRes = "item_grouped_tooltip_range", nWidth=30, bCentered=true },
+				{ sName = "critical", sType = "number", sHeadingRes = "item_grouped_label_critical", bCentered=true },
+				{ sName = "range", sType = "string", sHeadingRes = "item_grouped_label_range", sTooltipRes = "item_grouped_tooltip_range", nWidth=30, bCentered=true },
 				{ sName = "weight", sType = "number", sHeadingRes = "item_grouped_label_weight", sTooltipRes = "item_grouped_tooltip_weight", nWidth=30, bCentered=true },
-				{ sName = "properties", sType = "string", sHeadingRes = "item_grouped_label_properties", nWidth=120 },
-				{ sName = "damagetype", sType = "string", sHeadingRes = "item_grouped_label_damagetype", nWidth=150 }
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Weapon" },

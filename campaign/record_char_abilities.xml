@@ -47,38 +47,4 @@
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="char_talent">
-		<margins control="0,0,0,2" />
-		<sheetdata>
-			<genericcontrol name="rightanchor">
-				<anchored height="0" width="0">
-					<top offset="2" />
-					<right />
-				</anchored>
-			</genericcontrol>
-			<button_idelete name="idelete">
-				<anchored to="rightanchor">
-					<top />
-					<right anchor="left" relation="relative" offset="-5" />
-				</anchored>
-			</button_idelete>
-			<linkfield name="shortcut">
-				<anchored to="rightanchor" width="20" height="20">
-					<top />
-					<right anchor="left" relation="relative" offset="-5" />
-				</anchored>
-				<class>referencetalent</class>
-				<description field="name" />
-				<readonly />
-			</linkfield>
-			<string_textlistitem name="name">
-				<anchored to="rightanchor">
-					<top />
-					<left parent="" offset="5" />
-					<right anchor="left" relation="relative" offset="-5" />
-				</anchored>
-				<multilinespacing>20</multilinespacing>
-			</string_textlistitem>
-		</sheetdata>
-	</windowclass>
 </root>

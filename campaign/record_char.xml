@@ -27,7 +27,7 @@
 			</button_charactivate>
 
 			<token_char name="token">
-				<bounds>-86,23,40,40</bounds>
+				<bounds>-80,23,40,40</bounds>
 			</token_char>
 
 			<genericcontrol>
@@ -43,82 +43,113 @@
 				<bounds>-137,21,45,45</bounds>
 			</portrait_char>
 
-			<!-- name -->
-			<frame_char name="main_character">
-				<bounds>15,15,363,87</bounds>
-			</frame_char>
-
-			<string_labeled name="name">
-				<anchored to="main_character" position="insidetopleft" offset="17,14" width="200" height="20" />
-				<labelres>char_label_name</labelres>
-			</string_labeled>
-
-			<!-- species_archetype -->
-			<string_labeled name="species_archetype">
-				<anchored to="main_character" position="insidetopleft" offset="235,14" width="100" height="20"/>
-				<labelres>char_label_species_archetype</labelres>
-			</string_labeled>
-						<linkfield name="species_archetypelink">
-							<anchored to="species_archetype" position="right" offset="0" width="20" />
-							<description field="species_archetype" />
-							<closetoggle />
-							<invisible />
-							<script>
-								function onInit()
-									onValueChanged();
-								end
-								function onValueChanged()
-									if isEmpty() then
-										setVisible(false);
-									else
-										setVisible(true);
-									end
-								end
-							</script>
-						</linkfield>
-
-			<!-- Career -->
-			<string_labeled name="career">
-				<anchored to="main_character" position="insidetopleft" offset="17,45" width="200"  height="20"/>
-				<labelres>char_label_career</labelres>
-			</string_labeled>
-
-			<linkfield name="careerlink">
-				<anchored to="career" position="right" offset="0" width="20" />
-				<description field="career" />
-				<closetoggle />
-				<invisible />
-				<script>
-					function onInit()
-						onValueChanged();
-					end
-					function onValueChanged()
-						if isEmpty() then
-							setVisible(false);
-						else
-							setVisible(true);
-						end
-					end
-				</script>
-			</linkfield>
 
 
+<frame_char name="main_character">
+	<bounds>14,10,370,74</bounds>
+</frame_char>
+<sheetframetitle name="main_character_title">
+	<anchored>
+		<to>main_character</to>
+	</anchored>
+	<static>Character</static>
+</sheetframetitle>
 
 
+<!-- name -->
+<sheetstringfield name="name" source="name">
+	<anchored>
+		<to>main_character</to>
+		<position>insidetopleft</position>
+		<offset>17,14</offset>
+		<size>
+			<width>218</width>
+		</size>
+	</anchored>
+	<label>Name</label>
+	<empty>&#171; Unnamed &#187;</empty>
+	<tabtarget>
+		<next>main_character_race</next>
+	</tabtarget>
+</sheetstringfield>
 
-<!--			<subwindow name="main">
+<!-- RACE SPECIES-->
+<sheetstringfield name="main_character_race" source="species_archetype">
+	<anchored>
+		<to>main_character</to>
+		<position>insidetopleft</position>
+		<offset>241,14</offset>
+		<size>
+			<width>100</width>
+		</size>
+	</anchored>
+	<labelres>char_label_species_archetype</labelres>
+	<tabtarget>
+		<next>main_character_career</next>
+		<prev>name</prev>
+	</tabtarget>
+</sheetstringfield>
+<linkfield name="species_archetypelink">
+	<anchored to="main_character_race" position="right" offset="0" width="20" />
+	<description field="species_archetype" />
+	<closetoggle />
+	<invisible />
+	<script>
+		function onInit()
+			onValueChanged();
+		end
+		function onValueChanged()
+			if isEmpty() then
+				setVisible(false);
+			else
+				setVisible(true);
+			end
+		end
+	</script>
+</linkfield>
+
+
+<sheetstringfield name="main_character_career" source="career">
+	<anchored>
+		<to>main_character</to>
+		<position>insidetopleft</position>
+		<offset>17,38</offset>
+		<size>
+			<width>150</width>
+		</size>
+	</anchored>
+	<label>Career</label>
+	<tabtarget>
+		<prev>main_character_race</prev>
+	</tabtarget>
+</sheetstringfield>
+<linkfield name="careerlink">
+	<anchored to="main_character_career" position="right" offset="0" width="20" />
+	<description field="career" />
+	<closetoggle />
+	<invisible />
+	<script>
+		function onInit()
+			onValueChanged();
+		end
+		function onValueChanged()
+			if isEmpty() then
+				setVisible(false);
+			else
+				setVisible(true);
+			end
+		end
+	</script>
+</linkfield>
+
+
+			<subwindow name="main">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_main</class>
 			</subwindow>
-JOHN: Removing main for the time being... i want to improve it later
--->
 			<subwindow name="skills">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_skilllist</class>
-			</subwindow>
-			<subwindow name="abilities">
-				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_talents</class>
 			</subwindow>
 			<subwindow name="combat">
 				<bounds>0,65,-1,-20</bounds>
@@ -134,18 +165,14 @@ JOHN: Removing main for the time being... i want to improve it later
 			</subwindow>
 
 			<tabs_charsheet name="tabs">
-<!--				<tab>
+				<tab>
 					<icon>tab_main</icon>
 					<subwindow>main</subwindow>
 				</tab>
--->				
+
 				<tab>
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_abilities</icon>
-					<subwindow>abilities</subwindow>
 				</tab>
 				<tab>
 					<icon>tab_combat</icon>

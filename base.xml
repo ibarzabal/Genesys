@@ -55,7 +55,6 @@
 		<!-- includes: need cleanup -->
 		<includefile source="classes/base.xml" />
 		<includefile source="definitions/base.xml" />
-		<includefile source="campaign/record_talent.xml" />
 
 
 		<!-- High-level scripts -->
@@ -65,6 +64,12 @@
 		<script name="ChatManagerGenesys" file="scripts/manager_chat2.lua" />
 		<script name="DieBoxManager" file="scripts/manager_diebox.lua" />
 		<script name="DicePoolManager" file="scripts/manager_dicepool.lua" />
+
+ 		<script name="CharManager" file="campaign/scripts/manager_char_genesys.lua" />
+<!-- Warhammer/SW had something called DatabaseManager. I need to be careful
+		and only bring code that is needed and does not clash with CoreRPG -->
+		<script name="DBManagerGenesys" file="scripts/manager_databasegenesys.lua" />
+
 <!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
 			<!--Overriding the original manager_actions.lua from CoreRPG
 		  	this is a workaround for the moment.... -->
@@ -85,19 +90,24 @@
 <!--		<includefile source="campaign/record_spell_roll.xml" /> -->
 
 		<includefile source="campaign/record_char.xml" />
- <!--		<includefile source="campaign/record_char_main.xml" /> -->
+ 		<includefile source="campaign/record_char_main.xml" />
  		<includefile source="campaign/record_char_skills.xml" />
  		<includefile source="campaign/record_char_combat.xml" />
+		<includefile source="campaign/record_char_combat_sub.xml" />
 		<includefile source="campaign/record_char_inventory.xml" />
 		<includefile source="campaign/record_char_notes.xml" />
-		<includefile source="campaign/record_char_abilities.xml" />
+		<includefile source="campaign/record_condition.xml" />
+		<includefile source="campaign/record_ability.xml" />
+		<includefile source="campaign/record_critical.xml" />
+		<includefile source="campaign/record_talent.xml" />
+
 <!--		<includefile source="campaign/record_ability.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_abilities.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_main.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_abilities.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_inventory.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_actions.xml" /> -->
- 		<script name="CharManager" file="campaign/scripts/manager_char_genesys.lua" />
+
 		<!-- Check Char manager from 3.5, it has a lot of nice stuff  -->
 <!-- 	 -->
 		<includefile source="campaign/record_npc.xml" />
