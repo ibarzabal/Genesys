@@ -103,11 +103,11 @@
 			<title_statblock>
 				<anchored height="20">
 					<top parent="main_statblock1_speed" anchor="bottom" offset="6"/>
-					<left parent="main_statblock1_speed" anchor="left" offset="-20"/>
+					<left parent="main_statblock1_speed" anchor="left" offset="-21"/>
 					<right parent="main_statblock1_speed" anchor="right" offset="20"/>
 				</anchored>
 				<center />
-				<static>Speed</static>
+				<static>Max Speed</static>
 			</title_statblock>
 			<!-- Handling -->
 			<vehicle_stat name="main_statblock1_handling" source="handling">
@@ -205,13 +205,7 @@
 			<label_column name="passenger_capacity_label">
 				<static textres="vehicle_label_passenger_capacity" />
 			</label_column>
-			<number_columnh name="passenger_capacity">
-				<anchored>
-					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
-					<left offset="135" />
-				</anchored>
-			</number_columnh>
-
+			<string_columnh name="passenger_capacity" />
 
 			<label_column name="cost_label">
 				<static textres="vehicle_label_cost" />
@@ -319,6 +313,10 @@
 			</link_listitem_column>
 
 			<rangecontrolh name="range">
+				<frame mergerule="replace">
+					<name>fieldtransparent</name>
+					<offset>4,5,4,3</offset>
+				</frame>
 				<sourcename>range</sourcename>
 				<anchored to="rightanchor" width="20" height="20">
 					<top />
@@ -329,6 +327,10 @@
 
 
 			<basenumberfield name="critical">
+				<frame mergerule="replace">
+					<name>fieldtransparent</name>
+					<offset>4,5,4,3</offset>
+				</frame>
 				<anchored to="rightanchor" width="20" height="20">
 					<top />
 					<right anchor="left" relation="relative" offset="-10" />
@@ -344,6 +346,7 @@
 				<disabled />
 			</basestringfield>
 
+<!--
 			<basestringfield name="skill">
 				<anchored to="rightanchor" width="80" height="20">
 					<top />
@@ -351,9 +354,9 @@
 				</anchored>
 				<disabled />
 			</basestringfield>
-
+-->
 			<basestringfield name="fire_arc">
-				<anchored to="rightanchor" width="80" height="20">
+				<anchored to="rightanchor" width="100" height="20">
 					<top />
 					<right anchor="left" relation="relative" offset="-10" />
 				</anchored>
@@ -361,12 +364,29 @@
 			</basestringfield>
 
 
+			<stringfield name="name">
+				<anchored position="insidetopleft" offset="30,2">
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<disabled />
+				<font>sheetlabel</font>
+				<multilinespacing>20</multilinespacing>
+			</stringfield>
+
+
+<!--
 			<string_listitem_column_name name="name">
 					<disabled />
 			</string_listitem_column_name>
-<!--				<empty textres="library_recordtype_empty_subracialtrait" />
-			</string_listitem_column_name>
 -->
+
+		<basenumberfield name="count">
+			<default>1</default>
+			<anchored position="insidetopleft" offset="5,2" height="20">
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+			</anchored>
+		</basenumberfield>
+
 			</sheetdata>
 	</windowclass>
 

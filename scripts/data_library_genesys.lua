@@ -362,9 +362,20 @@ aListViews = {
 			sTitleRes = "vehicle_grouped_title_bytype",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "vehicle_grouped_label_name", nWidth=200 },
-				{ sName = "cost", sType = "string", sHeadingRes = "vehicle_grouped_label_cost", nWidth=80, bCentered=true },
-				{ sName = "weight", sType = "number", sHeadingRes = "vehicle_grouped_label_weight", sTooltipRes="vehicle_grouped_tooltip_weight", bCentered=true },
-				{ sName = "speed", sType = "string", sHeadingRes = "vehicle_grouped_label_speed", sTooltipRes="vehicle_grouped_tooltip_speed", nWidth=100, bCentered=true },
+				{ sName = "control_skill", sType = "string", sHeadingRes = "vehicle_grouped_label_control_skill", nWidth=100 },
+
+
+				{ sName = "silhouette", sType = "number", sHeadingRes = "vehicle_grouped_label_silhouette", nWidth=60, bCentered=true },
+				{ sName = "speed", sType = "number", sHeadingRes = "vehicle_grouped_label_max_speed", bCentered=true },
+				{ sName = "handling", sType = "number", sHeadingRes = "vehicle_grouped_label_handling", bCentered=true },
+				{ sName = "defense", sType = "number", sHeadingRes = "vehicle_grouped_label_defense", bCentered=true },
+				{ sName = "armor", sType = "number", sHeadingRes = "vehicle_grouped_label_armor", bCentered=true },
+				{ sName = "hull_trauma.threshold", sType = "number", sHeadingRes = "vehicle_grouped_label_hull_trauma", bCentered=true },
+				{ sName = "system_strain.threshold", sType = "number", sHeadingRes = "vehicle_grouped_label_system_strain", bCentered=true },
+
+				{ sName = "cost", sType = "string", sHeadingRes = "vehicle_grouped_label_cost", nWidth=100, bCentered=true },
+				{ sName = "rarity", sType = "number", sHeadingRes = "vehicle_grouped_label_rarity", bCentered=true },
+				{ sName = "encumbrance", sType = "string", sHeadingRes = "vehicle_grouped_label_encumbrance_capacity", sTooltipRes = "vehicle_grouped_tooltip_encumbrance_capacity", bCentered=true },
 			},
 			aFilters = {},
 			aGroups = { { sDBField = "type" } },

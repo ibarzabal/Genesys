@@ -237,9 +237,26 @@
 	<string name="vehicle_label_consumables">Consumables</string>
 	<string name="vehicle_label_control_skill">Control Skill</string>
 	<string name="vehicle_label_compliment">Compliment</string>
-	<string name="vehicle_label_passenger_capacity">Passenger Capacity</string>
+	<string name="vehicle_label_passenger_capacity">Passenger Cap.</string>
 	<string name="item_header_weapons">Weapons</string>
 	<string name="char_message_vehicle_weapon_mismatch">Item type is not [Weapon] or [Vehicle Weapon].</string>
+	<!-- vehicle list by type -->
+	<string name="vehicle_grouped_label_control_skill">Control Skill</string>
+	<string name="vehicle_grouped_label_silhouette">Silhouette</string>
+	<string name="vehicle_grouped_label_max_speed">Max Spd</string>
+	<string name="vehicle_grouped_label_handling">Handling</string>
+	<string name="vehicle_grouped_label_defense">Def</string>
+	<string name="vehicle_grouped_label_armor">Armor</string>
+	<string name="vehicle_grouped_label_hull_trauma">Hull</string>
+	<string name="vehicle_grouped_label_system_strain">System</string>
+	<string name="vehicle_grouped_label_cost">Cost</string>
+	<string name="vehicle_grouped_label_rarity">Rarity</string>
+	<string name="vehicle_grouped_label_encumbrance_capacity">Enc</string>
+	<string name="vehicle_grouped_tooltip_encumbrance_capacity">Encumbrance Capacity</string>
+
+
+
+
 
 	<!-- Items window -->
 	<string name="item_button_weapons">Weapons</string>
