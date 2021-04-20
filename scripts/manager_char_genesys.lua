@@ -1436,3 +1436,118 @@ function addVehicle(characternode, vehiclenode)
 		return true;
 	end
 end
+
+
+function BuildCharSkills (nodeChar)
+
+
+
+
+
+
+		-- Use Datacommon.skilldata in case we dont have any database setting records
+		-- If we have only one setting, use those skills
+		-- otherwise, player chooses in which setting he wants to create his char
+--		if DB.getChildCount("setting") == 0 then
+
+
+--		if not nodeChar then
+--			return
+--		end
+--		local aSystemskilllist = DataCommon.skilldata;
+--		Debug.chat("BuildCharSkills");
+	--	local skilllistnode = nodeChar.createChild("skilllist");
+
+--		for v, t in pairs(DataCommon.skilldata) do
+--				Debug.chat("v",v);
+--				Debug.chat("category",t.category);
+--				Debug.chat("characteristic",t.characteristic);
+--		end
+
+--		local nodeSetting = DB.getChild("setting")
+--		for n,nodeSettingSkill in pairs(DB.getChildren(DB.getChild("setting","Terrinoth")),"skills") do
+--			Debug.chat("n",n);
+--			Debug.chat(nodeSettingSkill);
+--		end
+
+
+
+
+--			if not DB.getChild(nodeWeapon, "damagelist") then
+--				local nodeDmgList = DB.createChild(nodeWeapon, "damagelist");
+--				if nodeDmgList then
+--					local nodeDmg = DB.createChild(nodeDmgList);
+--					if nodeDmg then
+--						DB.setValue(nodeDmg, "dice", "dice", DB.getValue(nodeWeapon, "damagedice", {}));
+--						DB.setValue(nodeDmg, "stat", "string", DB.getValue(nodeWeapon, "damagestat", ""));
+--						DB.setValue(nodeDmg, "bonus", "number", DB.getValue(nodeWeapon, "damagebonus", 0));
+--						DB.setValue(nodeDmg, "type", "string", DB.getValue(nodeWeapon, "damagetype", ""));
+--
+--						DB.deleteChild(nodeWeapon, "damagedice");
+--						DB.deleteChild(nodeWeapon, "damagestat");
+--						DB.deleteChild(nodeWeapon, "damagebonus");
+--						DB.deleteChild(nodeWeapon, "damagetype");
+--					end
+--				end
+--			end
+--		end
+--
+--
+--
+--
+--			<career_skill type="number">0</career_skill>
+--			<category type="string">General</category>
+--			<characteristic type="string">AG</characteristic>
+--			<name type="string">Coordination</name>
+
+
+--
+--
+--			for k, t in pairs(DataCommon.skilldata) do
+--			-- Create missing entries for all known skilllist
+--			local entrymap = {};
+--			for _,w in pairs(getWindows()) do
+--				local sLabel = w.name.getValue();
+--				local t = aSystemskilllist[sLabel];
+--				if t and not t.sublabeling then
+--					if not entrymap[sLabel] then
+--						entrymap[sLabel] = { w };
+--					else
+--						table.insert(entrymap[sLabel], w);
+--					end
+--				end
+--			end
+--			-- Set properties and create missing entries for all known skilllist
+--			for k, t in pairs(DataCommon.skilldata) do
+--				if not t.sublabeling then
+--					local matches = entrymap[k];
+--					if not matches then
+--						local w = createWindow();
+--						if w then
+--							w.name.setValue(k);
+--							if t.characteristic then
+--								w.characteristic.setValue(t.characteristic);
+--							else
+--								w.characteristic.setValue("");
+--							end
+--							if t.category then
+--								w.category.setValue(t.category);
+--							else
+--								w.category.setValue("");
+--							end
+--
+--							if t.trainedonly then
+--								w.showonminisheet.setValue(0);
+--							end
+--							matches = { w };
+--						end
+--					end
+--				end
+--			end
+
+
+
+
+
+
+end

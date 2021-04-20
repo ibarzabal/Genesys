@@ -22,6 +22,89 @@
 				</stateframe>
 				<script file="classes/desktop/dieboxgen.lua" />
 			</genericcontrol>
+
+
+			<buttoncontrol name="dieboxaddsuccess">
+				<bounds>42,2,20,20</bounds>
+				<icon>
+					<normal>button_success</normal>
+					<pressed>button_success</pressed>
+				</icon>
+				<tooltip>
+					<text>Add an Automatic Success to the Dice Pool</text>
+				</tooltip>
+				<script>
+					function onButtonPress()
+						window.dieboxgencontrol.DieBoxAddResultButtonPress(self.getName());
+					end
+
+					function onDrop(x, y, draginfo)
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
+						return true;
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="dieboxaddfailure">
+				<bounds>42,22,20,20</bounds>
+				<icon>
+					<normal>button_failure</normal>
+					<pressed>button_failure</pressed>
+				</icon>
+				<tooltip>
+					<text>Add an Automatic Failure to the Dice Pool</text>
+				</tooltip>
+				<script>
+					function onButtonPress()
+						window.dieboxgencontrol.DieBoxAddResultButtonPress(self.getName());
+					end
+					function onDrop(x, y, draginfo)
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
+						return true;
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="dieboxaddadvantage">
+				<bounds>62,2,20,20</bounds>
+				<icon>
+					<normal>button_advantage</normal>
+					<pressed>button_advantage</pressed>
+				</icon>
+				<tooltip>
+					<text>Add an Automatic Advantage to the Dice Pool</text>
+				</tooltip>
+				<script>
+					function onButtonPress()
+						window.dieboxgencontrol.DieBoxAddResultButtonPress(self.getName());
+					end
+					function onDrop(x, y, draginfo)
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
+						return true;
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="dieboxaddthreat">
+				<bounds>62,22,20,20</bounds>
+				<icon>
+					<normal>button_threat</normal>
+					<pressed>button_threat</pressed>
+				</icon>
+				<tooltip>
+					<text>Add an Automatic Threat to the Dice Pool</text>
+				</tooltip>
+				<script>
+					function onButtonPress()
+						window.dieboxgencontrol.DieBoxAddResultButtonPress(self.getName());
+					end
+					function onDrop(x, y, draginfo)
+						window.dieboxgencontrol.onDrop(x, y, draginfo);
+						return true;
+					end
+				</script>
+			</buttoncontrol>
+
+
+
+
 			<buttoncontrol name="dieboxgenupgradedifficulty">
 <!--LOBOSOLO edit button positions - BEGIN -->
 				<bounds>2,2,20,20</bounds>

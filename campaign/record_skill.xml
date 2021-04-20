@@ -7,11 +7,12 @@
 
 <root>
 	<windowclass name="referenceskill">
-		<frame>referencepage</frame>
+		<frame>recordsheet</frame>
 		<placement>
 			<size width="400" height="350" />
 		</placement>
 		<sizelimits>
+			<minimum width="400" height="350" />
 			<dynamic />
 		</sizelimits>
 		<minimize>minimized_reference</minimize>
@@ -24,54 +25,60 @@
 				if header.subwindow then
 					header.subwindow.update();
 				end
-				if content.subwindow then
-					content.subwindow.update();
+				if main.subwindow then
+					main.subwindow.update();
 				end
 			end
 		</script>
 		<sheetdata>
 			<sub_record_header name="header">
-				<class>ref_skill_header</class>
+				<class>skill_header</class>
 			</sub_record_header>
 
-			<frame_ref_content />
-			<sub_ref_content name="content">
-				<class>ref_skill_stats</class>
-			</sub_ref_content>
-			<scrollbar_ref_content />
+			<frame_record_content name="contentframe" />
 
-			<resize_referencepage />
-			<close_referencepage />
+			<subwindow_record name="main">
+				<class>skill_main</class>
+				<activate />
+			</subwindow_record>
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<resize_recordsheet />
+			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ref_skill_header">
+
+
+
+	<windowclass name="skill_header">
 		<margins control="0,0,0,7" />
 		<script>
 			function onInit()
 				update();
 			end
 			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				local nodeRecord = getDatabaseNode();
+				local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
 				name.setReadOnly(bReadOnly);
 			end
 		</script>
 		<sheetdata>
-			<link_record_header>
-				<class>referenceskill</class>
-			</link_record_header>
-
-			<anchor_record_header_right />
+			<link_record_header_id name="link">
+				<class>skill</class>
+			</link_record_header_id>
+			<anchor_record_header_right name="rightanchor" />
 			<icon_record_locked />
 			<button_record_locked />
-
-			<string_record_name name="name">
+			<string_record_name_id name="name">
 				<empty textres="library_recordtype_empty_skill" />
-			</string_record_name>
+			</string_record_name_id>
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="ref_skill_stats">
+	<windowclass name="skill_main">
+		<margins control="0,0,0,2" />
 		<script>
 			function onInit()
 				update();
@@ -79,13 +86,9 @@
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
 				if bReadOnly then
-					name_biglabel.setValue("[" .. name.getValue() .. "]");
-					name_biglabel.setVisible(true);
-
 					name.update(bReadOnly, true);
 					namelabel.setVisible(false);
 				else
-					name_biglabel.setVisible(false);
 					name.update(bReadOnly);
 					namelabel.setVisible(false);
 				end
@@ -97,7 +100,6 @@
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
-
 			<hs name="name" />
 
 			<label_column name="name_biglabel">
@@ -120,21 +122,13 @@
 			<label_column name="characteristic_label">
 				<static textres="characteristic_label" />
 			</label_column>
-<!--			<string_columnh name="characteristic" /> -->
-
 			<characteristiccontrolh name="characteristic">
 				<sourcename>characteristic</sourcename>
 				<anchored>
 					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
 					<left offset="95" />
-			<!-- 					<right offset="-5" /> -->
 				</anchored>
 			</characteristiccontrolh>
-
-
-
-
-
 
 			<ft_columnh name="description" />
 
@@ -144,4 +138,7 @@
 			<string_columnh name="setting" />
 		</sheetdata>
 	</windowclass>
+
+
+
 </root>

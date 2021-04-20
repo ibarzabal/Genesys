@@ -30,6 +30,11 @@
 </font>
 
 <!-- Misc -->
+<font name="list-empty">
+	<fgffile name="graphics/fonts/italic-10.fgf" />
+	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Italic.ttf" name="Noto Sans Italic" size="16" />
+	<color value="#FFFFFF" />
+</font>
 <font name="list-empty-ct">
 	<fgffile name="graphics/fonts/italic-10.fgf" />
 	<ttf file="graphics/fonts/Noto_Sans/NotoSans-Italic.ttf" name="Noto Sans Italic" size="16" />
@@ -87,14 +92,11 @@
 </font>
 
 
-
-
 <font name="dieresult">
-
-		<fgffile name="graphics/fonts/dieresult.fgf" />
-		<ttf file="graphics/fonts/dieresult.ttf" size="0"/>
-		<color value="#ffffff" />
-	</font>
+	<fgffile name="graphics/fonts/dieresult.fgf" />
+	<ttf file="graphics/fonts/dieresult.ttf" size="0"/>
+	<color value="#ffffff" />
+</font>
 
 
 	<!-- Chit Numbering-->
@@ -113,12 +115,12 @@
 	<!-- Default fonts - REQUIRED -->
 	<font name="defaultstringcontrol">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000000" />
 	</font>
 	<font name="defaultnumbercontrol">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000000" />
 	</font>
 
@@ -126,29 +128,29 @@
 	<!-- Chat fonts - REQUIRED -->
 	<font name="chatfont">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#261A12" />
 	</font>
 	<font name="emotefont">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#880000" />
 	</font>
 	<font name="msgfont">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#660066" />
 	</font>
 	<font name="oocfont">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#005500" />
 	</font>
 
 	<!-- Chat fonts -->
 	<font name="chatnpcfont">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000066" />
 	</font>
 
@@ -156,7 +158,7 @@
 	<!-- Standard text fields -->
 	<font name="sheettext">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000000" />
 	</font>
 
@@ -164,114 +166,63 @@
 	<!-- Tables -->
 	<font name="tablerange">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000000" />
 	</font>
 	<font name="tableheader">
 		<fgffile name="graphics/fonts/Genesys-Bold.fgf" />
-		<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Genesys Bold" size="14" />
+		<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Genesys Bold" size="16" />
 		<color value="#000000" />
 	</font>
 	<font name="tabledata">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="14" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000000" />
 	</font>
 
 
-
-		<!-- Windows -->
-		<font name="subwindowtitle">
-			<fgffile name="graphics/fonts/title-regular-10.fgf" />
-			<ttf file="graphics/fonts/Charlemagne Std Bold.ttf" name="Charlemagne Std Bold" size="14" />
-			<color value="DED1B1" />
-			<shadow offset="2,2" color="000000" />
-		</font>
-		<font name="subwindowsmalltitle">
-			<fgffile name="graphics/fonts/bold-10.fgf" />
-			<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="12" />
-			<color value="FFF1CC" />
-			<shadow offset="1,1" color="000000" />
-		</font>
-
+<!--
 		<font name="subwindowsmallertitle">
 			<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans" size="12" />
 			<color value="FFF1CC" />
-<!--			<shadow offset="1,1" color="000000" /> -->
+remove			<shadow offset="1,1" color="000000" />
 		</font>
-
-		<font name="subwindowsmalltitle_disabled">
-			<fgffile name="graphics/fonts/bold-10.fgf" />
-			<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="12" />
-			<color value="494340" />
-			<shadow offset="1,1" color="000000" />
-		</font>
-
-
-
+-->
 
 
 	<!-- Formatted text fields -->
 	<font name="reference-h">
 		<fgffile name="graphics/fonts/Genesys-bold-14.fgf" />
-		<ttf file="graphics/fonts/Genesys-Bold-h.ttf" name="Open Sans Bold" size="24" />
+		<ttf file="graphics/fonts/Genesys-Bold-h.ttf" name="Genesys Bold" size="24" />
 		<color value="660000" />
 	</font>
 
 	<font name="reference-r">
 		<fgffile name="graphics/fonts/Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Open Sans" size="16" />
+		<ttf file="graphics/fonts/Genesys-Regular.ttf" name="Genesys Regular" size="16" />
 		<color value="#000000" />
 	</font>
 
 <font name="reference-i">
 	<fgffile name="graphics/fonts/Genesys-Italic.fgf" />
-	<ttf file="graphics/fonts/Genesys-Italic.ttf" name="Open Sans Italic" size="16" />
+	<ttf file="graphics/fonts/Genesys-Italic.ttf" name="Genesys Italic" size="16" />
 	<color value="#000000" />
 </font>
 
 <font name="reference-b">
 	<fgffile name="graphics/fonts/Genesys-Bold.fgf" />
-	<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Open Sans Bold" size="16" />
+	<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Genesys Bold" size="16" />
 	<color value="#000000" />
 </font>
 <font name="reference-bi">
 	<fgffile name="graphics/fonts/Genesys-BoldItalic.fgf" />
-	<ttf file="graphics/fonts/Genesys-BoldItalic.ttf" name="Open Sans Bold Italic" size="16" />
+	<ttf file="graphics/fonts/Genesys-BoldItalic.ttf" name="Genesys Bold Italic" size="16" />
 	<color value="#000000" />
 </font>
 <font name="reference-b-large">
 	<fgffile name="graphics/fonts/Genesys-Bold-b.fgf" />
-	<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Open Sans Bold" size="18" />
+	<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Genesys Bold" size="18" />
 	<color value="#000000" />
 </font>
-
-
-
-
-
-	<!-- Windows -->
-<!--
-	<font name="subwindowtitle">
-		<fgffile name="graphics/fonts/title-Genesys-Regular.fgf" />
-		<ttf file="graphics/fonts/Charlemagne Std Bold.ttf" name="Charlemagne Std Bold" size="15" />
-		<color value="DED1B1" />
-		<shadow offset="2,2" color="000000" />
-	</font>
-	<font name="subwindowsmalltitle">
-		<fgffile name="graphics/fonts/Genesys-Bold.fgf" />
-		<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Genesys Bold" size="14" />
-		<color value="FFF1CC" />
-		<shadow offset="1,1" color="000000" />
-	</font>
-	<font name="subwindowsmalltitle_disabled">
-		<fgffile name="graphics/fonts/Genesys-Bold.fgf" />
-		<ttf file="graphics/fonts/Genesys-Bold.ttf" name="Genesys Bold" size="14" />
-		<color value="494340" />
-		<shadow offset="1,1" color="000000" />
-	</font>
--->
-
-
 
 </root>

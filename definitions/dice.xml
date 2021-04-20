@@ -134,6 +134,56 @@
 	<die name="dSummaryx7"><icon>dSummaryicon.7</icon></die>
 	<die name="dSummaryx8"><icon>dSummaryicon.8</icon></die>
 
+
+	<!-- Success Modifier -->
+	<customdie name="mSuccess">
+		<model>d4</model>
+		<menuicon>dSummaryicon.7</menuicon>
+		<script>
+			function onValue(result)
+				return 1;
+			end
+		</script>
+	</customdie>
+	<die name="mSuccessx1"><icon>dSummaryicon.7</icon></die>
+	<!-- Advantage Modifier -->
+	<customdie name="mBoon">
+		<model>d4</model>
+		<menuicon>dSummaryicon.6</menuicon>
+		<script>
+			function onValue(result)
+				return 1;
+			end
+		</script>
+	</customdie>
+	<die name="mBoonx1"><icon>dSummaryicon.6</icon></die>
+	<!-- Failure Modifier -->
+	<customdie name="mChallenge">
+		<model>d4</model>
+		<menuicon>dSummaryicon.2</menuicon>
+		<script>
+			function onValue(result)
+				return 1;
+			end
+		</script>
+	</customdie>
+	<die name="mChallengex1"><icon>dSummaryicon.2</icon></die>
+	<!-- Threat Modifier -->
+	<customdie name="mBane">
+		<model>d4</model>
+		<menuicon>dSummaryicon.3</menuicon>
+		<script>
+			function onValue(result)
+				return 1;
+			end
+		</script>
+	</customdie>
+	<die name="mBanex1"><icon>dSummaryicon.3</icon></die>
+
+
+
+
+
 	<!-- Altough not typically used, we define dice faces for default dice here.
 			 Notice we are only defining dice faces, not the dice themselves. (we use CoreRPG dice for those)
 			 These definitions are still used by the Genesys die rolling script, though.

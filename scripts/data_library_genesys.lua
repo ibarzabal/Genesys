@@ -130,6 +130,14 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_species_archetypes", "button_species_archetypes_down" },
 		sRecordDisplayClass = "referencespecies_archetype",
 	},
+
+	["setting"] = {
+		bExport = true,
+		aDataMap = { "setting", "reference.settings" },
+		aDisplayIcon = { "button_settings", "button_settings_down" },
+		sRecordDisplayClass = "referencesetting",
+		},
+
 	["career"] = {
 		bExport = true,
 		aDataMap = { "career", "reference.careers" },
@@ -228,7 +236,7 @@ aRecordOverrides = {
 
 
 aDefaultSidebarState = {
-		["create"] = "charsheet,career,talent,item,species_archetype,vehicle" --,specialability,spell",
+		["create"] = "charsheet,career,talent,item,species_archetype,vehicle,setting" --,specialability,spell",
 };
 
 
@@ -355,6 +363,19 @@ aListViews = {
 			aGroupValueOrder = { },
 		},
 	},
+
+	["setting"] = {
+		["byname"] = {
+			sTitleRes = "talent_grouped_title_byname",
+			aColumns = {
+				{ sName = "name", sName = "string", sHeadingRes = "talent_grouped_label_name", nWidth=170 },
+			},
+			aFilters = { },
+			aGroups = { { sDBField = "name" } },
+			aGroupValueOrder = { },
+		},
+	},
+
 
 
 	["vehicle"] = {

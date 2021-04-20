@@ -53,7 +53,7 @@
 			</button_activateid>
 
 			<tokenfield name="token">
-				<anchored to="rightanchor" width="25" height="25">
+				<anchored to="rightanchor" width="50" height="50">
 					<top offset="15" />
 					<right parent="rightanchor" anchor="left" relation="relative" offset="-8" />
 				</anchored>

@@ -15,10 +15,10 @@ function onInit()
 
 	-- If Character has 0 skills, populate it with default skills
 	local CharSkillCount = DB.getChildCount(window.getDatabaseNode(), "skilllist");
+	CharManager.BuildCharSkills();
 	if CharSkillCount == 0 then
 		constructDefaultskilllist();
 	end
-
 
 
 	-- CharManager.updateSkillPoints(window.getDatabaseNode());

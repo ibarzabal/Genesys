@@ -31,7 +31,7 @@ function update()
 			newvalue = string.gsub(newvalue, "%(!%)", "&#254;"); -- #254 - (!) - Triumph
 			newvalue = string.gsub(newvalue, "%(F%)", "&#253;"); -- #253 - (F) - Failure
 			newvalue = string.gsub(newvalue, "%(T%)", "&#252;"); -- #252 - (T) - Threat
-			newvalue = string.gsub(newvalue, "%(A+%)", "&#251;"); -- #251 - (A) - Advantage
+			newvalue = string.gsub(newvalue, "%(A%)", "&#251;"); -- #251 - (A) - Advantage
 			newvalue = string.gsub(newvalue, "%(D%)", "&#250;"); -- #250 - (D) - Despair
 			newvalue = string.gsub(newvalue, "%(%-%)", "&#249;"); -- #249 - (-) - Darkside Force
 			newvalue = string.gsub(newvalue, "%(%+%)", "&#248;"); -- #248 - (+) - Lightside Force

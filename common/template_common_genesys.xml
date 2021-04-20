@@ -9,7 +9,7 @@
 <root>
 <!-- Overwritting core -->
 
-
+<!--
 <template name="simplestring">
   <stringfield>
     <script file="common/scripts/simplestring.lua" />
@@ -19,6 +19,14 @@
     <font>sheettext</font>
   </stringfield>
 </template>
+-->
+
+<template name="string_columnh">
+  <string_column>
+    <script file="common/scripts/column_string.lua" />
+  </string_column>
+</template>
+
 
 
 <template name="ft_columnh">

@@ -243,8 +243,17 @@ function processDice(rSource, rTarget, rRoll)
     newDie.type = rSource.aDice[cnt].type .. "x" .. rSource.aDice[cnt].result;
     newDie.result = rSource.aDice[cnt].result;
     table.insert(resultdice, newDie);
-		--processResultDie(resultdice, die);
+	--processResultDie(resultdice, die);
   end
+
+
+--  -- Replace Automatic Success/Failure/Advantage/Disadvantages added to the diebox, so we can calculate later.
+--  for cnt=1, #rSource.aDice do
+--    if rSource.aDice[cnt].type == "mSuccess" then
+--      rSource.aDice[cnt].type = "dAbility";
+--      rSource.aDice[cnt].result = 2;
+--    end
+--  end
 
 
 	-- determine if a dice summary should be displayed
@@ -631,7 +640,6 @@ end
 function processSummaryDie(summary, die)
 
 	if die.type == "dChallengex1" then
-
 	elseif die.type == "dChallengex2" then
 		summary.success = summary.success - 1;
 	elseif die.type == "dChallengex3" then
@@ -763,71 +771,71 @@ function processSummaryDie(summary, die)
 		summary.delay = summary.delay + 2;
 
 
-	elseif die.type == "dConservative.2" then
+	elseif die.type == "dConservativex2" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dConservative.3" then
+	elseif die.type == "dConservativex3" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dConservative.4" then
+	elseif die.type == "dConservativex4" then
 		summary.success = summary.success + 1;
 		summary.delay = summary.delay + 1;
-	elseif die.type == "dConservative.5" then
+	elseif die.type == "dConservativex5" then
 		summary.success = summary.success + 1;
 		summary.delay = summary.delay + 1;
-	elseif die.type == "dConservative.6" then
+	elseif die.type == "dConservativex6" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dConservative.7" then
+	elseif die.type == "dConservativex7" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dConservative.8" then
+	elseif die.type == "dConservativex8" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dConservative.9" then
+	elseif die.type == "dConservativex9" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dConservative.10" then
+	elseif die.type == "dConservativex10" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
 
-	elseif die.type == "dExpertise.2" then
+	elseif die.type == "dExpertisex2" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dExpertise.3" then
+	elseif die.type == "dExpertisex3" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dExpertise.4" then
+	elseif die.type == "dExpertisex4" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dExpertise.5" then
+	elseif die.type == "dExpertisex5" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dExpertise.6" then
+	elseif die.type == "dExpertisex6" then
 		summary.comet = summary.comet + 1;
 
-	elseif die.type == "dFortune.4" then
+	elseif die.type == "dFortunex4" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dFortune.5" then
+	elseif die.type == "dFortunex5" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dFortune.6" then
+	elseif die.type == "dFortunex6" then
 		summary.success = summary.success + 1;
 
-	elseif die.type == "dMisfortune.1" then
+	elseif die.type == "dMisfortunex1" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dMisfortune.2" then
+	elseif die.type == "dMisfortunex2" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dMisfortune.3" then
+	elseif die.type == "dMisfortunex3" then
 		summary.boon = summary.boon - 1;
 
-	elseif die.type == "dReckless.1" then
+	elseif die.type == "dRecklessx1" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dReckless.2" then
+	elseif die.type == "dRecklessx2" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dReckless.5" then
+	elseif die.type == "dRecklessx5" then
 		summary.boon = summary.boon + 2;
-	elseif die.type == "dReckless.6" then
+	elseif die.type == "dRecklessx6" then
 		summary.success = summary.success + 1;
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dReckless.7" then
+	elseif die.type == "dRecklessx7" then
 		summary.success = summary.success + 1;
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dReckless.8" then
+	elseif die.type == "dRecklessx8" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dReckless.9" then
+	elseif die.type == "dRecklessx9" then
 		summary.success = summary.success + 2;
-	elseif die.type == "dReckless.10" then
+	elseif die.type == "dRecklessx10" then
 		summary.success = summary.success + 2;
 
 	elseif die.type == "dSummaryx1" then
@@ -847,119 +855,119 @@ function processSummaryDie(summary, die)
 	elseif die.type == "dSummaryx8" then
 		summary.comet = summary.comet + 1;
 
-	elseif die.type == "mBane.1" then
+	elseif die.type == "mBanex1" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "mBane.2" then
+	elseif die.type == "mBanex2" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "mBane.3" then
+	elseif die.type == "mBanex3" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "mBane.4" then
+	elseif die.type == "mBanex4" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "mBane.5" then
+	elseif die.type == "mBanex5" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "mBane.6" then
+	elseif die.type == "mBanex6" then
 		summary.boon = summary.boon - 1;
 
-	elseif die.type == "mBoon.1" then
+	elseif die.type == "mBoonx1" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "mBoon.2" then
+	elseif die.type == "mBoonx2" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "mBoon.3" then
+	elseif die.type == "mBoonx3" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "mBoon.4" then
+	elseif die.type == "mBoonx4" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "mBoon.5" then
+	elseif die.type == "mBoonx5" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "mBoon.6" then
+	elseif die.type == "mBoonx6" then
 		summary.boon = summary.boon + 1;
 
-	elseif die.type == "mChallenge.1" then
+	elseif die.type == "mChallengex1" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.2" then
+	elseif die.type == "mChallengex2" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.3" then
+	elseif die.type == "mChallengex3" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.4" then
+	elseif die.type == "mChallengex4" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.5" then
+	elseif die.type == "mChallengex5" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.6" then
+	elseif die.type == "mChallengex6" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.7" then
+	elseif die.type == "mChallengex7" then
 		summary.success = summary.success - 1;
-	elseif die.type == "mChallenge.8" then
+	elseif die.type == "mChallengex8" then
 		summary.success = summary.success - 1;
 
-	elseif die.type == "mComet.1" then
+	elseif die.type == "mCometx1" then
 		summary.comet = summary.comet + 1;
-	elseif die.type == "mComet.2" then
+	elseif die.type == "mCometx2" then
 		summary.comet = summary.comet + 1;
-	elseif die.type == "mComet.3" then
+	elseif die.type == "mCometx3" then
 		summary.comet = summary.comet + 1;
-	elseif die.type == "mComet.4" then
+	elseif die.type == "mCometx4" then
 		summary.comet = summary.comet + 1;
-	elseif die.type == "mComet.5" then
+	elseif die.type == "mCometx5" then
 		summary.comet = summary.comet + 1;
-	elseif die.type == "mComet.6" then
+	elseif die.type == "mCometx6" then
 		summary.comet = summary.comet + 1;
 
-	elseif die.type == "mDelay.1" then
+	elseif die.type == "mDelayx1" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.2" then
+	elseif die.type == "mDelayx2" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.3" then
+	elseif die.type == "mDelayx3" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.4" then
+	elseif die.type == "mDelayx4" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.5" then
+	elseif die.type == "mDelayx5" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.6" then
+	elseif die.type == "mDelayx6" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.7" then
+	elseif die.type == "mDelayx7" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.8" then
+	elseif die.type == "mDelayx8" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.9" then
+	elseif die.type == "mDelayx9" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "mDelay.10" then
+	elseif die.type == "mDelayx10" then
 		summary.delay = summary.delay + 1;
 
-	elseif die.type == "mExertion.1" then
+	elseif die.type == "mExertionx1" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.2" then
+	elseif die.type == "mExertionx2" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.3" then
+	elseif die.type == "mExertionx3" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.4" then
+	elseif die.type == "mExertionx4" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.5" then
+	elseif die.type == "mExertionx5" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.6" then
+	elseif die.type == "mExertionx6" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.7" then
+	elseif die.type == "mExertionx7" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.8" then
+	elseif die.type == "mExertionx8" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.9" then
+	elseif die.type == "mExertionx9" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "mExertion.10" then
+	elseif die.type == "mExertionx10" then
 		summary.exertion = summary.exertion + 1;
 
-	elseif die.type == "mSuccess.1" then
+	elseif die.type == "mSuccessx1" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.2" then
+	elseif die.type == "mSuccessx2" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.3" then
+	elseif die.type == "mSuccessx3" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.4" then
+	elseif die.type == "mSuccessx4" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.5" then
+	elseif die.type == "mSuccessx5" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.6" then
+	elseif die.type == "mSuccessx6" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.7" then
+	elseif die.type == "mSuccessx7" then
 		summary.success = summary.success + 1;
-	elseif die.type == "mSuccess.8" then
+	elseif die.type == "mSuccessx8" then
 		summary.success = summary.success + 1;
 
 	end

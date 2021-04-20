@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="referencesetting">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="400" height="400" />
+		</placement>
+		<sharable />
+		<sizelimits>
+			<minimum width="350" height="350" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<nodelete />
+		<playercontrol />
+		<sharable />
+		<script file="campaign/scripts/setting.lua" />
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>ref_setting_header</class>
+			</sub_record_header>
+
+			<frame_record_content name="contentframe" />
+
+			<subwindow_record name="main">
+				<class>setting_main</class>
+				<activate />
+			</subwindow_record>
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ref_setting_header">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>referencesetting</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_setting" />
+			</string_record_name>
+			<label_recordtype name="recordtype">
+				<static textres="record_label_setting" />
+			</label_recordtype>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="setting_main">
+		<margins control="0,0,0,2" />
+ 		<script file="campaign/scripts/setting_main.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			<ft_columnh name="description" />
+
+			<line_column name="divider" />
+
+			<header_column name="skills_header">
+				<static textres="setting_header_skills"/>
+				<center />
+			</header_column>
+
+			<button_iedit name="skills_iedit">
+				<anchored to="skills_header" position="righthigh" offset="-20,0" />
+				<target>skills</target>
+			</button_iedit>
+			<button_iadd name="skills_iadd">
+				<anchored to="skills_iedit" position="lefthigh" offset="5,0" />
+				<target>skills</target>
+			</button_iadd>
+
+			<list_column name="skills">
+				<datasource>.skills</datasource>
+				<class>ref_setting_skill</class>
+				<sortby><control>name</control></sortby>
+				<empty mergerule="replace" font="list-empty" textres="empty_skills_label" />
+			</list_column>
+		</sheetdata>
+	</windowclass>
+
+<!--
+	<windowclass name="ref_setting_skill">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+
+			<button_idelete name="idelete">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+			<link_listitem_column name="shortcut">
+				<class>referenceskill</class>
+			</link_listitem_column>
+			<string_listitem_column_name name="name">
+					<disabled />
+			</string_listitem_column_name>
+			</sheetdata>
+	</windowclass>
+-->
+
+<windowclass name="ref_setting_skill">
+<margins control="0,0,0,2" />
+<sheetdata>
+	<genericcontrol name="rightanchor">
+		<anchored width="0" height="0">
+			<top />
+			<right />
+		</anchored>
+		<invisible />
+	</genericcontrol>
+
+	<button_idelete name="idelete">
+		<anchored width="20" height="20">
+			<top offset="2" />
+			<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+		</anchored>
+	</button_idelete>
+
+	<genericcontrol name="idelete_spacer">
+		<anchored width="20" height="20">
+			<top offset="2" />
+			<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+		</anchored>
+		<disabled />
+		<invisible />
+	</genericcontrol>
+	<!-- FIELDS START HERE -->
+	<buttoncontrol name="shortcut">
+		<anchored width="20" height="20">
+			<top offset="2" />
+			<right parent="rightanchor" anchor="left" relation="relative" offset="-20" />
+		</anchored>
+		<icon normal="button_link" pressed="button_link_down" />
+		<script file="campaign/scripts/char_skilllink.lua" />
+	</buttoncontrol>
+
+	<stringfield name="characteristic">
+		<anchored width="20" height="20">
+			<top offset="2" />
+			<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
+		</anchored>
+		<tabtarget>
+			<next>name</next>
+			<prev>category</prev>
+		</tabtarget>
+	</stringfield>
+
+	<stringfield name="category">
+		<anchored width="70" height="20">
+			<top offset="2" />
+			<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+		</anchored>
+		<tabtarget>
+			<next>characteristic</next>
+			<prev>name</prev>
+		</tabtarget>
+	</stringfield>
+
+	<stringfield name="name">
+		<anchored height="20">
+			<top offset="2" />
+			<left offset="40" />
+			<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+		</anchored>
+		<tabtarget>
+			<next>category</next>
+			<prev>characteristic</prev>
+		</tabtarget>
+	</stringfield>
+
+	</sheetdata>
+</windowclass>
+</root>

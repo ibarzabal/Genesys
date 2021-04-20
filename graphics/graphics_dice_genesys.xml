@@ -106,6 +106,17 @@
 	<icon name="dChallenge" file="graphics/icons/dChallenge.png" />
 	<icon name="dForce" file="graphics/icons/dForce.png" />
 
+	<icon name="mSuccessicon" file="graphics/dice_genesys/dSummary/dSummary.7.png" />
+	<icon name="mBoonicon" file="graphics/dice_genesys/dSummary/dSummary.6.png" />
+	<icon name="mChallengeicon" file="graphics/dice_genesys/dSummary/dSummary.2.png" />
+	<icon name="mBaneicon" file="graphics/dice_genesys/dSummary/dSummary.3.png" />
+
+	<icon name="button_success" file="graphics/dice_genesys/dSummary/dSummary.7.png" />
+	<icon name="button_failure" file="graphics/dice_genesys/dSummary/dSummary.2.png" />
+	<icon name="button_advantage" file="graphics/dice_genesys/dSummary/dSummary.6.png" />
+	<icon name="button_threat" file="graphics/dice_genesys/dSummary/dSummary.3.png" />		
+
+
 	<!-- Icon used to indicate a secret GM die roll -->
 	<icon name="dmdieicon" file="graphics/icons/dmdie_icon.png" />
 

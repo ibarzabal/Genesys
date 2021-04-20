@@ -1,5 +1,81 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
+	<windowclass name="critical">
+		<frame>referencepage</frame>
+		<placement>
+			<size width="400" height="350" />
+		</placement>
+		<sizelimits>
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<nodelete />
+		<playercontrol />
+		<sharable />
+		<script file="campaign/scripts/critical.lua" />
+
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>ref_critical_header</class>
+			</sub_record_header>
+
+			<frame_record_content name="contentframe" />
+
+			<subwindow_record name="main">
+				<class>ref_critical_stats</class>
+				<activate />
+			</subwindow_record>
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ref_critical_header">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>referencecritical</class>
+			</link_record_header>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_critical" />
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ref_critical_stats">
+		<margins control="0,0,0,2" />
+ 		<script file="campaign/scripts/critical_main.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+			<label_column name="severity_label">
+				<static textres="critical_label_severity" />
+			</label_column>
+			<number_columnh name="severity" />
+
+			<ft_columnh name="description" />
+		</sheetdata>
+	</windowclass>
+
+
 
 	<windowclass name="criticalsmall">
 		<sizelimits>
@@ -19,147 +95,6 @@
 			</basestringfield>
 		</sheetdata>
 	</windowclass>
-
-	<windowclass name="critical">
-		<frame>referencepage</frame>
-		<placement>
-			<size>
-				<width>300</width>
-				<height>334</height>
-			</size>
-		</placement>
-		<minimize>minimized_reference</minimize>
-		<playercontrol />
-		<sharable />
-		<tooltip>
-			<field>name</field>
-		</tooltip>
-		<sheetdata>
-<!-- NAME -->
-			<sheetframe name="main_name">
-				<bounds>14,15,275,49</bounds>
-			</sheetframe>
-
-			<sheetframetitle name="main_name_title">
-				<anchored>
-					<to>main_name</to>
-				</anchored>
-				<static>Critical</static>
-			</sheetframetitle>
-
-			<windowshortcut name="main_name_shortcut">
-				<anchored>
-					<to>main_name</to>
-					<position>insidetopleft</position>
-					<offset>17,18</offset>
-					<size>
-						<height>20</height>
-						<width>20</width>
-					</size>
-				</anchored>
-				<class>critical</class>
-			</windowshortcut>
-			<basestringfield name="main_name_name" source="name">
-				<anchored>
-					<to>main_name</to>
-					<position>insidetopleft</position>
-					<offset>38,19</offset>
-					<size>
-						<height>20</height>
-						<width>200</width>
-					</size>
-				</anchored>
-				<empty>&#171; New Critical &#187;</empty>
-				<tabtarget>
-					<next>main_details_severity</next>
-					<prev>main_details_severity</prev>
-				</tabtarget>
-			</basestringfield>
-
-<!-- DETAILS -->
-			<sheetframe name="main_details">
-				<bounds>14,61,275,52</bounds>
-			</sheetframe>
-			<sheetframetitle name="main_main_title">
-				<anchored>
-					<to>main_details</to>
-				</anchored>
-				<static>Details</static>
-			</sheetframetitle>
-
-			<!-- SEVERITY -->
-			<sheetlabel>
-				<anchored>
-					<to>main_details</to>
-					<offset>17,19</offset>
-					<size>
-						<width>209</width>
-					</size>
-				</anchored>
-				<static>Severity</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_details_severity" source="severity">
-				<anchored>
-					<to>main_details</to>
-					<offset>226,19</offset>
-					<size>
-						<width>25</width>
-					</size>
-				</anchored>
-				<tabtarget>
-					<next>main_name_name</next>
-					<prev>main_name_name</prev>
-				</tabtarget>
-			</sheetnumberfield>
-
-<!-- DESCRIPTION -->
-			<sheetframe name="main_description">
-				<bounds>14,110,275,211</bounds>
-			</sheetframe>
-			<sheetframetitle name="main_description_title">
-				<anchored>
-					<to>main_description</to>
-				</anchored>
-				<static>Description</static>
-			</sheetframetitle>
-
-			<sheetformattedtextfield name="main_description_description" source="description">
-				<anchored>
-					<left>
-						<parent>main_description</parent>
-						<anchor>left</anchor>
-						<offset>13</offset>
-					</left>
-					<right>
-						<parent>main_description</parent>
-						<anchor>right</anchor>
-						<offset>-13</offset>
-					</right>
-					<top>
-						<parent>main_description</parent>
-						<anchor>top</anchor>
-						<offset>20</offset>
-					</top>
-					<bottom>
-						<parent>main_description</parent>
-						<anchor>bottom</anchor>
-						<offset>-20</offset>
-					</bottom>
-				</anchored>
-			</sheetformattedtextfield>
-			<scrollbar>
-				<anchored>
-					<to>main_description_description</to>
-					<offset>-3,-2</offset>
-				</anchored>
-				<target>main_description_description</target>
-			</scrollbar>
-
-			<close_referencepage />
-		</sheetdata>
-	</windowclass>
-
-
 
 		<windowclass name="critical_item1">
 			<margins control="0,0,0,2" />
@@ -200,22 +135,30 @@
 		</windowclass>
 
 
+
 <windowclass name="critical_item">
 	<margins control="0,0,0,2" />
 	<sheetdata>
-		<anchor_listitem_column_right name="rightanchor" />
+		<genericcontrol name="rightanchor">
+			<anchored position="insidetopright" offset="0,2" height="0" width="0" />
+		</genericcontrol>
 
-		<!--			<button_listitem_column_delete name="idelete" /> -->
 		<button_idelete name="idelete">
-			<anchored to="rightanchor">
-				<top />
-				<right anchor="left" relation="relative" offset="-5" />
+			<anchored width="20" height="20">
+				<top offset="2" />
+				<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
 			</anchored>
 		</button_idelete>
 
-		<link_listitem_column name="shortcut">
+		<linkcontrol name="shortcut">
+			<anchored to="rightanchor" width="20" height="20">
+				<top />
+				<right anchor="left" relation="relative" offset="-2" />
+			</anchored>
 			<class>critical</class>
-		</link_listitem_column>
+			<readonly />
+		</linkcontrol>
+
 		<basenumberfield name="severity">
 			<anchored to="rightanchor" width="20" height="20">
 				<top />
@@ -223,10 +166,18 @@
 			</anchored>
 			<disabled />
 		</basenumberfield>
-		<string_listitem_column_name name="name">
+
+		<string_textlistitem name="name">
 				<disabled />
-		</string_listitem_column_name>
-		</sheetdata>
+			<anchored to="rightanchor">
+				<top />
+				<left parent="" offset="5" />
+				<right anchor="left" relation="relative" offset="-10" />
+			</anchored>
+			<multilinespacing>20</multilinespacing>
+		</string_textlistitem>
+
+	</sheetdata>
 </windowclass>
 
 </root>

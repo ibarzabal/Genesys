@@ -9,6 +9,24 @@
 		<windowclass name="charsheet_main">
 			<script file="campaign/scripts/char_main.lua" />
 			<sheetdata>
+				<button_iedit name="actions_iedit">
+					<anchored position="insidebottomright" offset="10,10" />
+					<tooltip textres="char_abilities_tooltip_edit" />
+					<script>
+						function onValueChanged()
+							local bEditMode = (getValue() == 1);
+
+							window.contents.subwindow.feats_iadd.setVisible(bEditMode);
+							window.contents.subwindow.feats.update();
+
+							window.contents.subwindow.features_iadd.setVisible(bEditMode);
+							window.contents.subwindow.features.update();
+							window.contents.subwindow.traits_iadd.setVisible(bEditMode);
+							window.contents.subwindow.traits.update();
+
+						end
+					</script>
+				</button_iedit>
 
 				<label_charframetopg name="label_species_archetype">
 					<anchored height="20">
@@ -16,7 +34,7 @@
 						<left offset="15" />
 						<right anchor="center" offset="-15" />
 					</anchored>
-	<!--					<icons>char_class</icons> -->
+					<!--					<icons>char_class</icons> -->
 					<static textres="char_label_species_archetype" />
 				</label_charframetopg>
 
@@ -51,7 +69,7 @@
 						<left anchor="center" offset="15" />
 						<right offset="-15" />
 					</anchored>
-	<!--					<icons>char_class</icons> -->
+					<!--					<icons>char_class</icons> -->
 					<static textres="char_label_career" />
 				</label_charframetopg>
 				<linkfield name="careerlink">
@@ -329,68 +347,163 @@
 					<anchored to="main_statblock2a" position="insidetopleft" offset="390,25" height="20" />
 				</sheetnumberfieldtr>
 
-
-				<!-- GENERAL skilllist FRAME ......................................................................... -->
-<!--
-				<frame_char name="skillframe">
-					<bounds>0,210,-1,-1</bounds>
-					<invisible />
-				</frame_char>
-
-				<button_iedit name="skilllist_iedit">
-					<anchored to="skillframe" position="insidetopright" offset="0,0" />
-					<target>skilllist</target>
-					<script>
-						function onValueChanged()
-							local bEdit = (getValue() == 1);
-							window.skilllist_iadd.setVisible(bEdit);
-							window.skilllist.update();
-						end
-					</script>
-				</button_iedit>
-
-				<button_iadd name="skilllist_iadd">
-					<anchored to="skilllist_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
-					<target>skilllist</target>
-					<tooltip textres="char_tooltip_skilladd" />
-				</button_iadd>
-					<genericcontrol>
-					<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
-					<icon>char_encumbrance</icon>
-				</genericcontrol>
-				<label>
-					<anchored to="skillframe" position="insidetopleft" offset="50,10" />
-					<static textres="skill_name_title" />
-				</label>
-				<genericcontrol name="rightanchor">
-					<anchored to="skillframe" width="0" height="0">
-						<top offset="10" />
-						<right offset="-25" />
-					</anchored>
-					<invisible />
-				</genericcontrol>
-				<genericcontrol name="idelete_header">
-					<anchored to="rightanchor" width="20" height="20">
-						<top />
-						<right anchor="left" relation="relative" offset="-2" />
-					</anchored>
-					<disabled />
-					<invisible />
-				</genericcontrol>
-					<list_charskill name="skilllist">
-					<anchored to="skillframe">
-						<top offset="30" />
+				<subwindow name="contents">
+					<anchored>
+						<top offset="200" />
+						<bottom offset="-40" />
 						<left offset="10" />
-						<right offset="-25" />
-						<bottom offset="-15" />
+						<right offset="-15" />
 					</anchored>
-					</list_charskill>
-				<scrollbar>
-					<anchored to="skilllist" />
-					<target>skilllist</target>
-				</scrollbar>
--->
-	<!-- GENERAL skilllist FRAME END......................................................................... -->
+					<class>charsheet_main_contents</class>
+					<activate />
+					<fastinit />
+				</subwindow>
+				<scrollbar_charcontents />
+			</sheetdata>
+		</windowclass>
+
+
+		<windowclass name="charsheet_main_contents">
+			<margins control="0,0,0,2" />
+			<!-- <script file="campaign/scripts/char_abilities.lua" /> -->
+			<sheetdata>
+				<label_charframetopg name="featstitle">
+					<bounds>15,10,-10,20</bounds>
+					<static textres="char_abilities_label_racial_traits" />
+					<icons>char_abilities_green</icons>
+					<target>feats</target>
+				</label_charframetopg>
+				<list_abilities name="feats">
+					<anchored to="featstitle">
+						<top anchor="bottom" relation="relative" offset="5" />
+						<left />
+						<right />
+					</anchored>
+					<datasource>.abilities</datasource>
+					<class>ability_item_ability</class>
+					<listheader>featstitle</listheader>
+				</list_abilities>
+				<button_iadd name="feats_iadd">
+					<anchored to="featstitle" position="insidetopright" offset="5,0" />
+					<target>feats</target>
+				</button_iadd>
+
+				<label_charframetopg name="featurestitle">
+					<anchored to="featstitle" height="20">
+						<top anchor="bottom" relation="relative" offset="7" />
+						<left />
+						<right />
+					</anchored>
+					<static textres="char_abilities_label_talents" />
+					<icons>char_abilities_red</icons>
+					<target>features</target>
+				</label_charframetopg>
+				<list_abilities name="features">
+					<anchored to="featurestitle">
+						<top anchor="bottom" relation="relative" offset="5" />
+						<left />
+						<right />
+					</anchored>
+					<datasource>.talents</datasource>
+					<class>talent_item</class>
+					<listheader>featurestitle</listheader>
+				</list_abilities>
+				<button_iadd name="features_iadd">
+					<anchored to="featurestitle" position="insidetopright" offset="5,0" />
+					<target>features</target>
+				</button_iadd>
+
+				<label_charframetopg name="traitstitle">
+					<anchored to="featurestitle" height="20">
+						<top anchor="bottom" relation="relative" offset="7" />
+						<left />
+						<right />
+					</anchored>
+					<static textres="char_abilities_label_criticals" />
+					<icons>char_abilities</icons>
+					<target>traits</target>
+				</label_charframetopg>
+				<list_abilities name="traits">
+					<anchored to="traitstitle">
+						<top anchor="bottom" relation="relative" offset="5" />
+						<left />
+						<right />
+					</anchored>
+					<datasource>.criticals</datasource>
+					<class>critical_item</class>
+					<listheader>traitstitle</listheader>
+				</list_abilities>
+				<button_iadd name="traits_iadd">
+					<anchored to="traitstitle" position="insidetopright" offset="5,0" />
+					<target>traits</target>
+				</button_iadd>
 			</sheetdata>
 		</windowclass>
 </root>
+
+
+
+
+
+<!-- Belonged to the main window.... it is now in skills tab: -->
+<!-- GENERAL skilllist FRAME ......................................................................... -->
+<!--
+<frame_char name="skillframe">
+	<bounds>0,210,-1,-1</bounds>
+	<invisible />
+</frame_char>
+
+<button_iedit name="skilllist_iedit">
+	<anchored to="skillframe" position="insidetopright" offset="0,0" />
+	<target>skilllist</target>
+	<script>
+		function onValueChanged()
+			local bEdit = (getValue() == 1);
+			window.skilllist_iadd.setVisible(bEdit);
+			window.skilllist.update();
+		end
+	</script>
+</button_iedit>
+
+<button_iadd name="skilllist_iadd">
+	<anchored to="skilllist_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
+	<target>skilllist</target>
+	<tooltip textres="char_tooltip_skilladd" />
+</button_iadd>
+	<genericcontrol>
+	<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
+	<icon>char_encumbrance</icon>
+</genericcontrol>
+<label>
+	<anchored to="skillframe" position="insidetopleft" offset="50,10" />
+	<static textres="skill_name_title" />
+</label>
+<genericcontrol name="rightanchor">
+	<anchored to="skillframe" width="0" height="0">
+		<top offset="10" />
+		<right offset="-25" />
+	</anchored>
+	<invisible />
+</genericcontrol>
+<genericcontrol name="idelete_header">
+	<anchored to="rightanchor" width="20" height="20">
+		<top />
+		<right anchor="left" relation="relative" offset="-2" />
+	</anchored>
+	<disabled />
+	<invisible />
+</genericcontrol>
+	<list_charskill name="skilllist">
+	<anchored to="skillframe">
+		<top offset="30" />
+		<left offset="10" />
+		<right offset="-25" />
+		<bottom offset="-15" />
+	</anchored>
+	</list_charskill>
+<scrollbar>
+	<anchored to="skilllist" />
+	<target>skilllist</target>
+</scrollbar>
+-->
+<!-- GENERAL skilllist FRAME END......................................................................... -->

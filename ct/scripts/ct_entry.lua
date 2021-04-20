@@ -91,11 +91,12 @@ function delete()
 	end
 
 	-- Delete the database node and close the window
+	local cList = windowlist;
 	node.delete();
 
 	-- Update list information (global subsection toggles)
-	windowlist.onVisibilityToggle();
-	windowlist.onEntrySectionToggle();
+	cList.onVisibilityToggle();
+	cList.onEntrySectionToggle();
 end
 
 function onLinkChanged()

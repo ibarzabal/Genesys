@@ -49,8 +49,6 @@ function update(bReadOnly, bForceHide, Reverse)
 		end
 	end
 
-
-
 	if bForceHide then
 		bLocalShow = false;
 	else

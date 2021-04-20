@@ -360,20 +360,25 @@ end
 --	resetAll();
 --end
 
+
+
 function setDescription(description)
 	if description and description ~= "" then
 		if descriptionwidget then
+
 			descriptionwidget.setText(description);
 		else
 			descriptionwidget = addTextWidget("hotkey", description);
 		end
-		if shadowwidget then
-			shadowwidget.setText(description);
-		else
-			shadowwidget = addTextWidget("chatfont", description);
-		end
-		descriptionwidget.setPosition("",0,0);
-		shadowwidget.setPosition("",1,1);
+--		if shadowwidget then
+--			shadowwidget.setText(description);
+--		else
+--			shadowwidget = addTextWidget("chatfont", description);
+--		end
+		descriptionwidget.setPosition("",0,15);
+		descriptionwidget.setMaxWidth(200);
+		--descriptionwidget.setVisible(false);
+--		shadowwidget.setPosition("",1,1);
 	end
 end
 
@@ -515,5 +520,24 @@ function onHiddenButtonPress(control)
 	elseif control.getValue() == 1 then
 		DieBoxGenManager.sendPlayerDicepool({}, "");
 		ChatManagerGenesys.gmRevealDieRolls(false);
+	end
+end
+
+
+function DieBoxAddResultButtonPress(controlname)
+	--Debug.console("dieboxext.lua: DieBoxAddResultButtonPress().  Controlname = " .. controlname);
+
+	if controlname == "dieboxaddsuccess" then
+		Debug.console("Adding success result to dice pool.");
+		window.dieboxgencontrol.addDie("mSuccess");
+	elseif controlname == "dieboxaddfailure" then
+		Debug.console("Adding failure result to dice pool.");
+		window.dieboxgencontrol.addDie("mChallenge");
+	elseif controlname == "dieboxaddadvantage" then
+		Debug.console("Adding advantage result to dice pool.");
+		window.dieboxgencontrol.addDie("mBoon");
+	elseif controlname == "dieboxaddthreat" then
+		Debug.console("Adding threat result to dice pool.");
+		window.dieboxgencontrol.addDie("mBane");
 	end
 end
