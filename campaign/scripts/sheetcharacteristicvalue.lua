@@ -18,54 +18,56 @@ function onInit()
 
 end
 
-function onDragStart(button, x, y, draginfo)
-	dragging = false;
-	return onDrag(button, x, y, draginfo);
-end
-
-function onDrag(button, x, y, draginfo)
---	Debug.chat("draginfo",draginfo);
-	if not dragging then
-		local sourcenode = getDatabaseNode();
-		if sourcenode then
-			local sourcename = sourcenode.getNodeName();
-			-- build the description
-			local description = "";
-			    if string.find("agility",sourcename, 1, true) then
-				description = "Agility";
-			elseif string.find("willpower",sourcename, 1, true) then
-				description = "Willpower";
-			elseif string.find("brawn",sourcename, 1, true) then
-				description = "Brawn";
-			elseif string.find("intellect",sourcename, 1, true) then
-				description = "Intellect";
-			elseif string.find("cunning",sourcename, 1, true) then
-				description = "Cunning";
-			elseif string.find("presence",sourcename, 1, true) then
-				description = "Presence";
-			end
-
-
-			-- build the dice pool
-			local dice = {};
-			DicePoolManager.addCharacteristicDice(sourcenode, dice);
-			-- complete the drag information
-			if table.getn(dice) > 0 then
-				draginfo.setType("characteristic");
-				draginfo.setDescription(description);
-				draginfo.setDieList(dice);
-				draginfo.setDatabaseNode(sourcenode);
-				dragging = true;
-				return true;
-			end
-		end
-	end
-	return false;
-end
-
-function onDragEnd(draginfo)
-	dragging = false;
-end
+-- Genesys - for now dragging genesys dice is causing too many issues with FGU and FGC
+-- disabling drag, players should double click instead
+--function onDragStart(button, x, y, draginfo)
+--	dragging = false;
+--	return onDrag(button, x, y, draginfo);
+--end
+--
+--function onDrag(button, x, y, draginfo)
+----	Debug.chat("draginfo",draginfo);
+--	if not dragging then
+--		local sourcenode = getDatabaseNode();
+--		if sourcenode then
+--			local sourcename = sourcenode.getNodeName();
+--			-- build the description
+--			local description = "";
+--			    if string.find("agility",sourcename, 1, true) then
+--				description = "Agility";
+--			elseif string.find("willpower",sourcename, 1, true) then
+--				description = "Willpower";
+--			elseif string.find("brawn",sourcename, 1, true) then
+--				description = "Brawn";
+--			elseif string.find("intellect",sourcename, 1, true) then
+--				description = "Intellect";
+--			elseif string.find("cunning",sourcename, 1, true) then
+--				description = "Cunning";
+--			elseif string.find("presence",sourcename, 1, true) then
+--				description = "Presence";
+--			end
+--
+--
+--			-- build the dice pool
+--			local dice = {};
+--			DicePoolManager.addCharacteristicDice(sourcenode, dice);
+--			-- complete the drag information
+--			if table.getn(dice) > 0 then
+--				draginfo.setType("characteristic");
+--				draginfo.setDescription(description);
+--				draginfo.setDieList(dice);
+--				draginfo.setDatabaseNode(sourcenode);
+--				dragging = true;
+--				return true;
+--			end
+--		end
+--	end
+--	return false;
+--end
+--
+--function onDragEnd(draginfo)
+--	dragging = false;
+--end
 
 -- Allows population of the dice pool by a double-click on the dice button by the skill
 function onDoubleClick()

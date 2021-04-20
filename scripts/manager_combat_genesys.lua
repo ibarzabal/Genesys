@@ -631,25 +631,12 @@ end
 
 
 function rollInit(initSkill,sType)
-
---	Debug.chat("ManagerCombat2->rollInit", sType);
---	CombatManager.rollTypeInit(sType, rollEntryInit);
-
-
---	local initSkill = window.init_skill_value.getInitSkill();
 	Debug.console("Rolling NPC Inits.  Skill = " .. initSkill);
 
 	for k,v in pairs(CombatManager.getCombatantNodes()) do
 		local sClass,sNode = DB.getValue(v, "link", "", "");
 		Debug.console("initiativetracker.lua:onMenuSelection - actorlist window class = " .. sClass);
-		--Debug.chat("initiativetracker.lua:onMenuSelection - actorlist window class = " .. sClass);
---		Debug.chat("v",v);
---		Debug.chat("snode", sNode);
 		if (sType == "all") or (sClass == sType) then
-			--Debug.console("initiativetracker.lua:rollAllInit - actorlist npcactor node = " .. v..getNodeName());
-	--		Debug.chat("initiativetracker.lua:rollAllInit - actorlist npcactor node = " .. DB.getValue(v, "name", ""));
-	--		Debug.chat("sclass",sClass);
-
 			if sClass == "npc" then
 				skillsnode = v.getChild("skilllist");
 			else
@@ -664,7 +651,6 @@ function rollInit(initSkill,sType)
 
 			local initskillnode = nil;
 			local initskillname = "";
-			--Debug.console("Skills node = " .. skillsnode.getNodeName());
 			if initSkill == "Cool" then
 				initskillname = "Cool";
 			elseif initSkill == "Vig." then
@@ -672,9 +658,7 @@ function rollInit(initSkill,sType)
 			end
 
 			for k,v in pairs(skillsnode.getChildren()) do
-				--Debug.console("Looking at current child: " .. k);
 				if v.getChild("name").getValue() == initskillname then
-					--Debug.console("Have the " .. initskillname .. " db node = " .. v.getNodeName());
 					initskillnode = v;
 					break;
 				end
@@ -695,9 +679,6 @@ function rollInit(initSkill,sType)
 
 			--Roll the dice in the diebox - INIT will be populated to the correct init slot when the dice roll ends.
 			DieBoxManager.rollInitDice();
-
-			--InitiativeManager.updateActorInitiative(v.getDatabaseNode(), initiativecount)
-			--InitiativeManager.removeActor(v.getDatabaseNode());
 		end
 	end
 

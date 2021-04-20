@@ -713,7 +713,7 @@ function createActionMessage(rSource, rRoll)
 	end
 
 	-- Show total if option enabled
-	if not UtilityManager.isClientFGU() then
+	if not isClientFGU() then
 		if OptionsManager.isOption("TOTL", "on") and rRoll.aDice and ((#(rRoll.aDice) > 0) or ((rRoll.aDice.expr or "") ~= "")) then
 			rMessage.dicedisplay = 1;
 		end

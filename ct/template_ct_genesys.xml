@@ -17,6 +17,23 @@
 		</label_ct>
 	</template>
 
+	<!-- Genesys specific -->
+	<template name="button_ctentry_choose_next_base">
+		<buttonfield>
+			<anchored width="33" height="40">
+				<top parent="active_spacer_top" anchor="bottom" />
+				<left />
+			</anchored>
+			<state icon="" />
+			<state icon="ct_choose_next" />
+		</buttonfield>
+	</template>
+	<template name="button_ctentry_choose_next">
+		<button_ctentry_choose_next_base>
+			<script file="ct/scripts/ctentry_choose_next.lua" />
+		</button_ctentry_choose_next_base>
+	</template>
+
 	<template name="ct_init_skill">
 				<!--Initiative skill selector (used for auto init rolls)-->
 				<initskillcontrol name="init_skill_value">

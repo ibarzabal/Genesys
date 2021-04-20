@@ -13,32 +13,34 @@ function onInit()
 	Comm.registerSlashHandler("rolldicepool", onDieboxButtonPress);
 end
 
-function onDragStart(button, x, y, draginfo)
-	dragging = false;
-	return onDrag(button, x, y, draginfo);
-end
-
-function onDrag(button, x, y, draginfo)
-	if table.getn(entries) > 0 then
-		if not dragging then
-			if table.getn(getDice()) > 0 then
-				draginfo.setType(typename);
-				draginfo.setDescription(getDescription());
-				draginfo.setDieList(getDice());
-				draginfo.setDatabaseNode(sourcenode);
-				dragging = true;
-				if OptionsManager.getOption("interface_cleardicepoolondrag") then
-					resetAll();
-				end
-				return true;
-			end
-		end
-	end
-end
-
-function onDragEnd(draginfo)
-	dragging = false;
-end
+-- Genesys - for now dragging genesys dice is causing too many issues with FGU and FGC
+-- disabling drag, players should double click instead
+--function onDragStart(button, x, y, draginfo)
+--	dragging = false;
+--	return onDrag(button, x, y, draginfo);
+--end
+--
+--function onDrag(button, x, y, draginfo)
+--	if table.getn(entries) > 0 then
+--		if not dragging then
+--			if table.getn(getDice()) > 0 then
+--				draginfo.setType(typename);
+--				draginfo.setDescription(getDescription());
+--				draginfo.setDieList(getDice());
+--				draginfo.setDatabaseNode(sourcenode);
+--				dragging = true;
+--				if OptionsManager.getOption("interface_cleardicepoolondrag") then
+--					resetAll();
+--				end
+--				return true;
+--			end
+--		end
+--	end
+--end
+--
+--function onDragEnd(draginfo)
+--	dragging = false;
+--end
 
 function onDrop(x, y, draginfo)
 	if OptionsManager.getOption("interface_cleardicepoolondrag") then

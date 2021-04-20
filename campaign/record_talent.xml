@@ -152,7 +152,7 @@
 			<label_column name="ranks_label">
 				<static textres="talent_label_rank" />
 			</label_column>
-			<string_columnh name="ranks" />
+			<number_columnh name="ranks" />
 
 			<ft_columnh name="description" />
 

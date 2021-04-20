@@ -34,7 +34,7 @@ function onInit()
   ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEACTORINIT, handleUpdateActorInit);
 	OOBManager.registerOOBMsgHandler(SPECIAL_MSGTYPE_UPDATEACTORINIT, ProcessNothing);
 
-  ActionsManager.registerResultHandler("dice", onDice);
+  ActionsManager.registerResultHandler("dicegen", onDice);
   ActionsManager.registerResultHandler("skill", onDice);
   ActionsManager.registerResultHandler("characteristic", onDice);
   ActionsManager.registerResultHandler("critical", processDiceCritical);
@@ -291,6 +291,7 @@ function processDice(rSource, rTarget, rRoll)
 	if showsummary then
 		resultMsg.text = "Result:";
 	end
+
 
 	-- Crit rolls are just d100 rolls, no need to show the special dice summary.  Plus show total of the roll.
 	if string.find(description, "CRITICAL") or string.find(description, "CRITVEHICLE") then
@@ -1076,7 +1077,7 @@ function processDiegen(command, params)
 
 		Comm.deliverChatMessage(msg);
 	else
-		Comm.throwDice("dice", dice, modifier, descriptionstring);
+		Comm.throwDice("dicegen", dice, modifier, descriptionstring);
 	end
 end
 
