@@ -44,6 +44,41 @@ function update()
   main_statblock1_cunning_current.setReadOnly(bReadOnly);
   main_statblock1_willpower_current.setReadOnly(bReadOnly);
   main_statblock1_presence_current.setReadOnly(bReadOnly);
+end
 
+
+
+
+
+function onDrop(x, y, draginfo)
+--	local bWeapon = (sType == "Weapon");
+--	local bArmor = (sType == "Armor");
+	if draginfo.isType("shortcut") then
+		local sClass, sRecord = draginfo.getShortcutData();
+		if StringManager.contains({"referenceracialtrait"}, sClass) then
+			if User.isHost() or getDatabaseNode().isOwner() then
+				addAbilities(getDatabaseNode(), sClass, sRecord);
+			end
+			return true;
+		end
+	end
+	-- return CharManager.onDrop(getDatabaseNode(), x, y, draginfo);
+end
+
+
+
+
+function addAbilities(nodeItem, sClass, sRecord)
+	local attachment_desc = DB.getValue(nodeSource, "name", "");
+	local sFormat = Interface.getString("char_message_abilityadd");
+	local sMsg = string.format(sFormat, attachment_desc, DB.getValue(nodeItem, "name", ""));
+	local recordnode = DB.findNode(sRecord);
+	local newitemnode;
+
+	-- get the new ability
+	newitemnode = nodeItem.createChild("abilities").createChild();
+	DBManagerGenesys.copyNode(recordnode, newitemnode);
+
+	return true;
 
 end

@@ -197,6 +197,17 @@ aRecordOverrides = {
 			["Equipment Type"] = { sField = "equipment_type", sType = "string"},
 		},
 	},
+
+
+	["special_ability"] = {
+		bExport = true,
+		aDataMap = { "special_ability", "reference.special_abilities" },
+		aDisplayIcon = { "button_special_abilities", "button_special_abilities_down" },
+		sRecordDisplayClass = "referenceracialtrait",
+		aCustomFilters = {
+			["Setting"] = { sField = "setting", sType = "string"},
+		},
+	},
 };
 
 

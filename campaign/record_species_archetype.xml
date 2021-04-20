@@ -14,6 +14,7 @@
 		<sharable />
 		<sizelimits>
 			<minimum width="525" height="350" />
+			<maximum width="525"/>
 			<dynamic />
 		</sizelimits>
 		<minimize>minimized_reference</minimize>
@@ -28,7 +29,7 @@
 				<class>ref_species_archetype_header</class>
 			</sub_record_header>
 
-			<frame_ref_content />
+			<frame_record_content name="contentframe" />
 <!--			<frame_record_content name="contentframe" /> -->
 
 			<subwindow_record name="main">
@@ -307,14 +308,50 @@
 				<delaykeyupdate />
 			</number_columnh>
 
-
 			<ft_columnh name="description" />
+
+
+			<header_column name="abilities_header">
+				<static textres="species_header_abilities"/>
+				<center />
+			</header_column>
+			<button_iedit name="abilities_iedit">
+				<anchored to="abilities_header" position="righthigh" offset="-20,0" />
+				<target>abilities</target>
+			</button_iedit>
+			<button_iadd name="abilities_iadd">
+				<anchored to="abilities_iedit" position="lefthigh" offset="5,0" />
+				<target>abilities</target>
+			</button_iadd>
+			<list_column name="abilities">
+				<datasource>.abilities</datasource>
+				<class>ref_special_abilities</class>
+			</list_column>
+
 			<label_column name="setting_label">
 				<static textres="talent_label_setting" />
 			</label_column>
 			<string_columnh name="setting" />
 		</sheetdata>
 	</windowclass>
+
+	<windowclass name="ref_special_abilities">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_listitem_column_right name="rightanchor" />
+
+			<link_listitem_column name="shortcut">
+				<class>referenceracialtrait</class>
+			</link_listitem_column>
+			<button_listitem_column_delete name="idelete" />
+
+			<string_listitem_column_name name="name" />
+<!--				<empty textres="library_recordtype_empty_subracialtrait" />
+			</string_listitem_column_name>
+-->
+			</sheetdata>
+	</windowclass>
+
 
 
 	<windowclass name="referenceracialtrait">
@@ -332,10 +369,8 @@
 			function onLockChanged()
 				if header.subwindow then
 					header.subwindow.update();
+					main.subwindow.update();
 				end
-
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				text.setReadOnly(bReadOnly);
 			end
 		</script>
 		<sheetdata>
@@ -343,33 +378,32 @@
 				<class>ref_racialtrait_header</class>
 			</sub_record_header>
 
-			<frame_record_content />
-			<ft_record name="text">
-				<anchored to="contentframe" position="over" />
-				<footer>footer_wide</footer>
-			</ft_record>
-			<scrollbar>
-				<anchored to="text" />
-				<target>text</target>
-			</scrollbar>
+			<frame_record_content name="contentframe" />
 
+			<subwindow_record name="main">
+				<class>ref_racialtrait_main</class>
+				<activate />
+			</subwindow_record>
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
 			<resize_recordsheet />
 			<close_recordsheet />
 		</sheetdata>
 	</windowclass>
 
-
 	<windowclass name="ref_racialtrait_header">
 		<margins control="0,0,0,2" />
 		<script>
-			function onInit()
-				update();
-			end
-			function update()
-				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-				name.setReadOnly(bReadOnly);
-			end
-		</script>
+      function onInit()
+        update();
+      end
+      function update()
+        local nodeRecord = getDatabaseNode();
+        local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
+        name.setReadOnly(bReadOnly);
+      end
+    </script>
 		<sheetdata>
 			<link_record_header>
 				<class>referenceracialtrait</class>
@@ -385,6 +419,22 @@
 			<label_recordtype name="recordtype">
 				<static textres="record_label_racialtrait" />
 			</label_recordtype>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ref_racialtrait_main">
+		<margins control="0,0,0,2" />
+		<script file="campaign/scripts/special_ability_main.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+			<ft_columnh name="text" />
+
+			<label_column name="setting_label">
+				<static textres="talent_label_setting" />
+			</label_column>
+			<string_columnh name="setting" />
+
 		</sheetdata>
 	</windowclass>
 

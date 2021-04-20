@@ -254,7 +254,11 @@
  <string name="strain_threshold">Strain Threshold</string>
  <string name="strain_threshold2">+ Willpower</string>
  <string name="starting_xp">Starting XP</string>
+ <string name="species_header_abilities">Special Abilities</string>
+ <string name="char_message_abilityadd">Special Ability '%s' added to '%s'.</string>
 
+  <string name="library_recordtype_label_special_ability">Special Abilities</string>
+	<string name="library_recordtype_empty_racialtrait">&#171; New Special Ability &#187;</string>
 
 	<!-- Desktop decal options -->
 	<string name="option_val_DDCL_genesys_core">Genesys Core</string>
@@ -1175,7 +1179,7 @@
 	<string name="library_recordtype_empty_feat">&#171; New Feat &#187;</string>
 	<string name="library_recordtype_label_race">Races</string>
 	<string name="library_recordtype_empty_race">&#171; New Race &#187;</string>
-	<string name="library_recordtype_empty_racialtrait">&#171; New Racial Trait &#187;</string>
+
 	<string name="library_recordtype_empty_proficiency">&#171; New Proficiency &#187;</string>
 	<string name="library_recordtype_label_skill">Skills</string>
 	<string name="library_recordtype_empty_skill">&#171; New Skill &#187;</string>
@@ -1187,7 +1191,7 @@
 	<string name="record_label_class">Class</string>
 	<string name="record_label_classfeature">Class Feature</string>
 	<string name="record_label_race">Race</string>
-	<string name="record_label_racialtrait">Racial Trait</string>
+	<string name="record_label_racialtrait">Special Ability</string>
 	<string name="record_label_proficiency">Proficiency</string>
 
 
