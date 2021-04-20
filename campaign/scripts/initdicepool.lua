@@ -32,17 +32,17 @@ function onDrag(button, x, y, draginfo)
 	if not dragging then
 		local sourcenode = window.getDatabaseNode();
 
-		local skillsnode = window.getDatabaseNode().getChild("skills");
+		local skilllistnode = window.getDatabaseNode().getChild("skilllist");
 		local initskillnode = nil;
 		local initskillname = "";
-		--Debug.console("Skills node = " .. skillsnode.getNodeName());
+		--Debug.console("skilllist node = " .. skilllistnode.getNodeName());
 		if self.getName() == "combat_init_cool_btn" then
 			initskillname = "Cool";
 		elseif self.getName() == "combat_init_vigilance_btn" then
 			initskillname = "Vigilance";
 		end
 
-		for k,v in pairs(skillsnode.getChildren()) do
+		for k,v in pairs(skilllistnode.getChildren()) do
 			--Debug.console("Looking at current child: " .. k);
 			if v.getChild("name").getValue() == initskillname then
 				--Debug.console("Have the " .. initskillname .. " db node = " .. v.getNodeName());
@@ -51,7 +51,7 @@ function onDrag(button, x, y, draginfo)
 			end
 		end
 
-		-- Try secondary skills of "Cool" or "Vigilance" (named without the characterstic)
+		-- Try secondary skilllist of "Cool" or "Vigilance" (named without the characterstic)
 		if not initskillnode then
 			if self.getName() == "combat_init_cool_btn" then
 				initskillname = "Cool";
@@ -59,7 +59,7 @@ function onDrag(button, x, y, draginfo)
 				initskillname = "Vigilance";
 			end
 
-			for k,v in pairs(skillsnode.getChildren()) do
+			for k,v in pairs(skilllistnode.getChildren()) do
 				--Debug.console("Looking at current child: " .. k);
 				if v.getChild("name").getValue() == initskillname then
 					--Debug.console("Have the " .. initskillname .. " db node = " .. v.getNodeName());
@@ -69,7 +69,7 @@ function onDrag(button, x, y, draginfo)
 			end
 		end
 
-		-- TODO: Need to code for no match in skills - i.e. use characteristic score only.
+		-- TODO: Need to code for no match in skilllist - i.e. use characteristic score only.
 
 		local dice = {};
 		DicePoolManager.addSkillDice(initskillnode, dice);
@@ -95,21 +95,21 @@ end
 function onDoubleClick()
 	-- Debug.console("initdicepool.lua - onDoubleClick");
 	--local sourcenode = window.getDatabaseNode();
-	local skillsnode = window.getDatabaseNode().getChild("skills");
+	local skilllistnode = window.getDatabaseNode().getChild("skilllist");
 --	Debug.chat(window.getDatabaseNode());
-	if not skillsnode then
+	if not skilllistnode then
 		return;
 	end
 	local initskillnode = nil;
 	local initskillname = "";
-	--Debug.console("Skills node = " .. skillsnode.getNodeName());
+	--Debug.console("skilllist node = " .. skilllistnode.getNodeName());
 	if self.getName() == "combat_init_cool_btn" then
 		initskillname = "Cool";
 	elseif self.getName() == "combat_init_vigilance_btn" then
 		initskillname = "Vigilance";
 	end
 
-	for k,v in pairs(skillsnode.getChildren()) do
+	for k,v in pairs(skilllistnode.getChildren()) do
 		--Debug.console("Looking at current child: " .. k);
 		if v.getChild("name").getValue() == initskillname then
 			--Debug.console("Have the " .. initskillname .. " db node = " .. v.getNodeName());
@@ -118,14 +118,14 @@ function onDoubleClick()
 		end
 	end
 
-	-- Try secondary skills of "Cool" or "Vigilance" (named without the characterstic)
+	-- Try secondary skilllist of "Cool" or "Vigilance" (named without the characterstic)
 	if not initskillnode then
 		if self.getName() == "combat_init_cool_btn" then
 			initskillname = "Cool";
 		elseif self.getName() == "combat_init_vigilance_btn" then
 			initskillname = "Vigilance";
 		end
-		for k,v in pairs(skillsnode.getChildren()) do
+		for k,v in pairs(skilllistnode.getChildren()) do
 			Debug.console("Looking at current child: " .. k);
 			if v.getChild("name").getValue() == initskillname then
 				initskillnode = v;
@@ -134,7 +134,7 @@ function onDoubleClick()
 		end
 	end
 
-	-- TODO: Need to code for no match in skills - i.e. use characteristic score only.
+	-- TODO: Need to code for no match in skilllist - i.e. use characteristic score only.
 
 	local dice = {};
 	local skilldescription;

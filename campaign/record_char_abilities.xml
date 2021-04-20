@@ -6,16 +6,16 @@
 -->
 
 <root>
-	<windowclass name="charsheet_abilities">
+	<windowclass name="charsheet_talents">
 		<sheetdata>
 			<frame_char name="abilityframe">
 				<bounds>15,35,-29,-5</bounds>
 			</frame_char>
 			<label_frametop>
 				<anchored to="abilityframe" />
-				<static textres="char_label_abilities" />
+				<static textres="char_label_talents" />
 			</label_frametop>
-			<list_text name="abilities">
+			<list_text name="talents">
 				<anchored to="abilityframe">
 					<left offset="15" />
 					<top offset="35" />
@@ -24,31 +24,30 @@
 				</anchored>
 				<columns width="222" filldown="true" />
 				<newfocus>name</newfocus>
-				<datasource>.abilitylist</datasource>
-				<class>char_ability</class>
+				<datasource>.talentlist</datasource>
+				<class>char_talent</class>
 				<acceptdrop>
-					<class>referencetext</class>
-					<class>referencetextwide</class>
+					<class>referencetalent</class>
 					<field>*</field>
 				</acceptdrop>
 			</list_text>
 			<scrollbar_list>
-				<anchored to="abilities" />
-				<target>abilities</target>
+				<anchored to="talents" />
+				<target>talents</target>
 			</scrollbar_list>
 
-			<button_iedit name="abilities_iedit">
-				<anchored to="abilities" position="aboveright" offset="5,5" />
-				<target>abilities</target>
+			<button_iedit name="talents_iedit">
+				<anchored to="talents" position="aboveright" offset="5,5" />
+				<target>talents</target>
 			</button_iedit>
-			<button_iadd name="abilities_iadd">
-				<anchored to="abilities_iedit" position="lefthigh" offset="5,0" />
-				<target>abilities</target>
+			<button_iadd name="talents_iadd">
+				<anchored to="talents_iedit" position="lefthigh" offset="5,0" />
+				<target>talents</target>
 			</button_iadd>
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="char_ability">
+	<windowclass name="char_talent">
 		<margins control="0,0,0,2" />
 		<sheetdata>
 			<genericcontrol name="rightanchor">
@@ -68,7 +67,7 @@
 					<top />
 					<right anchor="left" relation="relative" offset="-5" />
 				</anchored>
-				<class>ability</class>
+				<class>referencetalent</class>
 				<description field="name" />
 				<readonly />
 			</linkfield>

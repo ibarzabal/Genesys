@@ -21,7 +21,7 @@
 				</anchored>
 				<labelres>characteristics</labelres>
 			</string_labeled>
-			<number_charabilityscore name="brawn" source="brawn.current">
+			<number_charabilityscore name="brawn" source="characteristics.brawn.score">
 				<anchored to="characteristicsframe" position="insidetopleft" offset="17,24" />
 				<description textres="char_tooltip_str" />
 			</number_charabilityscore>
@@ -33,7 +33,7 @@
 				<labelres>brawn</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="agility" source="agility.current">
+			<number_charabilityscore name="agility" source="characteristics.agility.score">
 				<anchored to="brawn" position="right" offset="27" />
 				<description textres="char_tooltip_dex" />
 			</number_charabilityscore>
@@ -44,7 +44,7 @@
 				<labelres>agility</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="intellect" source="intellect.current">
+			<number_charabilityscore name="intellect" source="characteristics.intellect.score">
 				<anchored to="agility" position="right" offset="27" />
 				<description textres="char_tooltip_con" />
 			</number_charabilityscore>
@@ -55,7 +55,7 @@
 				<labelres>intellect</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="cunning" source="cunning.current">
+			<number_charabilityscore name="cunning" source="characteristics.cunning.score">
 				<anchored to="intellect" position="right" offset="27" />
 				<description textres="char_tooltip_int" />
 			</number_charabilityscore>
@@ -66,7 +66,7 @@
 				<labelres>cunning</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="willpower" source="willpower.current">
+			<number_charabilityscore name="willpower" source="characteristics.willpower.score">
 				<anchored to="cunning" position="right" offset="27" />
 				<description textres="char_tooltip_wis" />
 			</number_charabilityscore>
@@ -77,7 +77,7 @@
 				<labelres>willpower</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="presence" source="presence.current">
+			<number_charabilityscore name="presence" source="characteristics.presence.score">
 				<anchored to="willpower" position="right" offset="27" />
 				<description textres="char_tooltip_cha" />
 			</number_charabilityscore>
@@ -148,7 +148,7 @@
 			</simplenumber>
 			<button_iedit name="skills_iedit">
 				<anchored to="skillpointframe" position="insidetopright" offset="25,15" />
-				<target>skills</target>
+				<target>skilllist</target>
 				<script>
 					function onValueChanged()
 						local bEdit = (getValue() == 1);
@@ -208,7 +208,7 @@
 			</buttoncontrol>
 			<button_iadd name="skills_iadd">
 				<anchored to="skills_iadd_craft" position="lefthigh" offset="5,0" width="20" height="20" />
-				<target>skills</target>
+				<target>skilllist</target>
 				<tooltip textres="char_tooltip_skilladd" />
 			</button_iadd>
 

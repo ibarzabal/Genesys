@@ -30,6 +30,12 @@
 	<icon name="button_skills" file="graphics/sidebar/button_skills.png" />
 	<icon name="button_skills_down" file="graphics/sidebar/button_skills_down.png" />
 
+	<!-- Buttons -->
+	<icon name="button_minisheet" file="graphics/buttons/button_minisheet.png" />
+	<icon name="button_minisheet_down" file="graphics/buttons/button_minisheet_down.png" />
+	<icon name="button_fullsheet" file="graphics/buttons/button_fullsheet.png" />
+	<icon name="button_fullsheet_down" file="graphics/buttons/button_fullsheet_down.png" />
+
 
 	<!--LOBOSOLO adding black tab_base6 and 6s - BEGIN -->
 		<icon name="tab_base1" file="graphics/icons/tab_base1.png" />

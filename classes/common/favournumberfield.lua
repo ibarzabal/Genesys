@@ -12,7 +12,7 @@ function onInit()
 	if sourcenode then
 
 		-- get the willpower node
-		willpowernode = sourcenode.getChild("..willpower.current");
+		willpowernode = sourcenode.getChild("..characteristics.willpower.score");
 		if willpowernode then
 			willpowernode.onUpdate = onUpdate;
 		end

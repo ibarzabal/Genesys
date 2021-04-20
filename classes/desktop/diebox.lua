@@ -1,6 +1,6 @@
 local iconwidth = 25;
 local dragging = false;
-local typename = "dice";
+local typename = "diegen";
 local sourcenode = nil;
 local entries = {};
 local descriptionwidget = nil;
@@ -21,7 +21,8 @@ function onDrag(button, x, y, draginfo)
 	if table.getn(entries) > 0 then
 		if not dragging then
 			if table.getn(getDice()) > 0 then
-				draginfo.setType(typename);
+				draginfo.setType("diegen");
+--				draginfo.setType(typename);
 				draginfo.setDescription(getDescription());
 				draginfo.setDieList(getDice());
 				draginfo.setDatabaseNode(sourcenode);
@@ -46,7 +47,7 @@ function onDrop(x, y, draginfo)
 	if not dragging then
 
 		-- Dice
-		if draginfo.isType("dice") then
+		if draginfo.isType("diegen") then
 			local dielist = draginfo.getDieList();
 			if dielist then
 				setDescription(draginfo.getDescription());
@@ -398,7 +399,7 @@ function setType(type)
 end
 
 function resetType()
-	typename = "dice";
+	typename = "diegen";
 end
 
 function setSourcenode(node)
@@ -420,7 +421,7 @@ end
 function onDieboxButtonPress()
 		local sourcenodename = "";
 		-- type
-		--local type = "dice";
+		--local type = "diegen";
 		local type = typename;
 		-- description
 		local description = getDescription();

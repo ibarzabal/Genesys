@@ -40,6 +40,10 @@
 	<!-- Strings -->
 	<includefile source="strings/strings_genesys.xml" />
 
+	<!-- Common -->
+	<includefile source="common/template_common.xml" />
+
+
 	<!-- Desktop -->
 <!-- TODO	<script name="Desktop35E" file="scripts/data_desktop_genesys.lua" /> -->
 	<script name="LibraryDataGenesys" file="scripts/data_library_genesys.lua" />
@@ -80,7 +84,7 @@
 <!--		<includefile source="campaign/record_spell_roll.xml" /> -->
 
 		<includefile source="campaign/record_char.xml" />
-		<includefile source="campaign/record_char_main.xml" />
+ <!--		<includefile source="campaign/record_char_main.xml" /> -->
  		<includefile source="campaign/record_char_skills.xml" />
  		<includefile source="campaign/record_char_combat.xml" />
 		<includefile source="campaign/record_char_inventory.xml" />

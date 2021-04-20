@@ -6,7 +6,7 @@
 -->
 
 <root>
-	<windowclass name="charsheet_skills">
+	<windowclass name="charsheet_skilllist">
 		<script file="campaign/scripts/char_main.lua" />
 		<sheetdata>
 
@@ -21,11 +21,11 @@
 				</anchored>
 				<labelres>characteristics</labelres>
 			</string_labeled>
-			<number_charabilityscore name="brawn" source="brawn.current">
+
+			<number_charabilityscore name="brawn" source="characteristics.brawn.score">
 				<anchored to="characteristicsframe" position="insidetopleft" offset="17,24" />
 				<description textres="char_tooltip_str" />
 			</number_charabilityscore>
-
 			<string_labeled name="brawn_label">
 				<anchored to="brawn" position="insidetopleft" offset="-1,24">
 					<right parent="brawn" anchor="left" offset="-5" />
@@ -33,19 +33,19 @@
 				<labelres>brawn</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="agility" source="agility.current">
-				<anchored to="brawn" position="right" offset="27" />
+			<number_charabilityscore name="agility" source="characteristics.agility.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="76,24" />
 				<description textres="char_tooltip_dex" />
 			</number_charabilityscore>
 			<string_labeled name="agility_label">
 				<anchored to="agility" position="insidetopleft" offset="-4,25">
-					<right parent="agility" anchor="left" offset="-5" />
+					<right parent="agility" anchor="left" offset="-5"/>
 				</anchored>
 				<labelres>agility</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="intellect" source="intellect.current">
-				<anchored to="agility" position="right" offset="27" />
+			<number_charabilityscore name="intellect" source="characteristics.intellect.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="135,24" />
 				<description textres="char_tooltip_con" />
 			</number_charabilityscore>
 			<string_labeled name="intellect_label">
@@ -55,8 +55,8 @@
 				<labelres>intellect</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="cunning" source="cunning.current">
-				<anchored to="intellect" position="right" offset="27" />
+			<number_charabilityscore name="cunning" source="characteristics.cunning.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="194,24" />
 				<description textres="char_tooltip_int" />
 			</number_charabilityscore>
 			<string_labeled name="cunning_label">
@@ -66,8 +66,8 @@
 				<labelres>cunning</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="willpower" source="willpower.current">
-				<anchored to="cunning" position="right" offset="27" />
+			<number_charabilityscore name="willpower" source="characteristics.willpower.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="253,24" />
 				<description textres="char_tooltip_wis" />
 			</number_charabilityscore>
 			<string_labeled name="willpower_label">
@@ -77,8 +77,8 @@
 				<labelres>willpower</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="presence" source="presence.current">
-				<anchored to="willpower" position="right" offset="27" />
+			<number_charabilityscore name="presence" source="characteristics.presence.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="312,24" />
 				<description textres="char_tooltip_cha" />
 			</number_charabilityscore>
 			<string_labeled name="presence_label">
@@ -87,6 +87,7 @@
 				</anchored>
 				<labelres>presence</labelres>
 			</string_labeled>
+
 
 			<!-- EXPERIENCE -->
 			<frame_char name="experience">
@@ -106,7 +107,7 @@
 				<description textres="experience_total" />
 			</derived_attribute>
 			<label name="experience_total_label">
-				<anchored to="experience_total" position="left" offset="10"/>
+				<anchored to="experience" position="insidetopright" offset="43,21" width="30" height="15" />
 				<center />
 				<static>Total</static>
 			</label>
@@ -117,7 +118,7 @@
 				<description textres="experience_spent" />
 			</derived_attribute>
 			<label name="experience_spent_label">
-				<anchored to="experience_spent" position="left" offset="10"/>
+				<anchored to="experience" position="insidetopright" offset="43,41" width="35" height="15" />
 				<center />
 				<static>Spent</static>
 			</label>
@@ -128,32 +129,33 @@
 				<description textres="experience_remaining" />
 			</derived_attribute>
 			<label name="experience_remaining_label">
-				<anchored to="experience_remaining" position="left" offset="10"/>
+				<anchored to="experience" position="insidetopright" offset="41,61" width="65" height="15" />
 				<center />
 				<static>Remaining</static>
 			</label>
 
 
-			<!-- GENERAL SKILLS FRAME ......................................................................... -->
+
+			<!-- GENERAL skilllist FRAME ......................................................................... -->
 			<frame_char name="skillframe">
 				<bounds>15,120,-29,-1</bounds>
 			</frame_char>
 
-			<button_iedit name="skills_iedit">
+			<button_iedit name="skilllist_iedit">
 				<anchored to="skillframe" position="insidetopright" offset="0,0" />
-				<target>skills</target>
+				<target>skilllist</target>
 				<script>
 					function onValueChanged()
 						local bEdit = (getValue() == 1);
-						window.skills_iadd.setVisible(bEdit);
-						window.skills.update();
+						window.skilllist_iadd.setVisible(bEdit);
+						window.skilllist.update();
 					end
 				</script>
 			</button_iedit>
 
-			<button_iadd name="skills_iadd">
-				<anchored to="skills_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
-				<target>skills</target>
+			<button_iadd name="skilllist_iadd">
+				<anchored to="skilllist_iedit" position="lefthigh" offset="5,0" width="20" height="20" />
+				<target>skilllist</target>
 				<tooltip textres="char_tooltip_skilladd" />
 			</button_iadd>
 
@@ -164,7 +166,7 @@
 			<genericcontrol>
 				<anchored to="skillframe" position="insidetopleft" offset="17,15" width="10" height="10" />
 				<icon>char_quicklist</icon>
-				<tooltip textres="char_tooltip_skillshowmini" />
+				<tooltip textres="char_tooltip_skilllisthowmini" />
 			</genericcontrol>
 -->
 			<genericcontrol>
@@ -192,7 +194,7 @@
 				<invisible />
 			</genericcontrol>
 
-			<list_charskill name="skills">
+			<list_charskill name="skilllist">
 				<anchored to="skillframe">
 					<top offset="30" />
 					<left offset="10" />
@@ -209,10 +211,10 @@
 			-->
 			</list_charskill>
 			<scrollbar>
-				<anchored to="skills" />
-				<target>skills</target>
+				<anchored to="skilllist" />
+				<target>skilllist</target>
 			</scrollbar>
-<!-- GENERAL SKILLS FRAME END......................................................................... -->
+<!-- GENERAL skilllist FRAME END......................................................................... -->
 
 
 		</sheetdata>
@@ -220,7 +222,7 @@
 
 
 
-	<!-- GENERAL SKILLS LIST! .......................................................................... -->
+	<!-- GENERAL skilllist LIST! .......................................................................... -->
 	<windowclass name="char_skill">
 	<margins control="0,0,0,2" />
 	<script file="campaign/scripts/char_skill.lua" />

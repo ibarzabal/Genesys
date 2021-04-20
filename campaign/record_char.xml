@@ -106,17 +106,19 @@
 
 
 
-			<subwindow name="main">
+<!--			<subwindow name="main">
 				<bounds>0,65,-1,-20</bounds>
 				<class>charsheet_main</class>
 			</subwindow>
+JOHN: Removing main for the time being... i want to improve it later
+-->
 			<subwindow name="skills">
 				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_skills</class>
+				<class>charsheet_skilllist</class>
 			</subwindow>
 			<subwindow name="abilities">
 				<bounds>0,65,-1,-20</bounds>
-				<class>charsheet_abilities</class>
+				<class>charsheet_talents</class>
 			</subwindow>
 			<subwindow name="combat">
 				<bounds>0,65,-1,-20</bounds>
@@ -132,10 +134,11 @@
 			</subwindow>
 
 			<tabs_charsheet name="tabs">
-				<tab>
+<!--				<tab>
 					<icon>tab_main</icon>
 					<subwindow>main</subwindow>
 				</tab>
+-->				
 				<tab>
 					<icon>tab_skills</icon>
 					<subwindow>skills</subwindow>
@@ -159,10 +162,10 @@
 				<activate>1</activate>
 			</tabs_charsheet>
 
-			<button_charmini>
+<!--			<button_charmini>
 				<bounds>10,-25,40,15</bounds>
 			</button_charmini>
-
+-->
 			<resize_charsheet />
 			<close_charsheet />
 		</sheetdata>

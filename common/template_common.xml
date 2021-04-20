@@ -7,14 +7,13 @@
 
 <root>
 
-
   <template name="metalplate">
-  	<stringcontrol>
-  		<frame name="metalplate" offset="10,2,10,2"/>
-  		<font>subwindowtitle</font>
-  		<nodrag />
-  		<readonly />
-  	</stringcontrol>
-  </template>
-
+		<stringcontrol>
+			<frame name="metalplate" offset="10,2,10,2"/>
+			<font>subwindowtitle</font>
+			<nodrag />
+			<readonly />
+		</stringcontrol>
+	</template>
+  
 </root>

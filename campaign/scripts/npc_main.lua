@@ -1,5 +1,5 @@
--- 
--- Please see the license.html file included with this distribution for 
+--
+-- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
 
@@ -11,7 +11,7 @@ function updateControl(sControl, bReadOnly, bForceHide)
 	if not self[sControl] then
 		return false;
 	end
-		
+
 	return self[sControl].update(bReadOnly, bForceHide);
 end
 
@@ -29,7 +29,7 @@ function update()
 	divider.setVisible(bSection1);
 
 	-- Update labels based on system being played and NPC type
-	local bPFMode = DataCommon.isPFRPG();
+	local bPFMode = "false" -- DataCommon.isPFRPG();
 	local sType = DB.getValue(nodeRecord, "npctype", "");
 	if babgrp_label then
 		if sType == "Vehicle" then
@@ -61,20 +61,20 @@ function update()
 		updateControl("senses", bReadOnly, true);
 		updateControl("aura", bReadOnly, true);
 	end
-	
+
 	updateControl("ac", bReadOnly);
 	updateControl("hd", bReadOnly);
 	updateControl("specialqualities", bReadOnly);
-	
+
 	updateControl("speed", bReadOnly);
 	updateControl("atk", bReadOnly);
 	updateControl("fullatk", bReadOnly);
 	updateControl("spacereach", bReadOnly);
 	updateControl("specialattacks", bReadOnly);
-	
+
 	updateControl("babgrp", bReadOnly);
 	updateControl("feats", bReadOnly);
-	updateControl("skills", bReadOnly);
+	updateControl("skilllist", bReadOnly);
 	updateControl("languages", bReadOnly);
 	updateControl("advancement", bReadOnly);
 	updateControl("leveladjustment", bReadOnly);
@@ -82,7 +82,7 @@ function update()
 	updateControl("environment", bReadOnly);
 	updateControl("organization", bReadOnly);
 	updateControl("treasure", bReadOnly);
-	
+
 	-- Trap
 	updateControl("trigger", bReadOnly);
 	updateControl("reset", bReadOnly);
@@ -90,7 +90,7 @@ function update()
 	-- Vehicle
 	updateControl("squares", bReadOnly);
 	updateControl("basesave", bReadOnly);
-	
+
 	updateControl("prop", bReadOnly);
 	updateControl("drive", bReadOnly);
 	updateControl("ff", bReadOnly);

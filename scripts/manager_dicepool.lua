@@ -102,28 +102,18 @@ function addSkillDice(skillnode, dice)
 		-- if we have a characteristic type then locate the characteristic node
 		local characteristicnode = nil;
 		if characteristictype ~= "" then
-			if characteristictype == "STR" then
-				characteristicnode = skillnode.getChild("...strength.current");
-			elseif characteristictype == "TO" then
-				characteristicnode = skillnode.getChild("...toughness.current");
-			elseif characteristictype == "AG" then
-				characteristicnode = skillnode.getChild("...agility.current");
-			elseif characteristictype == "INT" then
-				characteristicnode = skillnode.getChild("...intelligence.current");
-			elseif characteristictype == "WP" then
-				characteristicnode = skillnode.getChild("...willpower.current");
-			elseif characteristictype == "FEL" then
-				characteristicnode = skillnode.getChild("...fellowship.current");
+			if characteristictype == "AG" then
+				characteristicnode = skillnode.getChild("...characteristics.agility.score");
 			elseif characteristictype == "BR" then
-				characteristicnode = skillnode.getChild("...brawn.current");
+				characteristicnode = skillnode.getChild("...characteristics.brawn.score");
 			elseif characteristictype == "IN" then
-				characteristicnode = skillnode.getChild("...intellect.current");
+				characteristicnode = skillnode.getChild("...characteristics.intellect.score");
 			elseif characteristictype == "CU" then
-				characteristicnode = skillnode.getChild("...cunning.current");
+				characteristicnode = skillnode.getChild("...characteristics.cunning.score");
 			elseif characteristictype == "WI" then
-				characteristicnode = skillnode.getChild("...willpower.current");
+				characteristicnode = skillnode.getChild("...characteristics.willpower.score");
 			elseif characteristictype == "PR" then
-				characteristicnode = skillnode.getChild("...presence.current");
+				characteristicnode = skillnode.getChild("...characteristics.presence.score");
 			end
 		end
 

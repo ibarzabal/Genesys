@@ -63,6 +63,25 @@
 	<string name="species_archetype_header_traits">TRAITS</string>
 	<string name="library_recordtype_label_talent">Talents</string>
 
+	<!-- Character - Abilities -->
+	<string name="char_abilities_label_talents">TALENTS</string>
+	<string name="char_abilities_title">ABILITIES</string>
+	<string name="char_abilities_label_checks">CHECKS</string>
+	<string name="char_abilities_label_feats">FEATS</string>
+	<string name="char_abilities_label_features">FEATURES</string>
+	<string name="char_abilities_label_abilities">ABILITIES</string>
+	<string name="char_abilities_label_traits">TRAITS</string>
+	<string name="char_abilities_label_proficiencies">PROFICIENCIES</string>
+	<string name="char_abilities_label_languages">LANGUAGES</string>
+	<string name="char_abilities_tooltip_edit">Edit Abilities</string>
+	<string name="ref_type_skill">Skill</string>
+	<string name="ref_type_proficiency">Proficiency</string>
+	<string name="ref_type_feat">Feat</string>
+	<string name="ref_type_feature">Feature</string>
+	<string name="ref_type_trait">Trait</string>
+	<string name="ref_type_talent">Talent</string>
+
+
 
 	<!-- Desktop decal options -->
 	<string name="option_val_DDCL_genesys_core">Genesys Core</string>
@@ -84,7 +103,7 @@
 	<string name="talent_label_setting">Setting</string>
 
 	<!-- Abilities (IE: talents) -->
-	<string name="char_label_abilities">Talents</string>
+	<string name="char_label_talents">Talents</string>
 
 
 

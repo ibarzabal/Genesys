@@ -176,7 +176,7 @@ aRecordOverrides = {
 };
 
 aDefaultSidebarState = {
-		["create"] = "charsheet,career,talent,item,species_archetype,skill" --,specialability,spell",
+		["create"] = "charsheet,career,talent,item,species_archetype" --,specialability,spell",
 };
 
 

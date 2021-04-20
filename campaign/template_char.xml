@@ -33,7 +33,7 @@
 			<center />
 			<nodrag />
 			<readonly />
-			<script file="campaign/scripts/char_labelframetop.lua" />
+<!--			<script file="campaign/scripts/char_labelframetop.lua" /> -->
 		</metalplate>
 	</template>
 	<template name="string_charframetop">
@@ -777,7 +777,7 @@
 		<windowlist>
 			<child></child>
 			<child><backcolor>1A40301E</backcolor></child>
-			<datasource>.skills</datasource>
+			<datasource>.skilllist</datasource>
 			<class>char_skill</class>
 			<sortby>
 				<control>name</control>
@@ -790,7 +790,7 @@
 		<windowlist>
 			<child></child>
 			<child><backcolor>1A40301E</backcolor></child>
-			<datasource>.skills</datasource>
+			<datasource>.skilllist</datasource>
 			<class>combat_char_skill</class>
 			<sortby>
 				<control>name</control>
@@ -805,7 +805,7 @@
 		<windowlist>
 			<child></child>
 			<child><backcolor>1A40301E</backcolor></child>
-			<datasource>.skills</datasource>
+			<datasource>.skilllist</datasource>
 			<class>social_char_skill</class>
 			<sortby><control>name</control></sortby>
 			<filter><text>social</text></filter>

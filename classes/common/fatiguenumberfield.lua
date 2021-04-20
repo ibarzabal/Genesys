@@ -26,7 +26,7 @@ function onInit()
 		end
 		
 		-- get the agility node
-		agilitynode = sourcenode.getChild("..agility.current");
+		agilitynode = sourcenode.getChild("..characteristics.agility.score");
 		if agilitynode then
 			agilitynode.onUpdate = onUpdate;
 		end

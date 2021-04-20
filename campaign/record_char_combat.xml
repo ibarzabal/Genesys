@@ -21,11 +21,11 @@
 				</anchored>
 				<labelres>characteristics</labelres>
 			</string_labeled>
-			<number_charabilityscore name="brawn" source="brawn.current">
+
+			<number_charabilityscore name="brawn" source="characteristics.brawn.score">
 				<anchored to="characteristicsframe" position="insidetopleft" offset="17,24" />
 				<description textres="char_tooltip_str" />
 			</number_charabilityscore>
-
 			<string_labeled name="brawn_label">
 				<anchored to="brawn" position="insidetopleft" offset="-1,24">
 					<right parent="brawn" anchor="left" offset="-5" />
@@ -33,19 +33,19 @@
 				<labelres>brawn</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="agility" source="agility.current">
-				<anchored to="brawn" position="right" offset="27" />
+			<number_charabilityscore name="agility" source="characteristics.agility.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="76,24" />
 				<description textres="char_tooltip_dex" />
 			</number_charabilityscore>
 			<string_labeled name="agility_label">
 				<anchored to="agility" position="insidetopleft" offset="-4,25">
-					<right parent="agility" anchor="left" offset="-5" />
+					<right parent="agility" anchor="left" offset="-5"/>
 				</anchored>
 				<labelres>agility</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="intellect" source="intellect.current">
-				<anchored to="agility" position="right" offset="27" />
+			<number_charabilityscore name="intellect" source="characteristics.intellect.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="135,24" />
 				<description textres="char_tooltip_con" />
 			</number_charabilityscore>
 			<string_labeled name="intellect_label">
@@ -55,8 +55,8 @@
 				<labelres>intellect</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="cunning" source="cunning.current">
-				<anchored to="intellect" position="right" offset="27" />
+			<number_charabilityscore name="cunning" source="characteristics.cunning.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="194,24" />
 				<description textres="char_tooltip_int" />
 			</number_charabilityscore>
 			<string_labeled name="cunning_label">
@@ -66,8 +66,8 @@
 				<labelres>cunning</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="willpower" source="willpower.current">
-				<anchored to="cunning" position="right" offset="27" />
+			<number_charabilityscore name="willpower" source="characteristics.willpower.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="253,24" />
 				<description textres="char_tooltip_wis" />
 			</number_charabilityscore>
 			<string_labeled name="willpower_label">
@@ -77,8 +77,8 @@
 				<labelres>willpower</labelres>
 			</string_labeled>
 
-			<number_charabilityscore name="presence" source="presence.current">
-				<anchored to="willpower" position="right" offset="27" />
+			<number_charabilityscore name="presence" source="characteristics.presence.score">
+				<anchored to="characteristicsframe" position="insidetopleft" offset="312,24" />
 				<description textres="char_tooltip_cha" />
 			</number_charabilityscore>
 			<string_labeled name="presence_label">
@@ -87,6 +87,7 @@
 				</anchored>
 				<labelres>presence</labelres>
 			</string_labeled>
+
 
 			<!-- INITIATIVE -->
 			<frame_char name="combat_init">

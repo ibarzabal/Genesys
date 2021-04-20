@@ -5,7 +5,8 @@
 function onInit()
 	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
 
-	constructDefaultSkills();
+	constructDefaultskilllist();
+
 	-- CharManager.updateSkillPoints(window.getDatabaseNode());
 
 	local nodeChar = getDatabaseNode().getParent();
@@ -32,7 +33,7 @@ function onListChanged()
 end
 
 function update()
-	local bEditMode = (window.skills_iedit.getValue() == 1);
+	local bEditMode = (window.skilllist_iedit.getValue() == 1);
 	window.idelete_header.setVisible(bEditMode);
 	for _,w in ipairs(getWindows()) do
 		local bAllowDelete = w.isCustom();
@@ -76,14 +77,14 @@ function onMenuSelection(item)
 end
 
 -- Create default skill selection
-function constructDefaultSkills(sCategory)
-	local aSystemSkills = DataCommon.skilldata;
-	-- Create missing entries for all known skills
+function constructDefaultskilllist(sCategory)
+	local aSystemskilllist = DataCommon.skilldata;
+	-- Create missing entries for all known skilllist
 	local entrymap = {};
 	for _,w in pairs(getWindows()) do
 		local sLabel = w.name.getValue();
 
-		local t = aSystemSkills[sLabel];
+		local t = aSystemskilllist[sLabel];
 		if t and not t.sublabeling then
 			if not entrymap[sLabel] then
 				entrymap[sLabel] = { w };
@@ -93,7 +94,7 @@ function constructDefaultSkills(sCategory)
 		end
 	end
 
-					-- Set properties and create missing entries for all known skills
+					-- Set properties and create missing entries for all known skilllist
 					for k, t in pairs(DataCommon.skilldata) do
 						if not t.sublabeling then
 							local matches = entrymap[k];
@@ -121,7 +122,7 @@ function constructDefaultSkills(sCategory)
 						end
 					end
 
-	-- Set properties for all skills
+	-- Set properties for all skilllist
 	for _,w in pairs(getWindows()) do
 		w.updateWindow();
 	end
