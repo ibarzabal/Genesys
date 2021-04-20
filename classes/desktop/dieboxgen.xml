@@ -239,10 +239,24 @@
 					function onInit()
 						if User.isHost() then
 							DieBoxGenManager.registerGMHiddenControl(self);
+							if OptionsManager.getOption("REVL") == "on" then
+								 self.setValue(0);
+							else
+								 self.setValue(1);
+							end
+							enable_OVC = true;
+							window.dieboxgencontrol.onHiddenButtonPress(self);
 						end
 					end
 
 					function onValueChanged()
+						if enable_OVC == true then
+							if self.getValue() == 0 then
+								OptionsManager.setOption("REVL", "on");
+							else
+								OptionsManager.setOption("REVL", "off");
+							end
+						end
 						window.dieboxgencontrol.onHiddenButtonPress(self);
 					end
 

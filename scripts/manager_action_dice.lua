@@ -104,7 +104,19 @@ function gmRevealDieRolls(reveal)
 end
 
 function processDie(command, params)
-	if User.isHost() then
+  if Session.IsHost then
+		if params == "reveal" then
+			OptionsManager.setOption("REVL", "on");
+			ChatManager.SystemMessage(Interface.getString("message_slashREVLon"));
+			return;
+		end
+		if params == "hide" then
+			OptionsManager.setOption("REVL", "off");
+			ChatManager.SystemMessage(Interface.getString("message_slashREVLoff"));
+			return;
+		end
+	end
+--[[	if User.isHost() then
 		if params == "reveal" then
 			revealalldice = true;
 
@@ -126,7 +138,7 @@ function processDie(command, params)
 			return;
 		end
 	end
-
+]]
 	local diestring, descriptionstring = string.match(params, "%s*(%S+)%s*(.*)");
 
 	if not diestring then
@@ -169,6 +181,7 @@ function processDie(command, params)
 		msg.dice = {};
 		msg.diemodifier = modifier;
 		msg.dicesecret = false;
+    msg.secret = false;
 
 		if User.isHost() then
 			msg.sender = GmIdentityManager.getCurrent();
@@ -265,6 +278,7 @@ function processDice(rSource, rTarget, rRoll)
 	spacerMsg.font = "narratorfont";
 	spacerMsg.text = "";
 	spacerMsg.dicesecret = gmonly;
+  spacerMsg.secret = gmonly;
 	if User.isHost() and (gmonly or not revealalldice) then
 		Comm.addChatMessage(spacerMsg);
 	else
@@ -297,6 +311,7 @@ function processDice(rSource, rTarget, rRoll)
 		headerMsg.sender = identity;
     headerMsg.text = description;
 		headerMsg.dicesecret = gmonly;
+    headerMsg.secret = gmonly;
 		if User.isHost() and (gmonly or not revealalldice) then
 			Comm.addChatMessage(headerMsg);
 		else
@@ -322,6 +337,7 @@ function processDice(rSource, rTarget, rRoll)
 	resultMsg.dice = resultdice;
 	resultMsg.diemodifier = modifier;
 	resultMsg.dicesecret = gmonly;
+  resultMsg.secret = gmonly;
 	if User.isHost() and (gmonly or not revealalldice) then
 		Comm.addChatMessage(resultMsg);
 	else
@@ -373,6 +389,7 @@ function processDice(rSource, rTarget, rRoll)
 		end
 		-- successMsg.font = "chatitalicfont";
 		successMsg.dicesecret = gmonly;
+    successMsg.secret = gmonly;
 		if User.isHost() and (gmonly or not revealalldice) then
 			Comm.addChatMessage(successMsg);
 		else
@@ -410,6 +427,7 @@ function processDice(rSource, rTarget, rRoll)
 			-- boonMsg.font = "chatitalicfont";
 			boonMsg.dice = boonDice;
 			boonMsg.dicesecret = gmonly;
+      boonMsg.secret = gmonly;
 			if User.isHost() and (gmonly or not revealalldice) then
 				Comm.addChatMessage(boonMsg);
 			else
@@ -461,6 +479,7 @@ function processDice(rSource, rTarget, rRoll)
 --			specialMsg.font = "chatitalicfont";
 			specialMsg.dice = specialDice;
 			specialMsg.dicesecret = gmonly;
+      specialMsg.secret = gmonly;
       specialMsg.dicedisplay = 0;
 			if User.isHost() and (gmonly or not revealalldice) then
 				Comm.addChatMessage(specialMsg);
@@ -1010,6 +1029,19 @@ end
 
 
 function processDiegen(command, params)
+  if Session.IsHost then
+		if params == "reveal" then
+			OptionsManager.setOption("REVL", "on");
+			ChatManager.SystemMessage(Interface.getString("message_slashREVLon"));
+			return;
+		end
+		if params == "hide" then
+			OptionsManager.setOption("REVL", "off");
+			ChatManager.SystemMessage(Interface.getString("message_slashREVLoff"));
+			return;
+		end
+	end
+--[[
 	if User.isHost() then
 		if params == "reveal" then
 			revealalldice = true;
@@ -1032,7 +1064,7 @@ function processDiegen(command, params)
 			return;
 		end
 	end
-
+]]
 	local diestring, descriptionstring = string.match(params, "%s*(%S+)%s*(.*)");
 
 	if not diestring then
@@ -1085,6 +1117,7 @@ function processDiegen(command, params)
 		msg.dice = {};
 		msg.diemodifier = modifier;
 		msg.dicesecret = false;
+    msg.secret = false;
 
 		if User.isHost() then
 			msg.sender = GmIdentityManager.getCurrent();
@@ -1188,6 +1221,7 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
 	spacerMsg.font = "narratorfont";
 	spacerMsg.text = "";
 	spacerMsg.dicesecret = gmonly;
+  spacerMsg.secret = gmonly;
 	if User.isHost() and (gmonly or not revealalldice) then
 		Comm.addChatMessage(spacerMsg);
 	else
@@ -1204,6 +1238,7 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
 		headerMsg.sender = identity;
 		headerMsg.text = description;
 		headerMsg.dicesecret = gmonly;
+    headerMsg.secret = gmonly;
 		if User.isHost() and (gmonly or not revealalldice) then
 			Comm.addChatMessage(headerMsg);
 		else
@@ -1227,6 +1262,7 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
 	resultMsg.dice = resultdice;
 	resultMsg.diemodifier = modifier;
 	resultMsg.dicesecret = gmonly;
+  resultMsg.secret = gmonly;
 	if User.isHost() and (gmonly or not revealalldice) then
 		Comm.addChatMessage(resultMsg);
 	else
