@@ -102,7 +102,7 @@ end
 
 function handleAnyDrop(vTarget, draginfo)
 	local sDragType = draginfo.getType();
---	Debug.chat("handleAnyDrop",vTarget,draginfo);
+
 	if not User.isHost() then
 		local sTargetType = getItemSourceType(vTarget);
 		if sTargetType == "item" then

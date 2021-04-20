@@ -194,10 +194,20 @@
 		<margins control="0,0,0,2" />
 		<sheetdata>
 			<anchor_listitem_column_right name="rightanchor" />
+
 			<link_listitem_column name="shortcut">
 				<class>reference_item_attachment</class>
 			</link_listitem_column>
 			<button_listitem_column_delete name="idelete" />
+
+			<basenumberfield name="hardpoints_required">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<disabled />
+			</basenumberfield>
+
 
 			<string_listitem_column_name name="name" />
 <!--				<empty textres="library_recordtype_empty_subracialtrait" />
@@ -205,5 +215,6 @@
 -->
 			</sheetdata>
 	</windowclass>
+
 
 </root>

@@ -225,6 +225,8 @@
 
 	<!-- Item Attachments -->
 	<string name="item_header_attachments">ATTACHMENTS</string>
+	<string name="char_message_attachmentadd">Attachment '%s' added to '%s'.</string>
+	<string name="char_message_attachmentmismatch">Attachment [Equipment type] does not match [Equipment type].</string>
 
 	<!-- Items window -->
 	<string name="item_button_weapons">Weapons</string>
@@ -234,7 +236,7 @@
 	<!-- Item Attachment window  -->
 	<string name="item_attachments_button_weapons">Weapons</string>
 	<string name="item_attachments_button_armor">Armor</string>
-	<string name="item_attachment_label_unidentified">Non-ID Attachment</string>
+	<string name="item_attachment_label_unidentified">Non-ID Name</string>
 
 	<string name="item_attachment_equipment_label_type">Equipment Type</string>
 	<string name="item_attachment_use_with_label">Use With</string>

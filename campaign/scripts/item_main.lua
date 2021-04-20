@@ -104,3 +104,43 @@ function update()
 	end
 --	divider5.setVisible((bSection1 or bSection2 or bSection3 or bSection4) and bSection6);
 end
+
+
+
+function onDrop(x, y, draginfo)
+	local sType = type.getValue();
+--	local bWeapon = (sType == "Weapon");
+--	local bArmor = (sType == "Armor");
+	if draginfo.isType("shortcut") then
+		local sClass, sRecord = draginfo.getShortcutData();
+		if StringManager.contains({"reference_item_attachment"}, sClass) then
+			if User.isHost() or getDatabaseNode().isOwner() then
+				addAttachment(getDatabaseNode(), sClass, sRecord, sType);
+			end
+			return true;
+		end
+	end
+	-- return CharManager.onDrop(getDatabaseNode(), x, y, draginfo);
+end
+
+
+
+
+function addAttachment(nodeItem, sClass, sRecord, sType)
+	local attachment_desc = DB.getValue(nodeSource, "name", "");
+	local sFormat = Interface.getString("char_message_attachmentadd");
+	local sMsg = string.format(sFormat, attachment_desc, DB.getValue(nodeItem, "name", ""));
+	local recordnode = DB.findNode(sRecord);
+	local AttachmentType = DB.getValue(recordnode,"equipment_type","");
+	local newitemnode;
+
+	if sType:lower() == AttachmentType:lower() then
+		-- get the new item attachment
+		newitemnode = nodeItem.createChild("attachments").createChild();
+		DBManagerGenesys.copyNode(recordnode, newitemnode);
+	else
+		ChatManager.SystemMessage(Interface.getString("char_message_attachmentmismatch"));
+	end
+	return true;
+
+end
