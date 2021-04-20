@@ -318,7 +318,7 @@
 			  <static textres="vehicle_header_critical"/>
 			  <center />
 			</header_column>
-<!--
+
 			<button_iedit name="critical_damage_iedit">
 				<anchored to="critical_damage_header" position="righthigh" offset="-20,0" />
 				<target>critical_damage</target>
@@ -327,7 +327,6 @@
 				<anchored to="critical_damage_iedit" position="lefthigh" offset="5,0" />
 				<target>critical_damage</target>
 			</button_iadd>
--->
 
 			<list_column name="critical_damage">
 			  <datasource>.temp_vehicle.critical_damage</datasource>

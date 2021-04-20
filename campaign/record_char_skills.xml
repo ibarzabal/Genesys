@@ -183,11 +183,12 @@
 			</title_statblock>
 
 
-			<label_charframetopg name="invtitle">
-				<anchored to="main_statblock1" position="belowleft" offset="0,10" height="20">
+			<label_charframetopg name="skillstitle">
+				<anchored to="main_statblock1" position="belowleft" offset="10,10" height="20">
 					<right offset="-1" />
 				</anchored>
-				<icons>char_inventory</icons>
+				<icons>open_database</icons>
+				<target>skill</target>
 				<static textres="char_label_skills" />
 			</label_charframetopg>
 
@@ -199,9 +200,12 @@
 			</frame_char>
 
 			<button_iedit name="skilllist_iedit">
-				<anchored to="skillframe" position="insidetopright" offset="0,0" />
+				<anchored to="skillstitle" position="insidetopright" offset="0,0" />
 				<target>skilllist</target>
 				<script>
+					function onInit()
+						onValueChanged();
+					end
 					function onValueChanged()
 						local bEdit = (getValue() == 1);
 						window.skilllist_iadd.setVisible(bEdit);
@@ -215,7 +219,9 @@
 				<target>skilllist</target>
 				<tooltip textres="char_tooltip_skilladd" />
 			</button_iadd>
-				<genericcontrol>
+
+<!--
+			<genericcontrol>
 				<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
 				<icon>char_encumbrance</icon>
 			</genericcontrol>
@@ -238,12 +244,14 @@
 				<disabled />
 				<invisible />
 			</genericcontrol>
+-->
+
 				<list_charskill name="skilllist">
 				<anchored to="skillframe">
-					<top offset="30" />
+					<top offset="2" />
 					<left offset="10" />
 					<right offset="-25" />
-					<bottom offset="-15" />
+					<bottom offset="-10" />
 				</anchored>
 				</list_charskill>
 			<scrollbar>

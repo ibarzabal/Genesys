@@ -33,6 +33,8 @@ function update()
 	local bID = true;
 
   updateControl("description", bReadOnly, bID);
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
 
 end
 

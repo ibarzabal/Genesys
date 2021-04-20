@@ -46,7 +46,7 @@ end
 
 function update()
 	local bEditMode = (window.skilllist_iedit.getValue() == 1);
-	window.idelete_header.setVisible(bEditMode);
+	--window.idelete_header.setVisible(bEditMode);
 	for _,w in ipairs(getWindows()) do
 		local bAllowDelete = w.isCustom();
 		if not bAllowDelete then

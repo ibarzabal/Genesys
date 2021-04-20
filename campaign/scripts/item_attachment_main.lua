@@ -40,6 +40,14 @@ function update()
   updateControl("cost", bReadOnly, bID);
   updateControl("rarity", bReadOnly, bID);
   updateControl("description", bReadOnly, bID);
-  updateControl("setting", bReadOnly, bID);
+	if User.getRulesetName() == "StarWarsFFG" then
+		setting.setVisible(false);
+		setting_label.setVisible(false);
+	else
+		updateControl("setting", bReadOnly, bID);
+	end
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
+
 
 end

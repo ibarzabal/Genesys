@@ -17,6 +17,9 @@
 				<anchored position="insidebottomright" offset="10,10" />
 				<tooltip textres="char_abilities_tooltip_edit" />
 				<script>
+					function onInit()
+						onValueChanged();
+					end
 					function onValueChanged()
 						local bEditMode = (getValue() == 1);
 
@@ -59,8 +62,8 @@
 			<label_charframetopg name="featstitle">
 				<bounds>15,10,-10,20</bounds>
 				<static textres="char_abilities_label_racial_traits" />
-				<icons>char_abilities_green</icons>
-				<target>feats</target>
+				<icons>open_database</icons>
+				<target>special_ability</target>
 			</label_charframetopg>
 			<list_abilities name="feats">
 				<anchored to="featstitle">
@@ -84,8 +87,8 @@
 					<right />
 				</anchored>
 				<static textres="char_abilities_label_talents" />
-				<icons>char_abilities_red</icons>
-				<target>features</target>
+				<icons>open_database</icons>
+				<target>talent</target>
 			</label_charframetopg>
 			<list_abilities name="features">
 				<anchored to="featurestitle">
@@ -95,6 +98,10 @@
 				</anchored>
 				<datasource>.talents</datasource>
 				<class>talent_item</class>
+				<sortby>
+					<control>tier</control>
+					<control>name</control>
+				</sortby>
 				<listheader>featurestitle</listheader>
 			</list_abilities>
 			<button_iadd name="features_iadd">
@@ -240,6 +247,16 @@
 				<readonly />
 			</linkcontrol>
 
+			<string_textlistitem name="tier">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<multilinespacing>5</multilinespacing>
+				<lineoffset default="off" mergerule="replace">1</lineoffset>
+				<readonly />
+			</string_textlistitem>
+
 			<ranknumberfield name="ranks">
 				<anchored to="rightanchor" width="20" height="20">
 					<top />
@@ -247,7 +264,6 @@
 				</anchored>
 				<disabled />
 			</ranknumberfield>
-
 
 			<string_textlistitem name="name">
 				<anchored to="rightanchor">
@@ -259,9 +275,9 @@
 			</string_textlistitem>
 
 
+
+
 		</sheetdata>
 	</windowclass>
-
-
 
 </root>

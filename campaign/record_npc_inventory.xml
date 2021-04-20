@@ -11,6 +11,9 @@
 			<button_iedit name="inventory_iedit">
 				<anchored position="insidebottomright" offset="10,10" />
 				<script>
+					function onInit()
+						onValueChanged();
+					end
 					function onValueChanged()
 						local bEditMode = (getValue() == 1);
 
@@ -43,7 +46,8 @@
 		<sheetdata>
 			<label_charframetopg name="invtitle">
 				<bounds>15,10,-10,20</bounds>
-				<icons>char_inventory</icons>
+				<icons>open_database</icons>
+				<target>item</target>
 				<static textres="char_label_inventory" />
 			</label_charframetopg>
 
@@ -123,7 +127,8 @@
 					<left />
 					<right />
 				</anchored>
-<!--				<icons>char_treasure</icons> -->
+				<icons>open_database</icons>
+				<target>vehicle</target>
 				<static textres="char_label_vehicles" />
 			</label_charframetopg>
 			<button_iadd name="vehicleslist_iadd">

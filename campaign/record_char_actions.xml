@@ -25,6 +25,9 @@
 				<anchored position="insidebottomright" offset="10,10" />
 				<tooltip textres="char_tooltip_actionedit" />
 				<script>
+					function onInit()
+						onValueChanged();
+					end
 					function onValueChanged()
 						local bEditMode = (getValue() == 1);
 

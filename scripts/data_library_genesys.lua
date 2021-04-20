@@ -129,6 +129,9 @@ aRecordOverrides = {
 		aDataMap = { "species_archetype", "reference.species_archetypes" },
 		aDisplayIcon = { "button_species_archetypes", "button_species_archetypes_down" },
 		sRecordDisplayClass = "referencespecies_archetype",
+		aCustomFilters = {
+			["Source"] = { sField = "source", sType = "string"},
+		},
 	},
 
 	["setting"] = {
@@ -136,6 +139,9 @@ aRecordOverrides = {
 		aDataMap = { "setting", "reference.settings" },
 		aDisplayIcon = { "button_settings", "button_settings_down" },
 		sRecordDisplayClass = "referencesetting",
+		aCustomFilters = {
+			["Source"] = { sField = "source", sType = "string"},
+			},
 		},
 
 	["career"] = {
@@ -144,7 +150,7 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_careers", "button_careers_down" },
 		sRecordDisplayClass = "referencecareer",
 		aCustomFilters = {
-			["Type"] = { sField = "classtype", fGetValue = getClassTypeValue },
+			["Source"] = { sField = "source", sType = "string"},
 		},
 	},
 	["skill"] = {
@@ -155,6 +161,7 @@ aRecordOverrides = {
 		aCustomFilters = {
 			["Category"] = { sField = "category" },
 			["Characteristic"] = { sField = "characteristic" },
+			["Source"] = { sField = "source", sType = "string"},
 		},
 	},
 	["npc"] = {
@@ -162,6 +169,7 @@ aRecordOverrides = {
 --		aGMListButtons = { "button_npc_letter", "button_npc_type" };
 		aCustomFilters = {
 			["Category"] = { sField = "npc_category", sType = "string"},
+			["Source"] = { sField = "source", sType = "string"},
 		},
 	},
 	["item"] = {
@@ -171,8 +179,9 @@ aRecordOverrides = {
 		aRecordDisplayClasses = { "item", "referencearmor", "referenceweapon", "referenceequipment", "referencegear" },
 		aGMListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear", "button_item_vehicle_weapons" };
 		aPlayerListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear", "button_item_vehicle_weapons" };
+
 		aCustomFilters = {
-			["Setting"] = { sField = "setting", sType = "string"},
+			["Source"] = { sField = "source", sType = "string"},
 			["Skill"] = { sField = "skill" },
 			["Type"] = { sField = "type" },
 			["Subtype"] = { sField = "subtype" },
@@ -192,7 +201,7 @@ aRecordOverrides = {
 			["Tier"] = { sField = "tier" },
 			["Activation"] = { sField = "activation" },
 			["Ranked"] = { sField = "ranked" },
-			["Setting"] = { sField = "setting" }
+			["Source"] = { sField = "source" }
 		},
 	},
 	["item_attachment"] = {
@@ -202,7 +211,7 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_item_attachments", "button_item_attachments_down" },
 		sRecordDisplayClass = "reference_item_attachment",
 		aCustomFilters = {
-			["Setting"] = { sField = "setting", sType = "string"},
+			["Source"] = { sField = "source", sType = "string"},
 			["Equipment Type"] = { sField = "equipment_type", sType = "string"},
 		},
 	},
@@ -214,7 +223,7 @@ aRecordOverrides = {
 		aDisplayIcon = { "button_special_abilities", "button_special_abilities_down" },
 		sRecordDisplayClass = "referenceracialtrait",
 		aCustomFilters = {
-			["Setting"] = { sField = "setting", sType = "string"},
+			["Source"] = { sField = "source", sType = "string"},
 		},
 	},
 
@@ -226,7 +235,7 @@ aRecordOverrides = {
 		aGMListButtons = { "button_vehicle_type" };
 		aCustomFilters = {
 			["Type"] = { sField = "type" },
-			["Setting"] = { sField = "setting", sType = "string"},
+			["Source"] = { sField = "source", sType = "string"},
 		},
 	},
 
@@ -236,9 +245,10 @@ aRecordOverrides = {
 
 
 aDefaultSidebarState = {
-		["create"] = "charsheet,career,talent,item,species_archetype,vehicle,setting" --,specialability,spell",
+	["gm"] = "charsheet,note,image,table,story,quest,npc,battle,item,item_attachment,vehicle,treasureparcel",
+	["play"] = "charsheet,note,image,item,item_attachment,vehicle",
+	["create"] = "charsheet,species_archetype,special_ability,career,talent,item,item_attachment,vehicle,setting,skill",
 };
-
 
 aListViews = {
 	["item"] = {

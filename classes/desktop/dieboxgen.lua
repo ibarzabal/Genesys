@@ -375,6 +375,7 @@ function setDescription(description)
 --		else
 --			shadowwidget = addTextWidget("chatfont", description);
 --		end
+
 		descriptionwidget.setPosition("",0,15);
 		descriptionwidget.setMaxWidth(200);
 		--descriptionwidget.setVisible(false);

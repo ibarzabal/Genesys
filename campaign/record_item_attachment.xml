@@ -9,7 +9,7 @@
 	<windowclass name="reference_item_attachment">
 		<frame>recordsheet</frame>
 		<placement>
-			<size width="350" height="350" />
+			<size width="350" height="400" />
 		</placement>
 		<sizelimits>
 			<minimum width="300" height="300" />
@@ -112,6 +112,22 @@
 				<static textres="talent_label_setting" />
 			</label_column>
 			<string_columnh name="setting" />
+
+			<label_column name="source_label">
+				<static textres="label_source" />
+			</label_column>
+			<string_columnh name="source">
+				<anchored>
+					<right offset="-60" />
+				</anchored>
+			</string_columnh>
+			<number_columnh name="source_page">
+				<anchored width="40" height="20">
+					<left parent="source" anchor="right" offset="14" />
+					<top parent="source" anchor="bottom" offset="-20" />
+				</anchored>
+				<delaykeyupdate />
+			</number_columnh>
 
 		</sheetdata>
 	</windowclass>

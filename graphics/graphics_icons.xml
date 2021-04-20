@@ -48,7 +48,7 @@
 	<icon name="button_vehicle_enter" file="graphics/buttons/button_vehicle_enter1.png" />
 
  	-->
-
+	<icon name="open_database" file="graphics/icons/open_database.png" />	
 
 	<icon name="button_minisheet" file="graphics/buttons/button_minisheet.png" />
 	<icon name="button_minisheet_down" file="graphics/buttons/button_minisheet_down.png" />

@@ -41,5 +41,6 @@ function update()
   updateControl("rarity", bReadOnly, bID);
   updateControl("description", bReadOnly, bID);
   updateControl("setting", bReadOnly, bID);
-
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
 end

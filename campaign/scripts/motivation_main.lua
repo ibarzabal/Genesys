@@ -15,6 +15,7 @@ function InvisDataAdded()
 	update();
 end
 
+
 function updateControl(sControl, bReadOnly, bID)
 	if not self[sControl] then
 		return false;
@@ -30,15 +31,7 @@ end
 function update()
 	local nodeRecord = getDatabaseNode();
 	local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
-	local bID = true;
-
-  updateControl("description", bReadOnly, bID);
-	if User.getRulesetName() == "StarWarsFFG" then
-		setting.setVisible(false);
-		setting_label.setVisible(false);
-	else
-	  updateControl("setting", bReadOnly, bID);
-	end
-	updateControl("source", bReadOnly, bID);
-	updateControl("source_page", bReadOnly, bID);
+	local bID = true; --LibraryData.getIDState("talent", nodeRecord);
+	updateControl("name", bReadOnly, bID);
+	updateControl("description", bReadOnly, bID);
 end

@@ -95,7 +95,14 @@
 				category.update(bReadOnly);
 				characteristic.update(bReadOnly);
 				description.update(bReadOnly);
-				setting.update(bReadOnly);
+				if User.getRulesetName() == "StarWarsFFG" then
+					setting.setVisible(false);
+					setting_label.setVisible(false);
+				else
+				  setting.update(bReadOnly);
+				end
+				source.update(bReadOnly);
+				source_page.update(bReadOnly);
 			end
 		</script>
 		<sheetdata>
@@ -136,6 +143,24 @@
 				<static textres="talent_label_setting" />
 			</label_column>
 			<string_columnh name="setting" />
+
+			<label_column name="source_label">
+				<static textres="label_source" />
+			</label_column>
+			<string_columnh name="source">
+				<anchored>
+					<right offset="-60" />
+				</anchored>
+			</string_columnh>
+			<number_columnh name="source_page">
+				<anchored width="40" height="20">
+					<left parent="source" anchor="right" offset="14" />
+					<top parent="source" anchor="bottom" offset="-20" />
+				</anchored>
+				<delaykeyupdate />
+			</number_columnh>
+
+
 		</sheetdata>
 	</windowclass>
 

@@ -181,13 +181,11 @@
 	</font>
 
 
-<!--
 		<font name="subwindowsmallertitle">
 			<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans" size="12" />
 			<color value="FFF1CC" />
-remove			<shadow offset="1,1" color="000000" />
+<!-- <shadow offset="1,1" color="000000" /> -->
 		</font>
--->
 
 
 	<!-- Formatted text fields -->

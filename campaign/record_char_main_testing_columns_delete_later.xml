@@ -13,11 +13,9 @@
 					<anchored position="insidebottomright" offset="10,10" />
 					<tooltip textres="char_abilities_tooltip_edit" />
 					<script>
-						function onInit()
-							onValueChanged();
-						end
 						function onValueChanged()
 							local bEditMode = (getValue() == 1);
+
 							window.contents.subwindow.feats_iadd.setVisible(bEditMode);
 							window.contents.subwindow.feats.update();
 							window.contents.subwindow.features_iadd.setVisible(bEditMode);
@@ -26,6 +24,8 @@
 							window.contents.subwindow.traits.update();
 							window.contents.subwindow.motivations_iadd.setVisible(bEditMode);
 							window.contents.subwindow.motivations.update();
+
+
 						end
 					</script>
 				</button_iedit>
@@ -37,8 +37,7 @@
 						<left offset="15" />
 						<right anchor="center" offset="-15" />
 					</anchored>
-					<icons>open_database</icons>
-					<target>species_archetype</target>
+					<!--					<icons>char_class</icons> -->
 					<static textres="char_label_species_archetype" />
 				</label_charframetopg>
 
@@ -73,8 +72,7 @@
 						<left anchor="center" offset="15" />
 						<right offset="-15" />
 					</anchored>
-					<icons>open_database</icons>
-					<target>career</target>
+					<!--					<icons>char_class</icons> -->
 					<static textres="char_label_career" />
 				</label_charframetopg>
 				<linkfield name="careerlink">
@@ -275,14 +273,14 @@
 						<top offset="200" />
 						<bottom offset="-40" />
 						<left offset="10" />
-						<right offset="-15" />  <!-- -150 if using the subwindows below: -->
+						<right offset="-150" />
 					</anchored>
 					<class>charsheet_main_contents</class>
 					<activate />
 					<fastinit />
 				</subwindow>
 
-<!--
+
 				<subwindow name="main_init">
 					<anchored to="contents" position="righthigh" offset="0,0"	 width="140" height="80" />
 					<class>charsheet_main_init</class>
@@ -296,7 +294,7 @@
 					<activate />
 					<fastinit />
 				</subwindow>
--->
+
 
 
 
@@ -315,8 +313,8 @@
 				<label_charframetopg name="featstitle">
 					<bounds>15,10,-10,20</bounds>
 					<static textres="char_abilities_label_racial_traits" />
-					<icons>open_database</icons>
-					<target>special_ability</target>
+					<icons>char_abilities_green</icons>
+					<target>feats</target>
 				</label_charframetopg>
 				<list_abilities name="feats">
 					<anchored to="featstitle">
@@ -340,8 +338,8 @@
 						<right />
 					</anchored>
 					<static textres="char_abilities_label_talents" />
-					<icons>open_database</icons>
-					<target>talent</target>
+					<icons>char_abilities_red</icons>
+					<target>features</target>
 				</label_charframetopg>
 				<list_abilities name="features">
 					<anchored to="featurestitle">
@@ -351,10 +349,6 @@
 					</anchored>
 					<datasource>.talents</datasource>
 					<class>talent_item</class>
-					<sortby>
-						<control>tier</control>
-						<control>name</control>
-					</sortby>
 					<listheader>featurestitle</listheader>
 				</list_abilities>
 				<button_iadd name="features_iadd">

@@ -102,6 +102,14 @@
 
 			<ft_columnh name="description" />
 
+			<!-- Tree is a Star Wars feature... for now the code will disable this field
+			when we are only running genesys... but I may add this as an optional
+			house rule later -->
+			<label_column name="trees_label">
+				<static textres="talent_label_trees" />
+			</label_column>
+			<string_columnh name="trees" />
+
 
 			<label_column name="summary_label">
 				<static textres="talent_label_summary" />
@@ -112,6 +120,24 @@
 				<static textres="talent_label_setting" />
 			</label_column>
 			<string_columnh name="setting" />
+
+			<label_column name="source_label">
+				<static textres="label_source" />
+			</label_column>
+			<string_columnh name="source">
+				<anchored>
+					<right offset="-60" />
+				</anchored>
+			</string_columnh>
+			<number_columnh name="source_page">
+				<anchored width="40" height="20">
+					<left parent="source" anchor="right" offset="14" />
+					<top parent="source" anchor="bottom" offset="-20" />
+				</anchored>
+				<delaykeyupdate />
+			</number_columnh>
+
+
 
 		</sheetdata>
 	</windowclass>

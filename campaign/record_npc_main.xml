@@ -6,6 +6,14 @@
 		<script>
 			function onInit()
 
+				if User.getRulesetName() == "StarWarsFFG" then
+					npc_power_level.setVisible(false);
+					power_level_combat.setVisible(false);
+					power_level_social.setVisible(false);
+					power_level_general.setVisible(false);
+				end
+
+
 				--[[Debug.console("Combat tab getting main class = " .. parentcontrol.window.getClass());]]
 				if parentcontrol.window.getClass() == "npc" then
 					if string.lower(parentcontrol.window.main_npc_category.getValue()) == "minion" then
@@ -68,7 +76,8 @@
 					<left offset="15" />
 					<right anchor="center" offset="-15" />
 				</anchored>
-	<!--					<icons>char_class</icons> -->
+				<icons>open_database</icons>
+				<target>species_archetype</target>
 				<static textres="char_label_species_archetype" />
 			</label_charframetopg>
 
@@ -445,18 +454,28 @@
 </sheetnumberfieldtr>
 
 
-
+<label_charframetopg name="skillstitle">
+	<anchored to="main_statblock2a" position="belowleft" offset="0,10" height="20">
+		<right offset="-1" />
+	</anchored>
+	<icons>open_database</icons>
+	<target>skill</target>
+	<static textres="char_label_skills" />
+</label_charframetopg>
 
 				<!-- GENERAL skilllist FRAME ......................................................................... -->
 				<frame_char name="skillframe">
-					<bounds>0,210,-20,-1</bounds>
+					<bounds>0,240,-20,-1</bounds>
 					<invisible />
 				</frame_char>
 
 				<button_iedit name="skilllist_iedit">
-					<anchored to="skillframe" position="insidetopright" offset="0,0" />
+					<anchored to="skillstitle" position="insidetopright" offset="0,0" />
 					<target>skilllist</target>
 					<script>
+						function onInit()
+							onValueChanged();
+						end
 						function onValueChanged()
 							local bEdit = (getValue() == 1);
 							window.skilllist_iadd.setVisible(bEdit);
@@ -470,7 +489,9 @@
 					<target>skilllist</target>
 					<tooltip textres="char_tooltip_skilladd" />
 				</button_iadd>
-					<genericcontrol>
+
+<!--
+				<genericcontrol>
 					<anchored to="skillframe" position="insidetopleft" offset="33,15" width="10" height="10" />
 					<icon>char_encumbrance</icon>
 				</genericcontrol>
@@ -493,9 +514,11 @@
 					<disabled />
 					<invisible />
 				</genericcontrol>
-					<list_npcskill name="skilllist">
+-->
+
+				<list_npcskill name="skilllist">
 					<anchored to="skillframe">
-						<top offset="30" />
+						<top offset="10" />
 						<left offset="10" />
 						<right offset="-25" />
 						<bottom offset="-15" />

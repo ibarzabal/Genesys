@@ -37,7 +37,14 @@ function update()
 	updateControl("strain_threshold", bReadOnly, bID);
 	updateControl("starting_xp", bReadOnly, bID);
   updateControl("description", bReadOnly, bID);
-  updateControl("setting", bReadOnly, bID);
+	if User.getRulesetName() == "StarWarsFFG" then
+		setting.setVisible(false);
+		setting_label.setVisible(false);
+	else
+	  updateControl("setting", bReadOnly, bID);
+	end
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
   main_statblock1_brawn_current.setReadOnly(bReadOnly);
   main_statblock1_agility_current.setReadOnly(bReadOnly);
   main_statblock1_intellect_current.setReadOnly(bReadOnly);
@@ -47,8 +54,10 @@ function update()
 
 	if bReadOnly then
 		abilities_iedit.setVisible(false);
+		abilities_iadd.setVisible(false);
 	else
 		abilities_iedit.setVisible(true);
+		abilities_iadd.setVisible(false);
 	end
 
 

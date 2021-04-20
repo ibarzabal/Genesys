@@ -32,5 +32,12 @@ function update()
 	local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
 	local bID = true; --LibraryData.getIDState("item_attachment", nodeRecord);
   updateControl("text", bReadOnly, bID);
-  updateControl("setting", bReadOnly, bID);
+	if User.getRulesetName() == "StarWarsFFG" then
+		setting.setVisible(false);
+		setting_label.setVisible(false);
+	else
+	  updateControl("setting", bReadOnly, bID);
+	end
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
 end

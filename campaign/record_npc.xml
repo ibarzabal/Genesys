@@ -96,7 +96,6 @@
 				<script>
 					function onInit()
 						if super.onInit then super.onInit() end
-
 						onValueChanged();
 					end
 

@@ -82,7 +82,14 @@ function update()
 	if updateControl("soak", bReadOnly, bID and bArmor) then bSection4 = true; end
 
 	updateControl("description", bReadOnly, bID);
-	updateControl("setting", bReadOnly, bID);
+	if User.getRulesetName() == "StarWarsFFG" then
+		setting.setVisible(false);
+		setting_label.setVisible(false);
+	else
+		updateControl("setting", bReadOnly, bID);
+	end
+	updateControl("source", bReadOnly, bID);
+	updateControl("source_page", bReadOnly, bID);
 	updateControl("attachments", bReadOnly, bID);
 
 
@@ -96,24 +103,34 @@ function update()
 	divider4.setVisible((bSection1 or bSection2 or bSection3 or bSection4));
 	-- Make hard points only visible for weapons and armor
 
+
 	if (bWeapon or bArmor) or (bGear and OptionsManager.isOption("GATT", "on")) then
-		hard_points_label.setVisible(true);
-		hard_points.setVisible(true);
-		attachments_header.setVisible(true);
-		attachments_iedit.setVisible(true);
-		attachments.setVisible(true);
+		if updateControl("hard_points", bReadOnly, bID) then bSection3 = true; end
+		updateControl("attachments", bReadOnly, bID);
 	else
 		hard_points_label.setVisible(false);
 		hard_points.setVisible(false);
 		attachments_header.setVisible(false);
 		attachments_iedit.setVisible(false);
+		attachments_iadd.setVisible(false);
 		attachments.setVisible(false);
 	end
+
 	if bReadOnly then
 		attachments_iedit.setVisible(false);
+		attachments_iadd.setVisible(false);
 	end
---	divider5.setVisible((bSection1 or bSection2 or bSection3 or bSection4) and bSection6);
-end
+	--	divider5.setVisible((bSection1 or bSection2 or bSection3 or bSection4) and bSection6);
+	end
+
+
+
+
+
+
+
+
+
 
 
 

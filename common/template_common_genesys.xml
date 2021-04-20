@@ -663,6 +663,17 @@
   </buttoncontrol>
 </template>
 
+
+<template name="open_database">
+  <buttoncontrol>
+    <icon>
+      <normal>open_database</normal>
+    </icon>
+    <script file="common/scripts/skilldicepool.lua" />
+  </buttoncontrol>
+</template>
+
+
 <!-- Initiative templates -->
 <template name="initskillcontrol">
   <genericcontrol>

@@ -21,13 +21,16 @@
 	<string name="option_empty">Unknown Option</string>
 	<string name="option_emptyset">&#171; Option Set &#187;</string>
 	<string name="option_header_client">Client</string>
-
 	<string name="option_header_combat">Combat (GM)</string>
+
+
+	<!-- Export -->
+	<string name="export_label_descriptions">Descriptions?</string>
 
 	<!-- Character Main -->
 	<string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
   <string name="char_message_careeradd">Career '%s' added to '%s'.</string>
-	<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
+	<string name="char_label_motivation">Motivation</string>
 	<string name="char_label_inventory">Equipment</string>
 	<string name="char_label_skills">Skills</string>
 	<string name="char_label_vehicles">Vehicles</string>
@@ -126,6 +129,8 @@
 	<string name="char_abilities_label_racial_traits">Special Abilities</string>
 	<string name="char_abilities_label_talents">Talents</string>
 	<string name="char_abilities_label_criticals">Critical Injuries</string>
+	<string name="char_abilities_label_initiative">Initiative</string>
+
 
 	<!-- Character - Abilities -->
 	<string name="char_abilities_title">ABILITIES</string>
@@ -374,12 +379,17 @@
 	<string name="talent_label_activation">Activation</string>
 	<string name="talent_label_setting">Setting</string>
 
+
+
+	<string name="label_source">Source</string>
+	<string name="label_source_page">Page</string>
+
 	<!-- Settings -->
 	<string name="setting_grouped_label_name">Name</string>
 	<string name="setting_grouped_title_byname">Settings By Name</string>
 	<string name="setting_header_skills">Settings Skills</string>
 	<string name="empty_skills_label">Drag and drop skill records here...</string>
-	
+
 
 
 	<!-- Abilities (IE: talents) -->

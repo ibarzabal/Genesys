@@ -62,7 +62,7 @@
 			<center />
 			<nodrag />
 			<readonly />
-<!--			<script file="campaign/scripts/char_labelframetop.lua" /> -->
+			<script file="campaign/scripts/char_labelframetopg.lua" />
 		</metalplate>
 	</template>
 
@@ -942,29 +942,9 @@
 	<sheetdata>
 		<button_career_checkbox name="career_skill">
 			<bounds>22,8,12,12</bounds>
-			<script>
-			function onInit()
-				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
-					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
-						setVisible(true);
-						setTooltipText("Minion skill?");
-					else
-						setVisible(false);
-					end
-				else
-					setTooltipText("Career Skill");
-				end
-
-			end
-
-			function onValueChanged()
-				if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
-					if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
-						MinionManager.updateSkill(window.getDatabaseNode());
-					end
-				end
-			end
-		</script>
+			<tooltip>
+				<text>Career Skill</text>
+			</tooltip>
 		</button_career_checkbox>
 		<genericcontrol name="rightanchor">
 			<anchored width="0" height="0">

@@ -168,6 +168,7 @@
 		</basenumberfield>
 
 		<string_textlistitem name="name">
+				<lineoffset default="off" mergerule="replace">1</lineoffset>
 				<disabled />
 			<anchored to="rightanchor">
 				<top />

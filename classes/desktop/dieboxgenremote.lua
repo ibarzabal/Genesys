@@ -306,13 +306,16 @@ function setDescription(description)
 		else
 			descriptionwidget = addTextWidget("hotkey", description);
 		end
-		if shadowwidget then
-			shadowwidget.setText(description);
-		else
-			shadowwidget = addTextWidget("chatfont", description);
-		end
-		descriptionwidget.setPosition("",0,0);
-		shadowwidget.setPosition("",1,1);
+--		if shadowwidget then
+--			shadowwidget.setText(description);
+--		else
+--			shadowwidget = addTextWidget("chatfont", description);
+--		end
+		descriptionwidget.setPosition("",0,15);
+		descriptionwidget.setMaxWidth(200);
+
+
+--		shadowwidget.setPosition("",1,1);
 	end
 end
 

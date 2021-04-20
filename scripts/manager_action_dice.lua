@@ -1247,6 +1247,9 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
       critResult = 100;
     end
     critResult = critResult + critModifier;
+    if critResult < 1 then
+      critResult = 1;
+    end
 
 		Debug.console("Critical result = " .. critResult)
 
@@ -1299,6 +1302,11 @@ function processDiceCritical(rSource, rTarget, rRoll, description)
       critResult = 100;
     end
     critResult = critResult + critModifier;
+
+    if critResult < 1 then
+      critResult = 1;
+    end
+
 
 		Debug.console("Critical result = " .. critResult)
 
