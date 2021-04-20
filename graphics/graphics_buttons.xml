@@ -95,8 +95,8 @@
 	<icon name="button_classes_down" file="graphics/sidebar/button_classes_down.png" />
 	<icon name="button_feats" file="graphics/sidebar/button_feats.png" />
 	<icon name="button_feats_down" file="graphics/sidebar/button_feats_down.png" />
-	<icon name="button_races" file="graphics/sidebar/button_races.png" />
-	<icon name="button_races_down" file="graphics/sidebar/button_races_down.png" />
+ 	<icon name="button_races" file="graphics/sidebar/button_races.png" />
+ 	<icon name="button_races_down" file="graphics/sidebar/button_races_down.png" />
 	<icon name="button_skills" file="graphics/sidebar/button_skills.png" />
 	<icon name="button_skills_down" file="graphics/sidebar/button_skills_down.png" />
 	<icon name="button_spells" file="graphics/sidebar/button_spells.png" />
@@ -127,7 +127,6 @@
 	<icon name="button_careers" file="graphics/sidebar/button_careers.png" />
 	<icon name="button_careers_down" file="graphics/sidebar/button_careers_down.png" />
 
-
 	<icon name="button_careers" file="graphics/sidebar/button_careers.png" />
 	<icon name="button_careers_down" file="graphics/sidebar/button_careers_down.png" />
 
@@ -135,7 +134,8 @@
 	<!-- need to create entry in data_library_genesys for these: -->
 	<icon name="button_special_abilities" file="graphics/sidebar/button_special_abilities.png" />
 	<icon name="button_special_abilities_down" file="graphics/sidebar/button_special_abilities_down.png" />
-
+	<icon name="button_settings" file="graphics/sidebar/button_settings.png" />
+ 	<icon name="button_settings_down" file="graphics/sidebar/button_settings_down.png" />
 
 
 	<!-- Combat Tracker -->

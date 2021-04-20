@@ -22,11 +22,12 @@ function updateSkills(npcNode)
 end
 
 function updateSkill(skillNode)
-
+	local minionsRemaining;
 	--Debug.console("Running MinionManager.updateSkills.  Node = " .. skillNode.getNodeName());
+	skillNode.createChild(".advances","number");
 	if skillNode then
 		if skillNode.getChild(".career_skill").getValue() == 1 then
-			local minionsRemaining = skillNode.getChild("...minion.minions_remaining").getValue();
+			minionsRemaining = skillNode.getParent().getParent().getChild("minion.minions_remaining").getValue(); -- skillNode.getChild("...minion.minions_remaining").getValue();
 			skillNode.getChild(".advances").setValue(minionsRemaining - 1);
 		else
 			skillNode.getChild(".advances").setValue(0);
