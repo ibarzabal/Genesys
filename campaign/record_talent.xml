@@ -150,6 +150,11 @@
 
 
 	<windowclass name="talentsmall">
+		<sizelimits>
+			<maximum>
+				<height>20</height>
+			</maximum>
+		</sizelimits>
 		<sheetdata>
 			<windowbutton name="open">
 				<bounds>0,1,20,20</bounds>
@@ -184,13 +189,6 @@
 				<bounds>-20,4,-1,17</bounds>
 				<disabled />
 			</basenumberfield>
-			<anchor_column name="columnanchor">
-				<bounds>-20,20,-1,17</bounds>
-			</anchor_column>
-			<ft_columnh name="description">
-				<frame mergerule="replace" name="refblock_yellow" offset="7,5,7,5" hidereadonly="true" />
-				<disabled />
-			</ft_columnh>
 		</sheetdata>
 	</windowclass>
 
