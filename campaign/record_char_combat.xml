@@ -492,14 +492,13 @@
 								else
 									isID = isIDnode.getValue();
 								end
-								if isweapon.getValue():lower() == "weapon" and isID == 1 then
+								if carried.getValue() == 2 and isweapon.getValue():lower() == "weapon" and isID == 1 then
 									return true;
 								else
 									return false;
 								end
 							end
 						</script>
-						<!-- Removed  [carried.getValue() == 2 and ] from condition above, so it does not matter id the weapon is equiped or not -->
 					</sheetlist>
 					<scrollbar>
 						<anchored>
