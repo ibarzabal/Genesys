@@ -30,17 +30,18 @@
 		<placement>
 			<size>
 				<width>509</width>
-				<height>557</height> <!-- was 307-->
+				<height>640</height>
 			</size>
 		</placement>
 		<sizelimits>
 			<dynamic />
 			<minimum>
 				<width>509</width>
-				<height>557</height>
+				<height>640</height>
 			</minimum>
 			<maximum>
 				<width>509</width>
+				<height>640</height>
 			</maximum>
 		</sizelimits>
 		<minimize>minimized_npc</minimize>
@@ -361,7 +362,6 @@
 				</tab>
 				<activate>1</activate>
 			</tabs_charsheet>
-			<resize_charsheet />
 			<close_charsheet />
 		</sheetdata>
 	</windowclass>

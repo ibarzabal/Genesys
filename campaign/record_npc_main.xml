@@ -667,8 +667,7 @@
 <!-- CONDITIONS -->
 			<sheetframe name="main_conditions">
 				<!--<bounds>12,201,236,252</bounds>-->
-				<bounds>14,154,199,-10</bounds>
-
+				<bounds>14,154,470,200</bounds>
 				<frame>
 				</frame>
 			</sheetframe>
@@ -703,8 +702,6 @@
 					function onInit()
 						createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
 						createWindowWithClass("charsheet_talents_talents", window.getDatabaseNode());
-						createWindowWithClass("charsheet_combat_criticals", window.getDatabaseNode());
-						createWindowWithClass("charsheet_combat_conditions", window.getDatabaseNode());
 					end
 				</script>
 			</basewindowlist>
@@ -718,7 +715,7 @@
 
 			<!-- NOTES -->
 			<sheetframe name="notes_notes">
-				<bounds>210,154,274,-10</bounds>
+				<bounds>14,350,470,200</bounds>
 			</sheetframe>
 			<sheetframetitle name="notes_notes_title">
 				<anchored>
@@ -758,7 +755,7 @@
 					end
 				</script>
 
--->				
+-->
 			</sheetformattedtextfield>
 			<scrollbar>
 				<anchored>

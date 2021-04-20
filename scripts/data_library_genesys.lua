@@ -148,7 +148,13 @@ aRecordOverrides = {
 			["Name"] = { sField = "name" },
 		},
 	},
-
+	["npc"] = {
+		aDataMap = { "npc", "reference.npcdata" },
+--		aGMListButtons = { "button_npc_letter", "button_npc_type" };
+		aCustomFilters = {
+			["Category"] = { sField = "npc_category", sType = "string"},
+		},
+	},
 	["item"] = {
 		fIsIdentifiable = isItemIdentifiable,
 		aDataMap = { "item", "reference.equipment", "reference.weapon", "reference.armor", "reference.magicitems", "reference.gear" },
@@ -157,7 +163,10 @@ aRecordOverrides = {
 		aGMListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear" };
 		aPlayerListButtons = { "button_item_armor", "button_item_weapons", "button_item_gear" };
 		aCustomFilters = {
+			["Setting"] = { sField = "setting", sType = "string"},
+			["Skill"] = { sField = "skill" },
 			["Type"] = { sField = "type" },
+			["Subtype"] = { sField = "subtype" },
 		},
 	},
 
@@ -192,8 +201,8 @@ aListViews = {
 				{ sName = "defense", sType = "number", sHeadingRes = "item_grouped_label_def", sTooltipRes = "item_grouped_tooltip_def", nWidth=40, bCentered=true, nSortOrder=1 },
 				{ sName = "soak", sType = "number", sHeadingRes = "item_grouped_label_soak", sTooltipRes = "item_grouped_tooltip_soak", bCentered=true },
 				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
-				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
-				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true }
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
+				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true },
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Armor" },
@@ -205,16 +214,15 @@ aListViews = {
 		["weapon"] = {
 			sTitleRes = "item_grouped_title_weapons",
 			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
+				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=150 },
 				{ sName = "skill", sType = "string", sHeadingRes = "item_grouped_label_skill", nWidth=100 },
 				{ sName = "damage", sType = "string", sHeadingRes = "item_grouped_label_damage", nWidth=60, bCentered=true },
 				{ sName = "critical", sType = "number", sHeadingRes = "item_grouped_label_critical", bCentered=true },
 				{ sName = "range", sType = "string", sHeadingRes = "item_grouped_label_range", sTooltipRes = "item_grouped_tooltip_range", nWidth=30, bCentered=true },
 				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
-				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
 				{ sName = "rarity", sType = "number", sHeadingRes = "item_grouped_label_rarity", bCentered=true },
 				{ sName = "special", sType = "string", sHeadingRes = "item_grouped_label_special", nWidth=400 },
-
 			},
 			aFilters = {
 				{ sDBField = "type", vFilterValue = "Weapon" },
@@ -227,7 +235,7 @@ aListViews = {
 			sTitleRes = "item_grouped_title_gear",
 			aColumns = {
 				{ sName = "name", sType = "string", sHeadingRes = "item_grouped_label_name", nWidth=200 },
-				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", bCentered=true },
+				{ sName = "cost", sType = "string", sHeadingRes = "item_grouped_label_cost", nWidth=100, bCentered=true },
 				{ sName = "encumbrance", sType = "string", sHeadingRes = "item_grouped_label_encumbrance", sTooltipRes = "item_grouped_tooltip_encumbrance", nWidth=30, bCentered=true },
 			},
 			aFilters = {

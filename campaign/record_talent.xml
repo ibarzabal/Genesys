@@ -132,10 +132,8 @@
 			</label_column>
 			<string_columnh  name="ranked" />
 
-			<string_columnh_full name="description">
-				<font>reference-i</font>
-				<empty textres="empty_flavor" />
-			</string_columnh_full>
+			<ft_columnh name="description" />
+
 
 			<label_column name="summary_label">
 				<static textres="talent_label_summary" />

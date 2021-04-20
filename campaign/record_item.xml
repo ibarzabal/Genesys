@@ -7,6 +7,10 @@
 
 <root>
 	<windowclass name="item" merge="join">
+		<placement>
+			<size width="350" height="500" />
+	</placement>
+
 		<sheetdata>
 			<subwindow_record name="main">
 				<script file="campaign/scripts/item_drop.lua" />
@@ -134,6 +138,10 @@
 <!--			<header_column name="header_description"> -->
 <!--				<static textres="item_label_description"/> -->
 <!--			</header_column> -->
+
+
+<!--			<ft_columnh name="description" /> -->
+
 			<ft_columnh name="description" />
 
 			<label_column name="setting_label">

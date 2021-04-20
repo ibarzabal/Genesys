@@ -252,7 +252,7 @@
 									<disabled />
 								</basestringfield>
 
-								<baseformattedtextfield name="description">
+								<basestringfield name="special">
 									<anchored>
 										<left>
 											<anchor>left</anchor>
@@ -266,7 +266,8 @@
 											<width>200</width>
 										</size>
 									</anchored>
-								</baseformattedtextfield>
+									<disabled />
+								</basestringfield>
 							</sheetdata>
 						</windowclass>
 </root>
