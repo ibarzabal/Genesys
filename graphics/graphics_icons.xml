@@ -52,6 +52,12 @@
 		<icon name="button_submit" file="graphics/icons/button_submit.png" />
 		<icon name="button_submit_down" file="graphics/icons/button_submit_down.png" />
 
+		<icon name="ct_button_submit" file="graphics/icons/ct_button_submit.png" />
+		<icon name="ct_button_submit_down" file="graphics/icons/ct_button_submit_down.png" />
+
+
+
+
 		<icon name="modcollector" file="graphics/icons/modcollector.png" />
 		<icon name="modcollector_counter" file="graphics/icons/modcollector_counter.png" />
 

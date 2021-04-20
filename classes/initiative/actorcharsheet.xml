@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Trenloe - changes
+- Commented out <gmvisibleonly /> tags for strain - now players can see their strain on the CT
+-->
+<root>
+
+	<windowclass name="actorcharsheet">
+		<frame>ctentrybox</frame>
+		<sizelimits>
+			<minimum>
+				<height>32</height>
+			</minimum>
+		</sizelimits>
+		<sheetdata>
+
+			<!-- active indicator -->
+<!--			<actoractiveindicator name="active">
+				<anchored>
+					<top>
+						<anchor>top</anchor>
+					</top>
+					<bottom>
+						<anchor>bottom</anchor>
+					</bottom>
+					<left>
+						<anchor>left</anchor>
+					</left>
+					<size>
+						<width>33</width>
+					</size>
+				</anchored>
+			</actoractiveindicator>-->
+
+			<buttoncontrol name="ct_addtoinitslot">
+				<bounds>1,4,25,23</bounds>
+				<icon>
+					<normal>ct_button_submit</normal>
+					<pressed>ct_button_submit_down</pressed>
+				</icon>
+				<tooltip>
+					<text>Move Character to Current Init Slot</text>
+				</tooltip>
+				<invisible />
+				<script>
+					function onInit()
+						local nodeslotactiveclass = DB.findNode("initiativetracker.activeslotclass.slotactiveclass")
+						nodeslotactiveclass.onUpdate = onUpdate;
+						onUpdate();
+					end
+
+					function onUpdate()
+						local nodeslotactiveclass = DB.findNode("initiativetracker.activeslotclass.slotactiveclass");
+						if nodeslotactiveclass.getValue() == "reset" then
+							Debug.console("actorcharsheet.xml:onUpdate - reset code called.  Add any round reset code here.");
+						elseif nodeslotactiveclass.getValue() == "charsheet" then
+							local actedlist = InitiativeManager.listActedThisRound();
+							local alreadyacted = false;
+							for k, v in pairs(actedlist) do
+								if window.getDatabaseNode().getNodeName() == v.getNodeName() then
+									alreadyacted = true;
+									break;
+								end
+							end
+							if alreadyacted then
+								setVisible(false);
+							else
+								local windownode = window.getDatabaseNode();
+								if InitiativeManager.isOwnedIdentity(window.getDatabaseNode()) or User.isHost() then
+									setVisible(true);
+								end
+							end
+						else
+							setVisible(false);
+						end
+					end
+
+					function onButtonPress()
+						if User.isHost() then
+							InitiativeManager.addToInitSlot(window.getDatabaseNode());
+						else
+							InitiativeManager.clientAddToInitSlot(window.getDatabaseNode());
+						end
+					end
+				</script>
+			</buttoncontrol>
+
+			<token_char name="token">
+				<bounds>30,0,32,32</bounds>
+			</token_char>
+
+
+
+			<!-- shortcut -->
+			<buttoncontrol name="shortcut">
+				<bounds>62,6,20,20</bounds>
+				<icon>
+					<normal>button_link</normal>
+					<pressed>button_link_down</pressed>
+				</icon>
+				<gmvisibleonly />
+				<script>
+					function onInit()
+						local windownode = window.getDatabaseNode();
+						if windownode and windownode.isOwner() then
+							--[[setVisible(true);]]
+						end
+					end
+
+					function onButtonPress()
+						InitiativeManager.openCharacterSheet(window.getDatabaseNode());
+					end
+				</script>
+			</buttoncontrol>
+
+			<!-- name -->
+			<basestringfield name="name">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>82</offset>
+					</left>
+					<right>
+						<anchor>right</anchor>
+						<offset>-245</offset>
+					</right>
+					<top>
+						<anchor>top</anchor>
+						<offset>9</offset>
+					</top>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<color>#FF000000</color>
+				<empty>&#171; Unnamed &#187;</empty>
+				<disabled/>
+			</basestringfield>
+
+			<checkbox name="showvehicleinct">
+				<!--<bounds>300,0,25,20</bounds>-->
+				<sourcename>vehicle.showvehicleinct</sourcename>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>220,5</offset>
+					<size>
+						<width>25</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>Show character vehicle in tracker when Show Vehicles enabled</text>
+				</tooltip>
+				<script>
+					function onValueChanged()
+						window.windowlist.window.toggleVehicle(window, getState());
+					end
+				</script>
+			</checkbox>
+
+			<!-- strain threshhold -->
+			<sheetnumberfield name="strain_threshold" source="strain.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>107,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<!--<gmvisibleonly />	-->
+			</sheetnumberfield>
+
+			<!-- strain current -->
+			<strainnumberfield name="strain_current" source="strain.current">
+				<chit>strain</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>76,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<!--<gmvisibleonly />-->
+			</strainnumberfield>
+
+
+			<!-- wound threshhold -->
+			<sheetnumberfield name="wounds_threshold" source="wounds.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>40,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<!--<invisible />-->
+				<script>
+					function onInit()
+						super.onInit();
+						local windownode = window.getDatabaseNode();
+						if windownode and windownode.isOwner() then
+							setVisible(true);
+						end
+					end
+				</script>
+			</sheetnumberfield>
+
+			<!-- wounds current -->
+			<woundnumberfield name="wounds_current" source="wounds.current">
+				<chit>wound</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>9,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>favour</prev>
+				</tabtarget>
+				<!--<invisible />-->
+				<script>
+					function onInit()
+						super.onInit();
+						local windownode = window.getDatabaseNode();
+						if windownode and windownode.isOwner() then
+							setVisible(true);
+						end
+					end
+				</script>
+			</woundnumberfield>
+
+		<!--Vehicle section-->
+			<tokenfield name="vehicle_token" source="vehicle.token">
+				<bounds>57,27,30,30</bounds>
+				<empty>indicator_emptytoken</empty>
+				<script>
+					local dragging = false;
+
+					function onDragStart(button, x, y, draginfo)
+						dragging = false;
+						return onDrag(button, x, y, draginfo);
+					end
+
+					function onDrag(button, x, y, draginfo)
+						if not dragging and getPrototype() then
+							draginfo.setType("npc");
+							draginfo.setTokenData(getPrototype());
+							draginfo.setShortcutData("charsheet", window.getDatabaseNode().getNodeName());
+							draginfo.setDatabaseNode(window.getDatabaseNode().getNodeName());
+							draginfo.setStringData(window.name.getValue());
+
+							local base = draginfo.createBaseData();
+							base.setType("token");
+							base.setTokenData(getPrototype());
+
+							dragging = true;
+							return true;
+						end
+						return false;
+					end
+
+					function onDragEnd(draginfo)
+						dragging = false;
+					end
+				</script>
+			</tokenfield>
+
+			<!-- name -->
+			<basestringfield name="vehicle_name" source="vehicle.name">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>92</offset>
+					</left>
+					<right>
+						<anchor>right</anchor>
+						<offset>-245</offset> <!-- was 276-->
+					</right>
+					<top>
+						<anchor>top</anchor>
+						<offset>33</offset>
+					</top>
+					<size>
+						<height>30</height>
+					</size>
+				</anchored>
+				<color>#C0FF0000</color>
+				<empty>&#171; Unnamed &#187;</empty>
+				<disabled/>
+			</basestringfield>
+
+			<stringcontrol name="silhouette_label">
+				<!--<bounds>-84,-203,25,10</bounds>-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>220,26</offset>
+					<size>
+						<width>25</width>
+						<height>10</height>
+					</size>
+				</anchored>
+				<font>sheetlabelinline</font>
+				<color>#ffffffff</color>
+				<static>Sil.</static>
+				<center />
+			</stringcontrol>
+
+			<sheetnumberfield name="vehicle_silhouette" source="vehicle.silhouette">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>220,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>The silhouette of the vehicle</text>
+				</tooltip>
+			</sheetnumberfield>
+
+			<stringcontrol name="maxspeed_label">
+				<!--<bounds>-84,-203,25,10</bounds>-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>177,26</offset>
+					<size>
+						<width>35</width>
+						<height>10</height>
+					</size>
+				</anchored>
+				<font>sheetlabelinline</font>
+				<color>#ffffffff</color>
+				<static>Max Sp</static>
+				<center />
+			</stringcontrol>
+
+			<sheetnumberfield name="vehicle_speed" source="vehicle.speed">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>180,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>The maximum speed of the vehicle</text>
+				</tooltip>
+			</sheetnumberfield>
+
+			<stringcontrol name="currentspeed_label">
+				<!--<bounds>-84,-203,25,10</bounds>-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>140,26</offset>
+					<size>
+						<width>35</width>
+						<height>10</height>
+					</size>
+				</anchored>
+				<font>sheetlabelinline</font>
+				<color>008000</color>
+				<static>Curr Sp</static>
+				<center />
+			</stringcontrol>
+
+			<sheetnumberfield name="vehicle_currentspeed" source="vehicle.currentspeed">
+				<anchored>
+					<position>insidetopright</position>
+					<offset>143,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color > 008000 </color>
+				<tooltip>
+					<text>The current speed of the vehicle</text>
+				</tooltip>
+			</sheetnumberfield>
+
+			<!-- strain threshhold -->
+			<sheetnumberfield name="vehicle_strain_threshold" source="vehicle.strain.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>107,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<gmvisibleonly />
+			</sheetnumberfield>
+
+		<!-- strain current -->
+			<strainnumberfield name="vehicle_strain_current" source="vehicle.strain.current">
+				<chit>strain</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>76,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color>FFD700</color>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<gmvisibleonly />
+			</strainnumberfield>
+
+			<!-- Hull Trauma threshhold -->
+			<sheetnumberfield name="vehicle_hull_trauma_threshold" source="vehicle.hull_trauma.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>40,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<gmvisibleonly />
+			</sheetnumberfield>
+
+			<!-- Hull Trauma current -->
+			<woundnumberfield name="vehicle_hull_trauma_current" source="vehicle.hull_trauma.current">
+				<chit>wound</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>9,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color>800000</color>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<gmvisibleonly />
+			</woundnumberfield>
+
+		</sheetdata>
+		<script file="classes/initiative/actorcharsheet.lua" />
+	</windowclass>
+
+</root>

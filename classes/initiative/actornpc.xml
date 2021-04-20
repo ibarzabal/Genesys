@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	<windowclass name="actornpc">
+		<frame>ctentrybox</frame>
+		<sizelimits>
+			<minimum>
+				<height>32</height>
+			</minimum>
+		</sizelimits>
+		<script file="classes/initiative/actornpc.lua" />
+		<sheetdata>
+
+			<!-- active indicator -->
+<!--			<actoractiveindicator name="active">
+				<anchored>
+					<top>
+						<anchor>top</anchor>
+					</top>
+					<bottom>
+						<anchor>bottom</anchor>
+					</bottom>
+					<left>
+						<anchor>left</anchor>
+					</left>
+					<size>
+						<width>33</width>
+					</size>
+				</anchored>
+			</actoractiveindicator>-->
+
+			<buttoncontrol name="ct_addtoinitslot">
+				<bounds>1,4,25,23</bounds>
+				<icon>
+					<normal>ct_button_submit</normal>
+					<pressed>ct_button_submit_down</pressed>
+				</icon>
+				<gmvisibleonly />
+				<tooltip>
+					<text>Move Character to Current Init Slot</text>
+				</tooltip>
+				<script>
+					function onInit()
+						local nodeslotactiveclass = DB.findNode("initiativetracker.activeslotclass.slotactiveclass")
+						if User.isHost() then
+							nodeslotactiveclass.onUpdate = onUpdate;
+							onUpdate();
+						else
+							setVisible(false);
+						end
+					end
+
+					function onUpdate()
+						local nodeslotactiveclass = DB.findNode("initiativetracker.activeslotclass.slotactiveclass");
+						if nodeslotactiveclass.getValue() == "reset" then
+						elseif nodeslotactiveclass.getValue() == "npc" then
+							local actedlist = InitiativeManager.listActedThisRound();
+							local alreadyacted = false;
+							for k, v in pairs(actedlist) do
+								if window.getDatabaseNode().getNodeName() == v.getNodeName() then
+									alreadyacted = true;
+									window.name.setColor("#C0FF0000");
+									break;
+								end
+							end
+							if alreadyacted then
+								setVisible(false);
+							else
+								setVisible(true);
+							end
+						else
+							setVisible(false);
+						end
+					end
+
+					function onButtonPress()
+						InitiativeManager.addToInitSlot(window.getDatabaseNode());
+					end
+				</script>
+			</buttoncontrol>
+
+			<token_char name="token">
+				<bounds>30,0,32,32</bounds>
+			</token_char>
+
+
+			<!-- shortcut -->
+			<buttoncontrol name="shortcut">
+				<bounds>62,6,20,20</bounds>
+				<icon>
+					<normal>button_link</normal>
+					<pressed>button_link_down</pressed>
+				</icon>
+				<gmvisibleonly />
+				<script>
+					function onButtonPress()
+						if User.isHost() then
+							local recordnode = window.getDatabaseNode().getChild("recordname");
+							if recordnode then
+								NPCManagerGenesys.openNpcSheet(DB.findNode(recordnode.getValue()));
+							else
+								NPCManagerGenesys.openNpcSheet(window.getDatabaseNode());
+							end
+						end
+					end
+				</script>
+			</buttoncontrol>
+
+			<!-- name -->
+			<basestringfield name="name">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>82</offset>
+					</left>
+					<right>
+						<anchor>right</anchor>
+						<offset>-245</offset> <!-- was 276-->
+					</right>
+					<top>
+						<anchor>top</anchor>
+						<offset>9</offset>
+					</top>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<color>#C0FF0000</color>
+				<empty>&#171; Unnamed &#187;</empty>
+				<disabled/>
+			</basestringfield>
+
+			<checkbox name="showvehicleinct">
+				<!--<bounds>300,0,25,20</bounds>-->
+				<sourcename>vehicle.showvehicleinct</sourcename>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>220,5</offset>
+					<size>
+						<width>25</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>Show character vehicle in tracker when Show Vehicles enabled</text>
+				</tooltip>
+				<script>
+					function onValueChanged()
+						window.windowlist.window.toggleVehicle(window, getState());
+					end
+				</script>
+			</checkbox>
+
+			<sheetnumberfield name="boost_dice" source="actor.boost_dice">
+				<!--<disabled />-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>180,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>Number of bonus boost dice to be used on next action</text>
+				</tooltip>
+				<!--<gmvisibleonly />-->
+			</sheetnumberfield>
+
+			<sheetnumberfield name="setback_dice" source="actor.setback_dice">
+				<!--<disabled />-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>143,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>Number of penaly setback dice to be used on next action</text>
+				</tooltip>
+				<!--<gmvisibleonly />-->
+			</sheetnumberfield>
+
+			<!-- strain threshhold -->
+			<sheetnumberfield name="strain_threshold" source="strain.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>107,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<gmvisibleonly />
+			</sheetnumberfield>
+
+		<!-- strain current -->
+			<strainnumberfield name="strain_current" source="strain.current">
+				<chit>strain</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>76,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color>FFD700</color>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<gmvisibleonly />
+			</strainnumberfield>
+
+
+
+		<!-- Minion Info -->
+			<sheetlabel name="minion_number_label">
+				<anchored>
+					<position>insidetopright</position>
+					<offset>107,8</offset>
+					<size>
+						<width>20</width>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<!--<gmvisibleonly />-->
+				<!--<font>sheetlabelinline</font>-->
+				<static>##</static>
+				<invisible />
+				<tooltip>
+					<text>Number of individual members remaining in the Minion group</text>
+				</tooltip>
+			</sheetlabel>
+
+			<sheetnumberfield name="minion_number_remaining" source="minion.minions_remaining">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>76,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<script>
+					function onInit()
+						if super.onInit then super.onInit() end
+
+						local sourcenode = getDatabaseNode();
+
+						if sourcenode then
+							sourcenode.onUpdate = onUpdate;
+						end
+					end
+
+					function onUpdate(source)
+						MinionManager.updateSkills(source);
+					end
+
+				</script>
+				<!--<gmvisibleonly />-->
+				<invisible />
+				<tooltip>
+					<text>Number of individual members remaining in the Minion group</text>
+				</tooltip>
+			</sheetnumberfield>
+
+			<!-- wound threshhold -->
+			<sheetnumberfield name="wounds_threshold" source="wounds.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>40,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<gmvisibleonly />
+			</sheetnumberfield>
+
+			<!-- wound current -->
+			<woundnumberfield name="wounds_current" source="wounds.current">
+				<chit>wound</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>9,8</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color>800000</color>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<gmvisibleonly />
+			</woundnumberfield>
+
+			<!-- stance
+			<stancevalue>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>9,8</offset>
+				</anchored>
+				<gmvisibleonly />
+			</stancevalue>	-->
+
+		<!--Vehicle section-->
+			<tokenfield name="vehicle_token" source="vehicle.token">
+				<bounds>57,27,30,30</bounds>
+				<empty>indicator_emptytoken</empty>
+				<script>
+					local dragging = false;
+
+					function onDragStart(button, x, y, draginfo)
+						dragging = false;
+						return onDrag(button, x, y, draginfo);
+					end
+
+					function onDrag(button, x, y, draginfo)
+						if not dragging and getPrototype() then
+							draginfo.setType("npc");
+							draginfo.setTokenData(getPrototype());
+							draginfo.setShortcutData("npc", window.getDatabaseNode().getNodeName());
+							draginfo.setDatabaseNode(window.getDatabaseNode().getNodeName());
+							draginfo.setStringData(window.name.getValue());
+
+							local base = draginfo.createBaseData();
+							base.setType("token");
+							base.setTokenData(getPrototype());
+
+							dragging = true;
+							return true;
+						end
+						return false;
+					end
+
+					function onDragEnd(draginfo)
+						dragging = false;
+					end
+				</script>
+			</tokenfield>
+
+			<!-- shortcut -->
+<!--			<buttoncontrol name="shortcut">
+				<bounds>62,46,20,20</bounds>
+				<icon>
+					<normal>button_openwindow</normal>
+					<pressed>button_emptytarget</pressed>
+				</icon>
+				<gmvisibleonly />
+				<script>
+					function onButtonPress()
+						if User.isHost() then
+							local recordnode = window.getDatabaseNode().getChild("recordname");
+							if recordnode then
+								NPCManagerGenesys.openNpcSheet(DB.findNode(recordnode.getValue()));
+							else
+								NPCManagerGenesys.openNpcSheet(window.getDatabaseNode());
+							end
+						end
+					end
+				</script>
+			</buttoncontrol>-->
+
+			<!-- name -->
+			<basestringfield name="vehicle_name" source="vehicle.name">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>92</offset>
+					</left>
+					<right>
+						<anchor>right</anchor>
+						<offset>-245</offset> <!-- was 276-->
+					</right>
+					<top>
+						<anchor>top</anchor>
+						<offset>33</offset>
+					</top>
+					<size>
+						<height>30</height>
+					</size>
+				</anchored>
+				<color>#C0FF0000</color>
+				<empty>&#171; Unnamed &#187;</empty>
+				<disabled/>
+			</basestringfield>
+
+			<stringcontrol name="silhouette_label">
+				<!--<bounds>-84,-203,25,10</bounds>-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>220,26</offset>
+					<size>
+						<width>25</width>
+						<height>10</height>
+					</size>
+				</anchored>
+				<font>sheetlabelinline</font>
+				<color>#ffffffff</color>
+				<static>Sil.</static>
+				<center />
+			</stringcontrol>
+
+			<sheetnumberfield name="vehicle_silhouette" source="vehicle.silhouette">
+				<anchored>
+					<position>insidetopright</position>
+					<offset>220,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<disabled />
+				<tooltip>
+					<text>The silhouette of the vehicle</text>
+				</tooltip>
+			</sheetnumberfield>
+
+			<stringcontrol name="maxspeed_label">
+				<!--<bounds>-84,-203,25,10</bounds>-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>176,26</offset>
+					<size>
+						<width>35</width>
+						<height>10</height>
+					</size>
+				</anchored>
+				<font>sheetlabelinline</font>
+				<color>#ffffffff</color>
+				<static>Max Sp</static>
+				<center />
+				<gmvisibleonly />
+			</stringcontrol>
+
+			<sheetnumberfield name="vehicle_speed" source="vehicle.speed">
+				<anchored>
+					<position>insidetopright</position>
+					<offset>179,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<tooltip>
+					<text>The maximum speed of the vehicle</text>
+				</tooltip>
+				<gmvisibleonly />
+				<disabled />
+			</sheetnumberfield>
+
+			<stringcontrol name="currentspeed_label">
+				<!--<bounds>-84,-203,25,10</bounds>-->
+				<anchored>
+					<position>insidetopright</position>
+					<offset>139,26</offset>
+					<size>
+						<width>35</width>
+						<height>10</height>
+					</size>
+				</anchored>
+				<font>sheetlabelinline</font>
+				<color>008000</color>
+				<static>Curr Sp</static>
+				<center />
+			</stringcontrol>
+
+			<sheetnumberfield name="vehicle_currentspeed" source="vehicle.currentspeed">
+				<anchored>
+					<position>insidetopright</position>
+					<offset>143,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color > 008000 </color>
+				<tooltip>
+					<text>The current speed of the vehicle</text>
+				</tooltip>
+			</sheetnumberfield>
+
+			<!-- strain threshhold -->
+			<sheetnumberfield name="vehicle_strain_threshold" source="vehicle.strain.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>107,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<gmvisibleonly />
+			</sheetnumberfield>
+
+		<!-- strain current -->
+			<strainnumberfield name="vehicle_strain_current" source="vehicle.strain.current">
+				<chit>strain</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>76,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color>FFD700</color>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<gmvisibleonly />
+			</strainnumberfield>
+
+
+
+<!--		<!{1}** Minion Info **{1}>
+			<sheetlabel name="minion_number_label">
+				<anchored>
+					<position>insidetopright</position>
+					<offset>107,48</offset>
+					<size>
+						<width>20</width>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<!{1}**<gmvisibleonly />**{1}>
+				<!{1}**<font>sheetlabelinline</font>**{1}>
+				<static>##</static>
+				<invisible />
+				<tooltip>
+					<text>Number of individual members remaining in the Minion group</text>
+				</tooltip>
+			</sheetlabel>
+
+			<sheetnumberfield name="minion_number_remaining" source="minion.minions_remaining">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>76,48</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<script>
+					function onInit()
+						if super.onInit then super.onInit() end
+
+						local sourcenode = getDatabaseNode();
+
+						if sourcenode then
+							sourcenode.onUpdate = onUpdate;
+						end
+					end
+
+					function onUpdate(source)
+						MinionManager.updateSkills(source);
+					end
+
+				</script>
+				<!{1}**<gmvisibleonly />**{1}>
+				<invisible />
+				<tooltip>
+					<text>Number of individual members remaining in the Minion group</text>
+				</tooltip>
+			</sheetnumberfield>	-->
+
+			<!-- Hull Trauma threshhold -->
+			<sheetnumberfield name="vehicle_hull_trauma_threshold" source="vehicle.hull_trauma.threshold">
+				<disabled />
+				<anchored>
+					<position>insidetopright</position>
+					<offset>40,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<gmvisibleonly />
+			</sheetnumberfield>
+
+			<!-- Hull Trauma current -->
+			<woundnumberfield name="vehicle_hull_trauma_current" source="vehicle.hull_trauma.current">
+				<chit>wound</chit>
+				<anchored>
+					<position>insidetopright</position>
+					<offset>9,41</offset>
+					<size>
+						<width>25</width>
+					</size>
+				</anchored>
+				<color>800000</color>
+				<tabtarget>
+					<next>initiative</next>
+					<prev>initiative</prev>
+				</tabtarget>
+				<gmvisibleonly />
+			</woundnumberfield>
+
+
+
+		</sheetdata>
+	</windowclass>
+
+</root>

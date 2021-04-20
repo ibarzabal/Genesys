@@ -75,7 +75,7 @@ function addSkillDice(skilldescription, dice, sourcenode, msgidentity,actornode)
     else
       l_actornode = nil;
     end
-
+    
    	if dice then
   		if OptionsManager.getOption("interface_cleardicepoolondrag") == "on" then
   			control.resetAll();

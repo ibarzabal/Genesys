@@ -31,6 +31,9 @@ function onInit()
 --	registerDiceHandler(SPECIAL_MSGTYPE_SKILL, processDiceLanded);
 --	registerDiceHandler(SPECIAL_MSGTYPE_SPECIALISATION, processDiceLanded);
 
+  ChatManagerGenesys.registerSpecialMessageHandler(SPECIAL_MSGTYPE_UPDATEACTORINIT, handleUpdateActorInit);
+	OOBManager.registerOOBMsgHandler(SPECIAL_MSGTYPE_UPDATEACTORINIT, ProcessNothing);
+
   ActionsManager.registerResultHandler("dice", onDice);
   ActionsManager.registerResultHandler("skill", onDice);
   ActionsManager.registerResultHandler("characteristic", onDice);
@@ -45,6 +48,9 @@ function throwDice(dragtype, dice, modifier, description, customdata)
 	Comm.throwDice(dragtype, dice, modifier, description, customdata);
 end
 
+function ProcessNothing()
+	local nada = "";
+end
 
 
 function onDice(rSource, rTarget, rRoll)
@@ -959,10 +965,11 @@ end
 -- Used to pass rolled initiative to the InitiativeManager script using the Special Message functionality so the GM can act on the player's roll
 function updateActorInit(characternode, initiativecount)
 	local msgparams = {};
+  
 	msgparams[1] = characternode.getNodeName();
 	msgparams[2] = initiativecount;
--- JOHN TODO  InitiativeManager.updateActorInitiative(characternode, initiativecount);
-	--ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_UPDATEACTORINIT, msgparams);
+  --InitiativeManager.updateActorInitiative(characternode, initiativecount);
+	ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_UPDATEACTORINIT, msgparams);
 end
 
 function handleUpdateActorInit(msguser, msgidentity, msgparams)

@@ -69,28 +69,28 @@
 			<!-- labels -->
 <!--			<stringcontrol>
 				<bounds>-195,15,25,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Init</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-161,15,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ff0000ff</color>
 				<static>Boosts</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-120,15,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#00000000</color>
 				<static>Setbacks</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-70,15,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#0000A000</color>
 				<static>Add dice</static>
 				<center />
@@ -130,70 +130,70 @@
 
 <!--			<stringcontrol>
 				<bounds>-300,-225,50,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Used 2</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-300,-213,50,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Maneuvers</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-246,-213,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ff0000ff</color>
 				<static>Boosts</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-200,-213,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#00000000</color>
 				<static>Setbacks</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-146,-225,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>STRAIN</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-150,-213,25,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Curr</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-119,-213,25,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Thres</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-80,-225,45,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>WOUNDS</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-84,-213,25,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Curr</static>
 				<center />
 			</stringcontrol>
 			<stringcontrol>
 				<bounds>-53,-213,25,10</bounds>
-				<font>sheetlabelsmall</font>
+				<font>sheetlabelinline</font>
 				<color>#ffffffff</color>
 				<static>Thres</static>
 				<center />

@@ -371,4 +371,33 @@
   </buttoncontrol>
 </template>
 
+<!-- Initiative templates -->
+<template name="initskillcontrol">
+  <genericcontrol>
+    <frame>
+      <name>modifier</name>
+      <offset>4,5,4,4</offset>
+    </frame>
+    <anchored>
+      <size>
+        <width>35</width>
+        <height>16</height>
+      </size>
+    </anchored>
+    <script file="common/scripts/initskillcontrol.lua" />
+  </genericcontrol>
+</template>
+
+
+<template name="checkbox">
+  <genericcontrol>
+    <stateicons>
+      <on>button_checkon</on>
+      <off>button_checkoff</off>
+    </stateicons>
+    <script file="common/scripts/checkbox.lua" />
+  </genericcontrol>
+</template>
+
+
 </root>

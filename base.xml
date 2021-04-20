@@ -72,8 +72,8 @@
 		<script name="PlayerDBManager" file="scripts/manager_playerdbgenesys.lua" />
 		<script name="MinionManager" file="scripts/manager_miniongenesys.lua" />
 		<script name="NPCManagerGenesys" file="scripts/manager_npcgenesys.lua" />
-		<script name="MinionManager" file="scripts/manager_minion.lua" />
-
+		<script name="InitiativeManager" file="scripts/manager_initiativegenesys.lua" />
+		<script name="UserManager" file="scripts/manager_usermanagergenesys.lua" />
 
 <!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
 			<!--Overriding the original manager_actions.lua from CoreRPG

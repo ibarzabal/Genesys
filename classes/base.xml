@@ -11,8 +11,8 @@
 	<includefile source="classes/conditions/base.xml" />
 -->
 	<includefile source="classes/desktop/base.xml" />
-<!--
 	<includefile source="classes/initiative/base.xml" />
+<!--
 	<includefile source="classes/utilities/base.xml" />
 -->
 </root>
