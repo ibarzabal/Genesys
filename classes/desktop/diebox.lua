@@ -462,9 +462,13 @@ function onDieboxButtonPress()
 --			msgidentity = msguser;
 --		end
 
-		msgidentity = DB.getValue(sourcenode, "...name", "");
+
+		msgidentity = DB.getValue(sourcenode, "...name", User.getUsername());
 
 		-- throw the dice
+		if 	type == "dice" then
+			type = "dicegen";
+		end
 		Comm.throwDice(type, dice, modifier, description .. "<>" .. sourcenodename .. "<>" .. msgidentity .. "<>" .. gmonly);
 		resetAll();
 end

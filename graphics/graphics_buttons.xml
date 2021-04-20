@@ -86,8 +86,6 @@
 	<icon name="button_notes_down" file="graphics/sidebar/button_notes_down.png" />
 	<icon name="button_tables" file="graphics/sidebar/button_tables.png" />
 	<icon name="button_tables_down" file="graphics/sidebar/button_tables_down.png" />
-	<icon name="button_vehicles" file="graphics/sidebar/button_vehicles.png" />
-	<icon name="button_vehicles_down" file="graphics/sidebar/button_vehicles_down.png" />
 
 	<icon name="button_backgrounds" file="graphics/sidebar/button_backgrounds.png" />
 	<icon name="button_backgrounds_down" file="graphics/sidebar/button_backgrounds_down.png" />
@@ -126,9 +124,8 @@
 	<icon name="button_species_archetypes_down" file="graphics/sidebar/button_species_archetypes_down.png" />
 	<icon name="button_careers" file="graphics/sidebar/button_careers.png" />
 	<icon name="button_careers_down" file="graphics/sidebar/button_careers_down.png" />
-
-	<icon name="button_careers" file="graphics/sidebar/button_careers.png" />
-	<icon name="button_careers_down" file="graphics/sidebar/button_careers_down.png" />
+	<icon name="button_vehicles" file="graphics/sidebar/button_vehicles.png" />
+	<icon name="button_vehicles_down" file="graphics/sidebar/button_vehicles_down.png" />
 
 
 	<!-- need to create entry in data_library_genesys for these: -->

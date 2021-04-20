@@ -483,7 +483,6 @@ end
 function sortfuncDnD(node1, node2)
 	local bHost = User.isHost();
 	local sOptCTSI = OptionsManager.getOption("CTSI");
-	local sOptCTSI = OptionsManager.getOption("CTSI");
 
 	local sFaction1 = DB.getValue(node1, "friendfoe", "");
 	local sFaction2 = DB.getValue(node2, "friendfoe", "");
@@ -853,6 +852,7 @@ end
 function onDrop(nodetype, nodename, draginfo)
 	local rSource = ActionsManager.decodeActors(draginfo);
 	local rTarget = ActorManager.getActor(nodetype, nodename);
+	local sDragType
 	if rTarget then
 		local sDragType = draginfo.getType();
 

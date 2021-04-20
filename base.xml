@@ -83,7 +83,8 @@
 
 		<script name="CombatManager" file="scripts/manager_combat.lua" />
 		<script name="CombatManager2" file="scripts/manager_combat_genesys.lua" />
-		<script name="EffectManager5E" file="scripts/manager_effects.lua" />
+<!--		<script name="EffectManager5E" file="scripts/manager_effects.lua" /> -->
+
 			<!--Overriding the original manager_actions.lua from CoreRPG
 		  	this is a workaround for the moment.... -->
  		<script name="ActionsManager" file="scripts/manager_actions.lua" />
@@ -127,7 +128,7 @@
 		<includefile source="campaign/record_skill.xml" />
 		<includefile source="campaign/record_power.xml" />
 		<includefile source="campaign/record_power_roll.xml" />
-
+		<includefile source="campaign/record_vehicle.xml" />
 <!--		<includefile source="campaign/record_ability.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_abilities.xml" /> -->
 <!-- 		<includefile source="campaign/record_charmini_main.xml" /> -->

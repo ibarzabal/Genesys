@@ -643,7 +643,6 @@ function onDiceLanded(draginfo)
 end
 
 function handleResolution(vRoll, rSource, aTargets)
-
 	if vRoll.sReplaceDieResult then
 		local aReplaceDieResult = StringManager.split(vRoll.sReplaceDieResult, "|");
 		for kDie,vDie in ipairs(vRoll.aDice) do

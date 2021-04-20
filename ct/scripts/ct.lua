@@ -7,7 +7,6 @@ local enableglobaltoggle = true;
 local enablevisibilitytoggle = true;
 
 function onInit()
-	CheckOnDrop = 0;
 	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
 
 	Interface.onHotkeyActivated = onHotkey;
@@ -161,16 +160,9 @@ function onEntrySectionToggle()
 end
 
 function onDrop(x, y, draginfo)
-	if ActionsManager.isClientFGU() == false then
-		CheckOnDrop = CheckOnDrop +1;
-		if CheckOnDrop > 1 then
-			CheckOnDrop = 0;
-			return true;
-		end
-	end
-
 	if draginfo.isType("shortcut") then
-		return CampaignDataManager.handleDrop("combattracker", draginfo);
+		CampaignDataManager.handleDrop("combattracker", draginfo);
+		return true;
 	end
 
 	-- Capture any drops meant for specific CT entries
@@ -178,7 +170,8 @@ function onDrop(x, y, draginfo)
 	if win then
 		local nodeWin = win.getDatabaseNode();
 		if nodeWin then
-			return CombatManager.onDrop("ct", nodeWin.getNodeName(), draginfo);
+			CombatManager.onDrop("ct", nodeWin.getNodeName(), draginfo);
+			return true;
 		end
 	end
 end

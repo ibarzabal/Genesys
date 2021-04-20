@@ -50,7 +50,7 @@ function onDisplayChanged()
 		header.subwindow.actionsmini.setVisible(true);
 	else
 		header.subwindow.group.setVisible(true);
-		header.subwindow.shortdescription.setVisible(false);
+		header.subwindow.shortdescription.setVisible(true);
 		header.subwindow.actionsmini.setVisible(false);
 	end
 end

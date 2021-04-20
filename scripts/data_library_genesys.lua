@@ -208,12 +208,26 @@ aRecordOverrides = {
 			["Setting"] = { sField = "setting", sType = "string"},
 		},
 	},
+
+	["vehicle"] = {
+		bExport = true,
+		aDataMap = { "vehicle", "reference.vehicles" },
+		aDisplayIcon = { "button_vehicles", "button_vehicles_down" },
+		-- sRecordDisplayClass = "vehicle",
+		aGMListButtons = { "button_vehicle_type" };
+		aCustomFilters = {
+			["Type"] = { sField = "type" },
+			["Setting"] = { sField = "setting", sType = "string"},
+		},
+	},
+
+
 };
 
 
 
 aDefaultSidebarState = {
-		["create"] = "charsheet,career,talent,item,species_archetype" --,specialability,spell",
+		["create"] = "charsheet,career,talent,item,species_archetype,vehicle" --,specialability,spell",
 };
 
 
@@ -314,8 +328,25 @@ aListViews = {
 			aGroupValueOrder = { },
 		},
 	},
-};
 
+
+	["vehicle"] = {
+		["bytype"] = {
+			sTitleRes = "vehicle_grouped_title_bytype",
+			aColumns = {
+				{ sName = "name", sType = "string", sHeadingRes = "vehicle_grouped_label_name", nWidth=200 },
+				{ sName = "cost", sType = "string", sHeadingRes = "vehicle_grouped_label_cost", nWidth=80, bCentered=true },
+				{ sName = "weight", sType = "number", sHeadingRes = "vehicle_grouped_label_weight", sTooltipRes="vehicle_grouped_tooltip_weight", bCentered=true },
+				{ sName = "speed", sType = "string", sHeadingRes = "vehicle_grouped_label_speed", sTooltipRes="vehicle_grouped_tooltip_speed", nWidth=100, bCentered=true },
+			},
+			aFilters = {},
+			aGroups = { { sDBField = "type" } },
+			aGroupValueOrder = {},
+		},
+	},
+
+
+};
 
 
 function onInit()
