@@ -561,7 +561,7 @@
 <template name="weapondicepool">
   <buttoncontrol>
     <icon>
-      <normal>textentry_die</normal>
+      <normal>field_rollable</normal>
     </icon>
     <script file="common/scripts/weapondicepool.lua" />
   </buttoncontrol>
@@ -570,7 +570,7 @@
 <template name="weapondicepool_vehicle">
   <buttoncontrol>
     <icon>
-      <normal>textentry_die</normal>
+      <normal>field_rollable</normal>
     </icon>
     <script file="common/scripts/weapondicepool_vehicle.lua" />
   </buttoncontrol>
@@ -657,7 +657,7 @@
 <template name="skilldicepool">
   <buttoncontrol>
     <icon>
-      <normal>textentry_die</normal>
+      <normal>field_rollable</normal>
     </icon>
     <script file="common/scripts/skilldicepool.lua" />
   </buttoncontrol>

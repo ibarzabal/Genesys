@@ -396,6 +396,8 @@
 			function onLockChanged()
 				if header.subwindow then
 					header.subwindow.update();
+				end
+				if main.subwindow then
 					main.subwindow.update();
 				end
 			end

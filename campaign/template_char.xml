@@ -57,7 +57,7 @@
 
 	<template name="label_charframetopg">
 		<metalplate>
-			<frame name="genesysplate1" offset="10,2,10,2"/>
+			<frame name="metalplate" offset="10,2,10,2"/>
 			<font>subwindowsmalltitle</font>
 			<center />
 			<nodrag />

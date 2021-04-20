@@ -65,9 +65,6 @@ function update()
 end
 
 
-
-
-
 function onDrop(x, y, draginfo)
 --	local bWeapon = (sType == "Weapon");
 --	local bArmor = (sType == "Armor");

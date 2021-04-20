@@ -43,6 +43,20 @@
 	<string name="button_vehicle_exit_message">Exited vehicle</string>
 	<string name="vehicle_error_not_in_vehicle_message">Target not in a vehicle</string>
 
+	<!-- Character Notes -->
+	<string name="char_label_gender">Gender</string>
+	<string name="char_label_age">Age</string>
+	<string name="char_label_height">Height</string>
+	<string name="char_label_build">Build</string>
+	<string name="char_label_hair">Hair</string>
+	<string name="char_label_eyes">Eyes</string>
+	<string name="char_label_eyes">Eyes</string>
+  <string name="char_label_notes">Notes</string>
+	<string name="char_label_notable_features">Notable Features</string>
+	<string name="char_label_xp">Experience</string>
+
+
+
 
 	<string name="char_label_powers">Powers</string>
 	<string name="library_recordtype_empty_power">&#171; New Power &#187;</string>

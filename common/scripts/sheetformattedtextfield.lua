@@ -22,7 +22,7 @@ end
 function update()
 	-- GENESYS
 	-- Replaces special codes with Genesys Symbols
-	if not updating then
+	if not updating and not no_symbol_convertion then
 		if sourcenode and sourcenode.isOwner() and not sourcenode.isStatic() then
 			-- set the updating flag
 			updating = true;

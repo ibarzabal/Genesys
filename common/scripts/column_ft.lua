@@ -30,11 +30,9 @@ end
 
 function update(bReadOnly, bForceHide, Reverse)
 	local bLocalShow;
-
-
 	-- GENESYS
 	-- Replaces special codes with Genesys Symbols
-	if not updating then
+	if not updating and not no_symbol_convertion then
 		if node and node.isOwner() and not node.isStatic() then
 			-- set the updating flag
 			updating = true;

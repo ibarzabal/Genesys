@@ -188,6 +188,15 @@ aRecordOverrides = {
 		},
 	},
 
+	["table"] = {
+		bExport = true,
+		aDataMap = { "tables", "reference.tables" },
+		-- sRecordDisplayClass = "table",
+		aGMEditButtons = { "button_add_table_guided", "button_add_table_import" },
+		aCustomFilters = {
+			["Source"] = { sField = "source", sType = "string"},
+		},
+	},
 
 	-- New record types
 	["talent"] = {
@@ -246,7 +255,7 @@ aRecordOverrides = {
 
 aDefaultSidebarState = {
 	["gm"] = "charsheet,note,image,table,story,quest,npc,battle,item,item_attachment,vehicle,treasureparcel",
-	["play"] = "charsheet,note,image,item,item_attachment,vehicle",
+	["play"] = "charsheet,note,image", --item,item_attachment,vehicle",
 	["create"] = "charsheet,species_archetype,special_ability,career,talent,item,item_attachment,vehicle,setting,skill",
 };
 

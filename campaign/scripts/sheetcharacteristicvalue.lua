@@ -4,7 +4,7 @@ local dicewidget = nil;
 function onInit()
 	super.onInit();
 	setHoverCursor("hand");
-	dicewidget = addBitmapWidget("textentry_die");
+	dicewidget = addBitmapWidget("field_rollable");
 	dicewidget.setPosition("bottomleft", 0, -4);
 
 	if label then

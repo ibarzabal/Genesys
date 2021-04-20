@@ -101,9 +101,26 @@ function addSpecies(nodeChar, sClass, sRecord)
 	local sFormat = Interface.getString("char_message_species_archetypeadd");
 	local sMsg = string.format(sFormat, sspecies_archetype, DB.getValue(nodeChar, "name", ""));
 	ChatManager.SystemMessage(sMsg);
-
 	DB.setValue(nodeChar, "species_archetype", "string", sspecies_archetype);
 	DB.setValue(nodeChar, "species_archetypelink", "windowreference", sClass, nodeSource.getNodeName());
+	-- Adding attributes:
+	DB.setValue(nodeChar,"brawn.current","number", nodeSource.getChild("brawn").getValue());
+	DB.setValue(nodeChar,"agility.current","number", nodeSource.getChild("agility").getValue());
+	DB.setValue(nodeChar,"intellect.current","number", nodeSource.getChild("intellect").getValue());
+	DB.setValue(nodeChar,"cunning.current","number", nodeSource.getChild("cunning").getValue());
+	DB.setValue(nodeChar,"willpower.current","number", nodeSource.getChild("willpower").getValue());
+	DB.setValue(nodeChar,"presence.current","number", nodeSource.getChild("presence").getValue());
+	DB.setValue(nodeChar,"wounds.threshold","number", nodeSource.getChild("wound_threshold").getValue());
+	DB.setValue(nodeChar,"strain.threshold","number", nodeSource.getChild("strain_threshold").getValue());
+	if ActorManager.isPC(nodeChar) then
+		DB.setValue(nodeChar,"experience.total","number", nodeSource.getChild("starting_xp").getValue());
+	end
+	-- Adding Special Abilities from Species....
+	for k,v in pairs(nodeSource.getChild("abilities").getChildren()) do
+		if v.getChild("name").getValue() then
+			addSpecialAbility(nodeChar, v);
+		end
+	end
 end
 
 function addCareer(nodeChar, sClass, sRecord)

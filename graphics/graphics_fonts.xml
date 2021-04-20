@@ -29,6 +29,11 @@
 	<shadow offset="1,1" color="000000" />
 </font>
 
+<!-- Sidebar -->
+<font name="button_sidebar_dockitem" merge="join">
+	<color value="#292119" />
+</font>
+
 <!-- Misc -->
 <font name="list-empty">
 	<fgffile name="graphics/fonts/italic-10.fgf" />

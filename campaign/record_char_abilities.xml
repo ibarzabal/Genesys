@@ -116,7 +116,7 @@
 					<right />
 				</anchored>
 				<static textres="char_abilities_label_criticals" />
-				<icons>char_abilities</icons>
+				<!--<icons>char_abilities</icons> -->
 				<target>traits</target>
 			</label_charframetopg>
 			<list_abilities name="traits">

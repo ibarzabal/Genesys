@@ -661,7 +661,7 @@
 					<disabled />
 				</basestringfield>
 
-				<stringu name="special">
+				<stringfield name="special">
 					<anchored>
 						<left>
 							<anchor>left</anchor>
@@ -676,7 +676,11 @@
 						</size>
 					</anchored>
 					<disabled />
-				</stringu>
+				</stringfield>
+
+
+
+
 			</sheetdata>
 		</windowclass>
 

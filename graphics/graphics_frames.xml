@@ -17,7 +17,7 @@
 
 	<!-- Controls -->
 	<framedef name="metalplate">
-		<bitmap file="graphics/frames/leathertag.png" />
+		<bitmap file="graphics/frames/genesystag.png" />
 		<topleft rect="0,0,11,10" />
 		<top rect="11,0,177,10" />
 		<topright rect="188,0,12,10" />
@@ -104,6 +104,17 @@
 		<left rect="0,73,18,335" />
 		<bottomleft rect="0,408,18,86" />
 	</framedef>
+
+	<!-- Sidebar -->
+	<framedef name="button_sidebar_dockitem">
+		<bitmap file="graphics/frames/button_sidebar.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
+	<framedef name="button_sidebar_dockitem_down">
+		<bitmap file="graphics/frames/button_sidebar_down.png" />
+		<offset>12,12,12,12</offset>
+	</framedef>
+
 
 	<!-- Dice Tower -->
 	<framedef name="dicetower_normal">
@@ -445,7 +456,6 @@
 </framedef>
 
 
-
 <!-- Desktop background -->
 <!--
 	<framedef name="desktop">
@@ -533,24 +543,6 @@
 	<framedef name="headerref">
 		<bitmap file="graphics/frames/headerref.png" />
 		<middle rect="0,0,128,128" />
-	</framedef>
-
-	<!-- Controls -->
-	<framedef name="metalplate">
-		<bitmap file="graphics/frames/leathertag.png" />
-		<topleft rect="0,0,11,10" />
-		<top rect="11,0,177,10" />
-		<topright rect="188,0,12,10" />
-		<left rect="0,10,11,30" />
-		<middle rect="11,10,177,30" />
-		<right rect="188,10,12,30" />
-		<bottomleft rect="0,40,11,10" />
-		<bottom rect="11,40,177,10" />
-		<bottomright rect="188,40,12,10" />
-	</framedef>
-	<framedef name="abilityscore">
-		<bitmap file="graphics/frames/abilityscore.png" />
-		<offset>7,7,7,7</offset>
 	</framedef>
 
 	<!-- Utility -->
