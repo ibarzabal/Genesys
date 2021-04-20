@@ -427,11 +427,18 @@ function onDieboxButtonPress()
 		local modifier = "0";
 		-- source node name
 		if sourcenode then
-			sourcenodename = sourcenode.getNodeName();
+			sourcenodename = sourcenode.getParent().getParent().getNodeName();
 		end
 		-- gm only
 		--local gmonly = OptionsManager.getOption("interface_gmonly");
-		local gmonly = ChatManagerGenesys.gmDieHide();
+		--local gmonly = ChatManagerGenesys.gmDieHide();
+		local gmonly = "show";
+		if ChatManagerGenesys.gmDieHide() then
+			gmonly = "hide";
+		end
+
+
+
 		-- build the dice table
 		local dice = getDice();
 		-- verify the identity - use the user if no identity has been set via setIdentity
@@ -440,7 +447,8 @@ function onDieboxButtonPress()
 			msgidentity = msguser;
 		end
 		-- throw the dice
-		Comm.throwDice(type, dice, modifier, description, {sourcenodename, msgidentity, gmonly});
+		-- Debug.chat ("Diebox->throwDice",type, dice, modifier, description .. "<.>" .. sourcenodename .. "<.>" .. msgidentity);
+		Comm.throwDice(type, dice, modifier, description .. "<>" .. sourcenodename .. "<>" .. msgidentity .. "<>" .. gmonly);
 		resetAll();
 end
 

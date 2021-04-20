@@ -29,8 +29,8 @@ function onClickDown(button, x, y)
 end
 
 function onClickRelease(button, x, y)
-	if (getValue() == 0) and User.isHost() then
-		CombatManager.requestActivation(window.getDatabaseNode(), true);
+	if (getValue() == 1)  then
+		CombatManager.requestActivation(window.getDatabaseNode(), true, User.isHost());
 	end
 	return true;
 end

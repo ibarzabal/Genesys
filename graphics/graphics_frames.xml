@@ -85,28 +85,6 @@
 			<bottomright rect="238,238,14,14" />
 		</framedef>
 
-<!-- TEMP frames for combat tracker -->
-<framedef name="indexbox">
-	<bitmap file="graphics/frames/indexbox.png" />
-	<topleft rect="0,0,68,75" />
-	<top rect="68,0,512,75" />
-	<topright rect="580,0,77,75" />
-	<left rect="0,75,68,512" />
-	<middle rect="68,75,512,512" />
-	<right rect="580,75,77,512" />
-	<bottomleft rect="0,587,68,51" />
-	<bottom rect="68,587,512,51" />
-	<bottomright rect="580,587,77,51" />
-</framedef>
-
-
-		<!-- Combat tracker -->
- 		<framedef name="ctbox">
- 			<bitmap file="graphics/frames/ctbox1.png" />
- 			<offset>32,32,19,50</offset>
- 			<insideoffset>0,0,7,7</insideoffset>
- 		</framedef>
-
 
 
 </root>

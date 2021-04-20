@@ -191,27 +191,39 @@ function processDiceLanded(draginfo)
 end
 
 function processDice(rSource, rTarget, rRoll)
+
+
+--Comm.throwDice(type, dice, modifier, description .. "<.>" .. sourcenodename .. "<.>" .. msgidentity .. "<.>" .. gmonly);
+
+  local ThrowDiceInfo = StringManager.split(rSource.sDesc, "<>", true);
 	-- get the message details
 	local type = rSource.sType;
-	local description = rSource.sDesc;
+	local description = ThrowDiceInfo[1];
 	local modifier = rSource.nMod;
 	--local sourcenode = '';   --TODO_john: find rTarget.node? rSource.getDatabaseNode();
 	local gmonly = false;
+  if ThrowDiceInfo[4] == "hide" then
+    gmonly = true;
+  end
 
 --	Debug.console("processDice - rSource = ", rSource);
+--	Debug.chat("processDice - rSource = ", rSource);
 
 	-- Used to track success and advantages for initiative in the form of <successes>.<advantages>
 	local initiativecount = 0;
 
 	-- get the identity
-	local identity = User.getIdentityLabel();
-	if not identity then
-		identity = User.getUsername();
-	end
-	if User.isHost() then
-		local gmid, isgm = GmIdentityManager.getCurrent();
-		identity = gmid;
-	end
+	local identity = ThrowDiceInfo[3];
+  local characternode = ThrowDiceInfo[2];
+--	if not identity then
+--		identity = User.getUsername();
+--	end
+--	if User.isHost() then
+--		local gmid, isgm = GmIdentityManager.getCurrent();
+--		identity = gmid;
+--	end
+
+
 
 	-- get the custom data
 --	local customdata = rSource.getCustomData();
@@ -240,27 +252,6 @@ function processDice(rSource, rTarget, rRoll)
 		--processResultDie(resultdice, die);
   end
 
-	-- get the character node
-	local characternode = DieBoxManager.getActorNode();
---	if sourcenode then
---		if type == SPECIAL_MSGTYPE_ACTION then
---			characternode = sourcenode.getParent().getParent();
---		elseif type == SPECIAL_MSGTYPE_CHARACTERISTIC then
---			characternode = sourcenode.getParent().getParent();
---		elseif type == SPECIAL_MSGTYPE_SKILL then
---			characternode = sourcenode.getParent().getParent();
---		elseif type == SPECIAL_MSGTYPE_SPECIALISATION then
---			characternode = sourcenode.getParent().getParent().getParent().getParent();
---		end
---	end
-
-	-- update the identity if we found the character node
-	if characternode then
-		local namenode = characternode.getChild("name");
-		if namenode then
-			identity = namenode.getValue();
-		end
-	end
 
 	-- determine if a dice summary should be displayed
 	--local showsummary = OptionsManager.getOption("interface_showdiceresultsummary");
@@ -965,17 +956,35 @@ end
 -- Used to pass rolled initiative to the InitiativeManager script using the Special Message functionality so the GM can act on the player's roll
 function updateActorInit(characternode, initiativecount)
 	local msgparams = {};
-  
-	msgparams[1] = characternode.getNodeName();
-	msgparams[2] = initiativecount;
+
+
+  local aType = "npc";
+  if StringManager.startsWith(characternode,"charsheet") then
+    aType = "pc";
+  end
+
+  msgparams[1] = aType;
+  msgparams[2] = characternode;
+	msgparams[3] = initiativecount;
+
+
+--  local rSource = ActorManager.getActor(aType, characternode);
+--  DB.setValue(ActorManager.getCTNode(rSource), "initresult", "number", initiativecount);
+
   --InitiativeManager.updateActorInitiative(characternode, initiativecount);
 	ChatManagerGenesys.sendSpecialMessage(SPECIAL_MSGTYPE_UPDATEACTORINIT, msgparams);
 end
 
 function handleUpdateActorInit(msguser, msgidentity, msgparams)
-	local characternode = DB.findNode(msgparams[1]);
-	local initiativecount = msgparams[2];
-	InitiativeManager.updateActorInitiative(characternode, initiativecount);
+  local aType = msgparams[1];
+  local characternode = msgparams[2];
+	local initiativecount = msgparams[3];
+
+  local rSource = ActorManager.getActor(aType, characternode);
+  DB.setValue(ActorManager.getCTNode(rSource), "initresult", "number", initiativecount);
+--	local characternode = DB.findNode(msgparams[1]);
+--	local initiativecount = msgparams[2];
+--	InitiativeManager.updateActorInitiative(characternode, initiativecount);
 end
 
 

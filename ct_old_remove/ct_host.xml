@@ -6,13 +6,13 @@
 -->
 
 <root>
-	<windowclass name="combattracker_host">
+	<windowclass name="combattracker_host1">
 		<frame>ctbox</frame>
 		<placement>
-			<size width="600" height="500" />
+			<size width="400" height="500" />
 		</placement>
 		<sizelimits>
-			<minimum width="600" height="400" />
+			<minimum width="400" height="400" />
 			<dynamic />
 		</sizelimits>
 		<softclose />
@@ -35,7 +35,6 @@
 					end
 				</script>
 			</buttoncontrol>
-
 			<label_ct name="label_name">
 				<anchored to="headeranchor" position="insidetopleft" offset="33,0">
 					<right offset="-153" />
@@ -92,10 +91,6 @@
 
 			<button_ct_menu />
 
-
-			<label_ct_init_skill />
-			<ct_init_skill />
-
 			<label_ct_host_rounds />
 			<number_ct_host_rounds />
 			<button_ct_nextround />
@@ -120,9 +115,6 @@
 			<spacer_ctentry_active_top name="active_spacer_top" />
 
 			<button_ctentry_active name="active" />
-			<button_ctentry_choose_next name="ctentry_choose_next" />
-
-
 			<token_ctentry name="token" />
 			<button_ctentry_tokenvis name="tokenvis" />
 			<button_ctentry_isidentified name="isidentified" />

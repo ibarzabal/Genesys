@@ -75,7 +75,9 @@
 		<script name="InitiativeManager" file="scripts/manager_initiativegenesys.lua" />
 		<script name="UserManager" file="scripts/manager_usermanagergenesys.lua" />
 
-<!--JOHN: fix this for initiative tracking		<script name="CombatManager2" file="scripts/manager_combat2.lua" /> -->
+		
+		<script name="CombatManager" file="scripts/manager_combat.lua" />
+		<script name="CombatManager2" file="scripts/manager_combat_genesys.lua" />
 			<!--Overriding the original manager_actions.lua from CoreRPG
 		  	this is a workaround for the moment.... -->
  		<script name="ActionsManager" file="scripts/manager_actions.lua" />
@@ -136,5 +138,14 @@
 <!-- Reference -->
 <includefile source="ref/ref_equipment.xml" />
 <includefile source="ref/ref_equipment_lists.xml" />
+
+
+<!-- Combat tracker NEW -->
+<includefile source="ct/template_ct.xml" />
+<includefile source="ct/template_ct_genesys.xml" />
+
+<includefile source="ct/ct_host.xml" />
+<includefile source="ct/ct_client.xml" />
+
 
 </root>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<!--
-  Please see the license.html file included with this distribution for
+<!-- 
+  Please see the license.html file included with this distribution for 
   attribution and copyright information.
 -->
 
@@ -22,11 +22,11 @@
 				OptionsManager.registerCallback("CTSI", updateShowOrder);
 				updateShowOrder();
 			end
-
+			
 			function onClose()
 				OptionsManager.unregisterCallback("CTSI", updateShowOrder);
 			end
-
+			
 			function updateShowOrder()
 				local bShowInit = not OptionsManager.isOption("CTSI", "off");
 				label_init.setVisible(bShowInit);
@@ -45,12 +45,9 @@
 
 			<list_ctbox_client />
 			<scrollbar_list />
-
+			
 			<button_ct_endturn name="turn_complete" />
-
-			<label_ct_init_skill />
-			<ct_init_skill />
-
+			
 			<label_ct_client_rounds />
 			<number_ct_client_rounds />
 
@@ -74,8 +71,6 @@
 			<spacer_ctentry_active_top name="active_spacer_top" />
 
 			<button_clientct_active name="active" />
-			<button_ctentry_choose_next name="ctentry_choose_next" />
-
 			<token_clientct name="token" />
 
 			<anchor_ctentry_right name="rightanchor" />
@@ -92,10 +87,10 @@
 			<icon_clientctsection_effect name="effecticon" />
 			<spacer_clientctsection_effect name="effectspacer" />
 			<list_clientct_effect name="effects" />
-
+ 
 			<string_ctentry_targets name="target_summary" />
 			<string_ctentry_effects name="effect_summary" />
-
+			
 			<spacer_ctentry_middle name="spacer" />
 			<spacer_ctentry_active_bottom name="active_spacer_bottom" />
 		</sheetdata>

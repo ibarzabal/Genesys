@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<!--
-  Please see the license.html file included with this distribution for
+<!-- 
+  Please see the license.html file included with this distribution for 
   attribution and copyright information.
 -->
 
 <root>
-<!-- Genesys specific -->
-<template name="button_ctentry_choose_next_base">
-	<buttonfield>
-		<anchored width="33" height="40">
-			<top parent="active_spacer_top" anchor="bottom" />
-			<left />
-		</anchored>
-		<state icon="" />
-		<state icon="ct_choose_next" />
-	</buttonfield>
-</template>
-<template name="button_ctentry_choose_next">
-	<button_ctentry_choose_next_base>
-		<script file="ct/scripts/ctentry_choose_next.lua" />
-	</button_ctentry_choose_next_base>
-</template>
-
-
 	<!-- General combat tracker window -->
 	<template name="label_ct">
 		<label>
@@ -62,7 +44,7 @@
 			<center />
 		</label_ct>
 	</template>
-
+	
 	<template name="button_ct_nextactor">
 		<buttoncontrol>
 			<anchored width="33" height="26">
@@ -75,11 +57,11 @@
 				function onButtonPress()
 					CombatManager.nextActor();
 				end
-
+				
 				function onDragStart(button, x, y, draginfo)
 					draginfo.setType("combattrackernextactor");
 					draginfo.setIcon("button_ctnextactor");
-
+					
 					return true;
 				end
 			</script>
@@ -97,11 +79,11 @@
 				function onButtonPress()
 					CombatManager.notifyEndTurn();
 				end
-
+				
 				function onDragStart(button, x, y, draginfo)
 					draginfo.setType("combattrackernextactor");
 					draginfo.setIcon("button_ctnextactor");
-
+					
 					return true;
 				end
 			</script>
@@ -139,7 +121,7 @@
 			<script file="common/scripts/button_crosslink.lua" />
 		</button_checkbox>
 	</template>
-
+	
 	<template name="spacer_ctentry_active_top">
 		<genericcontrol name="active_spacer_top">
 			<anchored position="insidetopleft" width="0" height="5" />
@@ -194,9 +176,9 @@
 			<script>
 				function onValueChanged()
 					local bActive = (getValue() == 1);
-
+					
 					window.onActiveChanged(bActive);
-
+	
 					if bActive and OptionsManager.isOption("CMAT", "on") then
 						CombatManager.centerOnToken(window.getDatabaseNode(), false);
 					end
@@ -456,7 +438,7 @@
 			</anchored>
 		</frame_ctsub>
 	</template>
-
+	
 	<template name="icon_ctsection_spacing">
 		<icon_ctsection name="spacingicon">
 			<icon>button_space_down</icon>
@@ -501,7 +483,7 @@
 			</anchored>
 		</frame_ctsub>
 	</template>
-
+	
 	<template name="icon_ctsection_effect">
 		<icon_ctsection name="effecticon">
 			<icon>button_effect_down</icon>
@@ -538,7 +520,7 @@
 			</anchored>
 		</frame_ctsub>
 	</template>
-
+	
 	<template name="string_ct_summary">
 		<stringcontrol>
 			<anchored>
@@ -563,7 +545,7 @@
 			<script file="ct/scripts/ct_effect_summary.lua" />
 		</string_ct_summary>
 	</template>
-
+	
 	<!-- GM combat tracker window -->
 	<template name="anchor_ctbox_host_header">
 		<genericcontrol name="headeranchor">
@@ -601,11 +583,11 @@
 			</anchored>
 			<datasource>.list</datasource>
 			<class>ct_entry</class>
-      		<empty font="list-empty-ct" textres="ct_emptylist" />
+			<empty font="list-empty" textres="ct_emptylist" />
 			<script file="ct/scripts/ct.lua" />
 		</windowlist>
 	</template>
-
+	
 	<template name="button_ct_setactive">
 		<genericcontrol>
 			<anchored width="33" height="40">
@@ -618,15 +600,15 @@
 				function onInit()
 					widget = addBitmapWidget(activeicon[1]);
 				end
-
+				
 				function onDragStart(button, x, y, draginfo)
 					draginfo.setType("combattrackeractivation");
 					draginfo.setIcon(activeicon[1]);
 					widget.setVisible(false);
-
+					
 					return true;
 				end
-
+				
 				function onDragEnd(draginfo)
 					widget.setVisible(true);
 				end
@@ -674,7 +656,7 @@
 					registerMenuItem(Interface.getString("ct_menu_round15"), "num15", 6);
 					registerMenuItem(Interface.getString("ct_menu_round20"), "num20", 7);
 				end
-
+				
 				function onMenuSelection(selection)
 					if selection == 4 then
 						CombatManager.nextRound(5);
@@ -686,15 +668,15 @@
 						CombatManager.nextRound(20);
 					end
 				end
-
+				
 				function onButtonPress()
 					CombatManager.nextRound(1);
 				end
-
+				
 				function onDragStart(button, x, y, draginfo)
 					draginfo.setType("combattrackernextround");
 					draginfo.setIcon("button_ctnextround");
-
+					
 					return true;
 				end
 			</script>
@@ -792,7 +774,7 @@
 			<frame name="ct_groupbox" offset="3,3,3,3" />
 		</simplenumber>
 	</template>
-
+	
 	<!-- Player combat tracker entry -->
 	<template name="hlink_clientct">
 		<hlink name="link">
@@ -814,7 +796,7 @@
 			<script>
 				function onValueChanged()
 					local bShow = (window.activateeffects.getValue() == 1);
-
+					
 					window.effecticon.setVisible(bShow);
 					window.effectspacer.setVisible(bShow);
 					window.effects.setVisible(bShow);
@@ -1012,7 +994,7 @@
 			</script>
 		</buttoncontrol>
 	</template>
-
+	
 	<template name="string_ct_effect">
 		<stringu name="label">
 			<anchored>

@@ -1,5 +1,5 @@
---
--- Please see the license.html file included with this distribution for
+-- 
+-- Please see the license.html file included with this distribution for 
 -- attribution and copyright information.
 --
 
@@ -9,16 +9,16 @@ end
 
 function onValueChanged()
 	local bActive = (getValue() == 1);
-
+	
 	window.updateDisplay();
 	if bActive then
 		window.windowlist.scrollToWindow(window);
 	end
-
+	
 	if window.onActiveChanged then
 		window.onActiveChanged(bActive)
 	end
-
+	
 	if bActive and OptionsManager.isOption("CMAT", "on") then
 		CombatManager.centerOnToken(window.getDatabaseNode(), false);
 	end

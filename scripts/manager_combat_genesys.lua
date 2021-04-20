@@ -1,5 +1,5 @@
--- 
--- Please see the license.html file included with this distribution for 
+--
+-- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
 
@@ -13,6 +13,10 @@ function onInit()
 	CombatManager.setCustomTurnEnd(onTurnEnd);
 	CombatManager.setCustomCombatReset(resetInit);
 end
+
+
+
+
 
 --
 -- TURN FUNCTIONS
@@ -28,23 +32,23 @@ function onTurnEnd(nodeEntry)
 	if not nodeEntry then
 		return;
 	end
-	
+
 	-- Handle beginning of turn changes
 	DB.setValue(nodeEntry, "immediate", "number", 0);
-	
-	-- Check for stabilization (based on option)
-	local sOptionHRST = OptionsManager.getOption("HRST");
-	if sOptionHRST ~= "off" then
-		if (sOptionHRST == "all") or (DB.getValue(nodeEntry, "friendfoe", "") == "friend") then
-			local _,_,sStatus = ActorManager2.getPercentWounded("ct", nodeEntry);
-			if sStatus == "Dying" then
-				local rActor = ActorManager.getActorFromCT(nodeEntry);
-				if not EffectManager35E.hasEffectCondition(rActor, "Stable") then
-					ActionDamage.performStabilizationRoll(rActor);
-				end
-			end
-		end
-	end
+
+--	-- Check for stabilization (based on option)
+--	local sOptionHRST = OptionsManager.getOption("HRST");
+--	if sOptionHRST ~= "off" then
+--		if (sOptionHRST == "all") or (DB.getValue(nodeEntry, "friendfoe", "") == "friend") then
+--			local _,_,sStatus = ActorManager2.getPercentWounded("ct", nodeEntry);
+--			if sStatus == "Dying" then
+--				local rActor = ActorManager.getActorFromCT(nodeEntry);
+--				if not EffectManager35E.hasEffectCondition(rActor, "Stable") then
+--					ActionDamage.performStabilizationRoll(rActor);
+--				end
+--			end
+--		end
+--	end
 end
 
 --
@@ -54,18 +58,18 @@ end
 function getNPCSpaceReach(nodeNPC)
 	local nSpace = GameSystem.getDistanceUnitsPerGrid();
 	local nReach = nSpace;
-	
+
 	local sSpaceReach = DB.getValue(nodeNPC, "spacereach", "");
 	local sSpace, sReach = string.match(sSpaceReach, "(%d+)%D*/?(%d+)%D*");
 	if sSpace then
 		nSpace = tonumber(sSpace) or nSpace;
 		nReach = tonumber(sReach) or nReach;
 	end
-	
+
 	return nSpace, nReach;
 end
 
-function addNPC(sClass, nodeNPC, sName)
+function addNPC1(sClass, nodeNPC, sName)
 	local nodeEntry, nodeLastMatch = CombatManager.addNPCHelper(nodeNPC, sName);
 
 	local bPFMode = DataCommon.isPFRPG();
@@ -85,16 +89,16 @@ function addNPC(sClass, nodeNPC, sName)
 	local sAC = DB.getValue(nodeNPC, "ac", "10");
 	DB.setValue(nodeEntry, "ac_final", "number", tonumber(string.match(sAC, "^(%d+)")) or 10);
 	DB.setValue(nodeEntry, "ac_touch", "number", tonumber(string.match(sAC, "touch (%d+)")) or 10);
-	local sFlatFooted = string.match(sAC, "flat[%-–]footed (%d+)");
+	local sFlatFooted = string.match(sAC, "flat[%-ï¿½]footed (%d+)");
 	if not sFlatFooted then
 		sFlatFooted = string.match(sAC, "flatfooted (%d+)");
 	end
 	DB.setValue(nodeEntry, "ac_flatfooted", "number", tonumber(sFlatFooted) or 10);
-	
+
 	-- Handle BAB / Grapple / CM Field
 	local sBABGrp = DB.getValue(nodeNPC, "babgrp", "");
 	local aSplitBABGrp = StringManager.split(sBABGrp, "/", true);
-	
+
 	local sMatch = string.match(sBABGrp, "CMB ([+-]%d+)");
 	if sMatch then
 		DB.setValue(nodeEntry, "grapple", "number", tonumber(sMatch) or 0);
@@ -119,9 +123,9 @@ function addNPC(sClass, nodeNPC, sName)
 		for _,v in pairs(nodeAttacks.getChildren()) do
 			v.delete();
 		end
-		
+
 		local nAttacks = 0;
-		
+
 		local sAttack = DB.getValue(nodeNPC, "atk", "");
 		if sAttack ~= "" then
 			local nodeValue = nodeAttacks.createChild();
@@ -130,7 +134,7 @@ function addNPC(sClass, nodeNPC, sName)
 				nAttacks = nAttacks + 1;
 			end
 		end
-		
+
 		local sFullAttack = DB.getValue(nodeNPC, "fullatk", "");
 		if sFullAttack ~= "" then
 			nodeValue = nodeAttacks.createChild();
@@ -139,7 +143,7 @@ function addNPC(sClass, nodeNPC, sName)
 				nAttacks = nAttacks + 1;
 			end
 		end
-		
+
 		if nAttacks == 0 then
 			nodeAttacks.createChild();
 		end
@@ -148,7 +152,7 @@ function addNPC(sClass, nodeNPC, sName)
 	-- Track additional damage types and intrinsic effects
 	local aEffects = {};
 	local aAddDamageTypes = {};
-	
+
 	-- Decode monster type qualities
 	local sType = string.lower(DB.getValue(nodeNPC, "type", ""));
 	local sCreatureType, sSubTypes = string.match(sType, "([^(]+) %(([^)]+)%)");
@@ -173,7 +177,7 @@ function addNPC(sClass, nodeNPC, sName)
 	if StringManager.contains(aSubTypes, "evil") then
 		table.insert(aAddDamageTypes, "evil");
 	end
-	
+
 	local bImmuneNonlethal = false;
 	local bImmuneCritical = false;
 	local bImmunePrecision = false;
@@ -192,7 +196,7 @@ function addNPC(sClass, nodeNPC, sName)
 			table.insert(aEffects, "Undead traits");
 			bImmuneNonlethal = true;
 		end
-		
+
 		if StringManager.contains(aSubTypes, "aeon") then
 			table.insert(aEffects, "Aeon traits");
 			bImmuneCritical = true;
@@ -207,7 +211,7 @@ function addNPC(sClass, nodeNPC, sName)
 			table.insert(aEffects, "Swarm traits");
 			bImmuneCritical = true;
 		end
-		
+
 		if bElemental then
 			table.insert(aEffects, "Elemental traits");
 			bImmuneCritical = true;
@@ -249,7 +253,7 @@ function addNPC(sClass, nodeNPC, sName)
 
 	-- DECODE SPECIAL QUALITIES
 	local sSpecialQualities = string.lower(DB.getValue(nodeNPC, "specialqualities", ""));
-	
+
 	local aSQWords = StringManager.parseWords(sSpecialQualities);
 	local i = 1;
 	while aSQWords[i] do
@@ -268,12 +272,12 @@ function addNPC(sClass, nodeNPC, sName)
 			if aSQWords[i] ~= "dr" then
 				i = i + 1;
 			end
-			
+
 			if StringManager.isNumberString(aSQWords[i+1]) then
 				i = i + 1;
 				local sDRAmount = aSQWords[i];
 				local aDRTypes = {};
-				
+
 				while aSQWords[i+1] do
 					if StringManager.isWord(aSQWords[i+1], { "and", "or" }) then
 						table.insert(aDRTypes, aSQWords[i+1]);
@@ -291,7 +295,7 @@ function addNPC(sClass, nodeNPC, sName)
 
 					i = i + 1;
 				end
-				
+
 				local sDREffect = "DR: " .. sDRAmount;
 				if #aDRTypes > 0 then
 					sDREffect = sDREffect .. " " .. table.concat(aDRTypes, " ");
@@ -304,28 +308,28 @@ function addNPC(sClass, nodeNPC, sName)
 			if aSQWords[i] ~= "sr" then
 				i = i + 1;
 			end
-			
+
 			if StringManager.isNumberString(aSQWords[i+1]) then
 				i = i + 1;
 				DB.setValue(nodeEntry, "sr", "number", tonumber(aSQWords[i]) or 0);
 			end
-		
+
 		-- FAST HEALING
 		elseif StringManager.isWord(aSQWords[i], "fast") and StringManager.isWord(aSQWords[i+1], { "healing", "heal" }) then
 			i = i + 1;
-			
+
 			if StringManager.isNumberString(aSQWords[i+1]) then
 				i = i + 1;
 				table.insert(aEffects, "FHEAL: " .. aSQWords[i]);
 			end
-		
+
 		-- REGENERATION
 		elseif StringManager.isWord(aSQWords[i], "regeneration") then
 			if StringManager.isNumberString(aSQWords[i+1]) then
 				i = i + 1;
 				local sRegenAmount = aSQWords[i];
 				local aRegenTypes = {};
-				
+
 				while aSQWords[i+1] do
 					if StringManager.isWord(aSQWords[i+1], { "and", "or" }) then
 						table.insert(aRegenTypes, aSQWords[i+1]);
@@ -341,7 +345,7 @@ function addNPC(sClass, nodeNPC, sName)
 					i = i + 1;
 				end
 				i = i - 1;
-				
+
 				local sRegenEffect = "REGEN: " .. sRegenAmount;
 				if #aRegenTypes > 0 then
 					sRegenEffect = sRegenEffect .. " " .. table.concat(aRegenTypes, " ");
@@ -350,11 +354,11 @@ function addNPC(sClass, nodeNPC, sName)
 					table.insert(aEffects, sRegenEffect);
 				end
 			end
-			
+
 		-- RESISTANCE
 		elseif StringManager.isWord(aSQWords[i], "resistance") and StringManager.isWord(aSQWords[i+1], "to") then
 			i = i + 1;
-		
+
 			while aSQWords[i+1] do
 				if StringManager.isWord(aSQWords[i+1], "and") then
 					-- SKIP
@@ -376,14 +380,14 @@ function addNPC(sClass, nodeNPC, sName)
 				elseif not StringManager.isWord(aSQWords[i+1], "and") then
 					break;
 				end
-				
+
 				i = i + 1;
 			end
-			
+
 		-- VULNERABILITY
 		elseif StringManager.isWord(aSQWords[i], {"vulnerability", "vulnerable"}) and StringManager.isWord(aSQWords[i+1], "to") then
 			i = i + 1;
-		
+
 			while aSQWords[i+1] do
 				if StringManager.isWord(aSQWords[i+1], "and") then
 					-- SKIP
@@ -395,11 +399,11 @@ function addNPC(sClass, nodeNPC, sName)
 
 				i = i + 1;
 			end
-			
+
 		-- IMMUNITY
 		elseif StringManager.isWord(aSQWords[i], "immunity") and StringManager.isWord(aSQWords[i+1], "to") then
 			i = i + 1;
-		
+
 			while aSQWords[i+1] do
 				if StringManager.isWord(aSQWords[i+1], "and") then
 					-- SKIP
@@ -451,7 +455,7 @@ function addNPC(sClass, nodeNPC, sName)
 
 				i = i + 1;
 			end
-			
+
 		-- SPECIAL DEFENSES
 		elseif StringManager.isWord(aSQWords[i], "uncanny") and StringManager.isWord(aSQWords[i+1], "dodge") then
 			if StringManager.isWord(aSQWords[i-1], "improved") then
@@ -460,14 +464,14 @@ function addNPC(sClass, nodeNPC, sName)
 				table.insert(aEffects, "Uncanny Dodge");
 			end
 			i = i + 1;
-		
+
 		elseif StringManager.isWord(aSQWords[i], "evasion") then
 			if StringManager.isWord(aSQWords[i-1], "improved") then
 				table.insert(aEffects, "Improved Evasion");
 			else
 				table.insert(aEffects, "Evasion");
 			end
-		
+
 		-- TRAITS
 		elseif StringManager.isWord(aSQWords[i], "incorporeal") then
 			table.insert(aEffects, "Incorporeal");
@@ -476,7 +480,7 @@ function addNPC(sClass, nodeNPC, sName)
 		elseif StringManager.isWord(aSQWords[i], "natural") and StringManager.isWord(aSQWords[i+1], "invisibility") then
 			table.insert(aEffects, "Invisible");
 		end
-	
+
 		-- ITERATE SPECIAL QUALITIES DECODE
 		i = i + 1;
 	end
@@ -485,7 +489,7 @@ function addNPC(sClass, nodeNPC, sName)
 	if #aAddDamageTypes > 0 then
 		table.insert(aEffects, "DMGTYPE: " .. table.concat(aAddDamageTypes, ","));
 	end
-	
+
 	-- ADD DECODED EFFECTS
 	if #aEffects > 0 then
 		EffectManager.addEffect("", "", nodeEntry, { sName = table.concat(aEffects, "; "), nDuration = 0, nGMOnly = 1 }, false);
@@ -524,7 +528,7 @@ function clearExpiringEffects(bShort)
 		local sLabel = DB.getValue(nodeEffect, "label", "");
 		local nDuration = DB.getValue(nodeEffect, "duration", 0);
 		local sApply = DB.getValue(nodeEffect, "apply", "");
-		
+
 		if nDuration ~= 0 or sApply ~= "" or sLabel == "" then
 			if bShort then
 				if nDuration > 50 then
@@ -543,7 +547,7 @@ end
 function rest(bShort)
 	CombatManager.resetInit();
 	clearExpiringEffects(bShort);
-	
+
 	if not bShort then
 		for _,v in pairs(CombatManager.getCombatantNodes()) do
 			local sClass, sRecord = DB.getValue(v, "link", "", "");
@@ -558,74 +562,157 @@ function rest(bShort)
 end
 
 function rollEntryInit(nodeEntry)
+	-- Modified for Genesys Initiative
 	if not nodeEntry then
 		return;
 	end
-	
-	-- Start with the base initiative bonus
-	local nInit = DB.getValue(nodeEntry, "init", 0);
-	
-	-- Get any effect modifiers
-	local rActor = ActorManager.getActorFromCT(nodeEntry);
-	local bEffects, aEffectDice, nEffectMod = ActionInit.getEffectAdjustments(rActor);
-	if bEffects then
-		nInit = nInit + StringManager.evalDice(aEffectDice, nEffectMod);
-	end
-
-	-- For PCs, we always roll unique initiative
-	local sClass, sRecord = DB.getValue(vChild, "link", "", "");
-	if sClass == "charsheet" then
-		local nInitResult = math.random(20) + nInit;
-		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
-		return;
-	end
-	
-	-- For NPCs, if NPC init option is not group, then roll unique initiative
-	local sOptINIT = OptionsManager.getOption("INIT");
-	if sOptINIT ~= "group" then
-		local nInitResult = math.random(20) + nInit;
-		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
-		return;
-	end
-
-	-- For NPCs with group option enabled
-	
-	-- Get the entry's database node name and creature name
-	local sStripName = CombatManager.stripCreatureNumber(DB.getValue(nodeEntry, "name", ""));
-	if sStripName == "" then
-		local nInitResult = math.random(20) + nInit;
-		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
-		return;
-	end
-		
-	-- Iterate through list looking for other creature's with same name
-	local nLastInit = nil;
-	local sEntryFaction = DB.getValue(nodeEntry, "friendfoe", "");
-	for _,v in pairs(CombatManager.getCombatantNodes()) do
-		if v.getName() ~= nodeEntry.getName() then
-			if DB.getValue(v, "friendfoe", "") == sEntryFaction then
-				local sTemp = CombatManager.stripCreatureNumber(DB.getValue(v, "name", ""));
-				if sTemp == sStripName then
-					local nChildInit = DB.getValue(v, "initresult", 0);
-					if nChildInit ~= -10000 then
-						nLastInit = nChildInit;
-					end
-				end
-			end
-		end
-	end
-	
-	-- If we found similar creatures, then match the initiative of the last one found
-	if nLastInit then
-		DB.setValue(nodeEntry, "initresult", "number", nLastInit);
-	else
-		local nInitResult = math.random(20) + nInit;
-		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
-	end
+ Debug.chat ("nodeEntry", nodeEntry);
+-- 	-- Start with the base initiative bonus
+-- 	local nInit = DB.getValue(nodeEntry, "init", 0);
+--
+-- 	-- Get any effect modifiers
+-- 	local rActor = ActorManager.getActorFromCT(nodeEntry);
+-- 	local bEffects, aEffectDice, nEffectMod = ActionInit.getEffectAdjustments(rActor);
+-- 	if bEffects then
+-- 		nInit = nInit + StringManager.evalDice(aEffectDice, nEffectMod);
+-- 	end
+--
+-- 	-- For PCs, we always roll unique initiative
+-- 	local sClass, sRecord = DB.getValue(vChild, "link", "", "");
+-- 	if sClass == "charsheet" then
+-- 		local nInitResult = math.random(20) + nInit;
+-- 		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
+-- 		return;
+-- 	end
+--
+-- 	-- For NPCs, if NPC init option is not group, then roll unique initiative
+-- 	local sOptINIT = OptionsManager.getOption("INIT");
+-- 	if sOptINIT ~= "group" then
+-- 		local nInitResult = math.random(20) + nInit;
+-- 		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
+-- 		return;
+-- 	end
+--
+-- 	-- For NPCs with group option enabled
+--
+-- 	-- Get the entry's database node name and creature name
+-- 	local sStripName = CombatManager.stripCreatureNumber(DB.getValue(nodeEntry, "name", ""));
+-- 	if sStripName == "" then
+-- 		local nInitResult = math.random(20) + nInit;
+-- 		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
+-- 		return;
+-- 	end
+--
+-- 	-- Iterate through list looking for other creature's with same name
+-- 	local nLastInit = nil;
+-- 	local sEntryFaction = DB.getValue(nodeEntry, "friendfoe", "");
+-- 	for _,v in pairs(CombatManager.getCombatantNodes()) do
+-- 		if v.getName() ~= nodeEntry.getName() then
+-- 			if DB.getValue(v, "friendfoe", "") == sEntryFaction then
+-- 				local sTemp = CombatManager.stripCreatureNumber(DB.getValue(v, "name", ""));
+-- 				if sTemp == sStripName then
+-- 					local nChildInit = DB.getValue(v, "initresult", 0);
+-- 					if nChildInit ~= -10000 then
+-- 						nLastInit = nChildInit;
+-- 					end
+-- 				end
+-- 			end
+-- 		end
+-- 	end
+--
+-- 	-- If we found similar creatures, then match the initiative of the last one found
+-- 	if nLastInit then
+-- 		DB.setValue(nodeEntry, "initresult", "number", nLastInit);
+-- 	else
+-- 		local nInitResult = math.random(20) + nInit;
+-- 		DB.setValue(nodeEntry, "initresult", "number", nInitResult);
+-- 	end
 end
 
-function rollInit(sType)
-	CombatManager.rollTypeInit(sType, rollEntryInit);
+
+function rollInit(initSkill,sType)
+
+--	Debug.chat("ManagerCombat2->rollInit", sType);
+--	CombatManager.rollTypeInit(sType, rollEntryInit);
+
+
+--	local initSkill = window.init_skill_value.getInitSkill();
+	Debug.console("Rolling NPC Inits.  Skill = " .. initSkill);
+
+	for k,v in pairs(CombatManager.getCombatantNodes()) do
+		local sClass,sNode = DB.getValue(v, "link", "", "");
+		Debug.console("initiativetracker.lua:onMenuSelection - actorlist window class = " .. sClass);
+		--Debug.chat("initiativetracker.lua:onMenuSelection - actorlist window class = " .. sClass);
+--		Debug.chat("v",v);
+--		Debug.chat("snode", sNode);
+		if (sType == "all") or (sClass == sType) then
+			--Debug.console("initiativetracker.lua:rollAllInit - actorlist npcactor node = " .. v..getNodeName());
+	--		Debug.chat("initiativetracker.lua:rollAllInit - actorlist npcactor node = " .. DB.getValue(v, "name", ""));
+	--		Debug.chat("sclass",sClass);
+
+			if sClass == "npc" then
+				skillsnode = v.getChild("skilllist");
+			else
+			 	skillsnode = DB.findNode(sNode).getChild("skilllist");
+			end
+			local actornode = v;
+
+			if not skillsnode then
+				Debug.chat("No skills node available to roll initiative - skipping.  Make sure the skills tab on the NPC sheet has previously been opened for: " .. DB.getValue(v, "name", ""));
+				break;
+			end
+
+			local initskillnode = nil;
+			local initskillname = "";
+			--Debug.console("Skills node = " .. skillsnode.getNodeName());
+			if initSkill == "Cool" then
+				initskillname = "Cool";
+			elseif initSkill == "Vig." then
+				initskillname = "Vigilance";
+			end
+
+			for k,v in pairs(skillsnode.getChildren()) do
+				--Debug.console("Looking at current child: " .. k);
+				if v.getChild("name").getValue() == initskillname then
+					--Debug.console("Have the " .. initskillname .. " db node = " .. v.getNodeName());
+					initskillnode = v;
+					break;
+				end
+			end
+
+			-- Populate the diebox with the dice for this INIT roll.
+			local dice = {};
+			local skilldescription;
+			local msgidentity = DB.getValue(initskillnode, "...name", "");
+			DicePoolManager.addSkillDice(initskillnode, dice);
+			if table.getn(dice) > 0 then
+				if initskillnode.getChild("name") then
+					skilldescription = initskillnode.getChild("name").getValue() .. " [INIT]";
+				end
+
+				DieBoxManager.addSkillDice(skilldescription, dice, initskillnode, msgidentity,actornode);
+			end
+
+			--Roll the dice in the diebox - INIT will be populated to the correct init slot when the dice roll ends.
+			DieBoxManager.rollInitDice();
+
+			--InitiativeManager.updateActorInitiative(v.getDatabaseNode(), initiativecount)
+			--InitiativeManager.removeActor(v.getDatabaseNode());
+		end
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
 
 --
@@ -642,7 +729,7 @@ function parseAttackLine(rActor, sLine)
 	local sOptANPC = OptionsManager.getOption("ANPC");
 
 	-- PARSE 'OR'/'AND' PHRASES
-	sLine = sLine:gsub("–", "-");
+	sLine = sLine:gsub("ï¿½", "-");
 	local aPhrasesOR, aSkipOR = ActionDamage.decodeAndOrClauses(sLine);
 
 	-- PARSE EACH ATTACK
@@ -651,14 +738,14 @@ function parseAttackLine(rActor, sLine)
 	local aCurrentCombo = {};
 	local nStarts, nEnds, sAll, sAttackCount, sAttackLabel, sAttackModifier, sAttackType, nDamageStart, sDamage, nDamageEnd;
 	for kOR, vOR in ipairs(aPhrasesOR) do
-			
+
 		for kAND, sAND in ipairs(vOR) do
 
 			-- Look for the right patterns
-			nStarts, nEnds, sAll, sAttackCount, sAttackLabel, sAttackModifier, sAttackType, nDamageStart, sDamage, nDamageEnd 
+			nStarts, nEnds, sAll, sAttackCount, sAttackLabel, sAttackModifier, sAttackType, nDamageStart, sDamage, nDamageEnd
 					= string.find(sAND, '((%+?%d*) ?([%w%s,%[%]%(%)%+%-]*) ([%+%-%d][%+%-%d/]+)([^%(]*)%(()([^%)]*)()%))');
 			if not nStarts then
-				nStarts, nEnds, sAll, sAttackLabel, nDamageStart, sDamage, nDamageEnd 
+				nStarts, nEnds, sAll, sAttackLabel, nDamageStart, sDamage, nDamageEnd
 						= sAND:find('(([%w%s,%[%]%(%)%+%-]*)%(()([^%)]*)()%))');
 				if nStarts then
 					sAttackCount = "";
@@ -666,17 +753,17 @@ function parseAttackLine(rActor, sLine)
 					sAttackType = "";
 				end
 			end
-			
+
 			-- Make sure we got a match
 			if nStarts then
 				local rAttack = {};
 				rAttack.startpos = nLineIndex + nStarts - 1;
 				rAttack.endpos = nLineIndex + nEnds;
-				
+
 				local rDamage = {};
 				rDamage.startpos = nLineIndex + nDamageStart - 2;
 				rDamage.endpos = nLineIndex + nDamageEnd;
-				
+
 				-- Check for implicit damage types
 				local aImplicitDamageType = {};
 				local aLabelWords = StringManager.parseWords(sAttackLabel:lower());
@@ -718,10 +805,10 @@ function parseAttackLine(rActor, sLine)
 							end
 						end
 					end
-					
+
 					i = i + 1;
 				end
-				
+
 				-- Clean up the attack count field (i.e. magical weapon bonuses up front, no attack count)
 				local bMagicAttack = false;
 				local bEpicAttack = false;
@@ -744,7 +831,7 @@ function parseAttackLine(rActor, sLine)
 
 				-- Capitalize first letter of label
 				sAttackLabel = StringManager.capitalize(sAttackLabel);
-				
+
 				-- If the anonymize option is on, then remove any label text within parentheses or brackets
 				if sOptANPC == "on" then
 					-- Strip out label information enclosed in ()
@@ -757,9 +844,9 @@ function parseAttackLine(rActor, sLine)
 				rAttack.label = sAttackLabel;
 				rAttack.count = nAttackCount;
 				rAttack.modifier = sAttackModifier or 0;
-				
+
 				rDamage.label = sAttackLabel;
-				
+
 				local bRanged = false;
 				local aTypeWords = StringManager.parseWords(string.lower(sAttackType));
 				for kWord, vWord in pairs(aTypeWords) do
@@ -769,7 +856,7 @@ function parseAttackLine(rActor, sLine)
 						rAttack.touch = true;
 					end
 				end
-				
+
 				-- Determine attack type
 				if bRanged then
 					rAttack.range = "R";
@@ -790,7 +877,7 @@ function parseAttackLine(rActor, sLine)
 						rAttack.crit = 20;
 					end
 				end
-				
+
 				-- Determine damage clauses
 				rDamage.clauses = {};
 
@@ -810,7 +897,7 @@ function parseAttackLine(rActor, sLine)
 
 				for kClause, sClause in pairs(aClausesDamage) do
 					local aDamageAttrib = StringManager.split(sClause, "/", true);
-					
+
 					local aWordType = {};
 					local sDamageRoll, sDamageTypes = string.match(aDamageAttrib[1], "^([d%d%+%-%s]+)([%w%s,]*)");
 					if sDamageRoll then
@@ -820,19 +907,19 @@ function parseAttackLine(rActor, sLine)
 							end
 							table.insert(aWordType, sDamageTypes);
 						end
-						
+
 						local sCrit;
 						for nAttrib = 2, #aDamageAttrib do
 							sCrit, sDamageTypes = string.match(aDamageAttrib[nAttrib], "^x(%d)([%w%s,]*)");
 							if not sCrit then
 								sDamageTypes = string.match(aDamageAttrib[nAttrib], "^%d+%-20%s?([%w%s,]*)");
 							end
-							
+
 							if sDamageTypes then
 								table.insert(aWordType, sDamageTypes);
 							end
 						end
-						
+
 						local aWordDice, nWordMod = StringManager.convertStringToDice(sDamageRoll);
 						if #aWordDice > 0 or nWordMod ~= 0 then
 							local rDamageClause = { dice = {} };
@@ -847,7 +934,7 @@ function parseAttackLine(rActor, sLine)
 								rDamageClause.mult = 1;
 							end
 							rDamageClause.mult = tonumber(sCrit) or rDamageClause.mult;
-							
+
 							if not bRanged then
 								rDamageClause.stat = "strength";
 							end
@@ -865,12 +952,12 @@ function parseAttackLine(rActor, sLine)
 								table.insert(aDamageType, "epic");
 							end
 							rDamageClause.dmgtype = table.concat(aDamageType, ",");
-							
+
 							table.insert(rDamage.clauses, rDamageClause);
 						end
 					end
 				end
-				
+
 				if #(rDamage.clauses) > 0 then
 					if bRanged then
 						local nDmgBonus = rDamage.clauses[1].modifier;
@@ -883,7 +970,7 @@ function parseAttackLine(rActor, sLine)
 					else
 						local nDmgBonus = rDamage.clauses[1].modifier;
 						local nStatBonus = ActorManager2.getAbilityBonus(rActor, "strength");
-						
+
 						if (nStatBonus > 0) and (nDmgBonus > 0) then
 							if nDmgBonus >= math.floor(nStatBonus * 1.5) then
 								rDamage.statmult = 1.5;
@@ -917,7 +1004,7 @@ function parseAttackLine(rActor, sLine)
 			aCurrentCombo = {};
 		end
 	end
-	
+
 	return rAttackRolls, rDamageRolls, rAttackCombos;
 end
 
@@ -1085,7 +1172,7 @@ end
 
 function calcBattleXP(nodeBattle)
 	local bPFMode = DataCommon.isPFRPG();
-	
+
 	if bPFMode then
 		local sTargetNPCList = LibraryData.getCustomData("battle", "npclist") or "npclist";
 
@@ -1108,14 +1195,14 @@ function calcBattleXP(nodeBattle)
 				end
 			end
 		end
-		
+
 		DB.setValue(nodeBattle, "exp", "number", nXP);
 	end
 end
-	
+
 function calcBattleCR(nodeBattle)
 	local bPFMode = DataCommon.isPFRPG();
-	
+
 	if bPFMode then
 		calcBattleXP(nodeBattle);
 

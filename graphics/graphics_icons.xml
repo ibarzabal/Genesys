@@ -8,6 +8,10 @@
 <root>
 <!-- 	<icon name="desktopdecal_sw" file="graphics/decals/genesys_logo.png" /> -->
 
+	<!-- Combat Tracker -->
+	<icon name="ct_active" file="graphics/icons/ct_active.png" />
+	<icon name="ct_choose_next" file="graphics/icons/ct_choose_next.png" />
+	
 	<icon name="rulesetlogo_GenesysRPG" file="graphics/icons/rulesetlogo_GenesysRPG.png" />
   <!-- Desktop decals Genesys -->
 	<icon name="desktopdecal_genesys_core" file="graphics/decals/desktopdecal_genesys_core.png" />

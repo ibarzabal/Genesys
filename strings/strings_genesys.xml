@@ -14,6 +14,8 @@
 <string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
 <string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
 
+<!-- Combat Tracker Genesys -->
+<string name="ct_label_init_skill">Init Skill:</string>
 
 	<!-- Common -->
 	<string name="characteristics">Characteristics</string>
