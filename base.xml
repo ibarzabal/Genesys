@@ -34,7 +34,7 @@
 	<includefile source="graphics/graphics_frames.xml" />
 	<includefile source="graphics/graphics_icons.xml" />
 	<includefile source="graphics/graphics_chits.xml" />
-	<includefile source="graphics/fonts/base.xml" />
+	<includefile source="graphics/graphics_fonts.xml" />
 	<includefile source="definitions/dice.xml" />
 
 	<!-- Strings -->
@@ -95,9 +95,9 @@
  		<script name="CharManager" file="campaign/scripts/manager_char_genesys.lua" />
 		<!-- Check Char manager from 3.5, it has a lot of nice stuff  -->
 <!-- 	 -->
-<!-- 		<includefile source="campaign/record_npc.xml" /> -->
+		<includefile source="campaign/record_npc.xml" />
 <!-- 		<includefile source="campaign/record_encounter.xml" /> -->
-<!-- 		<includefile source="campaign/record_item.xml" /> -->
+		<includefile source="campaign/record_item.xml" />
 <!-- 		<includefile source="campaign/record_quest.xml" /> -->
 <!-- 		<includefile source="campaign/record_spell.xml" /> -->
 <!-- 		 -->

@@ -41,7 +41,7 @@ function onDice(rSource, rTarget, rRoll)
   --Debug.chat("onDice: ", rRoll);
   --Debug.chat("rSource: ", rSource);
   --Debug.chat("rTarget: ", rTarget);
-Debug.chat(OptionsManager.getOption("DDCL"));
+-- Debug.chat(OptionsManager.getOption("DDCL"));
   local rNada = processDice(rRoll, rSource, rTarget);
 end
 
@@ -220,12 +220,12 @@ function processDice(rSource, rTarget, rRoll)
 	local resultdice = {};
 	for cnt=1, #rSource.aDice do
     local newDie = {};
-    newDie.type = rSource.aDice[cnt].type .. "." .. rSource.aDice[cnt].result;
+    newDie.type = rSource.aDice[cnt].type .. "x" .. rSource.aDice[cnt].result;
     newDie.result = rSource.aDice[cnt].result;
     -- Debug.chat("newDie",newDie);
     table.insert(resultdice, newDie);
 		--processResultDie(resultdice, die);
-	end
+  end
 
 	-- get the character node
 	local characternode = nil;
@@ -299,7 +299,7 @@ function processDice(rSource, rTarget, rRoll)
 --    Debug.chat("gmonly",gmonly);
 
 
-	resultMsg.font = "chatitalicfont";
+	-- resultMsg.font = "chatitalicfont";
 	resultMsg.dice = resultdice;
 	resultMsg.diemodifier = modifier;
 	resultMsg.dicesecret = gmonly;
@@ -332,9 +332,9 @@ function processDice(rSource, rTarget, rRoll)
 			for n = 1, math.abs(resultSummary.success) do
 				local successDie = {};
 				if resultSummary.success > 0 then
-					successDie.type = "dSummary.7";
+					successDie.type = "dSummaryx7";
 				else
-					successDie.type = "dSummary.2";
+					successDie.type = "dSummaryx2";
 				end
 				successDie.result = 0;
 				table.insert(successDice, successDie);
@@ -351,7 +351,7 @@ function processDice(rSource, rTarget, rRoll)
 		if resultSummary.success ~= 0 then
 			successMsg.dice = successDice;
 		end
-		successMsg.font = "chatitalicfont";
+		-- successMsg.font = "chatitalicfont";
 		successMsg.dicesecret = gmonly;
 		if User.isHost() and (gmonly or not revealalldice) then
 			Comm.addChatMessage(successMsg);
@@ -367,9 +367,9 @@ function processDice(rSource, rTarget, rRoll)
 			for n = 1, math.abs(resultSummary.boon) do
 				local boonDie = {};
 				if resultSummary.boon > 0 then
-					boonDie.type = "dSummary.6";
+					boonDie.type = "dSummaryx6";
 				else
-					boonDie.type = "dSummary.3";
+					boonDie.type = "dSummaryx3";
 				end
 				boonDie.result = 0;
 				table.insert(boonDice, boonDie);
@@ -386,7 +386,7 @@ function processDice(rSource, rTarget, rRoll)
 				-- TODO - Launch threat info/spend window.  How to do this for the PCs when the GM rolls threat for an NPC?
 				Debug.console("TODO - Launch threat info/spend window. Threat = "  .. resultSummary.boon);
 			end
-			boonMsg.font = "chatitalicfont";
+			-- boonMsg.font = "chatitalicfont";
 			boonMsg.dice = boonDice;
 			boonMsg.dicesecret = gmonly;
 			if User.isHost() and (gmonly or not revealalldice) then
@@ -405,7 +405,7 @@ function processDice(rSource, rTarget, rRoll)
 			for n = 1, math.abs(resultSummary.comet) do
 				-- Star Wars Triumph
 				local specialDie = {};
-				specialDie.type = "dSummary.8";
+				specialDie.type = "dSummaryx8";
 				specialDie.result = 0;
 				table.insert(specialDice, specialDie);
 				-- TODO - Launch Triumph info/spend window.
@@ -413,20 +413,20 @@ function processDice(rSource, rTarget, rRoll)
 			end
 			for n = 1, math.abs(resultSummary.exertion) do
 				local specialDie = {};
-				specialDie.type = "dSummary.4";
+				specialDie.type = "dSummaryx4";
 				specialDie.result = 0;
 				table.insert(specialDice, specialDie);
 			end
 			for n = 1, math.abs(resultSummary.delay) do
 				local specialDie = {};
-				specialDie.type = "dSummary.5";
+				specialDie.type = "dSummaryx5";
 				specialDie.result = 0;
 				table.insert(specialDice, specialDie);
 			end
 			for n = 1, math.abs(resultSummary.chaos) do
 				-- Star Wars Despair
 				local specialDie = {};
-				specialDie.type = "dSummary.1";
+				specialDie.type = "dSummaryx1";
 				specialDie.result = 0;
 				table.insert(specialDice, specialDie);
 				-- TODO - Launch Despair info/spend window.  How to do this for the PCs when the GM rolls threat for an NPC?
@@ -436,7 +436,7 @@ function processDice(rSource, rTarget, rRoll)
 			-- build the special message
 			local specialMsg = {};
 			specialMsg.text = "Special:";
-			specialMsg.font = "chatitalicfont";
+--			specialMsg.font = "chatitalicfont";
 			specialMsg.dice = specialDice;
 			specialMsg.dicesecret = gmonly;
 			if User.isHost() and (gmonly or not revealalldice) then
@@ -590,7 +590,7 @@ function processResultDie(dice, die)
 
 	-- add the dice to the result
 	local newDie = {};
-	newDie.type = die.type .. "." .. die.result;
+	newDie.type = die.type .. "x" .. die.result;
 	newDie.result = die.result;
 	Debug.console("die: type = " .. newDie.type .. ", result = " .. newDie.result);
 	table.insert(dice, newDie);
@@ -606,136 +606,136 @@ end
 
 function processSummaryDie(summary, die)
 
-	if die.type == "dChallenge.1" then
+	if die.type == "dChallengex1" then
 
-	elseif die.type == "dChallenge.2" then
+	elseif die.type == "dChallengex2" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dChallenge.3" then
+	elseif die.type == "dChallengex3" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dChallenge.4" then
+	elseif die.type == "dChallengex4" then
 		summary.success = summary.success - 2;
-	elseif die.type == "dChallenge.5" then
+	elseif die.type == "dChallengex5" then
 		summary.success = summary.success - 2;
-	elseif die.type == "dChallenge.6" then
+	elseif die.type == "dChallengex6" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dChallenge.7" then
+	elseif die.type == "dChallengex7" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dChallenge.8" then
-		summary.boon = summary.boon - 1;
-		summary.success = summary.success - 1;
-	elseif die.type == "dChallenge.9" then
+	elseif die.type == "dChallengex8" then
 		summary.boon = summary.boon - 1;
 		summary.success = summary.success - 1;
-	elseif die.type == "dChallenge.10" then
+	elseif die.type == "dChallengex9" then
+		summary.boon = summary.boon - 1;
+		summary.success = summary.success - 1;
+	elseif die.type == "dChallengex10" then
 		summary.boon = summary.boon - 2;
-	elseif die.type == "dChallenge.11" then
+	elseif die.type == "dChallengex11" then
 		summary.boon = summary.boon - 2;
-	elseif die.type == "dChallenge.12" then
+	elseif die.type == "dChallengex12" then
 		summary.success = summary.success - 1;
 		summary.chaos = summary.chaos + 1;
 
-	elseif die.type == "dBoost.3" then
+	elseif die.type == "dBoostx3" then
 		summary.boon = summary.boon + 2;
-	elseif die.type == "dBoost.4" then
+	elseif die.type == "dBoostx4" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dBoost.5" then
+	elseif die.type == "dBoostx5" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dBoost.6" then
+	elseif die.type == "dBoostx6" then
 		summary.success = summary.success + 1;
 
-	elseif die.type == "dSetback.3" then
+	elseif die.type == "dSetbackx3" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dSetback.4" then
+	elseif die.type == "dSetbackx4" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dSetback.5" then
+	elseif die.type == "dSetbackx5" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dSetback.6" then
+	elseif die.type == "dSetbackx6" then
 		summary.boon = summary.boon - 1;
 
 
-	elseif die.type == "dAbility.2" then
+	elseif die.type == "dAbilityx2" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dAbility.3" then
+	elseif die.type == "dAbilityx3" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dAbility.4" then
+	elseif die.type == "dAbilityx4" then
 		summary.success = summary.success + 2;
-	elseif die.type == "dAbility.5" then
+	elseif die.type == "dAbilityx5" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dAbility.6" then
+	elseif die.type == "dAbilityx6" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dAbility.7" then
+	elseif die.type == "dAbilityx7" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dAbility.8" then
+	elseif die.type == "dAbilityx8" then
 		summary.boon = summary.boon + 2;
 
-	elseif die.type == "dDifficulty.2" then
+	elseif die.type == "dDifficultyx2" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dDifficulty.3" then
+	elseif die.type == "dDifficultyx3" then
 		summary.success = summary.success - 2;
-	elseif die.type == "dDifficulty.4" then
+	elseif die.type == "dDifficultyx4" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dDifficulty.5" then
+	elseif die.type == "dDifficultyx5" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dDifficulty.6" then
+	elseif die.type == "dDifficultyx6" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dDifficulty.7" then
+	elseif die.type == "dDifficultyx7" then
 		summary.boon = summary.boon - 2;
-	elseif die.type == "dDifficulty.8" then
+	elseif die.type == "dDifficultyx8" then
 		summary.success = summary.success - 1;
 		summary.boon = summary.boon -1;
 
-	elseif die.type == "dProficiency.2" then
+	elseif die.type == "dProficiencyx2" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dProficiency.3" then
+	elseif die.type == "dProficiencyx3" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dProficiency.4" then
+	elseif die.type == "dProficiencyx4" then
 		summary.success = summary.success + 2;
-	elseif die.type == "dProficiency.5" then
+	elseif die.type == "dProficiencyx5" then
 		summary.success = summary.success + 2;
-	elseif die.type == "dProficiency.6" then
+	elseif die.type == "dProficiencyx6" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dProficiency.7" then
+	elseif die.type == "dProficiencyx7" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dProficiency.8" then
+	elseif die.type == "dProficiencyx8" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dProficiency.9" then
+	elseif die.type == "dProficiencyx9" then
 		summary.success = summary.success + 1;
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dProficiency.10" then
+	elseif die.type == "dProficiencyx10" then
 		summary.boon = summary.boon + 2;
-	elseif die.type == "dProficiency.11" then
+	elseif die.type == "dProficiencyx11" then
 		summary.boon = summary.boon + 2;
-	elseif die.type == "dProficiency.12" then
+	elseif die.type == "dProficiencyx12" then
 		summary.success = summary.success + 1;
 		summary.comet = summary.comet + 1;
 
-	elseif die.type == "dForce.1" then
+	elseif die.type == "dForcex1" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dForce.2" then
+	elseif die.type == "dForcex2" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dForce.3" then
+	elseif die.type == "dForcex3" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dForce.4" then
+	elseif die.type == "dForcex4" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dForce.5" then
+	elseif die.type == "dForcex5" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dForce.6" then
+	elseif die.type == "dForcex6" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dForce.7" then
+	elseif die.type == "dForcex7" then
 		summary.exertion = summary.exertion + 2;
-	elseif die.type == "dForce.8" then
+	elseif die.type == "dForcex8" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "dForce.9" then
+	elseif die.type == "dForcex9" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "dForce.10" then
+	elseif die.type == "dForcex10" then
 		summary.delay = summary.delay + 2;
-	elseif die.type == "dForce.11" then
+	elseif die.type == "dForcex11" then
 		summary.delay = summary.delay + 2;
-	elseif die.type == "dForce.12" then
+	elseif die.type == "dForcex12" then
 		summary.delay = summary.delay + 2;
 
 
@@ -806,21 +806,21 @@ function processSummaryDie(summary, die)
 	elseif die.type == "dReckless.10" then
 		summary.success = summary.success + 2;
 
-	elseif die.type == "dSummary.1" then
+	elseif die.type == "dSummaryx1" then
 		summary.chaos = summary.chaos + 1;
-	elseif die.type == "dSummary.2" then
+	elseif die.type == "dSummaryx2" then
 		summary.success = summary.success - 1;
-	elseif die.type == "dSummary.3" then
+	elseif die.type == "dSummaryx3" then
 		summary.boon = summary.boon - 1;
-	elseif die.type == "dSummary.4" then
+	elseif die.type == "dSummaryx4" then
 		summary.exertion = summary.exertion + 1;
-	elseif die.type == "dSummary.5" then
+	elseif die.type == "dSummaryx5" then
 		summary.delay = summary.delay + 1;
-	elseif die.type == "dSummary.6" then
+	elseif die.type == "dSummaryx6" then
 		summary.boon = summary.boon + 1;
-	elseif die.type == "dSummary.7" then
+	elseif die.type == "dSummaryx7" then
 		summary.success = summary.success + 1;
-	elseif die.type == "dSummary.8" then
+	elseif die.type == "dSummaryx8" then
 		summary.comet = summary.comet + 1;
 
 	elseif die.type == "mBane.1" then

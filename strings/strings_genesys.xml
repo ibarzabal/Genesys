@@ -12,6 +12,8 @@
 
 <!-- Character Main -->
 <string name="char_message_species_archetypeadd">Species/Archetype '%s' added to '%s'.</string>
+<string name="char_label_motivations">Motivations (Strength, Flaw, Desire, Fear)</string>
+
 
 	<!-- Common -->
 	<string name="characteristics">Characteristics</string>
@@ -67,11 +69,29 @@
 	<string name="option_val_DDCL_genesys_android">Genesys Android</string>
 	<string name="option_val_DDCL_genesys_terrinoth">Genesys Terrinoth</string>
 
+	<!-- Talents -->
+	<string name="talent_grouped_title_byname">Talents By Name</string>
 
-
+	<string name="talent_grouped_label_name">Name</string>
+	<string name="talent_grouped_label_prereq">Prerequisites</string>
+	<string name="talent_grouped_label_tier">Tiers</string>
+	<string name="talent_label_name">Name</string>
+	<string name="talent_label_tier">Tier</string>
+	<string name="talent_label_summary">Summary</string>
+	<string name="talent_label_description">Description</string>
+	<string name="talent_label_ranked">Ranked</string>
+	<string name="talent_label_activation">Activation</string>
+	<string name="talent_label_setting">Setting</string>
 
 	<!-- Abilities (IE: talents) -->
 	<string name="char_label_abilities">Talents</string>
+
+
+
+
+
+
+
 	<!-- Races -->
 	<string name="race_header_traits">TRAITS</string>
 

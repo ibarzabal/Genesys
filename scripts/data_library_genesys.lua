@@ -1,3 +1,117 @@
+function getItemIsIdentified(vRecord, vDefault)
+	return LibraryData.getIDState("item", vRecord, true);
+end
+
+function getCRGroupedList(v)
+	local nOutput = v or 0;
+	if nOutput > 0 then
+		if nOutput < 0.14 then
+			nOutput = "1/8";
+		elseif nOutput < 0.2 then
+			nOutput = "1/6";
+		elseif nOutput < 0.3 then
+			nOutput = "1/4";
+		elseif nOutput < 0.4 then
+			nOutput = "1/3";
+		elseif nOutput < 1 then
+			nOutput = "1/2";
+		end
+	end
+	return tostring(nOutput);
+end
+
+function getCRGroup(v)
+	local nOutput = v or 0;
+	if nOutput > 0 then
+		if nOutput < 0.14 then
+			nOutput = 0.125;
+		elseif nOutput < 0.2 then
+			nOutput = 0.166;
+		elseif nOutput < 0.3 then
+			nOutput = 0.25;
+		elseif nOutput < 0.4 then
+			nOutput = 0.33;
+		elseif nOutput < 1 then
+			nOutput = 0.5;
+		end
+	end
+	return tostring(nOutput);
+end
+
+function getNPCCRValue(vNode)
+	return getCRGroup(DB.getValue(vNode, "cr", 0));
+end
+
+function getTypeGroup(v)
+	local sOutput = "";
+	if v then
+		local sCreatureType = StringManager.trim(v):lower();
+		for _,sListCreatureType in ipairs(DataCommon.creaturetype) do
+			if sCreatureType:match(sListCreatureType) then
+				sOutput = StringManager.capitalize(sListCreatureType);
+				break;
+			end
+		end
+	end
+	return sOutput;
+end
+
+function getNPCTypeValue(vNode)
+	return getTypeGroup(DB.getValue(vNode, "type", ""));
+end
+
+function getItemRecordDisplayClass(vNode)
+	local sRecordDisplayClass = "item";
+	if vNode then
+		local sBasePath, sSecondPath = UtilityManager.getDataBaseNodePathSplit(vNode);
+		if sBasePath == "reference" then
+			if sSecondPath == "weapon" then
+				sRecordDisplayClass = "referenceweapon";
+			elseif sSecondPath == "armor" then
+				sRecordDisplayClass = "referencearmor";
+			elseif sSecondPath == "equipment" then
+				sRecordDisplayClass = "referenceequipment";
+			else
+				sRecordDisplayClass = "item";
+			end
+		end
+	end
+	return sRecordDisplayClass;
+end
+
+function isItemIdentifiable(vNode)
+	return (getItemRecordDisplayClass(vNode) == "item");
+end
+
+function getSpellSchoolValue(vNode)
+	local v = StringManager.trim(DB.getValue(vNode, "school", ""));
+	local sType = v:match("^%w+");
+	if sType then
+		v = StringManager.trim(sType);
+	end
+	v = StringManager.capitalize(v);
+	return v;
+end
+
+function getSpellSourceValue(vNode)
+	return StringManager.split(DB.getValue(vNode, "level", ""), ",", true);
+end
+
+function getClassTypeValue(vNode)
+	local sClassType = DB.getValue(vNode, "classtype", "");
+	if sClassType == "prestige" then
+		return Interface.getString("class_label_classtype_prestige");
+	elseif sClassType == "npc" then
+		return Interface.getString("class_label_classtype_npc");
+	end
+	return Interface.getString("class_label_classtype_base");
+end
+
+
+
+
+
+
 --
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
@@ -60,10 +174,10 @@ aRecordOverrides = {
 		},
 	},
 };
--- aDefaultSidebarState = {
--- 	["create"] = "charsheet,class,feat,item,species_archetype,skill,specialability,spell",
--- };
 
+aDefaultSidebarState = {
+		["create"] = "charsheet,career,talent,item,species_archetype,skill" --,specialability,spell",
+};
 
 
 aListViews = {
@@ -132,25 +246,22 @@ aListViews = {
 			aGroupValueOrder = { },
 		},
 	},
-	["feat"] = {
-		["bytype"] = {
-			sTitleRes = "feat_grouped_title_bytype",
+
+
+	["talent"] = {
+		["byname"] = {
+			sTitleRes = "talent_grouped_title_byname",
 			aColumns = {
-				{ sName = "name", sType = "string", sHeadingRes = "feat_grouped_label_name", nWidth=170 },
-				{ sName = "prerequisites", sType = "string", sHeadingRes = "feat_grouped_label_prereq", nWidth=240, bWrapped = true },
-				{ sName = "summary", sType = "string", sHeadingRes = "feat_grouped_label_benefit", nWidth=280, bWrapped = true },
+				{ sName = "name", sName = "string", sHeadingRes = "talent_grouped_label_name", nWidth=170 },
+				{ sName = "tier", sTier = "string", sHeadingRes = "talent_grouped_label_tier", nWidth=280, bWrapped = true },
 			},
 			aFilters = { },
-			aGroups = { { sDBField = "type" } },
+			aGroups = { { sDBField = "name" } },
 			aGroupValueOrder = { },
 		},
 	},
 };
 
-
-aDefaultSidebarState = {
-	["create"] = "species_archetype,skill,career",
-};
 
 
 function onInit()

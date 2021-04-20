@@ -46,10 +46,10 @@
 	<includefile source="classes/desktop/storypointgmchit.xml" />
 <!--	<includefile source="classes/desktop/criticalchit.xml" /> -->
 <!--	<includefile source="classes/desktop/criticalvehiclechit.xml" /> -->
-	<includefile source="classes/desktop/dieboxremote.xml" />
-	<includefile source="classes/desktop/dieboxviewslot.xml" />
-	<includefile source="classes/desktop/dieboxviewlist.xml" />
-	<includefile source="classes/desktop/dieboxview.xml" />
+<!--	<includefile source="classes/desktop/dieboxremote.xml" /> -->
+<!--	<includefile source="classes/desktop/dieboxviewslot.xml" /> -->
+<!--	<includefile source="classes/desktop/dieboxviewlist.xml" /> -->
+<!--	<includefile source="classes/desktop/dieboxview.xml" /> -->
 
 
 </root>

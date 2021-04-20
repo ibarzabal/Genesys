@@ -652,7 +652,7 @@ function createActionMessage(rSource, rRoll)
 	local resultdice = {};
 	for cnt=1, #rRoll.aDice do
 		local newDie = {};
-		newDie.type = rRoll.aDice[cnt].type .. "." .. rRoll.aDice[cnt].result;
+		newDie.type = rRoll.aDice[cnt].type .. "x" .. rRoll.aDice[cnt].result;
 		newDie.result = rRoll.aDice[cnt].result;
 		table.insert(resultdice, newDie);
 	end

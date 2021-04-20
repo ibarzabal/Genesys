@@ -79,72 +79,71 @@
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
 				if bReadOnly then
-					type_biglabel.setValue("[" .. type.getValue() .. "]");
-					type_biglabel.setVisible(true);
+					name_biglabel.setValue("[" .. name.getValue() .. "]");
+					name_biglabel.setVisible(true);
 
-					type.update(bReadOnly, true);
+					name.update(bReadOnly, true);
 				else
-					type_biglabel.setVisible(false);
-					type.update(bReadOnly);
+					name_biglabel.setVisible(false);
+					name.update(bReadOnly);
 				end
-				prerequisites.update(bReadOnly);
-				flavor.update(bReadOnly);
+				tier.update(bReadOnly);
 				summary.update(bReadOnly);
-				benefit.update(bReadOnly);
-				normal.update(bReadOnly);
-				special.update(bReadOnly);
+				description.update(bReadOnly);
+				ranked.update(bReadOnly);
+				activation.update(bReadOnly);
+				setting.update(bReadOnly);
 			end
 		</script>
 		<sheetdata>
 			<anchor_column name="columnanchor" />
 
-			<hs name="type" />
+			<hs name="name" />
 
-			<label_column name="type_biglabel">
+			<label_column name="name_biglabel">
 				<anchored>
 					<top relation="relative" offset="7" />
 				</anchored>
 				<font>reference-b-large</font>
 			</label_column>
 
-			<label_column name="type_label">
-				<static textres="talent_label_type" />
+			<label_column name="namelabel">
+				<static textres="talent_label_name" />
 			</label_column>
-			<string_columnh name="type" />
+			<string_columnh name="name" />
 
-			<string_columnh_full name="flavor">
+			<string_columnh_full name="description">
 				<font>reference-i</font>
 				<empty textres="empty_flavor" />
 			</string_columnh_full>
 
-			<label_column name="prerequisites_label">
-				<static textres="talent_label_prereq" />
+
+			<label_column name="tier_label">
+				<static textres="talent_label_tier" />
 			</label_column>
-			<string_columnh name="prerequisites" />
+			<string_columnh name="tier" />
 
-			<header_column name="summary_label">
-				<static textres="talent_label_summary"/>
-				<center />
-			</header_column>
-			<string_columnh_full name="summary" />
+			<label_column name="summary_label">
+				<static textres="talent_label_summary" />
+			</label_column>
+			<string_columnh name="summary" />
 
-			<header_column name="benefit_label">
-				<static textres="talent_label_benefit"/>
-				<center />
-			</header_column>
-			<ft_columnh name="benefit" />
 
-			<header_column name="normal_label">
-				<static textres="talent_label_normal"/>
-				<center />
-			</header_column>
-			<ft_columnh name="normal" />
+			<label_column name="ranked_label">
+				<static textres="talent_label_ranked" />
+			</label_column>
+			<string_columnh name="ranked" />
 
-			<header_column name="special_label">
-				<static textres="talent_label_special"/>
-				<center />
-			</header_column>
-			<ft_columnh name="special" />
+			<label_column name="activation_label">
+				<static textres="talent_label_activation" />
+			</label_column>
+			<string_columnh name="activation" />
+
+			<label_column name="setting_label">
+				<static textres="talent_label_setting" />
+			</label_column>
+			<string_columnh name="setting" />
+
 		</sheetdata>
 	</windowclass>
 </root>

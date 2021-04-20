@@ -8,15 +8,15 @@
 <root>
 	<windowclass name="charsheet_notes">
 		<sheetdata>
-			<frame_char name="appearanceframe">
-				<bounds>15,45,320,190</bounds>
+			<frame_char name="motivationsframe">
+				<bounds>15,45,-29,190</bounds>
 			</frame_char>
 			<label_frametop>
-				<anchored to="appearanceframe" />
-				<static textres="char_label_appearance" />
+				<anchored to="motivationsframe" />
+				<static textres="char_label_motivations" />
 			</label_frametop>
-			<stringu name="appearance">
-				<anchored to="appearanceframe">
+			<stringu name="motivations">
+				<anchored to="motivationsframe">
 					<top offset="30" />
 					<left offset="15" />
 					<right offset="-20" />
@@ -26,37 +26,10 @@
 				<nodrag />
 			</stringu>
 			<scrollbar_list>
-				<anchored to="appearance" />
-				<target>appearance</target>
+				<anchored to="motivations" />
+				<target>motivations</target>
 			</scrollbar_list>
 
-			<frame_char name="languageframe">
-				<bounds>335,45,-29,190</bounds>
-			</frame_char>
-			<label_frametop>
-				<anchored to="languageframe" />
-				<static textres="char_label_languages" />
-			</label_frametop>
-			<list_language name="languages">
-				<anchored to="languageframe">
-					<top offset="35" />
-					<left offset="15" />
-					<right offset="-20" />
-					<bottom offset="-15" />
-				</anchored>
-			</list_language>
-			<scrollbar_list>
-				<anchored to="languages" />
-				<target>languages</target>
-			</scrollbar_list>
-			<button_iedit name="languages_iedit">
-				<anchored to="languages" position="aboveright" offset="5,5" />
-				<target>languages</target>
-			</button_iedit>
-			<button_iadd name="languages_iadd">
-				<anchored to="languages" position="aboveleft" offset="10,5" />
-				<target>languages</target>
-			</button_iadd>
 
 			<frame_char name="notesframe">
 				<bounds>15,235,-29,-5</bounds>

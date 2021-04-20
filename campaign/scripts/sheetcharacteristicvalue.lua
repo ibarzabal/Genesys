@@ -49,7 +49,6 @@ function onDrag(button, x, y, draginfo)
 			-- build the dice pool
 			local dice = {};
 			DicePoolManager.addCharacteristicDice(sourcenode, dice);
-			Debug.chat(dice);
 			-- complete the drag information
 			if table.getn(dice) > 0 then
 				draginfo.setType("characteristic");

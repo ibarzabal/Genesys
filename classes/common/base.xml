@@ -36,21 +36,21 @@
 	<includefile source="classes/common/scrollbar.xml" />
 	<includefile source="classes/common/sheetcharacteristicbonusvalue.xml" />
 -->
-<!	<includefile source="classes/common/sheetcharacteristicvalue.xml" />
-<!	<includefile source="classes/common/sheetformattedtextfield.xml" />
-<!	<includefile source="classes/common/sheetframe.xml" />
-<!	<includefile source="classes/common/sheetframelabel.xml" />
-<!	<includefile source="classes/common/sheetframetitle.xml" />
-<!	<includefile source="classes/common/sheetlabel.xml" />
-<!	<includefile source="classes/common/sheetlist.xml" />
-<!	<includefile source="classes/common/sheetnumbercontrol.xml" />
-<!	<includefile source="classes/common/sheetnumberfield.xml" />
-<!	<includefile source="classes/common/sheetstringfield.xml" />
-<!	<includefile source="classes/common/sheettextfield.xml" />
-<!	<includefile source="classes/common/sheettitle.xml" />
-<!	<includefile source="classes/common/skilldicepool.xml" />
-<!	<includefile source="classes/common/skillnumberfield.xml" />
-<!--
+<!--	<includefile source="classes/common/sheetcharacteristicvalue.xml" /> -->
+<!--	<includefile source="classes/common/sheetformattedtextfield.xml" /> -->
+<!--	<includefile source="classes/common/sheetframe.xml" /> -->
+<!--	<includefile source="classes/common/sheetframelabel.xml" /> -->
+<!--	<includefile source="classes/common/sheetframetitle.xml" /> -->
+<!--	<includefile source="classes/common/sheetlabel.xml" /> -->
+<!--	<includefile source="classes/common/sheetlist.xml" /> -->
+<!--	<includefile source="classes/common/sheetnumbercontrol.xml" /> -->
+<!--	<includefile source="classes/common/sheetnumberfield.xml" /> -->
+<!--	<includefile source="classes/common/sheetstringfield.xml" /> -->
+<!--	<includefile source="classes/common/sheettextfield.xml" /> -->
+<!--	<includefile source="classes/common/sheettitle.xml" /> -->
+<!--	<includefile source="classes/common/skilldicepool.xml" /> -->
+<!--	<includefile source="classes/common/skillnumberfield.xml" /> -->
+
 	<includefile source="classes/common/socketedlist.xml" />
 	<includefile source="classes/common/specialisationdicepool.xml" />
 	<includefile source="classes/common/specialisationlist.xml" />

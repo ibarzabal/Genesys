@@ -7,6 +7,75 @@
 
 <root>
 
+	<template name="subwindow_charcontents">
+		<subwindow name="contents">
+			<anchored>
+				<top offset="45" />
+				<bottom offset="-25" />
+				<left offset="15" />
+				<right offset="-30" />
+			</anchored>
+			<activate />
+			<fastinit />
+		</subwindow>
+	</template>
+	<template name="scrollbar_charcontents">
+		<scrollbar>
+			<anchored to="contents" offset="-5,-10"/>
+			<target>contents</target>
+		</scrollbar>
+	</template>
+
+	<template name="label_charframetop">
+		<metalplate>
+			<frame name="metalplate" offset="10,2,10,2"/>
+			<font>subwindowsmalltitle</font>
+			<center />
+			<nodrag />
+			<readonly />
+			<script file="campaign/scripts/char_labelframetop.lua" />
+		</metalplate>
+	</template>
+	<template name="string_charframetop">
+		<stringfield>
+			<anchored position="insidetop" />
+			<font>subwindowsmalltitle</font>
+			<center />
+			<nodrag/>
+			<readonly />
+		</stringfield>
+	</template>
+
+	<template name="label_charfieldtop">
+		<label>
+			<anchored position="above" offset="0,3" />
+			<font>subwindowsmalltitle</font>
+			<center />
+		</label>
+	</template>
+	<template name="number_chartotal">
+		<number_modifier>
+			<frame name="fieldlight" offset="7,5,7,5" />
+			<showemptywidget />
+		</number_modifier>
+	</template>
+
+
+
+
+	<template name="number_chartotal">
+		<number_modifier>
+			<frame name="fieldlight" offset="7,5,7,5" />
+			<showemptywidget />
+		</number_modifier>
+	</template>
+
+
+
+
+
+
+
 	<template name="derived_attribute">
 		<number_dropadd>
 			<hideonvalue value="0" />
