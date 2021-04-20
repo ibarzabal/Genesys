@@ -63,7 +63,7 @@
 
 
 			<!-- Silhouette -->
-			<vehicle_stat_linked name="main_statblock1_silhouette" source="silhouette">
+			<vehicle_stat_linked name="main_statblock1_silhouette" source=".temp_vehicle.silhouette">
 				<anchored to="main_statblock1" offset="26,7"/>
 				<nolinkwidget />
 				<readonly />

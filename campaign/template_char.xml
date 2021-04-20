@@ -913,6 +913,7 @@
 		</buttonfield>
 	</template>
 
+
 	<template name="buttongroup_skill_counter">
 		<genericcontrol>
 			<stateicons>

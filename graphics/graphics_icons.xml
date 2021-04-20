@@ -8,6 +8,11 @@
 <root>
 <!-- 	<icon name="desktopdecal_sw" file="graphics/decals/genesys_logo.png" /> -->
 
+
+<!-- Minimized -->
+<icon name="minimized_npc" file="graphics/icons/minimized_npc.png" />
+<icon name="minimized_vehicle" file="graphics/icons/minimized_npc.png" />
+
 	<!-- Combat Tracker -->
 	<icon name="ct_active" file="graphics/icons/ct_active.png" />
 	<icon name="ct_choose_next" file="graphics/icons/ct_choose_next.png" />
@@ -38,7 +43,7 @@
 	<icon name="button_skill_off_inv" file="graphics/buttons/skill_off_inv.png" />
 
 	<icon name="button_vehicle_enter" file="graphics/buttons/button_vehicle_enter.png" />
-	<icon name="button_vehicle_enter_down" file="graphics/buttons/button_vehicle_enter_down.png" />	
+	<icon name="button_vehicle_enter_down" file="graphics/buttons/button_vehicle_enter_down.png" />
 	<!--
 	<icon name="button_vehicle_enter" file="graphics/buttons/button_vehicle_enter1.png" />
 
