@@ -47,6 +47,7 @@ function updateEncumbrance(nodeChar)
 end
 
 function onCharItemAdd(nodeItem)
+	DB.setValue(nodeItem, "carried", "number", 0);
 	DB.setValue(nodeItem, "carried", "number", 1);
 end
 

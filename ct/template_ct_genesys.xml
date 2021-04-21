@@ -248,7 +248,7 @@
 		<anchored to="headeranchor" height="26">
 			<top />
 			<left offset="40" />
-			<right offset="-205" />
+			<right offset="-225" />
 		</anchored>
 	</metalplate>
 </template>
@@ -256,7 +256,7 @@
 	<metalplate name="header_toggles">
 		<anchored to="headeranchor" height="26">
 			<top />
-			<left anchor="right" offset="-185" />
+			<left anchor="right" offset="-205" />
 			<right />
 		</anchored>
 	</metalplate>

@@ -172,7 +172,8 @@ end
 function linkPCFields()
 	local nodeChar = link.getTargetDatabaseNode();
 	if nodeChar then
-		--name.setLink(nodeChar.createChild("name", "string"), true);
+		--local bNPC = (sClass ~= "charsheet");
+		name.setLink(nodeChar.createChild("name", "string"), true);
 		name.setReadOnly(true);
 		wounds_threshold.setLink(nodeChar.createChild("wounds.threshold", "number"), true);
 		wounds_current.setLink(nodeChar.createChild("wounds.current", "number"));
@@ -321,24 +322,14 @@ function setVehicleVisible()
 	else
 		v_defense.setVisible(v and not isSW);
 	end
-
-
-
-
 	vehicle_owner.setVisible(v and not bNPC);
 	vehicle_owner_label.setVisible(v and not bNPC);
-
 	control_skill_label.setVisible(v and bNPC);
 	control_skill.setVisible(v and bNPC);
 	vehicle_weapons_header.setVisible(v and bNPC);
 	vehicle_weapons.setVisible(v and bNPC);
-
-
-
 	spacer_vehicle.setVisible(v);
 	frame_vehicle.setVisible(v);
-
-
 end
 
 
@@ -351,85 +342,69 @@ function setActiveVisible()
 	local sClass, sRecord = link.getValue();
 	local bNPC = (sClass ~= "charsheet");
 	if bNPC and active.getValue() == 1 then
-		v = false;  -- Genesys: edit this later to create a list of combat actions for npcs
-	end
-	activeicon.setVisible(v);
-
-	reaction.setVisible(v);
-	reaction_label.setVisible(v);
-	init.setVisible(v);
-	initlabel.setVisible(v);
-	ac.setVisible(v);
-	aclabel.setVisible(v);
-	speed.setVisible(v);
-	speedlabel.setVisible(v);
-
-	spacer_action.setVisible(v);
-
-	if bNPC and traits.getWindowCount() > 0 then
-		traits.setVisible(v);
-		traits_label.setVisible(v);
-	else
-		traits.setVisible(false);
-		traits_label.setVisible(false);
+		v = true;
 	end
 
 	if bNPC then
-		actions.setVisible(v);
-		actions_label.setVisible(v);
---		actions_emptyadd.update();
-		actions_emptyadd.setVisible(false);
+		activeicon.setVisible(v);
+		combat_weapons_weapon.setVisible(v);
+		combat_weapons_whatskill.setVisible(v);
+		combat_weapons_damage.setVisible(v);
+		combat_weapons_critical.setVisible(v);
+		combat_weapons_range.setVisible(v);
+		weapons.setVisible(v);
+		spacer_action.setVisible(v);
+		frame_active.setVisible(v);
+		if active.getValue() == 1 and vehicle_current_node.getValue() ~= "" then
+			vehicle_icon.setVisible(v);
+			vehicle_name.setVisible(v);
+			vehicle_name_label.setVisible(v);
+
+			v_hull_trauma_label.setVisible(v);
+			v_hull_trauma_threshold.setVisible(v);
+			v_hull_trauma_current.setVisible(v);
+
+			v_system_strain_label.setVisible(v);
+			v_system_strain_threshold.setVisible(v);
+			v_system_strain_current.setVisible(v);
+
+			v_armor_label.setVisible(v);
+			v_armor.setVisible(v);
+
+			local isSW = (User.getRulesetName() == "StarWarsFFG");
+			v_defense_label.setVisible(v);
+
+			if isSW then
+				v_defense_fore.setVisible(v and isSW);
+				v_defense_port.setVisible(v and isSW);
+				v_defense_starboard.setVisible(v and isSW);
+				v_defense_aft.setVisible(v and isSW);
+			else
+				v_defense.setVisible(v and not isSW);
+			end
+			vehicle_owner.setVisible(v and not bNPC);
+			vehicle_owner_label.setVisible(v and not bNPC);
+			control_skill_label.setVisible(v and bNPC);
+			control_skill.setVisible(v and bNPC);
+			vehicle_weapons_header.setVisible(v and bNPC);
+			vehicle_weapons.setVisible(v and bNPC);
+			spacer_vehicle.setVisible(v);
+			frame_vehicle.setVisible(v);
+		else
+			setVehicleVisible();
+		end
 	else
-		actions.setVisible(false);
-		actions_label.setVisible(false);
-		actions_emptyadd.setVisible(false);
+		activeicon.setVisible(false);
+		combat_weapons_weapon.setVisible(false);
+		combat_weapons_whatskill.setVisible(false);
+		combat_weapons_damage.setVisible(false);
+		combat_weapons_critical.setVisible(false);
+		combat_weapons_range.setVisible(false);
+		weapons.setVisible(false);
+		spacer_action.setVisible(false);
+		frame_active.setVisible(false);
+		setVehicleVisible();
 	end
-
-	if bNPC and reactions.getWindowCount() > 0 then
-		reactions.setVisible(v);
-		reactions_label.setVisible(v);
-	else
-		reactions.setVisible(false);
-		reactions_label.setVisible(false);
-	end
-
-	if bNPC and legendaryactions.getWindowCount() > 0 then
-		legendaryactions.setVisible(v);
-		legendaryactions_label.setVisible(v);
-	else
-		legendaryactions.setVisible(false);
-		legendaryactions_label.setVisible(false);
-	end
-
-	if bNPC and lairactions.getWindowCount() > 0 then
-		lairactions.setVisible(v);
-		lairactions_label.setVisible(v);
-	else
-		lairactions.setVisible(false);
-		lairactions_label.setVisible(false);
-	end
-
-	if bNPC and innatespells.getWindowCount() > 0 then
-		innatespells.setVisible(v);
-		innatespells_label.setVisible(v);
-	else
-		innatespells.setVisible(false);
-		innatespells_label.setVisible(false);
-	end
-
---[[	if bNPC and spells.getWindowCount() > 0 then
-		spellslots.setVisible(v);
-		spells.setVisible(v);
-		spells_label.setVisible(v);
-	else
-		spells.setVisible(false);
-		spells_label.setVisible(false);
-	end
-]]
-
-	spacer_action2.setVisible(v);
-
-	frame_active.setVisible(v);
 end
 
 function setSpacingVisible()

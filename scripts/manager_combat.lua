@@ -18,6 +18,8 @@ function onInit()
 	Interface.onDesktopInit = onDesktopInit;
 
 	OOBManager.registerOOBMsgHandler(OOB_MSGTYPE_ENDTURN, handleEndTurn);
+
+	OOBManager.registerOOBMsgHandler("PCRequestCTActivation", ProcessPCRequestCTActivation);
 end
 
 function onDesktopInit()
@@ -627,8 +629,29 @@ function showTurnMessage(nodeEntry, bActivate, bSkipBell)
 	end
 end
 
+function ProcessPCRequestCTActivation(msgOOB)
+	local nodeEntry = DB.findNode(msgOOB.node);
+	if User.isHost() then
+		CombatManager.requestActivation(nodeEntry, false, User.isHost());
+	end
+end
+
+
+
 function requestActivation(nodeEntry, bSkipBell, bisHost)
 	local nodeEntryfriendfoe = DB.getValue(nodeEntry, "friendfoe", "");
+
+	if bisHost == false and nodeEntryfriendfoe == "friend" then
+		-- this is a player requesting to go next, and the next slot is for a player
+		local msgOOB = {};
+		msgOOB.node = nodeEntry.getNodeName();
+		msgOOB.username = User.getUsername();
+		msgOOB.type = "PCRequestCTActivation";
+		Comm.deliverOOBMessage(msgOOB, "");
+		ChatManager.Message("sMsg");
+		return;
+	end
+
 	if bisHost == false  then
 		-- Only allow players to select who will act next, if the node is a friend
 		-- This code will require a comm message

@@ -251,8 +251,8 @@ function handleItem(vTargetRecord, sTargetList, sClass, sRecord, bTransferAll)
 
 	if not sTargetList then
 		local sTargetRecordType = getItemSourceType(nodeTargetRecord);
-		-- GENESYS: Added "npc" below
-		if (sTargetRecordType == "charsheet") or (sTargetRecordType == "npc") then
+		-- GENESYS: Added "npc", "combattracker" below
+		if (sTargetRecordType == "charsheet") or (sTargetRecordType == "npc") or (sTargetRecordType == "combattracker")then
 			sTargetList = "inventorylist";
 			if ItemManager2 and ItemManager2.getCharItemListPath then
 				sTargetList = ItemManager2.getCharItemListPath(vTargetRecord, sClass);
