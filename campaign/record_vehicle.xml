@@ -226,6 +226,12 @@
 				</anchored>
 			</number_columnh>
 
+			<string_columnh name="encumbrance_capacity_notes">
+				<anchored width="40">
+					<left parent="encumbrance_capacity" anchor="right" offset="14" />
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="-20" />
+				</anchored>
+			</string_columnh>
 
 			<label_column name="consumables_label">
 				<static textres="vehicle_label_consumables" />
@@ -601,6 +607,13 @@
 					<left offset="135" />
 				</anchored>
 			</number_columnh>
+
+			<string_columnh name="encumbrance_capacity_notes">
+				<anchored width="40">
+					<left parent="encumbrance_capacity" anchor="right" offset="14" />
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="-20" />
+				</anchored>
+			</string_columnh>
 
 
 			<label_column name="consumables_label">

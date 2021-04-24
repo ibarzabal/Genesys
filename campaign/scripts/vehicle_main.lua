@@ -39,6 +39,7 @@ function update()
 	updateControl("cost", bReadOnly, bID);
 	updateControl("rarity", bReadOnly, bID);
 	updateControl("encumbrance_capacity", bReadOnly, bID);
+	updateControl("encumbrance_capacity_notes", bReadOnly, bID);
 	updateControl("consumables", bReadOnly, bID);
 	updateControl("hard_points", bReadOnly, bID);
 	updateControl("notes", bReadOnly, bID);

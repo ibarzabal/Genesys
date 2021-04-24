@@ -191,9 +191,17 @@ function linkPCFields()
 		willpower.setLink(nodeChar.createChild("willpower.current", "number"), true);
 		presence.setLink(nodeChar.createChild("presence.current", "number"), true);
 
+
 		vehicle_name.setLink(nodeChar.createChild("temp_vehicle.name", "string"), true);
   	vehicle_current_node.setLink(nodeChar.createChild("vehicle_current", "string"), true);
 		vehicle_owner.setLink(nodeChar.createChild("temp_vehicle.owner", "string"), true);
+
+		control_skill_name.setLink(nodeChar.createChild("temp_vehicle.control_skill", "string"), true);
+		v_hull_trauma_threshold.setLink(nodeChar.createChild("temp_vehicle.hull_trauma.threshold", "number"), true);
+		v_hull_trauma_current.setLink(nodeChar.createChild("temp_vehicle.hull_trauma.current", "number"), false);
+		v_system_strain_threshold.setLink(nodeChar.createChild("temp_vehicle.system_strain.threshold", "number"), true);
+		v_system_strain_current.setLink(nodeChar.createChild("temp_vehicle.system_strain.current", "number"), false);
+		v_armor.setLink(nodeChar.createChild("temp_vehicle.armor", "number"), true);
 
 		local isSW = (User.getRulesetName() == "StarWarsFFG");
 
@@ -326,6 +334,7 @@ function setVehicleVisible()
 	vehicle_owner_label.setVisible(v and not bNPC);
 	control_skill_label.setVisible(v and bNPC);
 	control_skill.setVisible(v and bNPC);
+	control_skill_name.setVisible(v and bNPC);
 	vehicle_weapons_header.setVisible(v and bNPC);
 	vehicle_weapons.setVisible(v and bNPC);
 	spacer_vehicle.setVisible(v);
@@ -386,6 +395,7 @@ function setActiveVisible()
 			vehicle_owner_label.setVisible(v and not bNPC);
 			control_skill_label.setVisible(v and bNPC);
 			control_skill.setVisible(v and bNPC);
+			control_skill_name.setVisible(v and bNPC);
 			vehicle_weapons_header.setVisible(v and bNPC);
 			vehicle_weapons.setVisible(v and bNPC);
 			spacer_vehicle.setVisible(v);

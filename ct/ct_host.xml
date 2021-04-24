@@ -620,6 +620,13 @@
 				</anchored>
 			</skilldicepool>
 
+			<string_ct name="control_skill_name" source = ".temp_vehicle.control_skill" >
+				<anchored to="control_skill" position="righthigh" offset="7,0" />
+				<nolinkwidget />
+				<readonly />
+			</string_ct>
+
+
 			<!-- weapons -->
 			<label_column name="vehicle_weapons_header">
 				<anchored >
