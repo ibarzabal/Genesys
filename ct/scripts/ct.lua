@@ -19,6 +19,7 @@ function onInit()
 	DB.addHandler(DB.getPath(node, "*.nonid_name"), "onUpdate", onNameOrTokenUpdated);
 	DB.addHandler(DB.getPath(node, "*.isidentified"), "onUpdate", onNameOrTokenUpdated);
 	DB.addHandler(DB.getPath(node, "*.token"), "onUpdate", onNameOrTokenUpdated);
+	InitTiebreakerReset();
 end
 
 function onClose()
@@ -56,6 +57,7 @@ function addEntry(bFocus)
 	if bFocus and w then
 		w.name.setFocus();
 	end
+	InitTiebreakerReset();
 	return w;
 end
 
@@ -237,6 +239,7 @@ end
 function onDrop(x, y, draginfo)
 	if draginfo.isType("shortcut") then
 		CampaignDataManager.handleDrop("combattracker", draginfo);
+		InitTiebreakerReset();
 		return true;
 	end
 
@@ -249,4 +252,23 @@ function onDrop(x, y, draginfo)
 			return true;
 		end
 	end
+end
+
+
+function InitTiebreakerReset()
+	local PCInitTiebreaker = 2000;
+	local NPCInitTiebreaker = 1000;
+	local nodeCTList = DB.getChild(window.getDatabaseNode(), "list");
+	local sActorType, sActorNode;
+	for _,v in pairs(nodeCTList.getChildren()) do
+		sActorType, sActorNode = ActorManager.getTypeAndNodeName(v);
+		if sActorType == "pc" then
+			DB.setValue(v,"init_tiebreaker", "number", (PCInitTiebreaker / 1000000));
+			PCInitTiebreaker = PCInitTiebreaker - 1;
+		else
+			DB.setValue(v,"init_tiebreaker", "number", (NPCInitTiebreaker / 1000000));
+			NPCInitTiebreaker = NPCInitTiebreaker - 1;
+		end
+	end
+
 end

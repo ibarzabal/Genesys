@@ -1018,9 +1018,10 @@ function handleUpdateActorInit(msguser, msgidentity, msgparams)
   local aType = msgparams[1];
   local characternode = msgparams[2];
 	local initiativecount = msgparams[3];
-
   local rSource = ActorManager.getActor(aType, characternode);
-  DB.setValue(ActorManager.getCTNode(rSource), "initresult", "number", initiativecount);
+  local init_tiebreaker = DB.getValue(ActorManager.getCTNode(rSource), "init_tiebreaker", 0);
+
+  DB.setValue(ActorManager.getCTNode(rSource), "initresult", "number", initiativecount + init_tiebreaker);
 --	local characternode = DB.findNode(msgparams[1]);
 --	local initiativecount = msgparams[2];
 --	InitiativeManager.updateActorInitiative(characternode, initiativecount);
